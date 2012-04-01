@@ -29,15 +29,20 @@ def order(request):
 def updateOrder(request):
 
 
-    orders = list()
-    orders = request.POST.getlist('orderChecked')
-#    try:
-#        toBeUpdated = CrossStatus.objects.get(pk = order_id)
-#    except CrossStatus.DoesNotExist:
-#        orderItem= Order.objects.get(pk = order_id)
-#        toBeUpdated = CrossStatus.objects.create(order_id = orderItem)
-#
-#    toBeUpdated.order_status =  request.POST["status"]
-#    toBeUpdated.save()
+    orderIDs = list()
+    orderIDs = request.POST.getlist('orderChecked')
+
+    for anOrderID in orderIDs:
+        try:
+            anOrder = Order.objects.get(pk = int(anOrderID))
+        except Order.DoesNotExist:
+            raise Http404
+        try:
+            toBeUpdated = CrossStatus.objects.get(pk = anOrder.id)
+        except CrossStatus.DoesNotExist:
+            toBeUpdated = CrossStatus.objects.create(order_id = anOrder)
+        toBeUpdated.order_status =  request.POST["status"]
+        toBeUpdated.save()
+        
     return HttpResponseRedirect(request.META.get('HTTP_REFERER','/'))
 

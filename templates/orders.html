@@ -2,15 +2,89 @@
         "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-    <title></title>
+    <title>Cross Orders</title>
+    <style type="text/css">
+        div.shell{
+            background-color: #4A4A4C;
+            margin: 0 auto 10px;
+            padding: 10px;
+        }
+        div.header{
+            margin: 0 auto;
+            overflow: hidden;
+            width: 960px;
+        }
+        div.headerRighty {
+            font-family: Arial;
+            font-size: 12px;
+            font-weight: bold;
+        }
+        div.content{
+            margin: 0 auto;
+            overflow: auto;
+            float : left;
+            width: 980px;
+            text-align: center;
+        }
+        table.orders,th,td{
+            font-family:"Trebuchet MS", Arial, Helvetica, sans-serif;
+            border-collapse:collapse;
+            border:1px solid #4A4A4C;
+            font-size: 11px;
+            text-align: center;
+        }
+        td,th {
+            font-size:1em;
+            border:1px solid #4A4A4C;
+            padding:3px 7px 2px 7px;
+        }
+        th {
+            font-size:1.1em;
+            text-align:center;
+            padding-top:5px;
+            padding-bottom:4px;
+            background-color:#4A4A4C;
+            color:#ffffff;
+        }
+        tr.alt td {
+            color:#000000;
+            background-color:#EAF2D3;
+        }
+        div.orders{
+            text-align: center;
+            font-family: helvetica;
+            font-size: 11px;
+        }
+    </style>
 </head>
 <body>
-    <div>
+    <div class="shell">
+        <div class="header">
+            <div class="logo_box">
+                <a href="/">
+                    <img src="/static/images/zidaya_logo.png">
+                </a>
+            </div>
+            <div class="headerRighty">
+            </div>
+        </div>
+    </div>
+    <div class="content">
+    <table class="orders">
+        <tr>
+            <th>Select</th>
+            <th>Order Id</th>
+            <th>Barcode</th>
+            <th>Quantity</th>
+            <th>Cross Status</th>
+        </tr>
             {% for anOrder in orders %}
-                <div>
-                    {{ anOrder.order_number }} |
-                    {{ anOrder.barcode }}      |
-                    {{ anOrder.quantity }}     |
+                <tr>
+                    <td></td>
+                    <td>{{ anOrder.order_number }} </td>
+                    <td>{{ anOrder.barcode }}</td>
+                    <td>{{ anOrder.quantity }}</td>
+                    <td>
                     <form style='display: inline-block;' action="/update/{{ anOrder.id }}" method='post'>{% csrf_token %}
                     <select name='status'>
                            <option value='{{ anOrder.status }}' selected="true">{{  anOrder.status}}</option>
@@ -24,11 +98,13 @@
                     </select>
                     <input type='submit' value="Update">
                     </form>
-                </div>
+                    </td>
+                </tr>
             {% endfor %}
-
+    </table>
 
     </div>
+
 
 </body>
 </html>

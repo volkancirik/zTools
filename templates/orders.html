@@ -56,6 +56,21 @@
             font-size: 11px;
         }
     </style>
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
+    <script>
+
+        function countCheckboxes(){
+        var inputElems = document.getElementsByTagName("input"),
+        count = 0;
+        for (var i=0; i<inputElems.length; i++){
+          if (inputElems[i].type === "checkbox" && inputElems[i].checked === true){
+              
+            count++;
+            }
+          }
+          document.getElementById('numberofchecked').value= count;
+        }
+     </script>
 </head>
 <body>
     <div class="shell">
@@ -78,17 +93,24 @@
             <th>Quantity</th>
             <th>Cross Status</th>
         </tr>
-            {% for anOrder in orders %}
+                <form id ="orderForm" style='display: inline-block;' action="/update/" method='post'>{% csrf_token %}
+
+                {% for anOrder in orders %}
                 <tr>
-                    <td></td>
+                    <td> <input type=checkbox class="checkboxClass" name='orderChecked' value="{{ anOrder.id }}"></td>
                     <td>{{ anOrder.order_number }} </td>
                     <td>{{ anOrder.barcode }}</td>
                     <td>{{ anOrder.quantity }}</td>
+                    <td>{{  anOrder.status}}</td>
+                </tr>
+
+                {% endfor %}
+
+                <tr>
                     <td>
-                    <form style='display: inline-block;' action="/update/{{ anOrder.id }}" method='post'>{% csrf_token %}
                     <select name='status'>
-                           <option value='{{ anOrder.status }}' selected="true">{{  anOrder.status}}</option>
-                          <option value='unprocessed'>Unprocessed</option>
+                          <option value='{{ anOrder.status }}'>/option>
+                          <option value='unprocessed'  selected="true" >Unprocessed</option>
                           <option value='out_of_stock'>Out of Stock</option>
                           <option value='supplier_to_be_informed'>Supplier to be Informed</option>
                           <option value='supplier_informed'>Supplier Informed</option>
@@ -96,11 +118,13 @@
                           <option value='warehouse_informed'>Warehouse Informed</option>
                           <option value='received_in_warehouse '>Received in Warehouse</option>
                     </select>
-                    <input type='submit' value="Update">
-                    </form>
+                    <input type='submit' value="Update" onClick="countCheckboxes()">
+                    <input type="hidden" name='numberofchecked' id='numberofchecked' >
+                    
                     </td>
                 </tr>
-            {% endfor %}
+                </form>
+
     </table>
 
     </div>

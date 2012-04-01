@@ -26,14 +26,18 @@ def order(request):
             
     return render_to_response('orders.html', {'orders' : orders},context_instance = RequestContext(request) )
 
-def updateOrder(request,order_id):
-    try:
-        toBeUpdated = CrossStatus.objects.get(pk = order_id)
-    except CrossStatus.DoesNotExist:
-        orderItem= Order.objects.get(pk = order_id)
-        toBeUpdated = CrossStatus.objects.create(order_id = orderItem)
+def updateOrder(request):
 
-    toBeUpdated.order_status =  request.POST["status"]
-    toBeUpdated.save()
+
+    orders = list()
+    orders = request.POST.getlist('orderChecked')
+#    try:
+#        toBeUpdated = CrossStatus.objects.get(pk = order_id)
+#    except CrossStatus.DoesNotExist:
+#        orderItem= Order.objects.get(pk = order_id)
+#        toBeUpdated = CrossStatus.objects.create(order_id = orderItem)
+#
+#    toBeUpdated.order_status =  request.POST["status"]
+#    toBeUpdated.save()
     return HttpResponseRedirect(request.META.get('HTTP_REFERER','/'))
 

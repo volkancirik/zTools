@@ -11,19 +11,31 @@ from django.http import HttpResponseRedirect
 
 
 def order(request):
-    try:
-        orders = Order.objects.all()
-    except Order.DoesNotExist:
-        raise Http404
 
-    for anOrder in orders:
+    if request.method == 'POST':
+        keyword =  request.POST["keyword"]
+        column_name=request.POST["column_name"]
+        allOrders= Order.objects.all()
+        if column_name == 'supplier_name':
+          orders_dict = allOrders.filter(supplier_name__contains=keyword)
+        orderList = list()
+
+        for anOrder in orders_dict:
+            orderList.append(anOrder)
+        return render_to_response('orders.html', {'orders' : orderList},context_instance = RequestContext(request) )
+    else:
         try:
-            statusForAnOrder = CrossStatus.objects.get( pk = anOrder.id)
-            anOrder.status = statusForAnOrder.order_status
-        except CrossStatus.DoesNotExist:
-            statusForAnOrder = CrossStatus.objects.create(order_id = anOrder,order_status = 'Unprocessed')
-            anOrder.status = 'Unprocessed'
-            
+            orders = Order.objects.all()
+        except Order.DoesNotExist:
+            raise Http404
+
+        for anOrder in orders:
+            try:
+                statusForAnOrder = CrossStatus.objects.get( pk = anOrder.id)
+                anOrder.status = statusForAnOrder.order_status
+            except CrossStatus.DoesNotExist:
+                statusForAnOrder = CrossStatus.objects.create(order_id = anOrder,order_status = 'Unprocessed')
+                anOrder.status = 'Unprocessed'
     return render_to_response('orders.html', {'orders' : orders},context_instance = RequestContext(request) )
 
 def updateOrder(request):
@@ -64,4 +76,20 @@ def sort(request,criteria):
             anOrder.status = 'Unprocessed'
     return render_to_response('orders.html', {'orders' : orders},context_instance = RequestContext(request) )
 
+def searchOrder(request,column_name):
 
+    if request.method == 'POST':
+        keyword =  request.POST["keyword"]
+        column_name=request.POST["column_name"]
+        allOrders= Order.objects.all()
+        if column_name == 'supplier_name':
+            orders_dict = allOrders.filter(supplier_name__contains=keyword)
+        orderList = list()
+        for anOrder in orders_dict:
+            orderList.append(anOrder)
+        return render_to_response('orders.html', {'orders' : orderList},context_instance = RequestContext(request) )
+    else:
+        return HttpResponseRedirect(request.META.get('HTTP_REFERER','/'))
+
+def test(request):
+    return render_to_response('jqueryTest.html',context_instance = RequestContext(request) )

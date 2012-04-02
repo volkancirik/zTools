@@ -91,6 +91,11 @@
             <th><a class="sortItem" href="/sort/order_id/">Order Id</a></th>
             <th><a class="sortItem" href="/sort/barcode/">Barcode</a></th>
             <th><a class="sortItem" href="/sort/quantity/">Quantity</a></th>
+            <th>Supplier
+                <a href="/search/" title="Search">
+                    <img src="/static/images/search-icon.png">
+                </a>
+            </th>
             <th>Cross Status</th>
         </tr>
                 <form id ="orderForm" style='display: inline-block;' action="/update/" method='post'>{% csrf_token %}

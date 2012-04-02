@@ -12,7 +12,6 @@
         div.header{
             margin: 0 auto;
             overflow: hidden;
-            width: 960px;
         }
         div.headerRighty {
             font-family: Arial;
@@ -22,8 +21,6 @@
         div.content{
             margin: 0 auto;
             overflow: auto;
-            float : left;
-            width: 980px;
             text-align: center;
         }
         table.orders,th,td{
@@ -54,6 +51,9 @@
             text-align: center;
             font-family: helvetica;
             font-size: 11px;
+        }
+        .sortItem{
+            color: #EAF2D3;
         }
     </style>
     <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
@@ -88,23 +88,48 @@
     <table class="orders">
         <tr>
             <th>Select</th>
-            <th><a class="sortItem" href="/sort/order_id/">Order Id</a></th>
-            <th><a class="sortItem" href="/sort/barcode/">Barcode</a></th>
-            <th><a class="sortItem" href="/sort/quantity/">Quantity</a></th>
-            <th>Supplier
+            <th>Id Sales Order Item</th>
+            <th><a class="sortItem" href="/sort/order_id/">Order Number</a></th>
+            <th>Size</th>
+            <th>Sku</th>
+            <th>Supplier Name
                 <a href="/search/" title="Search">
                     <img src="/static/images/search-icon.png">
                 </a>
             </th>
+            <th>Sku Supplier Simple</th>
+            <th>Shipment Type</th>
+            <th><a class="sortItem" href="/sort/barcode/">Barcode</a></th>
+            <th>Buysheet Id</th>
+            <th>Name</th>
+            <th>Status</th>
+            <th>Paid Price</th>
+            <th>Cost</th>
+            <th>Inbound Order Number</th>
+            <th>Last Updated</th>
             <th>Cross Status</th>
+
         </tr>
                 <form id ="orderForm" style='display: inline-block;' action="/update/" method='post'>{% csrf_token %}
 
                 {% for anOrder in orders %}
                 <tr>
                     <td> <input type=checkbox class="checkboxClass" name='orderChecked' value="{{ anOrder.id }}"></td>
-                    <td>{{ anOrder.order_number }} </td>
-                    <td>{{ anOrder.barcode }}</td>
+                    <td>{{ anOrder.id_sales_order_item }}</td>
+                    <td>{{ anOrder.id_sales_order }}</td>
+                    <td>{{ anOrder.order_nr }} </td>
+                    <td>{{ anOrder.size }}</td>
+                    <td>{{ anOrder.sku }}</td>
+                    <td>{{ anOrder.supplier_name }}</td>
+                    <td>{{ anOrder.sku_supplier_simple }}</td>
+                    <td>{{ anOrder.shipment_type }}</td>
+                    <td>{{ anOrder.barcode_ean }}</td>
+                    <td>{{ anOrder.sku_supplier_config }}</td>
+                    <td>{{ anOrder.buysheet_id }}</td>
+                    <td>{{ anOrder.name }}</td>
+                    <td>{{ anOrder.status }}</td>
+                    <td>{{ anOrder.id_sales_order_item }}</td>
+                    <td>{{ anOrder.tracking_url }}</td>
                     <td>{{ anOrder.quantity }}</td>
                     <td>{{  anOrder.status}}</td>
                 </tr>

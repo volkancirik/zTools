@@ -46,3 +46,22 @@ def updateOrder(request):
         
     return HttpResponseRedirect(request.META.get('HTTP_REFERER','/'))
 
+
+def sort(request,criteria):
+
+    if criteria == "order_id":
+        orders = Order.objects.order_by('-order_number')
+    if criteria == "barcode":
+        orders = Order.objects.order_by('-barcode')
+    if criteria == "quantity":
+        orders = Order.objects.order_by('-quantity')
+    for anOrder in orders:
+        try:
+            statusForAnOrder = CrossStatus.objects.get( pk = anOrder.id)
+            anOrder.status = statusForAnOrder.order_status
+        except CrossStatus.DoesNotExist:
+            statusForAnOrder = CrossStatus.objects.create(order_id = anOrder,order_status = 'Unprocessed')
+            anOrder.status = 'Unprocessed'
+    return render_to_response('orders.html', {'orders' : orders},context_instance = RequestContext(request) )
+
+

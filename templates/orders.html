@@ -88,9 +88,9 @@
     <table class="orders">
         <tr>
             <th>Select</th>
-            <th>Order Id</th>
-            <th>Barcode</th>
-            <th>Quantity</th>
+            <th><a class="sortItem" href="/sort/order_id/">Order Id</a></th>
+            <th><a class="sortItem" href="/sort/barcode/">Barcode</a></th>
+            <th><a class="sortItem" href="/sort/quantity/">Quantity</a></th>
             <th>Cross Status</th>
         </tr>
                 <form id ="orderForm" style='display: inline-block;' action="/update/" method='post'>{% csrf_token %}
@@ -109,7 +109,6 @@
                 <tr>
                     <td>
                     <select name='status'>
-                          <option value='{{ anOrder.status }}'>/option>
                           <option value='unprocessed'  selected="true" >Unprocessed</option>
                           <option value='out_of_stock'>Out of Stock</option>
                           <option value='supplier_to_be_informed'>Supplier to be Informed</option>

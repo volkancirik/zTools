@@ -18,4 +18,6 @@ urlpatterns = patterns('',
 
 #    (r'^update/(?P<order_id>[a-zA-Z0-9_.-]+)', 'cross_dock_order.order_check.views.updateOrder'),
     (r'^update/', 'cross_dock_order.order_check.views.updateOrder'),
+    (r'^sort/(?P<criteria>order_id|barcode|quantity|cross_status)/?$', 'cross_dock_order.order_check.views.sort'),
+
 )

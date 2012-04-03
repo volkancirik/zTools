@@ -55,6 +55,9 @@
         .sortItem{
             color: #EAF2D3;
         }
+        .searchBox{
+            display: none;
+        }
     </style>
     <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
     <script>
@@ -70,6 +73,15 @@
           }
           document.getElementById('numberofchecked').value= count;
         }
+
+function openForm(ID){
+       if ($("#searchForm_"+ID).is(":hidden")){
+          $("#searchForm_"+ID).slideDown("slow");
+       }
+       else{
+           $("#searchForm_"+ID).slideUp("slow");
+       }
+}
      </script>
 </head>
 <body>
@@ -93,13 +105,20 @@
             <th>Size</th>
             <th>Sku</th>
             <th>Supplier Name
-                <a href="/search/" title="Search">
-                    <img src="/static/images/search-icon.png">
-                </a>
+                <a href="/search/" title="Search"></a>
+{#                    <button id="searchSuplier" style="background-image:url('/static/images/search-icon.png'); "></button>#}
+                    <img src="/static/images/search-icon.png" onclick='openForm(1)'>
+                       <div id="searchForm_1" class="searchBox">
+                             <form method="POST" action="" >{% csrf_token %}
+                                <input type="hidden" name="column_name" value='supplier_name'>
+                                <input type="text"  name="keyword" maxlength="100"  style="border: 1px solid #3E6D8E;border-radius: 3px 3px 3px 3px;"/>
+                                <input type="submit" name="submit" value="Post">{% csrf_token %}
+                             </form>
+                       </div>
+
             </th>
             <th>Sku Supplier Simple</th>
             <th>Shipment Type</th>
-            <th><a class="sortItem" href="/sort/barcode/">Barcode</a></th>
             <th>Buysheet Id</th>
             <th>Name</th>
             <th>Status</th>
@@ -116,21 +135,19 @@
                 <tr>
                     <td> <input type=checkbox class="checkboxClass" name='orderChecked' value="{{ anOrder.id }}"></td>
                     <td>{{ anOrder.id_sales_order_item }}</td>
-                    <td>{{ anOrder.id_sales_order }}</td>
                     <td>{{ anOrder.order_nr }} </td>
                     <td>{{ anOrder.size }}</td>
                     <td>{{ anOrder.sku }}</td>
                     <td>{{ anOrder.supplier_name }}</td>
                     <td>{{ anOrder.sku_supplier_simple }}</td>
                     <td>{{ anOrder.shipment_type }}</td>
-                    <td>{{ anOrder.barcode_ean }}</td>
-                    <td>{{ anOrder.sku_supplier_config }}</td>
                     <td>{{ anOrder.buysheet_id }}</td>
                     <td>{{ anOrder.name }}</td>
                     <td>{{ anOrder.status }}</td>
-                    <td>{{ anOrder.id_sales_order_item }}</td>
-                    <td>{{ anOrder.tracking_url }}</td>
-                    <td>{{ anOrder.quantity }}</td>
+                    <td>{{ anOrder.paid_price}}</td>
+                    <td>{{ anOrder.cost}}</td>
+                    <td></td>
+                    <td></td>
                     <td>{{  anOrder.status}}</td>
                 </tr>
 

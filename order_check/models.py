@@ -15,6 +15,7 @@ class Order(models.Model):
     status = models.CharField(max_length=255)
     paid_price = models.DecimalField(max_digits=10,decimal_places=2)
     cost = models.DecimalField(max_digits=10,decimal_places=2)
+    inbound_order_number = models.CharField(max_length=50)
     def __unicode__(self):
         return self.order_nr
 
@@ -23,6 +24,11 @@ class CrossStatus(models.Model):
     order_id      = models.ForeignKey(Order, primary_key= True)
     def __unicode__(self):
         return str(self.order_id)+' '+self.order_status
+
+class LastUpdate(models.Model):
+    updated_on = models.DateTimeField(blank=False, auto_now_add=True)
+    cross_status = models.CharField(max_length=30)
+    order_id = models.ForeignKey(Order)
 
 class Admin:
    prepopulated_fields = {'slug': ('title',)}

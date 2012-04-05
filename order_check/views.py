@@ -40,7 +40,6 @@ def order(request):
 
 def updateOrder(request):
 
-
     orderIDs = list()
     orderIDs = request.POST.getlist('orderChecked')
 
@@ -74,3 +73,6 @@ def sort(request,criteria):
 
 def test(request):
     return render_to_response('jqueryTest.html',context_instance = RequestContext(request) )
+
+def tabletest(request):
+    return render_to_response('tableTest.html',context_instance = RequestContext(request) )

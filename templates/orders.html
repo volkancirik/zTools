@@ -4,7 +4,7 @@
 <head>
     <title>Cross Orders</title>
     <style type="text/css">
-        		body { font-size: 62.5%; }
+        body { font-size: 62.5%; }
 		label, input { display:block; }
 		input.text { margin-bottom:12px; width:95%; padding: .4em; }
 		fieldset { padding:0; border:0; margin-top:25px; }
@@ -30,7 +30,8 @@
             overflow: hidden;
         }
         div.headerRighty {
-            font-family: Arial;
+            font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+            color: #ffffff;
             font-size: 12px;
             font-weight: bold;
         }
@@ -46,6 +47,7 @@
             border-collapse:collapse;
             border:1px solid #4A4A4C;
             font-size: 11px;
+            margin-top: 0px;
             text-align: center;
         }
          table.ordersHeader,th,td{
@@ -85,6 +87,19 @@
             font-family: helvetica;
             font-size: 11px;
         }
+        tr.suppliers
+        {
+            background-color:#4A4A4C;
+            color:#EAF2D3;
+        }
+        a:link
+        {
+           color:#EAF2D3;
+        }
+        a:visited
+        {
+            color: #EAF2D3;
+        }
         .sortItem{
             color: #EAF2D3;
         }
@@ -92,833 +107,8 @@
             display: none;
         }
     </style>
-    <style type="text/css">
-<!--
-/* Terence Ordona, portal[AT]imaputz[DOT]com */
-/* http://creativecommons.org/licenses/by-sa/2.0/ */
-/* begin some basic styling here */
-body {
-background: #FFF;
-color: #000;
-font: normal normal 12px Verdana, Geneva, Arial, Helvetica, sans-serif;
-margin: 10px;
-padding: 0
-}
-table, td, a {
-color: #000;
-font: normal normal 12px Verdana, Geneva, Arial, Helvetica, sans-serif
-}
-h1 {
-font: normal normal 18px Verdana, Geneva, Arial, Helvetica, sans-serif;
-margin: 0 0 5px 0
-}
-h2 {
-font: normal normal 16px Verdana, Geneva, Arial, Helvetica, sans-serif;
-margin: 0 0 5px 0
-}
-h3 {
-font: normal normal 13px Verdana, Geneva, Arial, Helvetica, sans-serif;
-color: #008000;
-margin: 0 0 15px 0
-}
-/* end basic styling */
-/* define height and width of scrollable area. Add 16px to width for scrollbar */
-div.tableContainer {
-clear: both;
-border: 1px solid #963;
-height: 285px;
-overflow: auto;
-width: 756px
-}
-/* Reset overflow value to hidden for all non-IE browsers. */
-html>body div.tableContainer {
-overflow: hidden;
-width: 756px
-}
-/* define width of table. IE browsers only */
-div.tableContainer table {
-float: left;
-width: 740px
-}
-/* define width of table. Add 16px to width for scrollbar. */
-/* All other non-IE browsers. */
-html>body div.tableContainer table {
-width: 756px
-}
-/* set table header to a fixed position. WinIE 6.x only */
-/* In WinIE 6.x, any element with a position property set to relative and is a child of */
-/* an element that has an overflow property set, the relative value translates into fixed. */
-/* Ex: parent element DIV with a class of tableContainer has an overflow property set to auto */
-thead.fixedHeader tr {
-position: relative
-}
-/* set THEAD element to have block level attributes. All other non-IE browsers */
-/* this enables overflow to work on TBODY element. All other non-IE, non-Mozilla browsers */
-html>body thead.fixedHeader tr {
-display: block
-}
-/* make the TH elements pretty */
-thead.fixedHeader th {
-background: #C96;
-border-left: 1px solid #EB8;
-border-right: 1px solid #B74;
-border-top: 1px solid #EB8;
-font-weight: normal;
-padding: 4px 3px;
-text-align: left
-}
-/* make the A elements pretty. makes for nice clickable headers */
-thead.fixedHeader a, thead.fixedHeader a:link, thead.fixedHeader a:visited {
-color: #FFF;
-display: block;
-text-decoration: none;
-width: 100%
-}
-/* make the A elements pretty. makes for nice clickable headers */
-/* WARNING: swapping the background on hover may cause problems in WinIE 6.x */
-thead.fixedHeader a:hover {
-color: #FFF;
-display: block;
-text-decoration: underline;
-width: 100%
-}
-/* define the table content to be scrollable */
-/* set TBODY element to have block level attributes. All other non-IE browsers */
-/* this enables overflow to work on TBODY element. All other non-IE, non-Mozilla browsers */
-/* induced side effect is that child TDs no longer accept width: auto */
-html>body tbody.scrollContent {
-display: block;
-height: 262px;
-overflow: auto;
-width: 100%
-}
-/* make TD elements pretty. Provide alternating classes for striping the table */
-/* http://www.alistapart.com/articles/zebratables/ */
-tbody.scrollContent td, tbody.scrollContent tr.normalRow td {
-background: #FFF;
-border-bottom: none;
-border-left: none;
-border-right: 1px solid #CCC;
-border-top: 1px solid #DDD;
-padding: 2px 3px 3px 4px
-}
-tbody.scrollContent tr.alternateRow td {
-background: #EEE;
-border-bottom: none;
-border-left: none;
-border-right: 1px solid #CCC;
-border-top: 1px solid #DDD;
-padding: 2px 3px 3px 4px
-}
-/* define width of TH elements: 1st, 2nd, and 3rd respectively. */
-/* Add 16px to last TH for scrollbar padding. All other non-IE browsers. */
-/* http://www.w3.org/TR/REC-CSS2/selector.html#adjacent-selectors */
-html>body thead.fixedHeader th {
-width: 200px
-}
-html>body thead.fixedHeader th + th {
-width: 240px
-}
-html>body thead.fixedHeader th + th + th {
-width: 316px
-}
-/* define width of TD elements: 1st, 2nd, and 3rd respectively. */
-/* All other non-IE browsers. */
-/* http://www.w3.org/TR/REC-CSS2/selector.html#adjacent-selectors */
-html>body tbody.scrollContent td {
-width: 200px
-}
-html>body tbody.scrollContent td + td {
-width: 240px
-}
-html>body tbody.scrollContent td + td + td {
-width: 300px
-}
--->
-</style>
-    <style type="text/css">
-    .ui-widget {
-        font-family: Trebuchet MS,Tahoma,Verdana,Arial,sans-serif;
-        font-size: 1.1em;
-    }
-    .ui-widget input, .ui-widget select, .ui-widget textarea, .ui-widget button {
-        font-family: Trebuchet MS,Tahoma,Verdana,Arial,sans-serif;
-        font-size: 1em;
-    }
-    .ui-widget-content {
-        background: url("../images/?new=eeeeee&w=1&h=100&f=png&q=100&fltr[]=over|textures/03_highlight_soft.png|0|0|100") repeat-x scroll 50% top #EEEEEE;
-        border: 1px solid #DDDDDD;
-        color: #333333;
-    }
-    .ui-widget-content a {
-        color: #333333;
-    }
-    .ui-widget-header {
-        border: 1px solid #E78F08;
-        color: #FFFFFF;
-        font-weight: bold;
-    }
-    .ui-widget-header a {
-        color: #FFFFFF;
-    }
-    .ui-state-default, .ui-widget-content .ui-state-default {
-        border: 1px solid #FFFFFF;
-        color: #1C94C4;
-        font-weight: bold;
-        outline: medium none;
-    }
-    .ui-state-default a, .ui-state-default a:link, .ui-state-default a:visited {
-        color: #1C94C4;
-        outline: medium none;
-        text-decoration: none;
-    }
-    .ui-state-hover, .ui-widget-content .ui-state-hover, .ui-state-focus, .ui-widget-content .ui-state-focus {
-        background: url("../images/?new=fdf5ce&w=1&h=400&f=png&q=100&fltr[]=over|textures/02_glass.png|0|0|100") repeat-x scroll 50% 50% #FDF5CE;
-        border: 1px solid #FBCB09;
-        color: #C77405;
-        font-weight: bold;
-        outline: medium none;
-    }
-    .ui-state-hover a, .ui-state-hover a:hover {
-        color: #C77405;
-        outline: medium none;
-        text-decoration: none;
-    }
-    .ui-state-active, .ui-widget-content .ui-state-active {
-        background: url("../images/?new=ffffff&w=1&h=400&f=png&q=100&fltr[]=over|textures/02_glass.png|0|0|65") repeat-x scroll 50% 50% #FFFFFF;
-        border: 1px solid #FBD850;
-        color: #EB8F00;
-        font-weight: bold;
-        outline: medium none;
-    }
-    .ui-state-active a, .ui-state-active a:link, .ui-state-active a:visited {
-        color: #EB8F00;
-        outline: medium none;
-        text-decoration: none;
-    }
-    .ui-state-highlight, .ui-widget-content .ui-state-highlight {
-        background: url("../images/?new=ffe45c&w=1&h=100&f=png&q=100&fltr[]=over|textures/03_highlight_soft.png|0|0|75") repeat-x scroll 50% top #FFE45C;
-        border: 1px solid #FED22F;
-        color: #363636;
-    }
-    .ui-state-highlight a, .ui-widget-content .ui-state-highlight a {
-        color: #363636;
-    }
-    .ui-state-error, .ui-widget-content .ui-state-error {
-        background: url("../images/?new=b81900&w=40&h=40&f=png&q=100&fltr[]=over|textures/08_diagonals_thick.png|0|0|18") repeat scroll 50% 50% #B81900;
-        border: 1px solid #CD0A0A;
-        color: #FFFFFF;
-    }
-    .ui-state-error a, .ui-widget-content .ui-state-error a {
-        color: #FFFFFF;
-    }
-    .ui-state-error-text, .ui-widget-content .ui-state-error-text {
-        color: #FFFFFF;
-    }
-    .ui-state-disabled, .ui-widget-content .ui-state-disabled {
-        background-image: none;
-        opacity: 0.35;
-    }
-    .ui-priority-primary, .ui-widget-content .ui-priority-primary {
-        font-weight: bold;
-    }
-    .ui-priority-secondary, .ui-widget-content .ui-priority-secondary {
-        font-weight: normal;
-        opacity: 0.7;
-    }
-    .ui-icon {
-        background-image: url("../images/?new=222222&w=256&h=240&f=png&fltr[]=rcd|256&fltr[]=mask|icons/icons.png");
-        height: 16px;
-        width: 16px;
-    }
-    .ui-widget-content .ui-icon {
-        background-image: url("../images/?new=222222&w=256&h=240&f=png&fltr[]=rcd|256&fltr[]=mask|icons/icons.png");
-    }
-    .ui-widget-header .ui-icon {
-        background-image: url("../images/?new=ffffff&w=256&h=240&f=png&fltr[]=rcd|256&fltr[]=mask|icons/icons.png");
-    }
-    .ui-state-default .ui-icon {
-        background-image: url("../images/?new=ef8c08&w=256&h=240&f=png&fltr[]=rcd|256&fltr[]=mask|icons/icons.png");
-    }
-    .ui-state-hover .ui-icon, .ui-state-focus .ui-icon {
-        background-image: url("../images/?new=ef8c08&w=256&h=240&f=png&fltr[]=rcd|256&fltr[]=mask|icons/icons.png");
-    }
-    .ui-state-active .ui-icon {
-        background-image: url("../images/?new=ef8c08&w=256&h=240&f=png&fltr[]=rcd|256&fltr[]=mask|icons/icons.png");
-    }
-    .ui-state-highlight .ui-icon {
-        background-image: url("../images/?new=228ef1&w=256&h=240&f=png&fltr[]=rcd|256&fltr[]=mask|icons/icons.png");
-    }
-    .ui-state-error .ui-icon, .ui-state-error-text .ui-icon {
-        background-image: url("../images/?new=ffd27a&w=256&h=240&f=png&fltr[]=rcd|256&fltr[]=mask|icons/icons.png");
-    }
-    .ui-icon-carat-1-n {
-        background-position: 0 0;
-    }
-    .ui-icon-carat-1-ne {
-        background-position: -16px 0;
-    }
-    .ui-icon-carat-1-e {
-        background-position: -32px 0;
-    }
-    .ui-icon-carat-1-se {
-        background-position: -48px 0;
-    }
-    .ui-icon-carat-1-s {
-        background-position: -64px 0;
-    }
-    .ui-icon-carat-1-sw {
-        background-position: -80px 0;
-    }
-    .ui-icon-carat-1-w {
-        background-position: -96px 0;
-    }
-    .ui-icon-carat-1-nw {
-        background-position: -112px 0;
-    }
-    .ui-icon-carat-2-n-s {
-        background-position: -128px 0;
-    }
-    .ui-icon-carat-2-e-w {
-        background-position: -144px 0;
-    }
-    .ui-icon-triangle-1-n {
-        background-position: 0 -16px;
-    }
-    .ui-icon-triangle-1-ne {
-        background-position: -16px -16px;
-    }
-    .ui-icon-triangle-1-e {
-        background-position: -32px -16px;
-    }
-    .ui-icon-triangle-1-se {
-        background-position: -48px -16px;
-    }
-    .ui-icon-triangle-1-s {
-        background-position: -64px -16px;
-    }
-    .ui-icon-triangle-1-sw {
-        background-position: -80px -16px;
-    }
-    .ui-icon-triangle-1-w {
-        background-position: -96px -16px;
-    }
-    .ui-icon-triangle-1-nw {
-        background-position: -112px -16px;
-    }
-    .ui-icon-triangle-2-n-s {
-        background-position: -128px -16px;
-    }
-    .ui-icon-triangle-2-e-w {
-        background-position: -144px -16px;
-    }
-    .ui-icon-arrow-1-n {
-        background-position: 0 -32px;
-    }
-    .ui-icon-arrow-1-ne {
-        background-position: -16px -32px;
-    }
-    .ui-icon-arrow-1-e {
-        background-position: -32px -32px;
-    }
-    .ui-icon-arrow-1-se {
-        background-position: -48px -32px;
-    }
-    .ui-icon-arrow-1-s {
-        background-position: -64px -32px;
-    }
-    .ui-icon-arrow-1-sw {
-        background-position: -80px -32px;
-    }
-    .ui-icon-arrow-1-w {
-        background-position: -96px -32px;
-    }
-    .ui-icon-arrow-1-nw {
-        background-position: -112px -32px;
-    }
-    .ui-icon-arrow-2-n-s {
-        background-position: -128px -32px;
-    }
-    .ui-icon-arrow-2-ne-sw {
-        background-position: -144px -32px;
-    }
-    .ui-icon-arrow-2-e-w {
-        background-position: -160px -32px;
-    }
-    .ui-icon-arrow-2-se-nw {
-        background-position: -176px -32px;
-    }
-    .ui-icon-arrowstop-1-n {
-        background-position: -192px -32px;
-    }
-    .ui-icon-arrowstop-1-e {
-        background-position: -208px -32px;
-    }
-    .ui-icon-arrowstop-1-s {
-        background-position: -224px -32px;
-    }
-    .ui-icon-arrowstop-1-w {
-        background-position: -240px -32px;
-    }
-    .ui-icon-arrowthick-1-n {
-        background-position: 0 -48px;
-    }
-    .ui-icon-arrowthick-1-ne {
-        background-position: -16px -48px;
-    }
-    .ui-icon-arrowthick-1-e {
-        background-position: -32px -48px;
-    }
-    .ui-icon-arrowthick-1-se {
-        background-position: -48px -48px;
-    }
-    .ui-icon-arrowthick-1-s {
-        background-position: -64px -48px;
-    }
-    .ui-icon-arrowthick-1-sw {
-        background-position: -80px -48px;
-    }
-    .ui-icon-arrowthick-1-w {
-        background-position: -96px -48px;
-    }
-    .ui-icon-arrowthick-1-nw {
-        background-position: -112px -48px;
-    }
-    .ui-icon-arrowthick-2-n-s {
-        background-position: -128px -48px;
-    }
-    .ui-icon-arrowthick-2-ne-sw {
-        background-position: -144px -48px;
-    }
-    .ui-icon-arrowthick-2-e-w {
-        background-position: -160px -48px;
-    }
-    .ui-icon-arrowthick-2-se-nw {
-        background-position: -176px -48px;
-    }
-    .ui-icon-arrowthickstop-1-n {
-        background-position: -192px -48px;
-    }
-    .ui-icon-arrowthickstop-1-e {
-        background-position: -208px -48px;
-    }
-    .ui-icon-arrowthickstop-1-s {
-        background-position: -224px -48px;
-    }
-    .ui-icon-arrowthickstop-1-w {
-        background-position: -240px -48px;
-    }
-    .ui-icon-arrowreturnthick-1-w {
-        background-position: 0 -64px;
-    }
-    .ui-icon-arrowreturnthick-1-n {
-        background-position: -16px -64px;
-    }
-    .ui-icon-arrowreturnthick-1-e {
-        background-position: -32px -64px;
-    }
-    .ui-icon-arrowreturnthick-1-s {
-        background-position: -48px -64px;
-    }
-    .ui-icon-arrowreturn-1-w {
-        background-position: -64px -64px;
-    }
-    .ui-icon-arrowreturn-1-n {
-        background-position: -80px -64px;
-    }
-    .ui-icon-arrowreturn-1-e {
-        background-position: -96px -64px;
-    }
-    .ui-icon-arrowreturn-1-s {
-        background-position: -112px -64px;
-    }
-    .ui-icon-arrowrefresh-1-w {
-        background-position: -128px -64px;
-    }
-    .ui-icon-arrowrefresh-1-n {
-        background-position: -144px -64px;
-    }
-    .ui-icon-arrowrefresh-1-e {
-        background-position: -160px -64px;
-    }
-    .ui-icon-arrowrefresh-1-s {
-        background-position: -176px -64px;
-    }
-    .ui-icon-arrow-4 {
-        background-position: 0 -80px;
-    }
-    .ui-icon-arrow-4-diag {
-        background-position: -16px -80px;
-    }
-    .ui-icon-extlink {
-        background-position: -32px -80px;
-    }
-    .ui-icon-newwin {
-        background-position: -48px -80px;
-    }
-    .ui-icon-refresh {
-        background-position: -64px -80px;
-    }
-    .ui-icon-shuffle {
-        background-position: -80px -80px;
-    }
-    .ui-icon-transfer-e-w {
-        background-position: -96px -80px;
-    }
-    .ui-icon-transferthick-e-w {
-        background-position: -112px -80px;
-    }
-    .ui-icon-folder-collapsed {
-        background-position: 0 -96px;
-    }
-    .ui-icon-folder-open {
-        background-position: -16px -96px;
-    }
-    .ui-icon-document {
-        background-position: -32px -96px;
-    }
-    .ui-icon-document-b {
-        background-position: -48px -96px;
-    }
-    .ui-icon-note {
-        background-position: -64px -96px;
-    }
-    .ui-icon-mail-closed {
-        background-position: -80px -96px;
-    }
-    .ui-icon-mail-open {
-        background-position: -96px -96px;
-    }
-    .ui-icon-suitcase {
-        background-position: -112px -96px;
-    }
-    .ui-icon-comment {
-        background-position: -128px -96px;
-    }
-    .ui-icon-person {
-        background-position: -144px -96px;
-    }
-    .ui-icon-print {
-        background-position: -160px -96px;
-    }
-    .ui-icon-trash {
-        background-position: -176px -96px;
-    }
-    .ui-icon-locked {
-        background-position: -192px -96px;
-    }
-    .ui-icon-unlocked {
-        background-position: -208px -96px;
-    }
-    .ui-icon-bookmark {
-        background-position: -224px -96px;
-    }
-    .ui-icon-tag {
-        background-position: -240px -96px;
-    }
-    .ui-icon-home {
-        background-position: 0 -112px;
-    }
-    .ui-icon-flag {
-        background-position: -16px -112px;
-    }
-    .ui-icon-calendar {
-        background-position: -32px -112px;
-    }
-    .ui-icon-cart {
-        background-position: -48px -112px;
-    }
-    .ui-icon-pencil {
-        background-position: -64px -112px;
-    }
-    .ui-icon-clock {
-        background-position: -80px -112px;
-    }
-    .ui-icon-disk {
-        background-position: -96px -112px;
-    }
-    .ui-icon-calculator {
-        background-position: -112px -112px;
-    }
-    .ui-icon-zoomin {
-        background-position: -128px -112px;
-    }
-    .ui-icon-zoomout {
-        background-position: -144px -112px;
-    }
-    .ui-icon-search {
-        background-position: -160px -112px;
-    }
-    .ui-icon-wrench {
-        background-position: -176px -112px;
-    }
-    .ui-icon-gear {
-        background-position: -192px -112px;
-    }
-    .ui-icon-heart {
-        background-position: -208px -112px;
-    }
-    .ui-icon-star {
-        background-position: -224px -112px;
-    }
-    .ui-icon-link {
-        background-position: -240px -112px;
-    }
-    .ui-icon-cancel {
-        background-position: 0 -128px;
-    }
-    .ui-icon-plus {
-        background-position: -16px -128px;
-    }
-    .ui-icon-plusthick {
-        background-position: -32px -128px;
-    }
-    .ui-icon-minus {
-        background-position: -48px -128px;
-    }
-    .ui-icon-minusthick {
-        background-position: -64px -128px;
-    }
-    .ui-icon-close {
-        background-position: -80px -128px;
-    }
-    .ui-icon-closethick {
-        background-position: -96px -128px;
-    }
-    .ui-icon-key {
-        background-position: -112px -128px;
-    }
-    .ui-icon-lightbulb {
-        background-position: -128px -128px;
-    }
-    .ui-icon-scissors {
-        background-position: -144px -128px;
-    }
-    .ui-icon-clipboard {
-        background-position: -160px -128px;
-    }
-    .ui-icon-copy {
-        background-position: -176px -128px;
-    }
-    .ui-icon-contact {
-        background-position: -192px -128px;
-    }
-    .ui-icon-image {
-        background-position: -208px -128px;
-    }
-    .ui-icon-video {
-        background-position: -224px -128px;
-    }
-    .ui-icon-script {
-        background-position: -240px -128px;
-    }
-    .ui-icon-alert {
-        background-position: 0 -144px;
-    }
-    .ui-icon-info {
-        background-position: -16px -144px;
-    }
-    .ui-icon-notice {
-        background-position: -32px -144px;
-    }
-    .ui-icon-help {
-        background-position: -48px -144px;
-    }
-    .ui-icon-check {
-        background-position: -64px -144px;
-    }
-    .ui-icon-bullet {
-        background-position: -80px -144px;
-    }
-    .ui-icon-radio-off {
-        background-position: -96px -144px;
-    }
-    .ui-icon-radio-on {
-        background-position: -112px -144px;
-    }
-    .ui-icon-pin-w {
-        background-position: -128px -144px;
-    }
-    .ui-icon-pin-s {
-        background-position: -144px -144px;
-    }
-    .ui-icon-play {
-        background-position: 0 -160px;
-    }
-    .ui-icon-pause {
-        background-position: -16px -160px;
-    }
-    .ui-icon-seek-next {
-        background-position: -32px -160px;
-    }
-    .ui-icon-seek-prev {
-        background-position: -48px -160px;
-    }
-    .ui-icon-seek-end {
-        background-position: -64px -160px;
-    }
-    .ui-icon-seek-first {
-        background-position: -80px -160px;
-    }
-    .ui-icon-stop {
-        background-position: -96px -160px;
-    }
-    .ui-icon-eject {
-        background-position: -112px -160px;
-    }
-    .ui-icon-volume-off {
-        background-position: -128px -160px;
-    }
-    .ui-icon-volume-on {
-        background-position: -144px -160px;
-    }
-    .ui-icon-power {
-        background-position: 0 -176px;
-    }
-    .ui-icon-signal-diag {
-        background-position: -16px -176px;
-    }
-    .ui-icon-signal {
-        background-position: -32px -176px;
-    }
-    .ui-icon-battery-0 {
-        background-position: -48px -176px;
-    }
-    .ui-icon-battery-1 {
-        background-position: -64px -176px;
-    }
-    .ui-icon-battery-2 {
-        background-position: -80px -176px;
-    }
-    .ui-icon-battery-3 {
-        background-position: -96px -176px;
-    }
-    .ui-icon-circle-plus {
-        background-position: 0 -192px;
-    }
-    .ui-icon-circle-minus {
-        background-position: -16px -192px;
-    }
-    .ui-icon-circle-close {
-        background-position: -32px -192px;
-    }
-    .ui-icon-circle-triangle-e {
-        background-position: -48px -192px;
-    }
-    .ui-icon-circle-triangle-s {
-        background-position: -64px -192px;
-    }
-    .ui-icon-circle-triangle-w {
-        background-position: -80px -192px;
-    }
-    .ui-icon-circle-triangle-n {
-        background-position: -96px -192px;
-    }
-    .ui-icon-circle-arrow-e {
-        background-position: -112px -192px;
-    }
-    .ui-icon-circle-arrow-s {
-        background-position: -128px -192px;
-    }
-    .ui-icon-circle-arrow-w {
-        background-position: -144px -192px;
-    }
-    .ui-icon-circle-arrow-n {
-        background-position: -160px -192px;
-    }
-    .ui-icon-circle-zoomin {
-        background-position: -176px -192px;
-    }
-    .ui-icon-circle-zoomout {
-        background-position: -192px -192px;
-    }
-    .ui-icon-circle-check {
-        background-position: -208px -192px;
-    }
-    .ui-icon-circlesmall-plus {
-        background-position: 0 -208px;
-    }
-    .ui-icon-circlesmall-minus {
-        background-position: -16px -208px;
-    }
-    .ui-icon-circlesmall-close {
-        background-position: -32px -208px;
-    }
-    .ui-icon-squaresmall-plus {
-        background-position: -48px -208px;
-    }
-    .ui-icon-squaresmall-minus {
-        background-position: -64px -208px;
-    }
-    .ui-icon-squaresmall-close {
-        background-position: -80px -208px;
-    }
-    .ui-icon-grip-dotted-vertical {
-        background-position: 0 -224px;
-    }
-    .ui-icon-grip-dotted-horizontal {
-        background-position: -16px -224px;
-    }
-    .ui-icon-grip-solid-vertical {
-        background-position: -32px -224px;
-    }
-    .ui-icon-grip-solid-horizontal {
-        background-position: -48px -224px;
-    }
-    .ui-icon-gripsmall-diagonal-se {
-        background-position: -64px -224px;
-    }
-    .ui-icon-grip-diagonal-se {
-        background-position: -80px -224px;
-    }
-    .ui-corner-tl {
-        border-top-left-radius: 4px;
-    }
-    .ui-corner-tr {
-        border-top-right-radius: 4px;
-    }
-    .ui-corner-bl {
-        border-bottom-left-radius: 4px;
-    }
-    .ui-corner-br {
-        border-bottom-right-radius: 4px;
-    }
-    .ui-corner-top {
-        border-top-left-radius: 4px;
-        border-top-right-radius: 4px;
-    }
-    .ui-corner-bottom {
-        border-bottom-left-radius: 4px;
-        border-bottom-right-radius: 4px;
-    }
-    .ui-corner-right {
-        border-bottom-right-radius: 4px;
-        border-top-right-radius: 4px;
-    }
-    .ui-corner-left {
-        border-bottom-left-radius: 4px;
-        border-top-left-radius: 4px;
-    }
-    .ui-corner-all {
-        border-radius: 4px 4px 4px 4px;
-    }
-    .ui-widget-overlay {
-        background: url("/static/images/tarama.png") repeat scroll 50% 50% #666666;
-        opacity: 0.5;
-         left: 0;
-         position: absolute;
-        top: 0;
-
-    }
-    .ui-widget-shadow {
-        background: url("../images/?new=000000&w=40&h=100&f=png&q=100&fltr[]=over|textures/01_flat.png|0|0|10") repeat-x scroll 50% 50% #000000;
-        border-radius: 5px 5px 5px 5px;
-        margin: -5px 0 0 -5px;
-        opacity: 0.2;
-        padding: 5px;
-    }
-
-    </style>
+   
+    
 {#     <script src="http://code.jquery.com/jquery-latest.js"></script>#}
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
     <script src="http://code.jquery.com/ui/1.8.18/jquery-ui.min.js" type="text/javascript"></script>
@@ -1039,6 +229,7 @@ function openForm(ID){
                 </a>
             </div>
             <div class="headerRighty">
+                {{ user.first_name }}
             </div>
         </div>
     </div>
@@ -1053,12 +244,40 @@ function openForm(ID){
         </form>
     </div>
 
+    <table class="main">
+        <tr>
+            <td>
+                Start Date : {{ start_date }} <br>
+                End Date   : {{ end_date }} <br>
+                <select name='day'>
+                                      <option value='1'  selected="true" >01</option>
+                                      <option value='2'>02</option>
+                                      <option value='3'>03</option>
+                                      <option value='4'>04</option>
+                                      <option value='5'>05</option>
+                                      <option value='6'>06</option>
+                                      <option value='7'>07</option>
+                            </select>
+                <table class="suppliers">
+                    {% for aSupplier in supplierDetailList %}
+                    <tr class="suppliers">
 
-    <div class="content">
+                            <td>{{ aSupplier.supplier_name }}</td>
+                            <td>
+                                <a href="/orders/?supname={{ aSupplier.supplier_name }}">{{ aSupplier.item_count }}</a>
+                            </td>
+                    </tr>
 
-    <table class="scrollTable" >
-{#    <table class="orders">#}
-        <thead class="fixedHeader">
+                    {% endfor %}
+
+                 </table>
+            </td>
+
+            <td>
+
+                <table class="orders" style="float:right;">
+                    <a style="font-size: 14px;font-weight:bold;">Orders From {{ supNameDetail }} are listed below :</a>
+                    <thead class="fixedHeader">
           <tr class="alternateRow">
             <th>Select</th>
             <th>Id Sales Order Item</th>
@@ -1084,15 +303,15 @@ function openForm(ID){
             <th>Status</th>
             <th>Paid Price</th>
             <th>Cost</th>
-            <th>Inbound Order Number</th>
+{#            <th>Inbound Order Number</th>#}
             <th>Last Updated</th>
             <th>Cross Status</th>
           </tr>
         </thead>
 
-        <form id ="orderForm" style='display: inline-block;' action="/update/" method='post'>{% csrf_token %}
+                    <form id ="orderForm" style='display: inline-block;' action="/update/" method='post'>{% csrf_token %}
         <tbody class="scrollContent">
-            {% for anOrder in orders %}
+            {% for anOrder in orders.object_list %}
                 <tr class="normalRow">
                     <td> <input type=checkbox class="checkboxClass" name='orderChecked' value="{{ anOrder.id }}"></td>
                     <td>{{ anOrder.id_sales_order_item }}</td>
@@ -1107,30 +326,79 @@ function openForm(ID){
                     <td>{{ anOrder.status }}</td>
                     <td>{{ anOrder.paid_price}}</td>
                     <td>{{ anOrder.cost}}</td>
-                    <td></td>
-                    <td></td>
-                    <td>{{  anOrder.status}}</td>
+{#                    <td>{{ anOrder.inbound_order_number}}</td>#}
+                    <td>{{ anOrder.updated_on }} by {{ anOrder.updated_by }}</td>
+                    <td>{{  anOrder.cross_status}}</td>
                 </tr>
-                {% endfor %}
+            {% endfor %}
         </tbody>
 
 
     </table>
+                <table class="interaction">
+                    <tr>
+                        <td class="status_update">
+                            <select name='status'>
+                                      <option value='unprocessed'  selected="true" >Unprocessed</option>
+                                      <option value='out_of_stock'>Out of Stock</option>
+                                      <option value='supplier_to_be_informed'>Supplier to be Informed</option>
+                                      <option value='supplier_informed'>Supplier Informed</option>
+                                      <option value='warehouse_to_be_informed'>Warehouse to be Informed</option>
+                                      <option value='warehouse_informed'>Warehouse Informed</option>
+                                      <option value='received_in_warehouse '>Received in Warehouse</option>
+                            </select>
+                        </td>
+
+                        <td>
+                                <input type='submit' value="Update Selected" onClick="countCheckboxes()">
+                                <input type="hidden" name='numberofchecked' id='numberofchecked' >
+                        </td>
+                        <td class="pagination">
+                            <span class="step-links">
+                            {% if orders.has_previous %}
+                                <a href="?page={{ orders.previous_page_number }}">previous</a>
+                            {% endif %}
+
+                            <span class="current">
+                                Page {{ orders.number }} of {{ orders.paginator.num_pages }}.
+                            </span>
+
+                            {% if orders.has_next %}
+                                <a href="?page={{ orders.next_page_number }}">next</a>
+                            {% endif %}
+                            </span>
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+    </table>
+    <div class="content">
+
+
+
 
     </div>
 
-                    <select name='status'>
-                          <option value='unprocessed'  selected="true" >Unprocessed</option>
-                          <option value='out_of_stock'>Out of Stock</option>
-                          <option value='supplier_to_be_informed'>Supplier to be Informed</option>
-                          <option value='supplier_informed'>Supplier Informed</option>
-                          <option value='warehouse_to_be_informed'>Warehouse to be Informed</option>
-                          <option value='warehouse_informed'>Warehouse Informed</option>
-                          <option value='received_in_warehouse '>Received in Warehouse</option>
-                    </select>
-                    <input type='submit' value="Update" onClick="countCheckboxes()">
-                    <input type="hidden" name='numberofchecked' id='numberofchecked' >
-      </form>
+    <div>
+{#                    <select name='status'>#}
+{#                          <option value='unprocessed'  selected="true" >Unprocessed</option>#}
+{#                          <option value='out_of_stock'>Out of Stock</option>#}
+{#                          <option value='supplier_to_be_informed'>Supplier to be Informed</option>#}
+{#                          <option value='supplier_informed'>Supplier Informed</option>#}
+{#                          <option value='warehouse_to_be_informed'>Warehouse to be Informed</option>#}
+{#                          <option value='warehouse_informed'>Warehouse Informed</option>#}
+{#                          <option value='received_in_warehouse '>Received in Warehouse</option>#}
+{#                    </select>#}
+{#                    <input type='submit' value="Update" onClick="countCheckboxes()">#}
+{#                    <input type="hidden" name='numberofchecked' id='numberofchecked' >#}
+
+
+    </div>
+    <div>
+
+    </div>
+    </form>
 
 
 <div id='overlayItem' class="ui-widget-overlay" style="display:none;width: 1311px; height: 1279px; z-index: 1001;"></div>

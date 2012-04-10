@@ -14,12 +14,14 @@
 		div#users-contain table td, div#users-contain table th { border: 1px solid #eee; padding: .6em 10px; text-align: left; }
         .ui-dialog .ui-state-error { padding: .3em; }
 		/*.validateTips { border: 1px solid transparent; padding: 0.3em; }*/
-                    
+        * {
+            margin: 0;
+            outline: 0 none;
+            padding: 0;
+        }
         div.shell{
             background-color: #4A4A4C;
             margin: 0;
-            /*padding: 10px;*/
-            
         }
         div.shell.logo_box
         {
@@ -28,18 +30,32 @@
         div.header{
             margin: 0 auto;
             overflow: hidden;
+            width:1210px;
         }
         div.headerRighty {
             font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
             color: #ffffff;
             font-size: 12px;
             font-weight: bold;
+            float : right;
         }
         div.content{
             margin: 0 auto;
             text-align: center;
             /*overflow: auto;*/
             /*height:300px; */
+            overflow: auto;
+            width: 100%;
+        }
+        div.content_lefty {
+            float: left;
+            width: 12%;
+        }
+        div.content_righty {
+            float: right;
+            width: 85%;
+            margin-top: 36px;
+            margin-right: 20px;
         }
         table.orders,th,td{
             font-family:"Trebuchet MS", Arial, Helvetica, sans-serif;
@@ -92,6 +108,23 @@
             background-color:#4A4A4C;
             color:#EAF2D3;
         }
+        a.table_link:link
+        {
+            color : #4A4A4C;
+        }
+        a.table_link:visited
+        {
+            color : #4A4A4C;
+        }
+        a.header_link:link
+        {
+            float: right;
+            color : #EAF2D3;
+        }
+        a.header_link:visited
+        {
+            color : #EAF2D3;
+        }
         a:link
         {
            color:#EAF2D3;
@@ -99,6 +132,11 @@
         a:visited
         {
             color: #EAF2D3;
+        }
+        input.update
+        {
+            background-color: #4A4A4C;
+            color : #EAF2D3;
         }
         .sortItem{
             color: #EAF2D3;
@@ -114,7 +152,7 @@
     <script src="http://code.jquery.com/ui/1.8.18/jquery-ui.min.js" type="text/javascript"></script>
     <script src="http://jquery-ui.googlecode.com/svn/tags/latest/external/jquery.bgiframe-2.1.2.js" type="text/javascript"></script>
     <script src="http://jquery-ui.googlecode.com/svn/tags/latest/ui/minified/i18n/jquery-ui-i18n.min.js" type="text/javascript"></script>
-   <script>
+    <script>
        $(function() {
                $( "#dialog:ui-dialog" ).dialog( "destroy" );
 
@@ -229,7 +267,9 @@ function openForm(ID){
                 </a>
             </div>
             <div class="headerRighty">
-                {{ user.first_name }}
+                <a class="header_link" href="/history" title="history">
+                    Logout
+                </a>
             </div>
         </div>
     </div>
@@ -244,20 +284,12 @@ function openForm(ID){
         </form>
     </div>
 
-    <table class="main">
-        <tr>
-            <td>
-                Start Date : {{ start_date }} <br>
+    <div class="content">
+
+            <div class="content_lefty">
+                                Start Date : {{ start_date }} <br>
                 End Date   : {{ end_date }} <br>
-                <select name='day'>
-                                      <option value='1'  selected="true" >01</option>
-                                      <option value='2'>02</option>
-                                      <option value='3'>03</option>
-                                      <option value='4'>04</option>
-                                      <option value='5'>05</option>
-                                      <option value='6'>06</option>
-                                      <option value='7'>07</option>
-                            </select>
+
                 <table class="suppliers">
                     {% for aSupplier in supplierDetailList %}
                     <tr class="suppliers">
@@ -271,70 +303,74 @@ function openForm(ID){
                     {% endfor %}
 
                  </table>
-            </td>
+            </div>
 
-            <td>
+            <div class="content_righty">
 
                 <table class="orders" style="float:right;">
                     <a style="font-size: 14px;font-weight:bold;">Orders From {{ supNameDetail }} are listed below :</a>
                     <thead class="fixedHeader">
-          <tr class="alternateRow">
-            <th>Select</th>
-            <th>Id Sales Order Item</th>
-            <th><a class="sortItem" href="/sort/order_id/">Order Number</a></th>
-            <th>Size</th>
-            <th>Sku</th>
-            <th>Supplier Name
-                <a href="/search/" title="Search"></a>
-                    <img id='searchKeywordIcon' src="/static/images/search-icon.png" onclick='openDialog()'>
-{#                       <div class="searchBox">#}
-                             <form id='searchForm' method="POST" action="/orders/" style="display: none">{% csrf_token %}
-                                <input type="text" name="column_name" value='supplier_name'>
-                                <input type="text" name="keyword" id="searchForm_1_keyword" value=""/>
-                                 <input type="submit" name="submitButton" value="POST">
-                             </form>
-{#                       </div>#}
+                          <tr class="alternateRow">
+                            <th>Select</th>
+                            <th>Id Sales Order Item</th>
+                            <th><a class="sortItem" href="/sort/order_id/">Order Number</a></th>
+                            <th>Size</th>
+                            <th>Sku</th>
+                            {% comment %}<th>Supplier Name
+                                <a href="/search/" title="Search"></a>
+                                    <img id='searchKeywordIcon' src="/static/images/search-icon.png" onclick='openDialog()'>
+                {#                       <div class="searchBox">#}
+                                             <form id='searchForm' method="POST" action="/orders/" style="display: none">{% csrf_token %}
+                                                <input type="text" name="column_name" value='supplier_name'>
+                                                <input type="text" name="keyword" id="searchForm_1_keyword" value=""/>
+                                                 <input type="submit" name="submitButton" value="POST">
+                                             </form>
+                {#                       </div>#}
 
-            </th>
-            <th>Sku Supplier Simple</th>
-            <th>Shipment Type</th>
-            <th>Buysheet Id</th>
-            <th>Name</th>
-            <th>Status</th>
-            <th>Paid Price</th>
-            <th>Cost</th>
-{#            <th>Inbound Order Number</th>#}
-            <th>Last Updated</th>
-            <th>Cross Status</th>
-          </tr>
-        </thead>
+                            </th>{% endcomment %}
+                            <th>Sku Supplier Simple</th>
+                            <th>Shipment Type</th>
+                            <th>Buysheet Id</th>
+                            <th>Name</th>
+                            <th>Status</th>
+                            <th>Paid Price</th>
+                            <th>Cost</th>
+                {#            <th>Inbound Order Number</th>#}
+                            <th>Last Updated</th>
+                            <th>Cross Status</th>
+                          </tr>
+                    </thead>
 
                     <form id ="orderForm" style='display: inline-block;' action="/update/" method='post'>{% csrf_token %}
-        <tbody class="scrollContent">
-            {% for anOrder in orders.object_list %}
-                <tr class="normalRow">
-                    <td> <input type=checkbox class="checkboxClass" name='orderChecked' value="{{ anOrder.id }}"></td>
-                    <td>{{ anOrder.id_sales_order_item }}</td>
-                    <td>{{ anOrder.order_nr }} </td>
-                    <td>{{ anOrder.size }}</td>
-                    <td>{{ anOrder.sku }}</td>
-                    <td>{{ anOrder.supplier_name }}</td>
-                    <td>{{ anOrder.sku_supplier_simple }}</td>
-                    <td>{{ anOrder.shipment_type }}</td>
-                    <td>{{ anOrder.buysheet_id }}</td>
-                    <td>{{ anOrder.name }}</td>
-                    <td>{{ anOrder.status }}</td>
-                    <td>{{ anOrder.paid_price}}</td>
-                    <td>{{ anOrder.cost}}</td>
-{#                    <td>{{ anOrder.inbound_order_number}}</td>#}
-                    <td>{{ anOrder.updated_on }} by {{ anOrder.updated_by }}</td>
-                    <td>{{  anOrder.cross_status}}</td>
-                </tr>
-            {% endfor %}
-        </tbody>
+                        <tbody class="scrollContent">
+                            {% for anOrder in orders.object_list %}
+                                <tr class="normalRow">
+                                    <td> <input type=checkbox class="checkboxClass" name='orderChecked' value="{{ anOrder.id }}"></td>
+                                    <td>{{ anOrder.id_sales_order_item }}</td>
+                                    <td>{{ anOrder.order_nr }} </td>
+                                    <td>{{ anOrder.size }}</td>
+                                    <td>{{ anOrder.sku }}</td>
+                                    {% comment %}<td>{{ anOrder.supplier_name }}</td>{% endcomment %}
+                                    <td>{{ anOrder.sku_supplier_simple }}</td>
+                                    <td>{{ anOrder.shipment_type }}</td>
+                                    <td>{{ anOrder.buysheet_id }}</td>
+                                    <td>{{ anOrder.name }}</td>
+                                    <td>{{ anOrder.status }}</td>
+                                    <td>{{ anOrder.paid_price}}</td>
+                                    <td>{{ anOrder.cost}}</td>
+                {#                    <td>{{ anOrder.inbound_order_number}}</td>#}
+                                    <td>{{ anOrder.updated_on }} by {{ anOrder.updated_by }}
+                                        <a class="table_link" href="/history" title="history">
+                                            History
+                                        </a>
+                                    </td>
+                                    <td>{{  anOrder.cross_status}}</td>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
 
-
-    </table>
+                     </form>
+                </table>
                 <table class="interaction">
                     <tr>
                         <td class="status_update">
@@ -350,13 +386,18 @@ function openForm(ID){
                         </td>
 
                         <td>
-                                <input type='submit' value="Update Selected" onClick="countCheckboxes()">
+                                <input class="update" type='submit' value="Update Selected" onClick="countCheckboxes()">
+
+
                                 <input type="hidden" name='numberofchecked' id='numberofchecked' >
                         </td>
+                        <td><input class="update" type='submit' value="Export to pdf" onClick="countCheckboxes()"></td>
+                        <td><input class="update" type='submit' value="Inform Suppliers" onClick="countCheckboxes()"></td>
+                        <td><input class="update" type='submit' value="Inform Warehouse" onClick="countCheckboxes()"></td>
                         <td class="pagination">
                             <span class="step-links">
                             {% if orders.has_previous %}
-                                <a href="?page={{ orders.previous_page_number }}">previous</a>
+                                <a class="table_link" href="?page={{ orders.previous_page_number }}">previous</a>
                             {% endif %}
 
                             <span class="current">
@@ -364,41 +405,17 @@ function openForm(ID){
                             </span>
 
                             {% if orders.has_next %}
-                                <a href="?page={{ orders.next_page_number }}">next</a>
+                                <a class="table_link" href="?page={{ orders.next_page_number }}">next</a>
                             {% endif %}
                             </span>
                         </td>
                     </tr>
                 </table>
-            </td>
-        </tr>
-    </table>
-    <div class="content">
-
-
-
+            </div>
 
     </div>
 
-    <div>
-{#                    <select name='status'>#}
-{#                          <option value='unprocessed'  selected="true" >Unprocessed</option>#}
-{#                          <option value='out_of_stock'>Out of Stock</option>#}
-{#                          <option value='supplier_to_be_informed'>Supplier to be Informed</option>#}
-{#                          <option value='supplier_informed'>Supplier Informed</option>#}
-{#                          <option value='warehouse_to_be_informed'>Warehouse to be Informed</option>#}
-{#                          <option value='warehouse_informed'>Warehouse Informed</option>#}
-{#                          <option value='received_in_warehouse '>Received in Warehouse</option>#}
-{#                    </select>#}
-{#                    <input type='submit' value="Update" onClick="countCheckboxes()">#}
-{#                    <input type="hidden" name='numberofchecked' id='numberofchecked' >#}
 
-
-    </div>
-    <div>
-
-    </div>
-    </form>
 
 
 <div id='overlayItem' class="ui-widget-overlay" style="display:none;width: 1311px; height: 1279px; z-index: 1001;"></div>

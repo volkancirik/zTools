@@ -5,6 +5,7 @@ from models import Order
 from models import CrossStatus
 from models import UserProfile
 from models import LastUpdate
+from django.db.models import Q
 from django.template import RequestContext
 from django.shortcuts import render_to_response
 from django.http import Http404, HttpResponse
@@ -19,8 +20,8 @@ from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger, Invali
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
 from datetime import date
-from django.contrib.auth import authenticate, login
-
+from django.contrib.auth import authenticate, login, logout
+from django.utils import simplejson
 
 def main(request):
     return render_to_response('main.html', context_instance = RequestContext(request))
@@ -29,11 +30,12 @@ class SupplierDetails:
     item_count = 0
     supplier_name = ""
 
+
 @login_required
 def order(request):
     supNameDetail = ""
-    end_date = datetime.datetime.now()
-    start_date = end_date - datetime.timedelta(days=20)
+    end_date = datetime.datetime.now() - datetime.timedelta(days=19)
+    start_date = datetime.datetime.now() - datetime.timedelta(days=20)
 
     if "supname" in request.GET:
        supNameDetail = request.GET["supname"]
@@ -41,13 +43,15 @@ def order(request):
             ordersAll = Order.objects.filter(order_date__range =[start_date,end_date] )
             suppliers = list()
             for anOrder in ordersAll:
-                    if suppliers.__contains__(anOrder.supplier_name):
-                        print("var amk")
-                    else:
+                    if not suppliers.__contains__(anOrder.supplier_name):
                         suppliers.append(anOrder.supplier_name)
                     try:
                         statusForAnOrder = CrossStatus.objects.get( pk = anOrder.id)
                         anOrder.cross_status = statusForAnOrder.order_status
+                        latest_update = LastUpdate.objects.filter( order_id = anOrder.id).order_by('-updated_on')
+                        anOrder.updated_on = latest_update[0].updated_on
+                        anOrder.updated_by = latest_update[0].user_id.user.username
+
                     except CrossStatus.DoesNotExist:
                         statusForAnOrder = CrossStatus.objects.create(order_id = anOrder,order_status = 'Unprocessed')
                         fetcher = UserProfile.objects.get( role = 'F')
@@ -55,7 +59,7 @@ def order(request):
                         anOrder.cross_status = 'Unprocessed'
                         anOrder.updated_on = datetime.datetime.now()
                         anOrder.updated_by = fetcher.user.username
-                    
+
             supplierIndex = 0
             supplierDetailList = []
             for aSupplier in suppliers:
@@ -87,7 +91,7 @@ def order(request):
                         statusForAnOrder = CrossStatus.objects.create(order_id = anOrder,order_status = 'Unprocessed')
                         anOrder.status = 'Unprocessed'
 
-                paginator = Paginator(filteredOrders, 43)
+                paginator = Paginator(filteredOrders, 10)
                 try:
                     orders = paginator.page(page)
                 except (EmptyPage, InvalidPage):
@@ -98,13 +102,14 @@ def order(request):
             return render_to_response('orders.html', {'orders' : orders,'supplierDetailList' : supplierDetailList,'supNameDetail':supNameDetail,'end_date':end_date,'start_date':start_date},context_instance = RequestContext(request))
     except Order.DoesNotExist:
         raise Http404
-#    return HttpResponseRedirect(request.META.get('HTTP_REFERER','/'))
+
+
 
 @login_required
 def updateOrder(request):
 
     orderIDs = list()
-    orderIDs = request.POST.getlist('`')
+    orderIDs = request.POST.getlist('orderChecked')
 
     for anOrderID in orderIDs:
         try:
@@ -117,6 +122,8 @@ def updateOrder(request):
             toBeUpdated = CrossStatus.objects.create(order_id = anOrder)
         toBeUpdated.order_status =  request.POST["status"]
         toBeUpdated.save()
+        active_user = UserProfile.objects.get(user = request.user)
+        LastUpdate.objects.create(updated_on = datetime.datetime.now() , cross_status = toBeUpdated.order_status, order_id = anOrder, user_id =  active_user )
         
     return HttpResponseRedirect(request.META.get('HTTP_REFERER','/'))
 
@@ -135,7 +142,7 @@ def sort(request,criteria):
     return render_to_response('orders.html', {'orders' : orders},context_instance = RequestContext(request) )
 
 def test(request):
-    return render_to_response('jqueryTest.html',context_instance = RequestContext(request) )
+    return render_to_response('asd.html',context_instance = RequestContext(request) )
 
 def tabletest(request):
     return render_to_response('tableTest.html',context_instance = RequestContext(request) )
@@ -184,3 +191,23 @@ def loginUser(request):
 
     else:
             return HttpResponseRedirect("/orders/")
+
+def orderHistory(request,order_id):
+
+    
+    update_list = LastUpdate.objects.filter( order_id = order_id).order_by('updated_on')
+
+    user_list = list()
+    date_list = list()
+    status_list = list()
+
+    for anUpdate in update_list:
+        date_list.append(str(anUpdate.updated_on))
+        user_list.append(str(anUpdate.user_id.user.username))
+        status_list.append(str(anUpdate.cross_status))
+
+    return HttpResponse(simplejson.dumps({'users': user_list, 'dates' : date_list,'statuses' : status_list}),mimetype='application/json')
+
+def logoutUser(request):
+    logout(request)
+    return HttpResponseRedirect("/") # return HttpResponseRedirect('/')

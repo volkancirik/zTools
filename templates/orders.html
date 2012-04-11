@@ -374,10 +374,6 @@
           }
           document.getElementById('numberofchecked').value= count;
         }
-//function openDialog(){
-//
-//       	$( "#dialog-form" ).dialog( "open" );
-//}
 
 function openForm(ID){
        if ($("#searchForm_"+ID).is(":hidden")){
@@ -425,7 +421,13 @@ function openDialog(order_id){
          getHistory(order_id);
        	$( "#dialog-message" ).dialog( "open" );
 }
-     </script>
+function openSearch(){
+       	$( "#dialog-form" ).dialog( "open" );
+}
+
+
+
+             </script>
 
 </head>
 <body>
@@ -501,7 +503,7 @@ function openDialog(order_id){
                             <th>Sku Supplier Simple</th>
                             <th>Shipment Type</th>
                             <th>Buysheet Id</th>
-                            <th>Name</th>
+                            <th><label onclick='openSearch()'>Name</label></th>
                             <th>Status</th>
                             <th>Paid Price</th>
                             <th>Cost</th>

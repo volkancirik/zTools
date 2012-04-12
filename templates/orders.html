@@ -518,7 +518,11 @@ function openSearch(){
                     <form id ="orderForm" style='display: inline-block;' action="/update/" method='post'>{% csrf_token %}
                         <tbody class="scrollContent">
                             {% for anOrder in orders.object_list %}
-                                <tr class="normalRow">
+                                {% if anOrder.status == 'clarify_not_shipped' %}
+                                    <tr class="normalRow" style="background-color: #E9AFAF">
+                                {% else %}
+                                    <tr class="normalRow">
+                                {% endif %}
                                     <td> <input type=checkbox class="checkboxClass" name='orderChecked' value="{{ anOrder.id }}"></td>
                                     <td>{{ anOrder.id_sales_order_item }}</td>
                                     <td>{{ anOrder.order_nr }} </td>

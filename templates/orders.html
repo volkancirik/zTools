@@ -398,6 +398,28 @@ function openForm(ID){
 			}
 		});
 	});
+    $(function() {
+		// a workaround for a flaw in the demo system (http://dev.jqueryui.com/ticket/4375), ignore!
+		$( "#dialog:ui-dialog" ).dialog( "destroy" );
+
+		$( "#dialog-cross" ).dialog({
+			modal: true,
+            autoOpen: false,
+            height: 150,
+            width: 300,
+			buttons: {
+                       "Search": function() {
+
+                               $('#filterForm').submit();
+                              $( this ).dialog( "close" );
+                           }
+                       },
+                       Cancel: function() {
+                           $( this ).dialog( "close" );
+                       }
+
+		});
+    });
 function getHistory(order_id){
                                 url = "/history/"+order_id+"/";
                                 $.getJSON(url, function(result)
@@ -425,9 +447,20 @@ function openSearch(){
        	$( "#dialog-form" ).dialog( "open" );
 }
 
+function openStatus(){
+       	$( "#dialog-cross" ).dialog( "open" );
+}
+$(document).ready(function(){
+    $('.checkboxClass:button').toggle(function(){
+        $('input:checkbox').attr('checked','checked');
+        $(this).val('uncheck all')
+    },function(){
+        $('input:checkbox').removeAttr('checked');
+        $(this).val('check all');
+    })
+})
 
-
-             </script>
+</script>
 
 </head>
 <body>
@@ -453,6 +486,69 @@ function openSearch(){
             <label for="keyword">Keyword</label>
             <input type="text" name="keyword" id="keyword" class="text ui-widget-content ui-corner-all" />
         </fieldset>
+        </form>
+    </div>
+
+    <div id="dialog-cross" title="Select a Status to Filter" style="background-color: #C96; border:2px;">
+        <form id="filterForm" action="/filter/" method='post'>{% csrf_token %}
+             <table>
+                 <tr>
+                     <td>
+                            Status
+                     </td>
+
+                     <td>
+                             <select name='status'>
+
+                              <option value='all' selected="true" >All</option>
+                              <option value='b'>b</option>
+                              <option value='c '>c</option>
+                            </select>
+                     </td>
+
+                 </tr>
+
+                <tr>
+                     <td>
+                            Cross Status
+                     </td>
+
+                     <td>
+                             <select name='cross_status'>
+                              <option value ='all' selected="true"> All </option>
+                              <option value='unprocessed' >Unprocessed</option>
+                              <option value='out_of_stock'>Out of Stock</option>
+                              <option value='supplier_to_be_informed'>Supplier to be Informed</option>
+                              <option value='supplier_informed'>Supplier Informed</option>
+                              <option value='warehouse_to_be_informed'>Warehouse to be Informed</option>
+                              <option value='warehouse_informed'>Warehouse Informed</option>
+                              <option value='received_in_warehouse '>Received in Warehouse</option>
+                            </select>
+                     </td>
+
+                 </tr>
+
+                 <tr>
+                     <td>
+                          Days
+                     </td>
+
+                     <td>
+                            <select name='day'>
+                              <option value ='all' selected="true"> All </option>
+                              <option value='1' >1</option>
+                              <option value='2' >2</option>
+                              <option value='3' >3</option>
+                              <option value='4' >4</option>
+                            </select>
+
+                     </td>
+
+                 </tr>
+
+
+             </table>
+
         </form>
     </div>
 
@@ -483,7 +579,7 @@ function openSearch(){
                     <a style="font-size: 14px;font-weight:bold;">Orders From {{ supNameDetail }} are listed below :</a>
                     <thead class="fixedHeader">
                           <tr class="alternateRow">
-                            <th><a>Select All</a></th>
+                            <th><button class="checkboxClass" value="check all" >Select/Unselect All</button></th>
                             <th>Id Sales</th>
                             <th><a class="sortItem" href="/sort/order_id/">Order Number</a></th>
                             <th>Size</th>
@@ -511,7 +607,7 @@ function openSearch(){
                             <th>Attribute</th>
                             <th>Inbound Order Number</th>
                             <th>Last Updated</th>
-                            <th>Cross Status</th>
+                            <th><label onclick='openStatus()'>Cross Status</th>
                           </tr>
                     </thead>
 
@@ -549,7 +645,7 @@ function openSearch(){
                             {% endfor %}
                         </tbody>
 
-                     </form>
+
                 </table>
                 <table class="interaction">
                     <tr>
@@ -592,7 +688,7 @@ function openSearch(){
                     </tr>
                 </table>
             </div>
-
+            </form>
     </div>
 
     <div id="dialog-message" title="History of the Order Status">

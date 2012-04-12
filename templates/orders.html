@@ -483,8 +483,8 @@ function openSearch(){
                     <a style="font-size: 14px;font-weight:bold;">Orders From {{ supNameDetail }} are listed below :</a>
                     <thead class="fixedHeader">
                           <tr class="alternateRow">
-                            <th>Select</th>
-                            <th>Id Sales Order Item</th>
+                            <th><a>Select All</a></th>
+                            <th>Id Sales</th>
                             <th><a class="sortItem" href="/sort/order_id/">Order Number</a></th>
                             <th>Size</th>
                             <th>Sku</th>
@@ -500,14 +500,16 @@ function openSearch(){
                 {#                       </div>#}
 
                             </th>{% endcomment %}
-                            <th>Sku Supplier Simple</th>
-                            <th>Shipment Type</th>
-                            <th>Buysheet Id</th>
+                            <th>Sku Simple</th>
+                            <th>Barcode</th>
                             <th><label onclick='openSearch()'>Name</label></th>
                             <th>Status</th>
+                            <th>Suborder Nr</th>
                             <th>Paid Price</th>
                             <th>Cost</th>
-                {#            <th>Inbound Order Number</th>#}
+                            <th>Order Date</th>
+                            <th>Attribute</th>
+                            <th>Inbound Order Number</th>
                             <th>Last Updated</th>
                             <th>Cross Status</th>
                           </tr>
@@ -524,13 +526,15 @@ function openSearch(){
                                     <td>{{ anOrder.sku }}</td>
                                     {% comment %}<td>{{ anOrder.supplier_name }}</td>{% endcomment %}
                                     <td>{{ anOrder.sku_supplier_simple }}</td>
-                                    <td>{{ anOrder.shipment_type }}</td>
-                                    <td>{{ anOrder.buysheet_id }}</td>
+                                    <td>{{ anOrder.barcode_ean }}</td>
                                     <td>{{ anOrder.name }}</td>
                                     <td>{{ anOrder.status }}</td>
+                                    <td>{{ anOrder.suborder_number }}</td>
                                     <td>{{ anOrder.paid_price}}</td>
                                     <td>{{ anOrder.cost}}</td>
-                {#                    <td>{{ anOrder.inbound_order_number}}</td>#}
+                                    <td>{{ anOrder.order_date }}</td>
+                                    <td></td>
+                                    <td>{{ anOrder.inbound_order_number}}</td>
                                     <td>{{ anOrder.updated_on }} by {{ anOrder.updated_by }}
                                         <a class="table_link" onclick='openDialog({{ anOrder.id }})' title="history">
                                             History

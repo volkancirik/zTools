@@ -14,7 +14,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql', # Add 'postgresql_psycopg2', 'postgresql', 'mysql', 'sqlite3' or 'oracle'.
         'NAME': 'rocket_orders',                      # Or path to database file if using sqlite3.
         'USER': 'root',                      # Not used with sqlite3.
-        'PASSWORD': '221221',                  # Not used with sqlite3.
+        'PASSWORD': '123123',                  # Not used with sqlite3.
         'HOST': '',                      # Set to empty string for localhost. Not used with sqlite3.
         'PORT': '3306',                      # Set to empty string for default. Not used with sqlite3.
     }
@@ -27,7 +27,7 @@ DATABASES = {
 # timezone as the operating system.
 # If running in a Windows environment this must be set to the same as your
 # system time zone.
-TIME_ZONE = 'America/Chicago'
+TIME_ZONE = 'Europe/Istanbul'
 
 # Language code for this installation. All choices can be found here:
 # http://www.i18nguy.com/unicode/language-identifiers.html
@@ -67,9 +67,11 @@ STATIC_URL = '/static/'
 # Examples: "http://foo.com/static/admin/", "/static/admin/".
 ADMIN_MEDIA_PREFIX = '/static/admin/'
 
+AUTH_PROFILE_MODULE = "order_check.UserProfile"
+
 # Additional locations of static files
 STATICFILES_DIRS = (
-    'C:/Users/cirik/Desktop/dropbox/Dropbox/Rocket/projects/cross_dock_order/static/',
+    'C:/Projects/DjangoProjects/cross_dock_order/static/',
     # Put strings here, like "/home/html/static" or "C:/www/django/static".
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
@@ -105,7 +107,7 @@ ROOT_URLCONF = 'cross_dock_order.urls'
 
 #C:\Users\cirik\Desktop\dropbox\Dropbox\Rocket\projects\cross_dock_order\templates
 #TEMPLATE_DIRS = ('C:/Users/Onur/PycharmProjects/cross_dock_order/templates',)
-TEMPLATE_DIRS = ('C:/Users/cirik/Desktop/dropbox/Dropbox/Rocket/projects/cross_dock_order/templates',)
+TEMPLATE_DIRS = ('C:/Projects/DjangoProjects/cross_dock_order/templates',)
 
 INSTALLED_APPS = (
     'django.contrib.auth',

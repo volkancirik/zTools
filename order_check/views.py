@@ -40,10 +40,11 @@ def order(request):
     supNameDetail = ""
     end_date=""
     start_date=""
+    counter = 0
     if "dateEnd" in request.POST:
-        end_date = datetime.datetime.strptime(request.POST['dateEnd'], "%d/%M/%Y")
+        end_date = datetime.datetime.strptime(request.POST['dateEnd'], "%m/%d/%Y")
     if "dateStart" in request.POST:
-        start_date = datetime.datetime.strptime(request.POST['dateStart'], "%d/%M/%Y")
+        start_date = datetime.datetime.strptime(request.POST['dateStart'], "%m/%d/%Y")
 
     if "supname" in request.GET:
        supNameDetail = request.GET["supname"]
@@ -89,7 +90,7 @@ def order(request):
         if supNameDetail == "":
             supNameDetail = "All Suppliers"
             
-        return render_to_response('orders.html', {'supplierDetailList' : supplierDetailList,'supNameDetail':supNameDetail,'end_date':end_date,'start_date':start_date},context_instance = RequestContext(request))
+        return render_to_response('orders.html', {'supplierDetailList' : supplierDetailList,'supNameDetail':supNameDetail,'end_date':end_date,'start_date':start_date,'counter':counter},context_instance = RequestContext(request))
     except Order.DoesNotExist:
         raise Http404
 
@@ -98,20 +99,26 @@ def listOrders(request):
 
     supNameDetail=""
     startDate = ""
-    endDate =""
+    endDate = ""
+
     if "supname" in request.GET:
         supNameDetail = request.GET["supname"]
 
-    if "startdate" in request.GET:
-        startDate = request.GET["startdate"]
+#    if "startdate" in request.GET:
+#        startDate = request.GET["startdate"]
+#
+#    if "enddate" in request.GET:
+#        endDate = request.GET["enddate"]
 
-    if "enddate" in request.GET:
-        endDate = request.GET["enddate"]
+    if "dateEnd" in request.POST:
+        end_date = datetime.datetime.strptime(request.POST['startdate'], "%d/%M/%Y")
+    if "dateStart" in request.POST:
+        start_date = datetime.datetime.strptime(request.POST['enddate'], "%d/%M/%Y")
 
     if supNameDetail == "":
         filteredOrders = Order.objects.all()
     else:
-        filteredOrders = Order.objects.filter(supplier_name=supNameDetail)
+        filteredOrders = Order.objects.filter(supplier_name=supNameDetail,order_date__range =[start_date,end_date])
 
     if request.GET.has_key('page'):
         page = request.GET['page']

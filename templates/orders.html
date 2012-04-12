@@ -45,15 +45,15 @@
             /*overflow: auto;*/
             /*height:300px; */
             overflow: auto;
-            width: 100%;
+            width: 600px;
         }
         div.content_lefty {
-            float: left;
-            width: 13%;
+            width: 30%;
+            margin-top: 36px;
+            margin-right: 20px;
         }
         div.content_righty {
-            float: right;
-            width: 85%;
+            width: 50%;
             margin-top: 36px;
             margin-right: 20px;
         }
@@ -145,7 +145,7 @@
             display: none;
         }
     </style>
-   <style type="text/css">
+    <style type="text/css">
     .ui-widget {
         font-family: Trebuchet MS,Tahoma,Verdana,Arial,sans-serif;
         font-size: 1.1em;
@@ -456,7 +456,7 @@ function openSearch(){
             <div class="content_lefty">
 
                 <div>
-                    <form id="DateDorm" method="POST" action="/orders/">
+                    <form id="DateForm" method="POST" action="/orders/">
                     {% csrf_token %}
                     <table cellspacing="0" cellpadding="0">
                         <tr>
@@ -487,11 +487,13 @@ function openSearch(){
                         </form>
                 </div>
 
+
+            </div>
+            <div class="content_righty">
                 <table class="suppliers">
                     {% for aSupplier in supplierDetailList %}
                     <tr class="suppliers">
-
-                            <td><a href="/listOrders/?supname={{ aSupplier.supplier_name }}&startdate=&enddate="> {{ aSupplier.supplier_name }} </a></td>
+                            <td><a href="/listOrders/?supname={{ aSupplier.supplier_name }}&startdate={{ start_date }}&enddate={{ end_date }}"> {{ aSupplier.supplier_name }} </a></td>
                             <td>
                                 <a href="/orders/?supname={{ aSupplier.supplier_name }}">{{ aSupplier.item_count }}</a>
                             </td>

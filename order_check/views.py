@@ -63,7 +63,7 @@ def order(request):
             supplierIndex = 0
             supplierDetailList = []
             for aSupplier in suppliers:
-                ic = Order.objects.filter(supplier_name=suppliers.__getitem__(supplierIndex)).count()
+                ic = Order.objects.filter(supplier_name=suppliers.__getitem__(supplierIndex),order_date__range =[start_date,end_date]).count()
                 sd = SupplierDetails()
                 sd.item_count = ic
                 sd.supplier_name = suppliers.__getitem__(supplierIndex)

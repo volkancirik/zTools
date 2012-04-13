@@ -463,10 +463,10 @@ function openSearch(){
 
     <div class="content">
 
-            <div class="content_righty">
+            <div class="content_righty" style="float:none;margin-left:100px;">
 
                 <table class="orders" style="float:right;">
-                    <a style="font-size: 14px;font-weight:bold;">Orders From {{ supNameDetail }} are listed below :</a>
+                    <a style="font-size: 14px;font-weight:bold;">Orders From {{ supNameDetail }} are listed below : ({{ startDate|date:"d b y" }} - {{ endDate|date:"d b y" }})</a>
                     <thead class="fixedHeader">
                           <tr class="alternateRow">
                             <th><a>Select All</a></th>

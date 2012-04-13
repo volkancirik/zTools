@@ -41,10 +41,14 @@ def order(request):
     end_date=""
     start_date=""
     counter = 0
+    initStartDate = ""
+    initEndDate = ""
     if "dateEnd" in request.POST:
         end_date = datetime.datetime.strptime(request.POST['dateEnd'], "%m/%d/%Y")
+        initEndDate = request.POST['dateEnd']
     if "dateStart" in request.POST:
         start_date = datetime.datetime.strptime(request.POST['dateStart'], "%m/%d/%Y")
+        initStartDate = request.POST['dateStart']
 
     if "supname" in request.GET:
        supNameDetail = request.GET["supname"]
@@ -90,7 +94,7 @@ def order(request):
         if supNameDetail == "":
             supNameDetail = "All Suppliers"
             
-        return render_to_response('orders.html', {'supplierDetailList' : supplierDetailList,'supNameDetail':supNameDetail,'end_date':end_date,'start_date':start_date,'counter':counter},context_instance = RequestContext(request))
+        return render_to_response('orders.html', {'supplierDetailList' : supplierDetailList,'supNameDetail':supNameDetail,'end_date':end_date,'start_date':start_date,'initStartDate':initStartDate,'initEndDate':initEndDate,'counter':counter},context_instance = RequestContext(request))
     except Order.DoesNotExist:
         raise Http404
 
@@ -98,22 +102,15 @@ def order(request):
 def listOrders(request):
 
     supNameDetail=""
-    startDate = ""
-    endDate = ""
+    start_date = ""
+    end_date = ""
 
     if "supname" in request.GET:
         supNameDetail = request.GET["supname"]
-
-#    if "startdate" in request.GET:
-#        startDate = request.GET["startdate"]
-#
-#    if "enddate" in request.GET:
-#        endDate = request.GET["enddate"]
-
-    if "dateEnd" in request.POST:
-        end_date = datetime.datetime.strptime(request.POST['startdate'], "%d/%M/%Y")
-    if "dateStart" in request.POST:
-        start_date = datetime.datetime.strptime(request.POST['enddate'], "%d/%M/%Y")
+    if "startdate" in request.GET:
+        start_date = datetime.datetime.strptime(request.GET['startdate'], "%m/%d/%Y")
+    if "enddate" in request.GET:
+        end_date = datetime.datetime.strptime(request.GET['enddate'], "%m/%d/%Y")
 
     if supNameDetail == "":
         filteredOrders = Order.objects.all()
@@ -134,8 +131,8 @@ def listOrders(request):
     return render_to_response('orderList.html',
             {'orders' : orders,
              'supNameDetail':supNameDetail,
-             'endDate':endDate,
-             'startDate':startDate},context_instance = RequestContext(request))
+             'endDate':end_date,
+             'startDate':start_date},context_instance = RequestContext(request))
 
 @login_required
 def updateOrder(request):

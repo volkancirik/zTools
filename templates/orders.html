@@ -493,9 +493,11 @@ function openSearch(){
                 <table class="suppliers">
                     {% for aSupplier in supplierDetailList %}
                     <tr class="suppliers">
-                            <td><a href="/listOrders/?supname={{ aSupplier.supplier_name }}&startdate={{ start_date }}&enddate={{ end_date }}"> {{ aSupplier.supplier_name }} </a></td>
                             <td>
-                                <a href="/orders/?supname={{ aSupplier.supplier_name }}">{{ aSupplier.item_count }}</a>
+                                 {{ aSupplier.supplier_name }}
+                            </td>
+                            <td>
+                                <a href="/listOrders/?supname={{ aSupplier.supplier_name }}&startdate={{ initStartDate }}&enddate={{ initEndDate }}">{{ aSupplier.item_count }}</a>
                             </td>
                     </tr>
 

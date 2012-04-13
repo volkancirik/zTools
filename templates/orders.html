@@ -492,14 +492,18 @@ function openSearch(){
             <div class="content_righty">
                 <table class="suppliers">
                     {% for aSupplier in supplierDetailList %}
+                    {% if forloop.counter0|divisibleby:"2" %}
                     <tr class="suppliers">
+                    {% endif %}
                             <td>
                                  {{ aSupplier.supplier_name }}
                             </td>
                             <td>
                                 <a href="/listOrders/?supname={{ aSupplier.supplier_name }}&startdate={{ initStartDate }}&enddate={{ initEndDate }}">{{ aSupplier.item_count }}</a>
                             </td>
+                    {% if not forloop.counter0|divisibleby:"2" %}
                     </tr>
+                    {% endif %}
 
                     {% endfor %}
 

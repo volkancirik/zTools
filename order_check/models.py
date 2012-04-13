@@ -76,7 +76,7 @@ class Order(models.Model):
 
 class CrossStatus(models.Model):
     order_status   = models.CharField(max_length=30,default='unprocessed')
-    order_id      = models.ForeignKey(Order, primary_key= True)
+    order_id      = models.OneToOneField(Order,null=False)
     def __unicode__(self):
         return str(self.order_id)+' '+self.order_status
 
@@ -85,6 +85,10 @@ class LastUpdate(models.Model):
     cross_status = models.CharField(max_length=30,default='unprocessed')
     order_id = models.ForeignKey(Order)
     user_id = models.ForeignKey(UserProfile)
+
+    class Meta:
+        ordering = ['-updated_on']
+
     def __unicode__(self):
        return str(self.order_id)+' changed to '+self.cross_status+' on '+str(self.updated_on)+' by '+self.user_id.user.username
 
@@ -96,7 +100,7 @@ class Admin:
        ('Date information', {'fields': ['body'],'classes': ['collapse']})
    ]
 
-admin.site.register(UserProfile)
-admin.site.register(Order)
-admin.site.register(CrossStatus)
-admin.site.register(LastUpdate)
+#admin.site.register(UserProfile)
+#admin.site.register(Order)
+#admin.site.register(CrossStatus)
+#admin.site.register(LastUpdate)

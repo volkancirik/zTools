@@ -104,13 +104,17 @@ def listOrders(request):
     supNameDetail=""
     start_date = ""
     end_date = ""
-
+    initStartDate = ""
+    initEndDate = ""
+    
     if "supname" in request.GET:
         supNameDetail = request.GET["supname"]
     if "startdate" in request.GET:
         start_date = datetime.datetime.strptime(request.GET['startdate'], "%m/%d/%Y")
+        initStartDate = request.GET['startdate']
     if "enddate" in request.GET:
         end_date = datetime.datetime.strptime(request.GET['enddate'], "%m/%d/%Y")
+        initEndDate = request.GET['enddate']
 
     if supNameDetail == "":
         filteredOrders = Order.objects.all()
@@ -132,7 +136,10 @@ def listOrders(request):
             {'orders' : orders,
              'supNameDetail':supNameDetail,
              'endDate':end_date,
-             'startDate':start_date},context_instance = RequestContext(request))
+             'startDate':start_date,
+             'initStartDate':initStartDate,
+             'initEndDate':initEndDate,
+             },context_instance = RequestContext(request))
 
 @login_required
 def updateOrder(request):

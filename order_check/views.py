@@ -23,6 +23,10 @@ from datetime import date
 from django.contrib.auth import authenticate, login, logout
 from django.utils import simplejson
 
+def render_response(req, *args, **kwargs):
+    kwargs['context_instance'] = RequestContext(req)
+    return render_to_response(*args, **kwargs)
+
 def main(request):
     return render_to_response('main.html', context_instance = RequestContext(request))
 
@@ -34,76 +38,115 @@ class SupplierDetails:
 @login_required
 def order(request):
     supNameDetail = ""
-    end_date = datetime.datetime.now() - datetime.timedelta(days=19)
-    start_date = datetime.datetime.now() - datetime.timedelta(days=20)
+    end_date=""
+    start_date=""
+    counter = 0
+    initStartDate = ""
+    initEndDate = ""
+    if "dateEnd" in request.POST:
+        end_date = datetime.datetime.strptime(request.POST['dateEnd'], "%m/%d/%Y")
+        initEndDate = request.POST['dateEnd']
+    if "dateStart" in request.POST:
+        start_date = datetime.datetime.strptime(request.POST['dateStart'], "%m/%d/%Y")
+        initStartDate = request.POST['dateStart']
+    else:
+        initEndDate = datetime.datetime.now()
+        initEndDate = initEndDate.strftime("%m/%d/%Y")
+
+        initStartDate = datetime.datetime.now()- datetime.timedelta(days=1)
+        initStartDate = initStartDate.strftime("%m/%d/%Y")
+
 
     if "supname" in request.GET:
        supNameDetail = request.GET["supname"]
     try:
+        if start_date != "" and end_date != "":
             ordersAll = Order.objects.filter(order_date__range =[start_date,end_date] )
-            suppliers = list()
-            for anOrder in ordersAll:
-                    if not suppliers.__contains__(anOrder.supplier_name):
-                        suppliers.append(anOrder.supplier_name)
-                    try:
-                        statusForAnOrder = CrossStatus.objects.get( pk = anOrder.id)
-                        anOrder.cross_status = statusForAnOrder.order_status
-                        latest_update = LastUpdate.objects.filter( order_id = anOrder.id).order_by('-updated_on')
-                        anOrder.updated_on = latest_update[0].updated_on
-                        anOrder.updated_by = latest_update[0].user_id.user.username
+        else:
+            ordersAll = Order.objects.all()
+            
+        suppliers = list()
+        for anOrder in ordersAll:
+            if not suppliers.__contains__(anOrder.supplier_name):
+                suppliers.append(anOrder.supplier_name)
+#                    try:
+#                        statusForAnOrder = CrossStatus.objects.get( pk = anOrder.id)
+#                        anOrder.cross_status = statusForAnOrder.order_status
+#                        latest_update = LastUpdate.objects.filter( order_id = anOrder.id).order_by('-updated_on')
+#                        anOrder.updated_on = latest_update[0].updated_on
+#                        anOrder.updated_by = latest_update[0].user_id.user.username
+#
+#                    except CrossStatus.DoesNotExist:
+#                        statusForAnOrder = CrossStatus.objects.create(order_id = anOrder,order_status = 'Unprocessed')
+#                        fetcher = UserProfile.objects.get( role = 'F')
+#                        LastUpdate.objects.create(updated_on = datetime.datetime.now() , cross_status = 'Unprocessed', order_id = anOrder, user_id = fetcher )
+#                        anOrder.cross_status = 'Unprocessed'
+#                        anOrder.updated_on = datetime.datetime.now()
+#                        anOrder.updated_by = fetcher.user.username
 
-                    except CrossStatus.DoesNotExist:
-                        statusForAnOrder = CrossStatus.objects.create(order_id = anOrder,order_status = 'Unprocessed')
-                        fetcher = UserProfile.objects.get( role = 'F')
-                        LastUpdate.objects.create(updated_on = datetime.datetime.now() , cross_status = 'Unprocessed', order_id = anOrder, user_id = fetcher )
-                        anOrder.cross_status = 'Unprocessed'
-                        anOrder.updated_on = datetime.datetime.now()
-                        anOrder.updated_by = fetcher.user.username
-
-            supplierIndex = 0
-            supplierDetailList = []
-            for aSupplier in suppliers:
+        supplierIndex = 0
+        supplierDetailList = []
+        for aSupplier in suppliers:
+            if start_date !="" and end_date != "":
                 ic = Order.objects.filter(supplier_name=suppliers.__getitem__(supplierIndex),order_date__range =[start_date,end_date]).count()
-                sd = SupplierDetails()
-                sd.item_count = ic
-                sd.supplier_name = suppliers.__getitem__(supplierIndex)
-                supplierDetailList.append(sd)
-                supplierIndex = supplierIndex + 1
-
-            filteredOrders = list()
-            for anOrder in ordersAll:
-                if anOrder.supplier_name ==  supNameDetail:
-                    filteredOrders.append(anOrder)
-                elif supNameDetail == "":
-                    filteredOrders.append(anOrder)
-
-
-            if (request.GET.has_key('page')):
-                page = request.GET['page']
             else:
-                page = 1
-            for anOrder in filteredOrders:
-                if anOrder.order_date == date.today:
-                    try:
-                        statusForAnOrder = CrossStatus.objects.get( pk = anOrder.id)
-                        anOrder.status = statusForAnOrder.order_status
-                    except CrossStatus.DoesNotExist:
-                        statusForAnOrder = CrossStatus.objects.create(order_id = anOrder,order_status = 'Unprocessed')
-                        anOrder.status = 'Unprocessed'
+                ic = Order.objects.filter(supplier_name=suppliers.__getitem__(supplierIndex)).count()
 
-                paginator = Paginator(filteredOrders, 10)
-                try:
-                    orders = paginator.page(page)
-                except (EmptyPage, InvalidPage):
-                    orders = paginator.page(paginator.num_pages)
+            sd = SupplierDetails()
+            sd.item_count = ic
+            sd.supplier_name = suppliers.__getitem__(supplierIndex)
+            supplierDetailList.append(sd)
+            supplierIndex = supplierIndex + 1
 
-                if supNameDetail == "":
-                    supNameDetail = "All Suppliers"
-            return render_to_response('orders.html', {'orders' : orders,'supplierDetailList' : supplierDetailList,'supNameDetail':supNameDetail,'end_date':end_date,'start_date':start_date},context_instance = RequestContext(request))
+        if supNameDetail == "":
+            supNameDetail = "All Suppliers"
+            
+        return render_to_response('orders.html', {'supplierDetailList' : supplierDetailList,'supNameDetail':supNameDetail,'end_date':end_date,'start_date':start_date,'initStartDate':initStartDate,'initEndDate':initEndDate,'counter':counter},context_instance = RequestContext(request))
     except Order.DoesNotExist:
         raise Http404
 
 
+def listOrders(request):
+
+    supNameDetail=""
+    start_date = ""
+    end_date = ""
+    initStartDate = ""
+    initEndDate = ""
+    
+    if "supname" in request.GET:
+        supNameDetail = request.GET["supname"]
+    if "startdate" in request.GET:
+        start_date = datetime.datetime.strptime(request.GET['startdate'], "%m/%d/%Y")
+        initStartDate = request.GET['startdate']
+    if "enddate" in request.GET:
+        end_date = datetime.datetime.strptime(request.GET['enddate'], "%m/%d/%Y")
+        initEndDate = request.GET['enddate']
+
+    if supNameDetail == "":
+        filteredOrders = Order.objects.all()
+    else:
+        filteredOrders = Order.objects.filter(supplier_name=supNameDetail,order_date__range =[start_date,end_date])
+
+    if request.GET.has_key('page'):
+        page = request.GET['page']
+    else:
+        page = 1
+
+    paginator = Paginator(filteredOrders, 10)
+    try:
+        orders = paginator.page(page)
+    except (EmptyPage, InvalidPage):
+        orders = paginator.page(paginator.num_pages)
+
+    return render_to_response('orderList.html',
+            {'orders' : orders,
+             'supNameDetail':supNameDetail,
+             'endDate':end_date,
+             'startDate':start_date,
+             'initStartDate':initStartDate,
+             'initEndDate':initEndDate,
+             },context_instance = RequestContext(request))
 
 @login_required
 def updateOrder(request):

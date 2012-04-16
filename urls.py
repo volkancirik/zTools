@@ -15,6 +15,7 @@ urlpatterns = patterns('',
     # Uncomment the next line to enable the admin:
     url(r'^admin/', include(admin.site.urls)),
     (r'^orders/$', 'cross_dock_order.order_check.views.order'),
+    (r'^listOrders/$', 'cross_dock_order.order_check.views.listOrders'),
 
 #    (r'^update/(?P<order_id>[a-zA-Z0-9_.-]+)', 'cross_dock_order.order_check.views.updateOrder'),
     (r'^update/', 'cross_dock_order.order_check.views.updateOrder'),

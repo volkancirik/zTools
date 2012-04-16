@@ -45,15 +45,15 @@
             /*overflow: auto;*/
             /*height:300px; */
             overflow: auto;
-            width: 600px;
+            width: 100%;
         }
         div.content_lefty {
-            width: 30%;
-            margin-top: 36px;
-            margin-right: 20px;
+            float: left;
+            width: 13%;
         }
         div.content_righty {
-            width: 50%;
+            float: right;
+            width: 85%;
             margin-top: 36px;
             margin-right: 20px;
         }
@@ -145,7 +145,7 @@
             display: none;
         }
     </style>
-    <style type="text/css">
+   <style type="text/css">
     .ui-widget {
         font-family: Trebuchet MS,Tahoma,Verdana,Arial,sans-serif;
         font-size: 1.1em;
@@ -414,7 +414,7 @@ function getHistory(order_id){
                                     var statusArray = result.statuses;
 
                                     for (var i = 0; i < userArray.length; i++) {
-                                         $('#historyList').append('<span>'+ userArray[i] +' has changed status to '+ statusArray[i] +' on '+ dateArray[i] + '<span><br>');
+                                         $('#historyList').append('            <thead class="fixedHeader"><tr class="alternateRow"><th>User</th><th>Status</th><th>Date</th></tr></thead><tr><td>'+ userArray[i] +' has changed status to </td><td>'+ statusArray[i] +'</td><td> on '+ dateArray[i] + '</td></tr>');
 //                                        alert(statusArray[i]);
                                        }
 
@@ -429,7 +429,15 @@ function openDialog(order_id){
 function openSearch(){
        	$( "#dialog-form" ).dialog( "open" );
 }
-
+$(document).ready(function(){
+    $('.checkboxClass:button').toggle(function(){
+        $('input:checkbox').attr('checked','checked');
+        $(this).val('uncheck all')
+    },function(){
+        $('input:checkbox').removeAttr('checked');
+        $(this).val('check all');
+    })
+})
 
 
              </script>
@@ -451,84 +459,153 @@ function openSearch(){
         </div>
     </div>
 
+    <div id="dialog-form" title="Search for a keyword" style="background-color: #C96; border:2px;">
+{#        <p class="validateTips">Please enter a keyword</p>#}
+        <form>
+        <fieldset>
+            <label for="keyword">Keyword</label>
+            <input type="text" name="keyword" id="keyword" class="text ui-widget-content ui-corner-all" />
+        </fieldset>
+        </form>
+    </div>
+
     <div class="content">
-            {% if start_date %}
-                <a style="font-size: 14px;font-weight:bold;">Orders From  {{ start_date|date:"d b y" }}  - {{ end_date|date:"d b y" }} to are listed below</a>
-            {% else %}
-                <a style="font-size: 14px;font-weight:bold;">All the Orders are listed below</a>
-            {% endif %}
-            
 
-            <div class="content_lefty">
+            <div class="content_righty" style="float:none;margin-left:100px;">
+<form id ="orderForm" style='display: inline-block;' action="/update/" method='post'>
+    {% csrf_token %}
+                <table class="orders" style="float:right;">
+                    <a style="font-size: 14px;font-weight:bold;">Orders From {{ supNameDetail }} are listed below : ({{ startDate|date:"d b y" }} - {{ endDate|date:"d b y" }})</a>
+                    <thead class="fixedHeader">
+                          <tr class="alternateRow">
+                            <th><button class="checkboxClass" value="check all" >Select/Unselect All</button></th>
+                            <th>Id Sales</th>
+                            <th><a class="sortItem" href="/sort/order_id/">Order Number</a></th>
+                            <th>Size</th>
+                            <th>Sku</th>
+                            {% comment %}<th>Supplier Name
+                                <a href="/search/" title="Search"></a>
+                                    <img id='searchKeywordIcon' src="/static/images/search-icon.png" onclick='openDialog()'>
+                {#                       <div class="searchBox">#}
+                                             <form id='searchForm' method="POST" action="/orders/" style="display: none">{% csrf_token %}
+                                                <input type="text" name="column_name" value='supplier_name'>
+                                                <input type="text" name="keyword" id="searchForm_1_keyword" value=""/>
+                                                 <input type="submit" name="submitButton" value="POST">
+                                             </form>
+                {#                       </div>#}
 
-                <div>
-                    <form id="DateForm" method="POST" action="/orders/">
-                    {% csrf_token %}
-                    <table cellspacing="0" cellpadding="0">
-                        <tr>
-                            <td>
-                                Start Date: 
-                            </td>
-                            <td>
-                                <input id="id_dateStart" type="textbox" name="dateStart"  value=""/>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                End Date:
-                            </td>
-                            <td>
-                                 <input id="id_dateEnd" type="textbox" name="dateEnd"  value=""/>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-
-                            </td>
-                            <td>
-                                <input id="id_submit" type="submit" name="submit"  value="Sorgula"/>
-                            </td>
-                        </tr>
-                    </table>
-                        </form>
-                </div>
+                            </th>{% endcomment %}
+                            <th>Sku Simple</th>
+                            <th>Barcode</th>
+                            <th><label onclick='openSearch()'>Name</label></th>
+                            <th>Status</th>
+                            <th>Suborder Nr</th>
+                            <th>Paid Price</th>
+                            <th>Cost</th>
+                            <th>Order Date</th>
+                            <th>Attribute</th>
+                            <th>Inbound Order Number</th>
+                            <th>Last Updated</th>
+                            <th>Cross Status</th>
+                          </tr>
+                    </thead>
 
 
-            </div>
-            <div class="content_righty">
-                <table class="suppliers">
-                    {% for aSupplier in supplierDetailList %}
-                    {% if forloop.counter0|divisibleby:"2" %}
-                    <tr class="suppliers">
-                    {% endif %}
-                            <td>
-                                 {{ aSupplier.supplier_name }}
-                            </td>
-                            <td>
-                                <a href="/listOrders/?supname={{ aSupplier.supplier_name }}&startdate={{ initStartDate }}&enddate={{ initEndDate }}">{{ aSupplier.item_count }}</a>
-                            </td>
-                    {% if not forloop.counter0|divisibleby:"2" %}
+                        <tbody class="scrollContent">
+                            {% for anOrder in orders.object_list %}
+                                {% if anOrder.status == 'cancelled' %}
+                                    <tr class="normalRow" style="background-color: #E9AFAF">
+                                {% else %}
+                                    <tr class="normalRow">
+                                {% endif %}
+                                    <td> <input type=checkbox class="checkboxClass" name='orderChecked' value="{{ anOrder.id }}"></td>
+                                    <td>{{ anOrder.id_sales_order_item }}</td>
+                                    <td>{{ anOrder.order_nr }} </td>
+                                    <td>{{ anOrder.size }}</td>
+                                    <td>{{ anOrder.sku }}</td>
+                                    {% comment %}<td>{{ anOrder.supplier_name }}</td>{% endcomment %}
+                                    <td>{{ anOrder.sku_supplier_simple }}</td>
+                                    <td>{{ anOrder.barcode_ean }}</td>
+                                    <td>{{ anOrder.name }}</td>
+                                    <td>{{ anOrder.status }}</td>
+                                    <td>{{ anOrder.suborder_number }}</td>
+                                    <td>{{ anOrder.paid_price}}</td>
+                                    <td>{{ anOrder.cost}}</td>
+                                    <td>{{ anOrder.order_date }}</td>
+                                    <td></td>
+                                    <td>{{ anOrder.inbound_order_number}}</td>
+                                    <td>
+                                        {% for lu in anOrder.lastupdate_set.all|slice:":1" %}
+                                            {{  lu.updated_on }} <br/> by {{ lu.user_id }}
+                                        {% endfor %}
+
+                                        <a class="table_link" onclick='openDialog({{ anOrder.id }})' title="history" style="color:blue;">
+                                            History
+                                        </a>
+                                    </td>
+                                    <td>{{  anOrder.crossstatus.order_status }}</td>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                </table>
+                <table class="interaction">
+                    <tr>
+                        <td class="status_update">
+                            <select name='status'>
+                                      <option value='unprocessed'  selected="true" >Unprocessed</option>
+                                      <option value='out_of_stock'>Out of Stock</option>
+                                      <option value='supplier_to_be_informed'>Supplier to be Informed</option>
+                                      <option value='supplier_informed'>Supplier Informed</option>
+                                      <option value='warehouse_to_be_informed'>Warehouse to be Informed</option>
+                                      <option value='warehouse_informed'>Warehouse Informed</option>
+                                      <option value='received_in_warehouse '>Received in Warehouse</option>
+                            </select>
+                        </td>
+
+                        <td>
+                                <input class="update" type='submit' value="Update Selected" onClick="countCheckboxes()">
+
+
+                                <input type="hidden" name='numberofchecked' id='numberofchecked' >
+                        </td>
+                        <td><input class="update" type='submit' value="Export to pdf" onClick="countCheckboxes()"></td>
+                        <td><input class="update" type='submit' value="Inform Suppliers" onClick="countCheckboxes()"></td>
+                        <td><input class="update" type='submit' value="Inform Warehouse" onClick="countCheckboxes()"></td>
+                        <td class="pagination">
+                            <span class="step-links">
+                            {% if orders.has_previous %}
+                                <a class="table_link" href="?supname={{ supNameDetail }}&startdate={{ initStartDate }}&enddate={{ initEndDate }}&page={{ orders.previous_page_number }}">previous</a>
+                            {% endif %}
+
+                            <span class="current">
+                                Page {{ orders.number }} of {{ orders.paginator.num_pages }}.
+                            </span>
+
+                            {% if orders.has_next %}
+                                <a class="table_link" href="?supname={{ supNameDetail }}&startdate={{ initStartDate }}&enddate={{ initEndDate }}&page={{ orders.next_page_number }}">next</a>
+                            {% endif %}
+                            </span>
+                        </td>
                     </tr>
-                    {% endif %}
-
-                    {% endfor %}
-
-                 </table>
+                </table>
+    </form>
             </div>
+
+    <div style="margin:50px;">
+        Rocket İnternet TR
+    </div>
+
     </div>
 
     <div id="dialog-message" title="History of the Order Status">
-        <label id='userList'></label>
-        <span id="historyList">
-
-        </span>
+        <table id="historyList">
+        </table>
     </div>
 
 <script type="text/javascript">
 	$(document).ready( function() {
-        $( "#id_dateStart" ).datepicker({ altFormat: 'yy-mm-dd' });
-	    $( "#id_dateEnd" ).datepicker({  altFormat: 'yy-mm-dd' });
-    });
+        $( ".datePicker" ).datepicker();
+	});
 </script>
 
 <div id='overlayItem' class="ui-widget-overlay" style="display:none;width: 1311px; height: 1279px; z-index: 1001;"></div>

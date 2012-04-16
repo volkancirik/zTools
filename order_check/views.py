@@ -13,7 +13,7 @@ from datetime import date
 from django.http import HttpResponseRedirect
 from django.template import RequestContext
 from django.http import Http404, HttpResponse
-import datetime, random, sha
+import datetime
 from django.shortcuts import render_to_response, get_object_or_404
 from django.http import HttpResponseRedirect
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger, InvalidPage
@@ -22,6 +22,10 @@ from django.contrib.auth.decorators import login_required
 from datetime import date
 from django.contrib.auth import authenticate, login, logout
 from django.utils import simplejson
+from models import *
+import xlwt
+import csv
+
 
 def render_response(req, *args, **kwargs):
     kwargs['context_instance'] = RequestContext(req)
@@ -147,6 +151,69 @@ def listOrders(request):
              'initStartDate':initStartDate,
              'initEndDate':initEndDate,
              },context_instance = RequestContext(request))
+
+def exportExcel(request):
+    supNameDetail=""
+    start_date = ""
+    end_date = ""
+    initStartDate = ""
+    initEndDate = ""
+
+    if "supname" in request.GET:
+        supNameDetail = request.GET["supname"]
+    if "startdate" in request.GET:
+        start_date = datetime.datetime.strptime(request.GET['startdate'], "%m/%d/%Y")
+        initStartDate = request.GET['startdate']
+    if "enddate" in request.GET:
+        end_date = datetime.datetime.strptime(request.GET['enddate'], "%m/%d/%Y")
+        initEndDate = request.GET['enddate']
+
+    if supNameDetail == "":
+        print ("debug check")
+        values_list = Order.objects.all().values_list()
+    else:
+        orders = Order.objects.filter(supplier_name=supNameDetail,order_date__range =[start_date,end_date])
+
+    book = xlwt.Workbook(encoding='utf8')
+    sheet = book.add_sheet('untitled')
+
+    default_style = xlwt.Style.default_style
+    datetime_style = xlwt.easyxf(num_format_str='dd/mm/yyyy hh:mm')
+    date_style = xlwt.easyxf(num_format_str='dd/mm/yyyy')
+
+
+
+    field_names = ['supplier_name','order_date','order_nr']
+
+
+    for index_i,field in enumerate(field_names):
+         sheet.write(0,index_i,[unicode(field).encode('utf-8') ])
+
+#    sheet.write(0,field_names)
+    
+#    for row, rowdata in enumerate(values_list_deferred):
+#        for col, val in enumerate(rowdata):
+
+
+    for index_i,an_order in enumerate(orders):
+        for index_j,field in enumerate(field_names):
+            sheet.write(index_i+1,index_j,[unicode(getattr(an_order, field)).encode('utf-8') ])
+
+        
+#            if isinstance(val, datetime.datetime):
+#                style = datetime_style
+#            elif isinstance(val, datetime.date):
+#                style = date_style
+#            else:
+#                style = default_style
+
+
+#            sheet.write(row, col, val, style=style)
+
+    response = HttpResponse(mimetype='application/vnd.ms-excel')
+    response['Content-Disposition'] = 'attachment; filename=exportDeneme.xls'
+    book.save(response)
+    return response
 
 @login_required
 def updateOrder(request):

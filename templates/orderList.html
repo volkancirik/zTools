@@ -560,7 +560,13 @@ function openSearch(){
 
                                 <input type="hidden" name='numberofchecked' id='numberofchecked' >
                         </td>
-                        <td><input class="update" type='submit' value="Export to pdf" onClick="countCheckboxes()"></td>
+</form>
+
+            <td>            <a href="/export/?supname={{ supNameDetail }}&startdate={{ initStartDate }}&enddate={{ initEndDate }}">Export to pdf</a></td>
+{#                        <form id ="exportForm" method='GET' style='display: inline-block;' action="/export/?supname={{ supNameDetail }}&startdate={{ initStartDate }}&enddate={{ initEndDate }}">#}
+{#                        {% csrf_token %}#}
+{#                            <td><input class="update" type='submit' value="Export to pdf"> {% csrf_token %}</td>#}
+{#                        </form>#}
                         <td><input class="update" type='submit' value="Inform Suppliers" onClick="countCheckboxes()"></td>
                         <td><input class="update" type='submit' value="Inform Warehouse" onClick="countCheckboxes()"></td>
                         <td class="pagination">
@@ -580,7 +586,7 @@ function openSearch(){
                         </td>
                     </tr>
                 </table>
-    </form>
+
             </div>
 
     <div style="margin:50px;">

@@ -17,7 +17,7 @@ urlpatterns = patterns('',
     (r'^orders/$', 'cross_dock_order.order_check.views.order'),
     (r'^export/$', 'cross_dock_order.order_check.views.exportExcel'),
     (r'^excel_list/$', 'cross_dock_order.order_check.views.excelList'),
-
+    (r'^transactions/$', 'cross_dock_order.order_check.views.listTransactions'),
 
     (r'^listOrders/$', 'cross_dock_order.order_check.views.listOrders'),
 

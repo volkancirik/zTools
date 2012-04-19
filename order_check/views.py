@@ -341,3 +341,18 @@ def excelList(request):
         filteredOrders = Order.objects.filter(supplier_name=supNameDetail,order_date__range =[start_date,end_date])
 
     return HttpResponse(simplejson.dumps({'orders': filteredOrders}),mimetype='application/json')
+
+@login_required()
+def listTransactions(request):
+
+    active_user = UserProfile.objects.get(user = request.user)
+    tr_list = Transactions.objects.filter( user_id = active_user).order_by('created_at')
+
+    tr_string_list = list()
+    date_list = list()
+
+    for aTransaction in tr_list:
+        tr_string_list.append(aTransaction.transaction_string)
+        date_list.append(str(aTransaction.created_at))
+        
+    return HttpResponse(simplejson.dumps({'tr_string': tr_string_list, 'dates' : date_list}),mimetype='application/json')

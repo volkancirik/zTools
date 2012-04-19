@@ -161,15 +161,17 @@ def generateTransactionString(supplier_name):
     return transaction_string
 
 def convertDatetimeToString(o):
-	DATE_FORMAT = "%Y-%m-%d"
-	TIME_FORMAT = "%H:%M:%S"
 
-	if isinstance(o, datetime.date):
-	    return o.strftime(DATE_FORMAT)
-	elif isinstance(o, datetime.time):
-	    return o.strftime(TIME_FORMAT)
-	elif isinstance(o, datetime.datetime):
-	    return o.strftime("%s %s" % (DATE_FORMAT, TIME_FORMAT))
+    DATE_FORMAT = "%Y-%m-%d"
+    TIME_FORMAT = "%H:%M:%S"
+
+
+    if isinstance(o, datetime.date):
+        return o.strftime(DATE_FORMAT)
+    elif isinstance(o, datetime.time):
+        return o.strftime(TIME_FORMAT)
+    elif isinstance(o, datetime.datetime):
+        return o.strftime("%s %s" % (DATE_FORMAT, TIME_FORMAT))
 
 def exportExcel(request):
     supNameDetail=""
@@ -183,10 +185,18 @@ def exportExcel(request):
     if "enddate" in request.GET:
         end_date = datetime.datetime.strptime(request.GET['enddate'], "%m/%d/%Y")
 
-    if supNameDetail == "":
-        orders = Order.objects.all()
-    else:
-        orders = Order.objects.filter(supplier_name=supNameDetail,order_date__range =[start_date,end_date])
+    if supNameDetail == "" and "transaction_keyword" in request.GET:
+        tr_keyword = request.GET['transaction_keyword']
+        try :
+            given_transaction = Transactions.objects.get(transaction_string = tr_keyword)
+            orderTransactionPairs = OrderTransaction.objects.filter(tr_id = given_transaction)
+            orders = list()
+            for aPair in orderTransactionPairs:
+                anOrder = Order.objects.get(pk = aPair.order_id.id)
+                orders.append(anOrder)
+        except:
+            raise Http404
+
 
     book = xlwt.Workbook(encoding='utf8')
     sheet = book.add_sheet('untitled')
@@ -356,3 +366,23 @@ def listTransactions(request):
         date_list.append(str(aTransaction.created_at))
         
     return HttpResponse(simplejson.dumps({'tr_string': tr_string_list, 'dates' : date_list}),mimetype='application/json')
+
+
+def listOrdersTransactions(request):
+
+
+    if "transaction_keyword" in request.GET:
+        tr_keyword = request.GET['transaction_keyword']
+        try :
+            given_transaction = Transactions.objects.get(transaction_string = tr_keyword)
+
+#            orderTransactionPairs = OrderTransaction.objects.filter(tr_id = given_transaction)
+
+            return render_to_response('transactionOrderList.html',
+            {'given_transaction' : given_transaction,
+             },context_instance = RequestContext(request))
+        except:
+            raise Http404
+
+    return HttpResponseRedirect("/") # return HttpResponseRedirect('/')
+

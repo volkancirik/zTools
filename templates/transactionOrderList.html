@@ -560,7 +560,7 @@ $(document).ready(function(){
     </div>
 
     <div class="content">
-    AAAAAAAAAAAAAAAAAAAAAAAA
+
 
             <div class="content_righty" style="float:none;margin-left:100px;">
 <form id ="orderForm" style='display: inline-block;' action="/update/" method='post'>
@@ -574,18 +574,7 @@ $(document).ready(function(){
                             <th><a class="sortItem" href="/sort/order_id/">Order Number</a></th>
                             <th>Size</th>
                             <th>Sku</th>
-                            {% comment %}<th>Supplier Name
-                                <a href="/search/" title="Search"></a>
-                                    <img id='searchKeywordIcon' src="/static/images/search-icon.png" onclick='openDialog()'>
-                {#                       <div class="searchBox">#}
-                                             <form id='searchForm' method="POST" action="/orders/" style="display: none">{% csrf_token %}
-                                                <input type="text" name="column_name" value='supplier_name'>
-                                                <input type="text" name="keyword" id="searchForm_1_keyword" value=""/>
-                                                 <input type="submit" name="submitButton" value="POST">
-                                             </form>
-                {#                       </div>#}
 
-                            </th>{% endcomment %}
                             <th>Sku Simple</th>
                             <th>Barcode</th>
                             <th><label onclick='openSearch()'>Name</label></th>
@@ -603,40 +592,41 @@ $(document).ready(function(){
 
 
                         <tbody class="scrollContent">
-                            {% for anOrder in orders.object_list %}
+                            {% for anOrder in given_transaction.ordertransaction_set.all %}
 
-                                {{ anOrder.tr }}
-                                {% if anOrder.status == 'cancelled' %}
+
+                                {% if anOrder.order_id.status == 'cancelled' %}
                                     <tr class="normalRow" style="background-color: #E9AFAF">
                                 {% else %}
                                     <tr class="normalRow">
                                 {% endif %}
                                     <td> <input type=checkbox class="checkboxClass" name='orderChecked' value="{{ anOrder.id }}"></td>
-                                    <td>{{ anOrder.id_sales_order_item }}</td>
-                                    <td>{{ anOrder.order_nr }} </td>
-                                    <td>{{ anOrder.size }}</td>
-                                    <td>{{ anOrder.sku }}</td>
+
+                                    <td>{{ anOrder.order_id.id_sales_order_item }}</td>
+                                    <td>{{ anOrder.order_id.order_nr }} </td>
+                                    <td>{{ anOrder.order_id.size }}</td>
+                                    <td>{{ anOrder.order_id.sku }}</td>
                                     {% comment %}<td>{{ anOrder.supplier_name }}</td>{% endcomment %}
-                                    <td>{{ anOrder.sku_supplier_simple }}</td>
-                                    <td>{{ anOrder.barcode_ean }}</td>
-                                    <td>{{ anOrder.name }}</td>
-                                    <td>{{ anOrder.status }}</td>
-                                    <td>{{ anOrder.suborder_number }}</td>
-                                    <td>{{ anOrder.paid_price}}</td>
-                                    <td>{{ anOrder.cost}}</td>
-                                    <td>{{ anOrder.order_date }}</td>
+                                    <td>{{ anOrder.order_id.sku_supplier_simple }}</td>
+                                    <td>{{ anOrder.order_id.barcode_ean }}</td>
+                                    <td>{{ anOrder.order_id.name }}</td>
+                                    <td>{{ anOrder.order_id.status }}</td>
+                                    <td>{{ anOrder.order_id.suborder_number }}</td>
+                                    <td>{{ anOrder.order_id.paid_price}}</td>
+                                    <td>{{ anOrder.order_id.cost}}</td>
+                                    <td>{{ anOrder.order_id.order_date }}</td>
                                     <td></td>
-                                    <td>{{ anOrder.inbound_order_number}}</td>
+                                    <td>{{ anOrder.order_id.inbound_order_number}}</td>
                                     <td>
-                                        {% for lu in anOrder.lastupdate_set.all|slice:":1" %}
+                                        {% for lu in anOrder.order_id.lastupdate_set.all|slice:":1" %}
                                             {{  lu.updated_on }} <br/> by {{ lu.user_id }}
                                         {% endfor %}
 
-                                        <a class="table_link" onclick='openDialog({{ anOrder.id }})' title="history" style="color:blue;">
+                                        <a class="table_link" onclick='openDialog({{ anOrder.order_id.id }})' title="history" style="color:blue;">
                                             History
                                         </a>
                                     </td>
-                                    <td>{{  anOrder.crossstatus.order_status }}</td>
+                                    <td>{{  anOrder.order_id.crossstatus.order_status }}</td>
                                 </tr>
                             {% endfor %}
                         </tbody>
@@ -656,7 +646,7 @@ $(document).ready(function(){
                         </td>
 
                         <td>
-                                <input type="hidden" value="{{ supNameDetail }}" name='supplier_name'>
+{#                                <input type="hidden" value="{{ supNameDetail }}" name='supplier_name'>#}
 {#                                <input class="update" type='submit' value="Update Selected" onClick="countCheckboxes()">#}
 {#                                <button class="updateButton" value="updateSelected" onclick="transactionDialog()">Update Selected</button>#}
                                 <a class="table_link" onclick='transactionDialog()' title="UpdateSelected" style="color:blue;">Update Selected</a>
@@ -664,24 +654,9 @@ $(document).ready(function(){
                         </td>
 </form>
 
-                        <td><a href="/export/?supname={{ supNameDetail }}&startdate={{ initStartDate }}&enddate={{ initEndDate }}">Export to pdf</a></td>
+                        <td><a href="/export/?transaction_keyword={{ given_transaction.transaction_string }}">Export to pdf</a></td>
                         <td><input class="update" type='submit' value="Inform Suppliers" onClick="countCheckboxes()"></td>
 
-                        <td class="pagination">
-                            <span class="step-links">
-                            {% if orders.has_previous %}
-                                <a class="table_link" href="?supname={{ supNameDetail }}&startdate={{ initStartDate }}&enddate={{ initEndDate }}&page={{ orders.previous_page_number }}">previous</a>
-                            {% endif %}
-
-                            <span class="current">
-                                Page {{ orders.number }} of {{ orders.paginator.num_pages }}.
-                            </span>
-
-                            {% if orders.has_next %}
-                                <a class="table_link" href="?supname={{ supNameDetail }}&startdate={{ initStartDate }}&enddate={{ initEndDate }}&page={{ orders.next_page_number }}">next</a>
-                            {% endif %}
-                            </span>
-                        </td>
                     </tr>
                 </table>
 

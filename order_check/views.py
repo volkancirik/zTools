@@ -57,8 +57,10 @@ def order(request):
         initEndDate = datetime.datetime.now()
         initEndDate = initEndDate.strftime("%m/%d/%Y")
 
-        initStartDate = datetime.datetime.now()- datetime.timedelta(days=1)
-        initStartDate = initStartDate.strftime("%m/%d/%Y")
+        initStartDate = datetime.datetime.now()- datetime.timedelta(days=999)
+        orderList = Order.objects.order_by('order_date')
+        initStartDate = orderList[0].order_date.strftime("%m/%d/%Y")
+#        initStartDate = initStartDate.strftime("%m/%d/%Y")
 
 
     if "supname" in request.GET:
@@ -321,3 +323,28 @@ def orderHistory(request,order_id):
 def logoutUser(request):
     logout(request)
     return HttpResponseRedirect("/") # return HttpResponseRedirect('/')
+
+
+def excelList(request):
+
+    supNameDetail=""
+    start_date = ""
+    end_date = ""
+    initStartDate = ""
+    initEndDate = ""
+
+    if "supname" in request.GET:
+        supNameDetail = request.GET["supname"]
+    if "startdate" in request.GET:
+        start_date = datetime.datetime.strptime(request.GET['startdate'], "%m/%d/%Y")
+        initStartDate = request.GET['startdate']
+    if "enddate" in request.GET:
+        end_date = datetime.datetime.strptime(request.GET['enddate'], "%m/%d/%Y")
+        initEndDate = request.GET['enddate']
+
+    if supNameDetail == "":
+        filteredOrders = Order.objects.all()
+    else:
+        filteredOrders = Order.objects.filter(supplier_name=supNameDetail,order_date__range =[start_date,end_date])
+
+    return HttpResponse(simplejson.dumps({'orders': filteredOrders}),mimetype='application/json')

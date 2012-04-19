@@ -453,9 +453,9 @@ function openSearch(){
 
     <div class="content">
             {% if start_date %}
-                <a style="font-size: 14px;font-weight:bold;">Orders From  {{ start_date|date:"d b y" }}  - {{ end_date|date:"d b y" }} to are listed below</a>
+                <a style="font-size: 14px;font-weight:bold;">All the Orders From  {{ start_date|date:"d b y" }}  to {{ end_date|date:"d b y" }}  are listed below</a>
             {% else %}
-                <a style="font-size: 14px;font-weight:bold;">All the Orders are listed below</a>
+                <a style="font-size: 14px;font-weight:bold;">All the Orders from {{ initStartDate }} to {{ initEndDate }} are listed below</a>
             {% endif %}
             
 

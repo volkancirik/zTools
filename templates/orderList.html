@@ -403,6 +403,22 @@ function openForm(ID){
 			}
 		});
 	});
+    $(function() {
+		// a workaround for a flaw in the demo system (http://dev.jqueryui.com/ticket/4375), ignore!
+		$( "#dialog:ui-dialog" ).dialog( "destroy" );
+
+		$( "#dialog-excel" ).dialog({
+			modal: true,
+            autoOpen: false,
+            height: 400,
+            width: 600,
+			buttons: {
+				Ok: function() {
+					$( this ).dialog( "close" );
+				}
+			}
+		});
+	});
 function getHistory(order_id){
                                 url = "/history/"+order_id+"/";
                                 $.getJSON(url, function(result)
@@ -412,13 +428,23 @@ function getHistory(order_id){
                                     var userArray = result.users;
                                     var dateArray = result.dates;
                                     var statusArray = result.statuses;
-
+                                    $('#historyList').append('<thead class="fixedHeader"><tr class="alternateRow"><th>User</th><th>Status</th><th>Date</th></tr></thead>');
                                     for (var i = 0; i < userArray.length; i++) {
-                                         $('#historyList').append('            <thead class="fixedHeader"><tr class="alternateRow"><th>User</th><th>Status</th><th>Date</th></tr></thead><tr><td>'+ userArray[i] +' has changed status to </td><td>'+ statusArray[i] +'</td><td> on '+ dateArray[i] + '</td></tr>');
+                                         $('#historyList').append('<tr><td>'+ userArray[i] +' has changed status to </td><td>'+ statusArray[i] +'</td><td> on '+ dateArray[i] + '</td></tr>');
 //                                        alert(statusArray[i]);
                                        }
-
-//                                    $('#userList').html(result.users);
+                                });
+                }
+function getOrderList(supNameDetail,initStartDate,initEndDate){
+                                url = "/excel_list/?supname="+supNameDetail+"&startdate="+initStartDate+"&enddate="+initEndDate;
+                                $.getJSON(url, function(result)
+                                {
+                                    $('#list_of_orders').html('');
+                                     var ordersArray = result.orders;
+                                    $('#list_of_orders').append('<thead class="fixedHeader"><tr class="alternateRow"><th>orders</th></tr></thead>');
+                                     for (var i = 0; i < ordersArray.length; i++) {
+                                         $('#list_of_orders').append('<tr><td>'+ ordersArray[i] + '</td></tr>');
+                                       }
                                 });
                 }
 function openDialog(order_id){
@@ -428,6 +454,11 @@ function openDialog(order_id){
 }
 function openSearch(){
        	$( "#dialog-form" ).dialog( "open" );
+}
+
+function openExcel(supNameDetail,initStartDate,initEndDate){
+        getOrderList(supNameDetail,initStartDate,initEndDate);
+       	$( "#dialog-excel" ).dialog( "open" );
 }
 $(document).ready(function(){
     $('.checkboxClass:button').toggle(function(){
@@ -570,11 +601,8 @@ $(document).ready(function(){
                         </td>
 </form>
 
-            <td>            <a href="/export/?supname={{ supNameDetail }}&startdate={{ initStartDate }}&enddate={{ initEndDate }}">Export to pdf</a></td>
-{#                        <form id ="exportForm" method='GET' style='display: inline-block;' action="/export/?supname={{ supNameDetail }}&startdate={{ initStartDate }}&enddate={{ initEndDate }}">#}
-{#                        {% csrf_token %}#}
-{#                            <td><input class="update" type='submit' value="Export to pdf"> {% csrf_token %}</td>#}
-{#                        </form>#}
+                        <td><a href="/export/?supname={{ supNameDetail }}&startdate={{ initStartDate }}&enddate={{ initEndDate }}">Export to pdf</a></td>
+{#                        <td><a class="table_link" onclick="openExcel('{{ supNameDetail }}','{{ initStartDate }}','{{ initEndDate }}')" title="excel" style="color:blue;">Excel</a></td>#}
                         <td><input class="update" type='submit' value="Inform Suppliers" onClick="countCheckboxes()"></td>
                         <td><input class="update" type='submit' value="Inform Warehouse" onClick="countCheckboxes()"></td>
                         <td class="pagination">
@@ -605,6 +633,11 @@ $(document).ready(function(){
 
     <div id="dialog-message" title="History of the Order Status">
         <table id="historyList">
+        </table>
+    </div>
+
+    <div id="dialog-excel" title="All the orders for this transaction">
+        <table id="list_of_orders">
         </table>
     </div>
 

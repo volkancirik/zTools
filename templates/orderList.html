@@ -125,6 +125,7 @@
         }
         a.header_link:link
         {
+            margin-right: 10px;
             float: right;
             color : #EAF2D3;
         }
@@ -540,12 +541,13 @@ $(document).ready(function(){
                 </a>
             </div>
             <div class="headerRighty">
-                <span>Welcome <b>{{ user.username }}!</b></span>
+                <span style="margin-right: 20px">Welcome <b>{{ user.username }}!</b></span>
+                <a  style="margin-right: 20px" title="transactions" onclick='openTransactionList()' >My Transactions</a>
                 <a class="header_link" href="/logout" title="history"> Logout</a>
             </div>
-            <div class="headerLefty">
-                <a  title="transactions" onclick='openTransactionList()' >Transactions</a>
-            </div>
+{#            <div class="headerLefty">#}
+{#                <a  title="transactions" onclick='openTransactionList()' >Transactions</a>#}
+{#            </div>#}
         </div>
     </div>
 
@@ -560,7 +562,6 @@ $(document).ready(function(){
     </div>
 
     <div class="content">
-    AAAAAAAAAAAAAAAAAAAAAAAA
 
             <div class="content_righty" style="float:none;margin-left:100px;">
 <form id ="orderForm" style='display: inline-block;' action="/update/" method='post'>
@@ -664,7 +665,7 @@ $(document).ready(function(){
                         </td>
 </form>
 
-                        <td><a href="/export/?supname={{ supNameDetail }}&startdate={{ initStartDate }}&enddate={{ initEndDate }}">Export to pdf</a></td>
+                        <td ><a style="color:#4A4A4C" href="/export/?supname={{ supNameDetail }}&startdate={{ initStartDate }}&enddate={{ initEndDate }}&tr{{  }}">Export to Excel</a></td>
                         <td><input class="update" type='submit' value="Inform Suppliers" onClick="countCheckboxes()"></td>
 
                         <td class="pagination">

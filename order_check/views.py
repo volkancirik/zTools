@@ -201,7 +201,7 @@ def exportExcel(request):
     book = xlwt.Workbook(encoding='utf8')
     sheet = book.add_sheet('untitled')
 
-    field_names = ['size','sku','sku_supplier_simple','barcode_ean','supplier_name','order_date','order_nr']
+    field_names = ['id_sales_order_item','order_nr','size','sku','sku_supplier_simple','barcode_ean','supplier_name','name','status','suborder_number','paid_price','cost','order_date']
     
     for index_i,field in enumerate(field_names):
          sheet.write(0,index_i,[unicode(field).encode('utf-8') ])
@@ -211,7 +211,7 @@ def exportExcel(request):
             sheet.write(index_i+1,index_j,[unicode(getattr(an_order, field)).encode('utf-8') ])
 
     response = HttpResponse(mimetype='application/vnd.ms-excel')
-    response['Content-Disposition'] = 'attachment; filename=exportDeneme.xls'
+    response['Content-Disposition'] = 'attachment; filename=TR2012-04-19-RD-5782.xls'
     book.save(response)
     return response
 

@@ -1,16 +1,5 @@
 # Create your views here.
 
-
-from models import Order
-from models import CrossStatus
-from models import UserProfile
-from models import LastUpdate
-from django.db.models import Q
-from django.template import RequestContext
-from django.shortcuts import render_to_response
-from django.http import Http404, HttpResponse
-from datetime import date
-from django.http import HttpResponseRedirect
 from django.template import RequestContext
 from django.http import Http404, HttpResponse
 import datetime
@@ -23,7 +12,9 @@ from datetime import date
 from django.contrib.auth import authenticate, login, logout
 from django.utils import simplejson
 from models import *
+from string import *
 import xlwt
+import random , re
 import csv
 
 
@@ -37,7 +28,6 @@ def main(request):
 class SupplierDetails:
     item_count = 0
     supplier_name = ""
-
 
 @login_required
 def order(request):
@@ -109,7 +99,6 @@ def order(request):
     except Order.DoesNotExist:
         raise Http404
 
-
 def listOrders(request):
 
     supNameDetail=""
@@ -152,63 +141,62 @@ def listOrders(request):
              'initEndDate':initEndDate,
              },context_instance = RequestContext(request))
 
+def acronym(phrase):
+    result = ""
+    for word in split(phrase):
+        result += word[0].upper()
+
+    return result
+
+def generateTransactionString(supplier_name):
+
+
+    today = convertDatetimeToString(datetime.datetime.today())
+    number = str(random.randint(0,9999))
+    #number yerine id, acronym yerine supplier table'dan abbreviation gelecek!
+    transaction_string = 'TR'  + today + '-' + acronym(supplier_name) + '-' + number
+
+    return transaction_string
+
+def convertDatetimeToString(o):
+	DATE_FORMAT = "%Y-%m-%d"
+	TIME_FORMAT = "%H:%M:%S"
+
+	if isinstance(o, datetime.date):
+	    return o.strftime(DATE_FORMAT)
+	elif isinstance(o, datetime.time):
+	    return o.strftime(TIME_FORMAT)
+	elif isinstance(o, datetime.datetime):
+	    return o.strftime("%s %s" % (DATE_FORMAT, TIME_FORMAT))
+
 def exportExcel(request):
     supNameDetail=""
     start_date = ""
     end_date = ""
-    initStartDate = ""
-    initEndDate = ""
 
     if "supname" in request.GET:
         supNameDetail = request.GET["supname"]
     if "startdate" in request.GET:
         start_date = datetime.datetime.strptime(request.GET['startdate'], "%m/%d/%Y")
-        initStartDate = request.GET['startdate']
     if "enddate" in request.GET:
         end_date = datetime.datetime.strptime(request.GET['enddate'], "%m/%d/%Y")
-        initEndDate = request.GET['enddate']
 
     if supNameDetail == "":
-        print ("debug check")
-        values_list = Order.objects.all().values_list()
+        orders = Order.objects.all()
     else:
         orders = Order.objects.filter(supplier_name=supNameDetail,order_date__range =[start_date,end_date])
 
     book = xlwt.Workbook(encoding='utf8')
     sheet = book.add_sheet('untitled')
 
-    default_style = xlwt.Style.default_style
-    datetime_style = xlwt.easyxf(num_format_str='dd/mm/yyyy hh:mm')
-    date_style = xlwt.easyxf(num_format_str='dd/mm/yyyy')
-
-
-
-    field_names = ['supplier_name','order_date','order_nr']
-
-
+    field_names = ['size','sku','sku_supplier_simple','barcode_ean','supplier_name','order_date','order_nr']
+    
     for index_i,field in enumerate(field_names):
          sheet.write(0,index_i,[unicode(field).encode('utf-8') ])
-
-#    sheet.write(0,field_names)
-    
-#    for row, rowdata in enumerate(values_list_deferred):
-#        for col, val in enumerate(rowdata):
-
 
     for index_i,an_order in enumerate(orders):
         for index_j,field in enumerate(field_names):
             sheet.write(index_i+1,index_j,[unicode(getattr(an_order, field)).encode('utf-8') ])
-
-        
-#            if isinstance(val, datetime.datetime):
-#                style = datetime_style
-#            elif isinstance(val, datetime.date):
-#                style = date_style
-#            else:
-#                style = default_style
-
-
-#            sheet.write(row, col, val, style=style)
 
     response = HttpResponse(mimetype='application/vnd.ms-excel')
     response['Content-Disposition'] = 'attachment; filename=exportDeneme.xls'
@@ -220,6 +208,11 @@ def updateOrder(request):
 
     orderIDs = list()
     orderIDs = request.POST.getlist('orderChecked')
+    active_user = UserProfile.objects.get(user = request.user)
+    if request.POST["status"] == 'supplier_informed':
+        supplier_name = request.POST["supplier_name"]
+        tr_string = generateTransactionString(supplier_name)
+        new_tr = Transactions.objects.create(transaction_string = tr_string, created_at = datetime.datetime.now() , user_id = active_user)
 
     for anOrderID in orderIDs:
         try:
@@ -234,9 +227,9 @@ def updateOrder(request):
         toBeUpdated.save()
         active_user = UserProfile.objects.get(user = request.user)
         LastUpdate.objects.create(updated_on = datetime.datetime.now() , cross_status = toBeUpdated.order_status, order_id = anOrder, user_id =  active_user )
-        
+        if request.POST["status"] == 'supplier_informed':
+            OrderTransaction.objects.create(tr_id = new_tr,order_id = anOrder)
     return HttpResponseRedirect(request.META.get('HTTP_REFERER','/'))
-
 
 def sort(request,criteria):
 

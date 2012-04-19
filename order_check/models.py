@@ -31,8 +31,6 @@ def create_user_profile(sender, instance, created, **kwargs):
 post_save.connect(create_user_profile, sender=User)
 
 
-
-
 class Order(models.Model):
     id_sales_order_item = models.PositiveIntegerField(max_length=10,null=False,default=0)
     id_sales_order = models.PositiveIntegerField(max_length=10,null=True)
@@ -92,6 +90,15 @@ class LastUpdate(models.Model):
     def __unicode__(self):
        return str(self.order_id)+' changed to '+self.cross_status+' on '+str(self.updated_on)+' by '+self.user_id.user.username
 
+
+class Transactions(models.Model):
+    transaction_string = models.CharField(max_length=255,null=True)
+    created_at = models.DateTimeField(blank=False, auto_now_add=True)
+    user_id = models.ForeignKey(UserProfile)
+
+class OrderTransaction(models.Model):
+    tr_id = models.ForeignKey(Transactions)
+    order_id = models.ForeignKey(Order)
 
 class Admin:
    prepopulated_fields = {'slug': ('title',)}

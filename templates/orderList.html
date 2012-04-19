@@ -407,15 +407,20 @@ function openForm(ID){
 		// a workaround for a flaw in the demo system (http://dev.jqueryui.com/ticket/4375), ignore!
 		$( "#dialog:ui-dialog" ).dialog( "destroy" );
 
-		$( "#dialog-excel" ).dialog({
+		$( "#dialog-transaction" ).dialog({
 			modal: true,
             autoOpen: false,
-            height: 400,
-            width: 600,
+            height: 100,
+            width: 400,
 			buttons: {
 				Ok: function() {
+                    $('#orderForm').submit();
+					$( this ).dialog( "close" );
+				},
+                Cancel: function() {
 					$( this ).dialog( "close" );
 				}
+
 			}
 		});
 	});
@@ -456,9 +461,17 @@ function openSearch(){
        	$( "#dialog-form" ).dialog( "open" );
 }
 
-function openExcel(supNameDetail,initStartDate,initEndDate){
-        getOrderList(supNameDetail,initStartDate,initEndDate);
-       	$( "#dialog-excel" ).dialog( "open" );
+function transactionDialog(){
+
+//        $('#statusForDialog').append('<tr><td>'+ $('#statuslist').val() + '</td></tr>');
+        if($('#statuslist').val() == 'supplier_informed')
+        {
+            $( "#dialog-transaction" ).dialog( "open" );
+        }
+        else
+        {
+            $('#orderForm').submit();
+        }
 }
 $(document).ready(function(){
     $('.checkboxClass:button').toggle(function(){
@@ -582,7 +595,7 @@ $(document).ready(function(){
                 <table class="interaction">
                     <tr>
                         <td class="status_update">
-                            <select name='status'>
+                            <select name='status' id='statuslist'>
                                       <option value='unprocessed'  selected="true" >Unprocessed</option>
                                       <option value='out_of_stock'>Out of Stock</option>
                                       <option value='supplier_to_be_informed'>Supplier to be Informed</option>
@@ -595,17 +608,16 @@ $(document).ready(function(){
 
                         <td>
                                 <input type="hidden" value="{{ supNameDetail }}" name='supplier_name'>
-                                <input class="update" type='submit' value="Update Selected" onClick="countCheckboxes()">
-
-
+{#                                <input class="update" type='submit' value="Update Selected" onClick="countCheckboxes()">#}
+{#                                <button class="updateButton" value="updateSelected" onclick="transactionDialog()">Update Selected</button>#}
+                                <a class="table_link" onclick='transactionDialog()' title="UpdateSelected" style="color:blue;">Update Selected</a>
                                 <input type="hidden" name='numberofchecked' id='numberofchecked' >
                         </td>
 </form>
 
                         <td><a href="/export/?supname={{ supNameDetail }}&startdate={{ initStartDate }}&enddate={{ initEndDate }}">Export to pdf</a></td>
-{#                        <td><a class="table_link" onclick="openExcel('{{ supNameDetail }}','{{ initStartDate }}','{{ initEndDate }}')" title="excel" style="color:blue;">Excel</a></td>#}
                         <td><input class="update" type='submit' value="Inform Suppliers" onClick="countCheckboxes()"></td>
-                        <td><input class="update" type='submit' value="Inform Warehouse" onClick="countCheckboxes()"></td>
+
                         <td class="pagination">
                             <span class="step-links">
                             {% if orders.has_previous %}
@@ -637,8 +649,9 @@ $(document).ready(function(){
         </table>
     </div>
 
-    <div id="dialog-excel" title="All the orders for this transaction">
-        <table id="list_of_orders">
+    <div id="dialog-transaction" title="Are you Sure?">
+        <p> A transaction id will be created. Are you sure?</p>
+        <table id="statusForDialog">
         </table>
     </div>
 

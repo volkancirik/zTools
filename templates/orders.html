@@ -403,6 +403,22 @@ function openForm(ID){
 			}
 		});
 	});
+       $(function() {
+		// a workaround for a flaw in the demo system (http://dev.jqueryui.com/ticket/4375), ignore!
+		$( "#dialog:ui-dialog" ).dialog( "destroy" );
+
+		$( "#dialog-transaction-list" ).dialog({
+			modal: true,
+            autoOpen: false,
+            height: 400,
+            width: 600,
+			buttons: {
+				Ok: function() {
+					$( this ).dialog( "close" );
+				}
+			}
+		});
+	});
 function getHistory(order_id){
                                 url = "/history/"+order_id+"/";
                                 $.getJSON(url, function(result)
@@ -429,6 +445,28 @@ function openDialog(order_id){
 function openSearch(){
        	$( "#dialog-form" ).dialog( "open" );
 }
+
+function getTransactionList(){
+                                url = "/transactions";
+                                $.getJSON(url, function(result)
+                                {
+                                    $('#transactionList').html('');
+
+                                    var tr_string = result.tr_string;
+                                    var dateArray = result.dates;
+
+                                    $('#transactionList').append('<thead class="fixedHeader"><tr class="alternateRow"><th>Transaction String</th><th>Date</th></tr></thead>');
+                                    for (var i = 0; i < tr_string.length; i++) {
+                                         $('#transactionList').append('<tr><td><a href="/orders/transactions/?transaction_keyword='+ tr_string[i] +'">'+ tr_string[i] + '</a></td><td>'+ dateArray[i] + '</td></tr>');
+//                                         $('#transactionList').append('<tr><td>'+ tr_string[i] +'</td><td>'+ dateArray[i] + '</td></tr>');
+                                       }
+                                });
+}
+function openTransactionList(){
+
+                getTransactionList();
+                  $( "#dialog-transaction-list" ).dialog( "open" );
+       }
 
 
 
@@ -517,6 +555,11 @@ function openSearch(){
 
                  </table>
             </div>
+    </div>
+
+    <div id="dialog-transaction-list" title="List of Transactions">
+        <table id="transactionList">
+        </table>
     </div>
 
     <div id="dialog-message" title="History of the Order Status">

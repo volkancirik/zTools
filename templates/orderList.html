@@ -734,7 +734,9 @@ $(document).ready(function(){
 
     function exportToExcel() {
 
-        window.location = "/export/?supname={{ supNameDetail }}&startdate={{ initStartDate }}&enddate={{ initEndDate }};
+        window.location = "/export/?supname={{ supNameDetail }}&startdate={{ initStartDate }}&enddate={{ initEndDate }}";
+//
+//        $.getJSON(url, function(result)
 //        alert("asdasdsadadasd");
         return false;
     }

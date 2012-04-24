@@ -213,7 +213,16 @@ def exportExcel(request):
             sheet.write(index_i+1,index_j,[unicode(getattr(an_order, field)).encode('utf-8') ])
 
     response = HttpResponse(mimetype='application/vnd.ms-excel')
-    response['Content-Disposition'] = 'attachment; filename=TR2012-04-19-RD-5782.xls'
+
+    if supNameDetail == "" and "transaction_keyword" in request.GET:
+        file_string = 'attachment; filename='+request.GET['transaction_keyword']+'.xls'
+        response['Content-Disposition'] = file_string
+    else:
+        file_string = 'attachment; filename='+supNameDetail+'_'+str(end_date)+'_'+str(start_date)+'.xls'
+        response['Content-Disposition'] = file_string
+
+#    response['Content-Disposition'] = 'attachment; filename=TR2012-04-19-RD-5782.xls'
+    
     book.save(response)
     return response
 
@@ -410,13 +419,9 @@ def listOrdersTransactions(request):
         tr_keyword = request.GET['transaction_keyword']
         try :
             given_transaction = Transactions.objects.get(transaction_string = tr_keyword)
-
-#            orderTransactionPairs = OrderTransaction.objects.filter(tr_id = given_transaction)
-
-            return render_to_response('transactionOrderList.html',
-            {'given_transaction' : given_transaction,
-             },context_instance = RequestContext(request))
-        except:
+            return render_to_response('transactionOrderList.html', {'given_transaction' : given_transaction,},context_instance = RequestContext(request))
+        except Transactions.DoesNotExist:
+            print 'here! again'
             raise Http404
 
     return HttpResponseRedirect("/") # return HttpResponseRedirect('/')

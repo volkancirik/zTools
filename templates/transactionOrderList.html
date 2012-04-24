@@ -587,6 +587,7 @@ $(document).ready(function(){
                             <th>Order Date</th>
                             <th>Attribute</th>
                             <th>Inbound Order Number</th>
+                            <th>Supplier Order Date</th>
                             <th>Last Updated</th>
                             <th>Cross Status</th>
                           </tr>
@@ -617,8 +618,11 @@ $(document).ready(function(){
                                     <td>{{ anOrder.order_id.paid_price}}</td>
                                     <td>{{ anOrder.order_id.cost}}</td>
                                     <td>{{ anOrder.order_id.order_date }}</td>
-                                    <td></td>
-                                    <td>{{ anOrder.order_id.inbound_order_number}}</td>
+                                    <td>{{ anOrder.order_id.crossstatus.order_attribute }}</td>
+                                    <td>{{ anOrder.order_id.crossstatus.inbound_order_number}}</td>
+                                    <td>
+                                        {{  anOrder.order_id.crossstatus.supplier_order_date }}
+                                    </td>
                                     <td>
                                         {% for lu in anOrder.order_id.lastupdate_set.all|slice:":1" %}
                                             {{  lu.updated_on }} <br/> by {{ lu.user_id }}

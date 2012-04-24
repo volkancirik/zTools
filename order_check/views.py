@@ -128,7 +128,7 @@ def listOrders(request):
     else:
         page = 1
 
-    paginator = Paginator(filteredOrders, 10)
+    paginator = Paginator(filteredOrders, 1000)
     try:
         orders = paginator.page(page)
     except (EmptyPage, InvalidPage):
@@ -196,6 +196,8 @@ def exportExcel(request):
                 orders.append(anOrder)
         except:
             raise Http404
+    else:
+        orders = Order.objects.filter(supplier_name=supNameDetail,order_date__range =[start_date,end_date])
 
 
     book = xlwt.Workbook(encoding='utf8')
@@ -215,17 +217,9 @@ def exportExcel(request):
     book.save(response)
     return response
 
-@login_required
-def updateOrder(request):
-
+def UpdateInboundOrderNumber(request):
     orderIDs = list()
     orderIDs = request.POST.getlist('orderChecked')
-    active_user = UserProfile.objects.get(user = request.user)
-    if request.POST["status"] == 'supplier_informed':
-        supplier_name = request.POST["supplier_name"]
-        tr_string = generateTransactionString(supplier_name)
-        new_tr = Transactions.objects.create(transaction_string = tr_string, created_at = datetime.datetime.now() , user_id = active_user)
-
     for anOrderID in orderIDs:
         try:
             anOrder = Order.objects.get(pk = int(anOrderID))
@@ -235,12 +229,53 @@ def updateOrder(request):
             toBeUpdated = CrossStatus.objects.get(pk = anOrder.id)
         except CrossStatus.DoesNotExist:
             toBeUpdated = CrossStatus.objects.create(order_id = anOrder)
-        toBeUpdated.order_status =  request.POST["status"]
+        toBeUpdated.inbound_order_number =  request.POST["ion"]
         toBeUpdated.save()
-        active_user = UserProfile.objects.get(user = request.user)
-        LastUpdate.objects.create(updated_on = datetime.datetime.now() , cross_status = toBeUpdated.order_status, order_id = anOrder, user_id =  active_user )
+
+        return HttpResponseRedirect(request.META.get('HTTP_REFERER','/'))
+@login_required
+def updateOrder(request):
+
+    orderIDs = list()
+    orderIDs = request.POST.getlist('orderChecked')
+    active_user = UserProfile.objects.get(user = request.user)
+    if request.POST["ion"] == "":
         if request.POST["status"] == 'supplier_informed':
-            OrderTransaction.objects.create(tr_id = new_tr,order_id = anOrder)
+            supplier_name = request.POST["supplier_name"]
+            tr_string = generateTransactionString(supplier_name)
+            new_tr = Transactions.objects.create(transaction_string = tr_string, created_at = datetime.datetime.now() , user_id = active_user)
+
+        for anOrderID in orderIDs:
+            try:
+                anOrder = Order.objects.get(pk = int(anOrderID))
+            except Order.DoesNotExist:
+                raise Http404
+            try:
+                toBeUpdated = CrossStatus.objects.get(pk = anOrder.id)
+            except CrossStatus.DoesNotExist:
+                toBeUpdated = CrossStatus.objects.create(order_id = anOrder)
+            toBeUpdated.order_status =  request.POST["status"]
+            if request.POST["status"] == 'supplier_informed':
+                toBeUpdated.supplier_order_date = datetime.datetime.now()
+            toBeUpdated.save()
+            active_user = UserProfile.objects.get(user = request.user)
+            LastUpdate.objects.create(updated_on = datetime.datetime.now() , cross_status = toBeUpdated.order_status, order_id = anOrder, user_id =  active_user )
+            if request.POST["status"] == 'supplier_informed':
+                OrderTransaction.objects.create(tr_id = new_tr,order_id = anOrder)
+    else:
+        inbound_order_number = request.POST["ion"]
+        for anOrderID in orderIDs:
+            try:
+                anOrder = Order.objects.get(pk = int(anOrderID))
+            except Order.DoesNotExist:
+                raise Http404
+            try:
+                toBeUpdated = CrossStatus.objects.get(pk = anOrder.id)
+            except CrossStatus.DoesNotExist:
+                toBeUpdated = CrossStatus.objects.create(order_id = anOrder)
+            toBeUpdated.inbound_order_number =  inbound_order_number
+            toBeUpdated.save()
+
     return HttpResponseRedirect(request.META.get('HTTP_REFERER','/'))
 
 def sort(request,criteria):

@@ -1,7 +1,9 @@
-{% extends "base.html" %}
-{% block baseHead %}
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+        "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
     <title>Cross Orders</title>
-        <style type="text/css">
+    <style type="text/css">
         body { font-size: 62.5%; }
 		label, input { display:block; }
 		input.text { margin-bottom:12px; width:95%; padding: .4em; }
@@ -284,9 +286,253 @@
     }
 
     </style>
-{% endblock %}
-{% block baseBody %}
+    
+{#     <script src="http://code.jquery.com/jquery-latest.js"></script>#}
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
+    <!--
+    <script src="http://code.jquery.com/ui/1.8.18/jquery-ui.min.js" type="text/javascript"></script>
+    <script src="http://jquery-ui.googlecode.com/svn/tags/latest/external/jquery.bgiframe-2.1.2.js" type="text/javascript"></script>
+    <script src="http://jquery-ui.googlecode.com/svn/tags/latest/ui/minified/i18n/jquery-ui-i18n.min.js" type="text/javascript"></script>
+-->
+    <link rel="stylesheet" href="/static/css/ui-lightness/jquery-ui-1.8.18.custom.css" type="text/css" media="all" />
+    <script type="text/javascript" src="/static/js/jquery-ui-1.8.18.custom.min.js"></script>
 
+    <script>
+       $(function() {
+               $( "#dialog:ui-dialog" ).dialog( "destroy" );
+
+               var keyword = $( "#keyword" ),
+                   allFields = $( [] ).add( keyword ),
+                   tips = $( ".validateTips" );
+
+               function updateTips( t ) {
+                   tips
+                       .text( t )
+                       .addClass( "ui-state-highlight" );
+                   setTimeout(function() {
+                       tips.removeClass( "ui-state-highlight", 1500 );
+                   }, 500 );
+               }
+
+               function checkLength( o, n, min, max ) {
+                   if ( o.val().length > max || o.val().length < min ) {
+                       o.addClass( "ui-state-error" );
+                       updateTips( "Length of " + n + " must be between " +
+                           min + " and " + max + "." );
+                       return false;
+                   } else {
+                       return true;
+                   }
+               }
+
+               function checkRegexp( o, regexp, n ) {
+                   if ( !( regexp.test( o.val() ) ) ) {
+                       o.addClass( "ui-state-error" );
+                       updateTips( n );
+                       return false;
+                   } else {
+                       return true;
+                   }
+               }
+
+               $( "#dialog-form" ).dialog({
+                   autoOpen: false,
+                   height: 200,
+                   width: 200,
+//                   backgroundColor: #808080,
+                   modal: true,
+                   buttons: {
+                       "Search": function() {
+                           var bValid = true;
+                           allFields.removeClass( "ui-state-error" );
+
+                           bValid = bValid && checkLength( keyword, "username", 2, 16 );
+
+                           bValid = bValid && checkRegexp( keyword, /^[a-z]([0-9a-z_])+$/i, "Keyword may consist of a-z, 0-9, underscores, begin with a letter." );
+
+                           if ( bValid ) {
+                               document.getElementById('searchForm_1_keyword').value =  keyword.val();
+                               //document.getElementById('searchForm').submit();
+//                               $("#searchForm_1_keyword").value = keyword.val();
+                               $('#searchForm').submit();
+//                               	$( "#testDiv" ).append( "<tr>" +
+//							    "<td>" + keyword.val() + "</td>" +
+//						        "</tr>" );
+//
+//                                 alert(keyword.val());
+                              $( this ).dialog( "close" );
+//                                var args = { type:"POST", url:"/orders/", keyword:keyword.val(), columnd_name:'supplier_name' };
+//                                $.ajax(args);
+                           }
+                       },
+                       Cancel: function() {
+                           $( this ).dialog( "close" );
+                       }
+                   },
+                   close: function() {
+                       allFields.val( "" ).removeClass( "ui-state-error" );
+                   }
+               });
+
+
+           });
+ function countCheckboxes(){
+        var inputElems = document.getElementsByTagName("input"),
+        count = 0;
+        for (var i=0; i<inputElems.length; i++){
+          if (inputElems[i].type === "checkbox" && inputElems[i].checked === true){
+              
+            count++;
+            }
+          }
+          document.getElementById('numberofchecked').value= count;
+        }
+
+function openForm(ID){
+       if ($("#searchForm_"+ID).is(":hidden")){
+          $("#searchForm_"+ID).slideDown("slow");
+       }
+       else{
+           $("#searchForm_"+ID).slideUp("slow");
+       }
+}	$(function() {
+		// a workaround for a flaw in the demo system (http://dev.jqueryui.com/ticket/4375), ignore!
+		$( "#dialog:ui-dialog" ).dialog( "destroy" );
+
+		$( "#dialog-message" ).dialog({
+			modal: true,
+            autoOpen: false,
+            height: 400,
+            width: 600,
+			buttons: {
+				Ok: function() {
+					$( this ).dialog( "close" );
+				}
+			}
+		});
+	});
+    $(function() {
+		// a workaround for a flaw in the demo system (http://dev.jqueryui.com/ticket/4375), ignore!
+		$( "#dialog:ui-dialog" ).dialog( "destroy" );
+
+		$( "#dialog-transaction" ).dialog({
+			modal: true,
+            autoOpen: false,
+            height: 100,
+            width: 400,
+			buttons: {
+				Ok: function() {
+                    $('#orderForm').submit();
+					$( this ).dialog( "close" );
+				},
+                Cancel: function() {
+					$( this ).dialog( "close" );
+				}
+
+			}
+		});
+	});
+$(function() {
+		// a workaround for a flaw in the demo system (http://dev.jqueryui.com/ticket/4375), ignore!
+		$( "#dialog:ui-dialog" ).dialog( "destroy" );
+
+		$( "#dialog-transaction-list" ).dialog({
+			modal: true,
+            autoOpen: false,
+            height: 400,
+            width: 600,
+			buttons: {
+				Ok: function() {
+					$( this ).dialog( "close" );
+				}
+			}
+		});
+	});
+function getHistory(order_id){
+                                url = "/history/"+order_id+"/";
+                                $.getJSON(url, function(result)
+                                {
+                                    $('#historyList').html('');
+
+                                    var userArray = result.users;
+                                    var dateArray = result.dates;
+                                    var statusArray = result.statuses;
+                                    $('#historyList').append('<thead class="fixedHeader"><tr class="alternateRow"><th>User</th><th>Status</th><th>Date</th></tr></thead>');
+                                    for (var i = 0; i < userArray.length; i++) {
+                                         $('#historyList').append('<tr><td>'+ userArray[i] +' has changed status to </td><td>'+ statusArray[i] +'</td><td> on '+ dateArray[i] + '</td></tr>');
+//                                        alert(statusArray[i]);
+                                       }
+                                });
+}
+//function getOrderList(supNameDetail,initStartDate,initEndDate){
+//                                url = "/excel_list/?supname="+supNameDetail+"&startdate="+initStartDate+"&enddate="+initEndDate;
+//                                $.getJSON(url, function(result)
+//                                {
+//                                    $('#list_of_orders').html('');
+//                                     var ordersArray = result.orders;
+//                                    $('#list_of_orders').append('<thead class="fixedHeader"><tr class="alternateRow"><th>orders</th></tr></thead>');
+//                                     for (var i = 0; i < ordersArray.length; i++) {
+//                                         $('#list_of_orders').append('<tr><td>'+ ordersArray[i] + '</td></tr>');
+//                                       }
+//                                });
+//                }
+function getTransactionList(){
+                                url = "/transactions";
+                                $.getJSON(url, function(result)
+                                {
+                                    $('#transactionList').html('');
+
+                                    var tr_string = result.tr_string;
+                                    var dateArray = result.dates;
+
+                                    $('#transactionList').append('<thead class="fixedHeader"><tr class="alternateRow"><th>Transaction String</th><th>Date</th></tr></thead>');
+                                    for (var i = 0; i < tr_string.length; i++) {
+                                         $('#transactionList').append('<tr><td><a href="/orders/transactions/?transaction_keyword='+ tr_string[i] +'">'+ tr_string[i] + '</a></td><td>'+ dateArray[i] + '</td></tr>');
+//                                         $('#transactionList').append('<tr><td>'+ tr_string[i] +'</td><td>'+ dateArray[i] + '</td></tr>');
+                                       }
+                                });
+}
+function openDialog(order_id){
+
+         getHistory(order_id);
+       	$( "#dialog-message" ).dialog( "open" );
+}
+function openSearch(){
+       	$( "#dialog-form" ).dialog( "open" );
+}
+function openTransactionList(){
+
+         getTransactionList();
+       	$( "#dialog-transaction-list" ).dialog( "open" );
+}
+
+function transactionDialog(){
+
+//        $('#statusForDialog').append('<tr><td>'+ $('#statuslist').val() + '</td></tr>');
+        if($('#statuslist').val() == 'supplier_informed')
+        {
+            $( "#dialog-transaction" ).dialog( "open" );
+        }
+        else
+        {
+            $('#orderForm').submit();
+        }
+}
+$(document).ready(function(){
+    $('.checkboxClass:button').toggle(function(){
+        $('input:checkbox').attr('checked','checked');
+        $(this).val('uncheck all')
+    },function(){
+        $('input:checkbox').removeAttr('checked');
+        $(this).val('check all');
+    })
+})
+
+
+             </script>
+
+</head>
+<body>
     <div class="shell">
         <div class="header">
             <div class="logo_box">
@@ -351,6 +597,7 @@
                             <th>Order Date</th>
                             <th>Attribute</th>
                             <th>Inbound Order Number</th>
+                            <th>Supplier Order Date</th>
                             <th>Last Updated</th>
                             <th>Cross Status</th>
                           </tr>
@@ -380,8 +627,10 @@
                                     <td>{{ anOrder.paid_price}}</td>
                                     <td>{{ anOrder.cost}}</td>
                                     <td>{{ anOrder.order_date }}</td>
-                                    <td></td>
-                                    <td>{{ anOrder.inbound_order_number}}</td>
+                                    <td>{{ anOrder.crossstatus.order_attribute }}</td>
+                                    <td>{{ anOrder.crossstatus.inbound_order_number}}</td>
+                                    <td>
+                                        {{  anOrder.crossstatus.supplier_order_date }}
                                     <td>
                                         {% for lu in anOrder.lastupdate_set.all|slice:":1" %}
                                             {{  lu.updated_on }} <br/> by {{ lu.user_id }}
@@ -417,26 +666,40 @@
                                 <a class="table_link" onclick='transactionDialog()' title="UpdateSelected" style="color:blue;">Update Selected</a>
                                 <input type="hidden" name='numberofchecked' id='numberofchecked' >
                         </td>
+                        <td>
+                            Inbound Order Number :
+                            <input name='ion' id="ion" type='text' value=''>
+
+                        </td>
+                        <td>
+{#                            <input class="update" type='submit' value="Update Inbound Order Number" onClick="countCheckboxes()">#}
+                            <input class="update" type='submit' value="Update Inbound Order Number" onClick="countCheckboxes();">
+                        </td>
 </form>
 
-                        <td ><a style="color:#4A4A4C" href="/export/?supname={{ supNameDetail }}&startdate={{ initStartDate }}&enddate={{ initEndDate }}">Export to Excel</a></td>
+
+
+                        <td >
+                            <input class="update" type='submit' value="Export To Excel" onClick="return exportToExcel();">
+{#                            <a style="color:#4A4A4C" href="/export/?supname={{ supNameDetail }}&startdate={{ initStartDate }}&enddate={{ initEndDate }}">Export to Excel</a>#}
+                        </td>
                         <td><input class="update" type='submit' value="Inform Suppliers" onClick="countCheckboxes()"></td>
 
-                        <td class="pagination">
-                            <span class="step-links">
-                            {% if orders.has_previous %}
-                                <a class="table_link" href="?supname={{ supNameDetail }}&startdate={{ initStartDate }}&enddate={{ initEndDate }}&page={{ orders.previous_page_number }}">previous</a>
-                            {% endif %}
-
-                            <span class="current">
-                                Page {{ orders.number }} of {{ orders.paginator.num_pages }}.
-                            </span>
-
-                            {% if orders.has_next %}
-                                <a class="table_link" href="?supname={{ supNameDetail }}&startdate={{ initStartDate }}&enddate={{ initEndDate }}&page={{ orders.next_page_number }}">next</a>
-                            {% endif %}
-                            </span>
-                        </td>
+{#                        <td class="pagination">#}
+{#                            <span class="step-links">#}
+{#                            {% if orders.has_previous %}#}
+{#                                <a class="table_link" href="?supname={{ supNameDetail }}&startdate={{ initStartDate }}&enddate={{ initEndDate }}&page={{ orders.previous_page_number }}">previous</a>#}
+{#                            {% endif %}#}
+{##}
+{#                            <span class="current">#}
+{#                                Page {{ orders.number }} of {{ orders.paginator.num_pages }}.#}
+{#                            </span>#}
+{##}
+{#                            {% if orders.has_next %}#}
+{#                                <a class="table_link" href="?supname={{ supNameDetail }}&startdate={{ initStartDate }}&enddate={{ initEndDate }}&page={{ orders.next_page_number }}">next</a>#}
+{#                            {% endif %}#}
+{#                            </span>#}
+{#                        </td>#}
                     </tr>
                 </table>
 
@@ -468,9 +731,20 @@
 	$(document).ready( function() {
         $( ".datePicker" ).datepicker();
 	});
+
+    function exportToExcel() {
+
+        window.location = "/export/?supname={{ supNameDetail }}&startdate={{ initStartDate }}&enddate={{ initEndDate }};
+//        alert("asdasdsadadasd");
+        return false;
+    }
+    // ION : inbound order number
+    function updateION() {
+        window.location = "/inbound_order_number/?supname={{ supNameDetail }}&startdate={{ initStartDate }}&enddate={{ initEndDate }}&ion="+$("#id_ion").val();
+        return false;
+    }
 </script>
 
 <div id='overlayItem' class="ui-widget-overlay" style="display:none;width: 1311px; height: 1279px; z-index: 1001;"></div>
-{#</body>#}
-{#</html>#}
-{% endblock %}
+</body>
+</html>

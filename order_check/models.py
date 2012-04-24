@@ -75,8 +75,12 @@ class Order(models.Model):
 class CrossStatus(models.Model):
     order_status   = models.CharField(max_length=30,default='unprocessed')
     order_id      = models.OneToOneField(Order,null=False)
+    supplier_order_date = models.DateTimeField(blank=False, auto_now_add=True)
+    order_attribute = models.CharField(max_length=10,null=False)
+    inbound_order_number = models.CharField(max_length=30,null=True)
     def __unicode__(self):
         return str(self.order_id)+' '+self.order_status
+
 
 class LastUpdate(models.Model):
     updated_on = models.DateTimeField(blank=False, auto_now_add=True)
@@ -90,7 +94,6 @@ class LastUpdate(models.Model):
     def __unicode__(self):
        return str(self.order_id)+' changed to '+self.cross_status+' on '+str(self.updated_on)+' by '+self.user_id.user.username
 
-
 class Transactions(models.Model):
     transaction_string = models.CharField(max_length=255,null=True)
     created_at = models.DateTimeField(blank=False, auto_now_add=True)
@@ -99,6 +102,7 @@ class Transactions(models.Model):
 class OrderTransaction(models.Model):
     tr_id = models.ForeignKey(Transactions)
     order_id = models.ForeignKey(Order)
+
 
 class Admin:
    prepopulated_fields = {'slug': ('title',)}

@@ -597,6 +597,7 @@ $(document).ready(function(){
                             <th>Order Date</th>
                             <th>Attribute</th>
                             <th>Inbound Order Number</th>
+                            <th>Supplier Order Date</th>
                             <th>Last Updated</th>
                             <th>Cross Status</th>
                           </tr>
@@ -626,8 +627,10 @@ $(document).ready(function(){
                                     <td>{{ anOrder.paid_price}}</td>
                                     <td>{{ anOrder.cost}}</td>
                                     <td>{{ anOrder.order_date }}</td>
-                                    <td></td>
-                                    <td>{{ anOrder.inbound_order_number}}</td>
+                                    <td>{{ anOrder.crossstatus.order_attribute }}</td>
+                                    <td>{{ anOrder.crossstatus.inbound_order_number}}</td>
+                                    <td>
+                                        {{  anOrder.crossstatus.supplier_order_date }}
                                     <td>
                                         {% for lu in anOrder.lastupdate_set.all|slice:":1" %}
                                             {{  lu.updated_on }} <br/> by {{ lu.user_id }}
@@ -663,26 +666,40 @@ $(document).ready(function(){
                                 <a class="table_link" onclick='transactionDialog()' title="UpdateSelected" style="color:blue;">Update Selected</a>
                                 <input type="hidden" name='numberofchecked' id='numberofchecked' >
                         </td>
+                        <td>
+                            Inbound Order Number :
+                            <input name='ion' id="ion" type='text' value=''>
+
+                        </td>
+                        <td>
+{#                            <input class="update" type='submit' value="Update Inbound Order Number" onClick="countCheckboxes()">#}
+                            <input class="update" type='submit' value="Update Inbound Order Number" onClick="countCheckboxes();">
+                        </td>
 </form>
 
-                        <td ><a style="color:#4A4A4C" href="/export/?supname={{ supNameDetail }}&startdate={{ initStartDate }}&enddate={{ initEndDate }}&tr{{  }}">Export to Excel</a></td>
+
+
+                        <td >
+                            <input class="update" type='submit' value="Export To Excel" onClick="return exportToExcel();">
+{#                            <a style="color:#4A4A4C" href="/export/?supname={{ supNameDetail }}&startdate={{ initStartDate }}&enddate={{ initEndDate }}">Export to Excel</a>#}
+                        </td>
                         <td><input class="update" type='submit' value="Inform Suppliers" onClick="countCheckboxes()"></td>
 
-                        <td class="pagination">
-                            <span class="step-links">
-                            {% if orders.has_previous %}
-                                <a class="table_link" href="?supname={{ supNameDetail }}&startdate={{ initStartDate }}&enddate={{ initEndDate }}&page={{ orders.previous_page_number }}">previous</a>
-                            {% endif %}
-
-                            <span class="current">
-                                Page {{ orders.number }} of {{ orders.paginator.num_pages }}.
-                            </span>
-
-                            {% if orders.has_next %}
-                                <a class="table_link" href="?supname={{ supNameDetail }}&startdate={{ initStartDate }}&enddate={{ initEndDate }}&page={{ orders.next_page_number }}">next</a>
-                            {% endif %}
-                            </span>
-                        </td>
+{#                        <td class="pagination">#}
+{#                            <span class="step-links">#}
+{#                            {% if orders.has_previous %}#}
+{#                                <a class="table_link" href="?supname={{ supNameDetail }}&startdate={{ initStartDate }}&enddate={{ initEndDate }}&page={{ orders.previous_page_number }}">previous</a>#}
+{#                            {% endif %}#}
+{##}
+{#                            <span class="current">#}
+{#                                Page {{ orders.number }} of {{ orders.paginator.num_pages }}.#}
+{#                            </span>#}
+{##}
+{#                            {% if orders.has_next %}#}
+{#                                <a class="table_link" href="?supname={{ supNameDetail }}&startdate={{ initStartDate }}&enddate={{ initEndDate }}&page={{ orders.next_page_number }}">next</a>#}
+{#                            {% endif %}#}
+{#                            </span>#}
+{#                        </td>#}
                     </tr>
                 </table>
 
@@ -714,6 +731,18 @@ $(document).ready(function(){
 	$(document).ready( function() {
         $( ".datePicker" ).datepicker();
 	});
+
+    function exportToExcel() {
+
+        window.location = "/export/?supname={{ supNameDetail }}&startdate={{ initStartDate }}&enddate={{ initEndDate }};
+//        alert("asdasdsadadasd");
+        return false;
+    }
+    // ION : inbound order number
+    function updateION() {
+        window.location = "/inbound_order_number/?supname={{ supNameDetail }}&startdate={{ initStartDate }}&enddate={{ initEndDate }}&ion="+$("#id_ion").val();
+        return false;
+    }
 </script>
 
 <div id='overlayItem' class="ui-widget-overlay" style="display:none;width: 1311px; height: 1279px; z-index: 1001;"></div>

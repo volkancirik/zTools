@@ -16,6 +16,8 @@ urlpatterns = patterns('',
     url(r'^admin/', include(admin.site.urls)),
     (r'^orders/$', 'cross_dock_order.order_check.views.order'),
     (r'^export/$', 'cross_dock_order.order_check.views.exportExcel'),
+    #
+    (r'^inbound_order_number/$', 'cross_dock_order.order_check.views.UpdateInboundOrderNumber'),
     (r'^excel_list/$', 'cross_dock_order.order_check.views.excelList'),
     (r'^transactions/$', 'cross_dock_order.order_check.views.listTransactions'),
     (r'^orders/transactions/$', 'cross_dock_order.order_check.views.listOrdersTransactions'),

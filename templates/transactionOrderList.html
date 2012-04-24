@@ -658,6 +658,16 @@ $(document).ready(function(){
                                 <a class="table_link" onclick='transactionDialog()' title="UpdateSelected" style="color:blue;">Update Selected</a>
                                 <input type="hidden" name='numberofchecked' id='numberofchecked' >
                         </td>
+
+                         <td>
+                            Inbound Order Number :
+                            <input name='ion' id="ion" type='text' value=''>
+
+                        </td>
+                        <td>
+{#                            <input class="update" type='submit' value="Update Inbound Order Number" onClick="countCheckboxes()">#}
+                            <input class="update" type='submit' value="Update Inbound Order Number" onClick="countCheckboxes();">
+                        </td>
 </form>
 
                         <td><a style="color:#4A4A4C" href="/export/?transaction_keyword={{ given_transaction.transaction_string }}">Export to Excel</a></td>

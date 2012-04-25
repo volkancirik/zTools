@@ -65,7 +65,7 @@
             float: right;
             width: 85%;
             margin-top: 36px;
-            margin-right: 20px;
+            margin-right: 5px;
         }
         table.orders,th,td{
             font-family:"Trebuchet MS", Arial, Helvetica, sans-serif;
@@ -302,7 +302,10 @@
             <div class="headerRighty">
                 <span style="margin-right: 20px">Welcome <b>{{ user.username }}!</b></span>
                 <a  style="margin-right: 20px" title="transactions" onclick='openTransactionList()' >My Transactions</a>
-                <a class="header_link" href="/logout" title="history"> Logout</a>
+                <a  style="margin-right: 20px" href="/orders" title="Home">
+                    Home
+                </a>
+                <a class="header_link" href="/logout" title="Logout"> Logout</a>
             </div>
 {#            <div class="headerLefty">#}
 {#                <a  title="transactions" onclick='openTransactionList()' >Transactions</a>#}

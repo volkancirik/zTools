@@ -65,20 +65,7 @@ def order(request):
         for anOrder in ordersAll:
             if not suppliers.__contains__(anOrder.supplier_name):
                 suppliers.append(anOrder.supplier_name)
-#                    try:
-#                        statusForAnOrder = CrossStatus.objects.get( pk = anOrder.id)
-#                        anOrder.cross_status = statusForAnOrder.order_status
-#                        latest_update = LastUpdate.objects.filter( order_id = anOrder.id).order_by('-updated_on')
-#                        anOrder.updated_on = latest_update[0].updated_on
-#                        anOrder.updated_by = latest_update[0].user_id.user.username
-#
-#                    except CrossStatus.DoesNotExist:
-#                        statusForAnOrder = CrossStatus.objects.create(order_id = anOrder,order_status = 'Unprocessed')
-#                        fetcher = UserProfile.objects.get( role = 'F')
-#                        LastUpdate.objects.create(updated_on = datetime.datetime.now() , cross_status = 'Unprocessed', order_id = anOrder, user_id = fetcher )
-#                        anOrder.cross_status = 'Unprocessed'
-#                        anOrder.updated_on = datetime.datetime.now()
-#                        anOrder.updated_by = fetcher.user.username
+
 
         supplierIndex = 0
         supplierDetailList = []
@@ -204,13 +191,24 @@ def exportExcel(request):
     sheet = book.add_sheet('untitled')
 
     field_names = ['id_sales_order_item','order_nr','size','sku','sku_supplier_simple','barcode_ean','supplier_name','name','status','suborder_number','paid_price','cost','order_date']
-    
+    cross_status_fields = ['order_attribute','inbound_order_number','supplier_order_date','order_status']
+
+    index_counter = 0
     for index_i,field in enumerate(field_names):
          sheet.write(0,index_i,[unicode(field).encode('utf-8') ])
+         index_counter +=1
+
+    for index_i,field in enumerate(cross_status_fields):
+         sheet.write(0,index_counter+index_i,[unicode(field).encode('utf-8') ])
+
 
     for index_i,an_order in enumerate(orders):
         for index_j,field in enumerate(field_names):
             sheet.write(index_i+1,index_j,[unicode(getattr(an_order, field)).encode('utf-8') ])
+
+        a_cross_statuss = CrossStatus.objects.get( order_id = an_order)
+        for index_j,field in enumerate(cross_status_fields):
+            sheet.write(index_i+1,index_j+index_counter,[unicode(getattr(a_cross_statuss, field)).encode('utf-8') ])
 
     response = HttpResponse(mimetype='application/vnd.ms-excel')
 
@@ -421,7 +419,6 @@ def listOrdersTransactions(request):
             given_transaction = Transactions.objects.get(transaction_string = tr_keyword)
             return render_to_response('transactionOrderList.html', {'given_transaction' : given_transaction,},context_instance = RequestContext(request))
         except Transactions.DoesNotExist:
-            print 'here! again'
             raise Http404
 
     return HttpResponseRedirect("/") # return HttpResponseRedirect('/')

@@ -86,14 +86,10 @@
         <div class="contentLefty">
             <table class="forms">
         <tr>
-            <td>
+            <td>Registration Form
                 <form id='registerForm' method="POST" action="/register/" >{% csrf_token %}
                     {% csrf_token %}
                     <table class="registration">
-                        <tr>
-                            {{ user.username }}
-                            Registration Form
-                        </tr>
                         <tr>
                             <td>E-mail:</td>
                             <td><input type="text" name="email" ></td>
@@ -151,12 +147,6 @@
         </div>
 
     </div>
-
-
-    <br />
-    {{ user.first_name }}
-    <br />
-
 
 </body>
 </html>

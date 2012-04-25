@@ -16,7 +16,7 @@ from string import *
 import xlwt
 import random , re
 import csv
-
+from django.db import models, transaction, IntegrityError
 
 def render_response(req, *args, **kwargs):
     kwargs['context_instance'] = RequestContext(req)
@@ -95,6 +95,7 @@ def listOrders(request):
     end_date = ""
     initStartDate = ""
     initEndDate = ""
+    status_filter = ""
     
     if "supname" in request.GET:
         supNameDetail = request.GET["supname"]
@@ -109,6 +110,16 @@ def listOrders(request):
         filteredOrders = Order.objects.all()
     else:
         filteredOrders = Order.objects.filter(supplier_name=supNameDetail,order_date__range =[start_date,end_date])
+    if "statusfilter" in request.GET:
+        status_filter = request.GET["statusfilter"]
+        orders = list()
+        for an_order in filteredOrders:
+            if an_order.crossstatus.order_status == status_filter:
+                orders.append(an_order)
+        filteredOrders = orders
+
+
+
 
     if request.GET.has_key('page'):
         page = request.GET['page']
@@ -128,6 +139,7 @@ def listOrders(request):
              'startDate':start_date,
              'initStartDate':initStartDate,
              'initEndDate':initEndDate,
+             'statusFilter' : status_filter,
              },context_instance = RequestContext(request))
 
 def acronym(phrase):
@@ -186,7 +198,15 @@ def exportExcel(request):
     else:
         orders = Order.objects.filter(supplier_name=supNameDetail,order_date__range =[start_date,end_date])
 
+    if "statusfilter" in request.GET:
+        status_filter = request.GET["statusfilter"]
+        filtered_orders = list()
+        for an_order in orders:
+            if an_order.crossstatus.order_status == status_filter:
+                filtered_orders.append(an_order)
+        orders = filtered_orders
 
+        
     book = xlwt.Workbook(encoding='utf8')
     sheet = book.add_sheet('untitled')
 
@@ -305,6 +325,7 @@ def tabletest(request):
     return render_to_response('tableTest.html',context_instance = RequestContext(request) )
 
 def registerUser(request):
+    
     if request.POST:
         firstName = request.POST["firstName"]
         lastName = request.POST["lastName"]
@@ -320,13 +341,9 @@ def registerUser(request):
         else:
             return render_to_response('main.html')
 
-        #profile = user.get_profile()
-        #profile.role = 2
-
         user.save()
         login(request, user)
         return HttpResponseRedirect("/orders/")
-    
     else:
         return HttpResponseRedirect("/orders/")
 
@@ -412,12 +429,14 @@ def listTransactions(request):
 
 def listOrdersTransactions(request):
 
-
+    status_filter = ""
     if "transaction_keyword" in request.GET:
         tr_keyword = request.GET['transaction_keyword']
         try :
             given_transaction = Transactions.objects.get(transaction_string = tr_keyword)
-            return render_to_response('transactionOrderList.html', {'given_transaction' : given_transaction,},context_instance = RequestContext(request))
+            if "statusfilter" in request.GET:
+                status_filter = request.GET["statusfilter"]
+            return render_to_response('transactionOrderList.html', {'given_transaction' : given_transaction,'status_filter' : status_filter},context_instance = RequestContext(request))
         except Transactions.DoesNotExist:
             raise Http404
 

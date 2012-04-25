@@ -599,7 +599,20 @@ $(document).ready(function(){
                             <th>Inbound Order Number</th>
                             <th>Supplier Order Date</th>
                             <th>Last Updated</th>
-                            <th>Cross Status</th>
+                            <th>
+                                Cross Status
+                                <select name='statusfilter' id='id_statusfilter'>
+                                      <option value="">Select to Filter</option>
+                                      <option value='all'>All</option>
+                                      <option value='unprocessed'>Unprocessed</option>
+                                      <option value='out_of_stock'>Out of Stock</option>
+                                      <option value='supplier_to_be_informed'>Supplier to be Informed</option>
+                                      <option value='supplier_informed'>Supplier Informed</option>
+                                      <option value='warehouse_to_be_informed'>Warehouse to be Informed</option>
+                                      <option value='warehouse_informed'>Warehouse Informed</option>
+                                      <option value='received_in_warehouse '>Received in Warehouse</option>
+                                </select>
+                            </th>
                           </tr>
                     </thead>
 
@@ -655,7 +668,7 @@ $(document).ready(function(){
                                       <option value='supplier_informed'>Supplier Informed</option>
                                       <option value='warehouse_to_be_informed'>Warehouse to be Informed</option>
                                       <option value='warehouse_informed'>Warehouse Informed</option>
-                                      <option value='received_in_warehouse '>Received in Warehouse</option>
+                                      <option value='received_in_warehouse'>Received in Warehouse</option>
                             </select>
                         </td>
 
@@ -715,12 +728,10 @@ $(document).ready(function(){
         <table id="historyList">
         </table>
     </div>
-
     <div id="dialog-transaction-list" title="List of Transactions">
         <table id="transactionList">
         </table>
     </div>
-
     <div id="dialog-transaction" title="Are you Sure?">
         <p> A transaction id will be created. Are you sure?</p>
         <table id="statusForDialog">
@@ -728,16 +739,25 @@ $(document).ready(function(){
     </div>
 
 <script type="text/javascript">
+
+    $("#id_statusfilter").change(function () {
+          var statusFilter = $("#id_statusfilter").val();
+          if(statusFilter == 'all')
+          {
+              window.location = "/listOrders/?supname={{ supNameDetail }}&startdate={{ initStartDate }}&enddate={{ initEndDate }}";
+          }
+          else
+            window.location = "/listOrders/?supname={{ supNameDetail }}&startdate={{ initStartDate }}&enddate={{ initEndDate }}&statusfilter="+statusFilter;
+        });
+
+
 	$(document).ready( function() {
         $( ".datePicker" ).datepicker();
 	});
 
     function exportToExcel() {
 
-        window.location = "/export/?supname={{ supNameDetail }}&startdate={{ initStartDate }}&enddate={{ initEndDate }}";
-//
-//        $.getJSON(url, function(result)
-//        alert("asdasdsadadasd");
+        window.location = "/export/?supname={{ supNameDetail }}&startdate={{ initStartDate }}&enddate={{ initEndDate }}&statusfilter={{ statusFilter }}";
         return false;
     }
     // ION : inbound order number

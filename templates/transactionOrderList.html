@@ -348,51 +348,65 @@
                             <th>Inbound Order Number</th>
                             <th>Supplier Order Date</th>
                             <th>Last Updated</th>
-                            <th>Cross Status</th>
+                            <th>
+                                Cross Status
+                                <select name='statusfilter' id='id_statusfilter'>
+                                      <option value="">Select to Filter</option>
+                                      <option value='all' >All</option>
+                                      <option value='unprocessed'>Unprocessed</option>
+                                      <option value='out_of_stock'>Out of Stock</option>
+                                      <option value='supplier_to_be_informed'>Supplier to be Informed</option>
+                                      <option value='supplier_informed'>Supplier Informed</option>
+                                      <option value='warehouse_to_be_informed'>Warehouse to be Informed</option>
+                                      <option value='warehouse_informed'>Warehouse Informed</option>
+                                      <option value='received_in_warehouse '>Received in Warehouse</option>
+                                </select>
+                            </th>
                           </tr>
                     </thead>
 
 
                         <tbody class="scrollContent">
                             {% for anOrder in given_transaction.ordertransaction_set.all %}
+                                    {% if status_filter == "" or anOrder.order_id.crossstatus.order_status == status_filter %}
 
+                                            {% if anOrder.order_id.status == 'cancelled' %}
+                                                <tr class="normalRow" style="background-color: #E9AFAF">
+                                            {% else %}
+                                                <tr class="normalRow">
+                                            {% endif %}
+                                                <td> <input type=checkbox class="checkboxClass" name='orderChecked' value="{{ anOrder.order_id.id }}"></td>
 
-                                {% if anOrder.order_id.status == 'cancelled' %}
-                                    <tr class="normalRow" style="background-color: #E9AFAF">
-                                {% else %}
-                                    <tr class="normalRow">
-                                {% endif %}
-                                    <td> <input type=checkbox class="checkboxClass" name='orderChecked' value="{{ anOrder.order_id.id }}"></td>
+                                                <td>{{ anOrder.order_id.id_sales_order_item }}</td>
+                                                <td>{{ anOrder.order_id.order_nr }} </td>
+                                                <td>{{ anOrder.order_id.size }}</td>
+                                                <td>{{ anOrder.order_id.sku }}</td>
+                                                {% comment %}<td>{{ anOrder.supplier_name }}</td>{% endcomment %}
+                                                <td>{{ anOrder.order_id.sku_supplier_simple }}</td>
+                                                <td>{{ anOrder.order_id.barcode_ean }}</td>
+                                                <td>{{ anOrder.order_id.name }}</td>
+                                                <td>{{ anOrder.order_id.status }}</td>
+                                                <td>{{ anOrder.order_id.suborder_number }}</td>
+                                                <td>{{ anOrder.order_id.paid_price}}</td>
+                                                <td>{{ anOrder.order_id.cost}}</td>
+                                                <td>{{ anOrder.order_id.order_date }}</td>
+                                                <td>{{ anOrder.order_id.crossstatus.order_attribute }}</td>
+                                                <td>{{ anOrder.order_id.crossstatus.inbound_order_number}}</td>
+                                                <td>
+                                                    {{  anOrder.order_id.crossstatus.supplier_order_date }}
+                                                </td>
+                                                <td>
+                                                    {% for lu in anOrder.order_id.lastupdate_set.all|slice:":1" %}
+                                                        {{  lu.updated_on }} <br/> by {{ lu.user_id }}
+                                                    {% endfor %}
 
-                                    <td>{{ anOrder.order_id.id_sales_order_item }}</td>
-                                    <td>{{ anOrder.order_id.order_nr }} </td>
-                                    <td>{{ anOrder.order_id.size }}</td>
-                                    <td>{{ anOrder.order_id.sku }}</td>
-                                    {% comment %}<td>{{ anOrder.supplier_name }}</td>{% endcomment %}
-                                    <td>{{ anOrder.order_id.sku_supplier_simple }}</td>
-                                    <td>{{ anOrder.order_id.barcode_ean }}</td>
-                                    <td>{{ anOrder.order_id.name }}</td>
-                                    <td>{{ anOrder.order_id.status }}</td>
-                                    <td>{{ anOrder.order_id.suborder_number }}</td>
-                                    <td>{{ anOrder.order_id.paid_price}}</td>
-                                    <td>{{ anOrder.order_id.cost}}</td>
-                                    <td>{{ anOrder.order_id.order_date }}</td>
-                                    <td>{{ anOrder.order_id.crossstatus.order_attribute }}</td>
-                                    <td>{{ anOrder.order_id.crossstatus.inbound_order_number}}</td>
-                                    <td>
-                                        {{  anOrder.order_id.crossstatus.supplier_order_date }}
-                                    </td>
-                                    <td>
-                                        {% for lu in anOrder.order_id.lastupdate_set.all|slice:":1" %}
-                                            {{  lu.updated_on }} <br/> by {{ lu.user_id }}
-                                        {% endfor %}
-
-                                        <a class="table_link" onclick='openDialog({{ anOrder.order_id.id }})' title="history" style="color:blue;">
-                                            History
-                                        </a>
-                                    </td>
-                                    <td>{{  anOrder.order_id.crossstatus.order_status }}</td>
-                                </tr>
+                                                    <a class="table_link" onclick='openDialog({{ anOrder.order_id.id }})' title="history" style="color:blue;">
+                                                        History
+                                                    </a>
+                                                </td>
+                                                <td>{{  anOrder.order_id.crossstatus.order_status }}</td>
+                                            </tr>
+                                    {% endif %}
                             {% endfor %}
                         </tbody>
                 </table>
@@ -429,7 +443,7 @@
                         </td>
 </form>
 
-                        <td><a style="color:#4A4A4C" href="/export/?transaction_keyword={{ given_transaction.transaction_string }}">Export to Excel</a></td>
+                        <td><a style="color:#4A4A4C" href="/export/?transaction_keyword={{ given_transaction.transaction_string }}&statusfilter={{ status_filter }}">Export to Excel</a></td>
                         <td><input class="update" type='submit' value="Inform Suppliers" onClick="countCheckboxes()"></td>
 
                     </tr>
@@ -442,17 +456,14 @@
     </div>
 
     </div>
-
     <div id="dialog-message" title="History of the Order Status">
         <table id="historyList">
         </table>
     </div>
-
     <div id="dialog-transaction-list" title="List of Transactions">
         <table id="transactionList">
         </table>
     </div>
-
     <div id="dialog-transaction" title="Are you Sure?">
         <p> A transaction id will be created. Are you sure?</p>
         <table id="statusForDialog">
@@ -463,6 +474,16 @@
 	$(document).ready( function() {
         $( ".datePicker" ).datepicker();
 	});
+
+    $("#id_statusfilter").change(function () {
+          var statusFilter = $("#id_statusfilter").val();
+          if(statusFilter == 'all')
+          {
+              window.location = "/orders/transactions/?transaction_keyword={{ given_transaction.transaction_string }}";
+          }
+          else
+            window.location = "/orders/transactions/?transaction_keyword={{ given_transaction.transaction_string }}&statusfilter="+statusFilter;
+        })
 </script>
 
 <div id='overlayItem' class="ui-widget-overlay" style="display:none;width: 1311px; height: 1279px; z-index: 1001;"></div>

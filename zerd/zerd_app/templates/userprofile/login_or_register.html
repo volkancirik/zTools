@@ -1,0 +1,142 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% block extrahead %}
+<style type="text/css">
+	li.c9 {
+		width:320px;
+		margin-bottom:10px;
+		margin-top:10px;
+	}
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="tabbed">
+	<div class="tab-content" style="display:block;">
+		<div class="items">
+            <!-- Register Form Start-->
+				<div class="SpotBoxWrapper SmallSpot">
+					<ul class="DarkHeader">
+						<li class="DarkHeaderRight SmallHeader">
+							<div class="TemaIcon NewAccout">
+								 
+							</div>
+							<a href="#">Kayıt Olmak İstiyorum</a>
+						</li>
+					</ul>
+					<ul class="SpotBox">
+						<li class="SpotBoxConteiner SmallConteiner">    
+								<form method="post" action="/user/register/" id="RegisterForm">
+								{% csrf_token %}
+									<div class="FormWrapper c8" style="float:left;">
+										<ul class="FormPosition">
+											{% for field in register_form.visible_fields %}
+												<li class="FormLineWrapper UserEnter">
+														<div class="FormObject">
+															{% if field.errors %}
+																{% for error in field.errors %}
+																	<div class="FormObject ErrorArea"> {{ error }}</div>
+													    		{% endfor %}
+															{% endif %}
+															<div class="FormLabel">
+																{{ field.label }}
+															</div>
+															{{ field}}
+														</div>
+													</li>
+											{% endfor %}
+											<li class="FormLineWrapper submitButtonContainer">
+
+                                                    <a class="submitButton" onclick="return $('form#RegisterForm').submit();">
+                                                        <span> Gönder </span>
+                                                    </a>
+                                                
+											</li>
+                                            {% if register_success %}
+											<li>
+												<div style="margin-left:10px;margin-bottom:10px;">
+                                                    <span style="color:green;"> Üyeliğiniz başarıyla gerçekleştirildi! </span><br/>
+													Üyeliğiniz admin tarafından onaylandıktan sonra sisteme giriş yapabilirsiniz.
+												</div>
+											</li>
+                                            {% endif %}
+										</ul>
+									</div>
+									<script type="text/javascript">
+										$(document).ready(function(){
+											$('#RegisterForm input').keypress(function(e) {
+												if(e.which == 13) {
+										            $('form#RegisterForm').submit();
+										        }
+			    							});
+										});
+									</script>
+								</form>
+						</li>
+					</ul>
+				</div>
+            <!-- Register Form End -->
+            <!-- Login Form Start -->
+				<div class="SpotBoxWrapper SmallSpot">
+					<ul class="DarkHeader">
+						<li class="YellowHeaderRight SmallHeader">
+							<div class="TemaIcon Login">
+								 
+							</div>
+							<a href="#">Giriş</a>
+						</li>
+					</ul>
+					<ul class="SpotBox">
+						<li class="SpotBoxConteiner SmallConteiner c16">
+							<div id="transform">
+								<form method="post" action="/user/login/" id="LoginForm">
+								{% csrf_token %}
+									<div class="FormWrapper">
+										<ul class="FormPosition">
+											{% for field in login_form.visible_fields %}
+												<li class="FormLineWrapper UserEnter">
+														<div class="FormObject">
+															{% if field.errors %}
+																{% for error in field.errors %}
+																	<div class="FormObject ErrorArea""> {{ error }}</div>
+													    		{% endfor %}
+															{% endif %}
+															<div class="FormLabel">
+																{{ field.label }}
+															</div>
+															{{ field}}
+														</div>
+													</li>
+											{% endfor %}
+											<li  class="FormLineWrapper submitButtonContainer"  >
+												<a class="submitButton" onclick="return $('form#LoginForm').submit();">
+                                                    <span> Giriş </span>
+                                                </a>
+											</li>
+                                            <li class="FormLineWrapper">
+												{% if user_inactive %}
+                                                    <span style="color:red;"> Hesabınız henüz aktifleştirilmemiştir.</span> <br/>
+                                                    İletişim için lütfen <a href="mailto:can.kaya@rocket-internet.com.tr">can.kaya@rocket-internet.com.tr</a> e-posta atınız.
+                                                {% endif %}
+											</li>
+										</ul>
+									</div>
+								</form>
+								<script type="text/javascript">
+										$(document).ready(function(){
+											$('#LoginFormMain input').keypress(function(e) {
+												if(e.which == 13) {
+										            $('form#LoginForm').submit();
+										        }
+			    							});
+										});
+								</script>
+							</div>
+						</li>
+					</ul>
+				</div>
+			<!-- Login Form End -->
+		</div>
+	</div>
+</div>
+{% endblock %}

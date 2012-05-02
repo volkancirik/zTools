@@ -1,0 +1,214 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% load helper %}
+{% block extrahead %}
+{% endblock %}
+
+{% block content %}
+<div class="tabbed">
+	<div class="tab-content" style="display:block;">
+		<div class="items">
+            <table class="filterPanel">
+                <tr>
+                    <td class="left">
+                        Supplier Name:
+                    </td>
+                    <td  class="right">
+                        {{ supplier.name }}
+                    </td>
+                </tr>
+                <tr>
+                    <td class="left">
+                        Date Range:
+                    </td>
+                    <td class="right">
+                        {{ start_date|date }} - {{ end_date|date }}
+                    </td>
+                </tr>
+                <tr>
+                    <td class="left">
+                        Cross Status:
+                    </td>
+                    <td class="right">
+                        <select name='statusFilter' id='id_statusFilter'>
+                            <option value='all'>All</option>
+                            {% for cs in crossStatusList %}
+                                    <option value='{{ cs.pk }}'>{{ cs.name }}</option>
+                            {% endfor %}
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="left">
+                        &nbsp;
+                    </td>
+                    <td style="text-align: right;">
+                        <a class="submitButton" href="javascript:filterByCrossStatus();" >
+                            <span> Filtrele </span>
+                        </a>
+                    </td>
+                </tr>
+            </table>
+<form id ="orderUpdateForm" action="/cross_order/update_order_list/?sid={{ supplier.pk }}&dateStart={{ start_date|date:"m/d/Y" }}&dateEnd={{ end_date|date:"m/d/Y" }}" method='post'>
+    {% csrf_token %}
+    <table id="orderList">
+                <thead>
+                    <tr>
+                        <th><input type=checkbox name='allSelect' class="allSelect"></th>
+                        <th>Cross_Status</th>
+                        <th>Id Sales</th>
+                        <th>Order Number</th>
+                        <th>Size</th>
+                        <th>Sku</th>
+                        <th>Sku Simple</th>
+                        <th>Barcode</th>
+                        <th>Name</th>
+                        <th>Status</th>
+                        <th>Suborder Nr</th>
+                        <th>Paid Price</th>
+                        <th>Cost</th>
+                        <th>Order_Date</th>
+                        <th>Attribute</th>
+                        <th>InboundOrder Number</th>
+                        <th>Supplier_Order_Date</th>
+                        <th>Last_Updated_Info</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for o in orderList %}
+                        <tr>
+                            <td><input type=checkbox class="checkboxClass" name='orderChecked' value="{{ o.pk }}"></td>
+                            <td>{{ o.ordercrossdetails.cross_status.name }}</td>
+                            <td>{{ o.id_sales_order_item }}</td>
+                            <td>{{ o.order_nr }}</td>
+                            <td>{{ o.size }}</td>
+                            <td>{{ o.sku }}</td>
+                            <td>{{ o.sku_supplier_simple }}</td>
+                            <td>{{ o.barcode_ean }}</td>
+                            <td>{{ o.name }}</td>
+                            <td>{{ o.status }}</td>
+                            <td>{{ o.suborder_number }}</td>
+                            <td>{{ o.paid_price }}</td>
+                            <td>{{ o.cost }}</td>
+                            <td>{{ o.order_date|date:"d/M/Y H:m:s" }}</td>
+                            <td>{{ o.ordercrossdetails.order_attribute }}</td>
+                            <td>{{ o.ordercrossdetails.inbound_order_number }}</td>
+                            <td>{{ o.ordercrossdetails.supplier_order_date|date:"d/M/Y H:m:s" }}</td>
+                            <td>
+                                {% for lu in o.lastupdate_set.all|slice:":1" %}
+                                     {{ lu.user.email }} {{  lu.update_date|date:"d/M/Y H:m:s" }}
+                                    <br/>
+                                    <a href="javascript:viewOrderHistory({{ o.pk }})"> History</a>
+                                {% endfor %}
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+            <table class="actionPanel" cellpadding="0" cellspacing="0" width="100%">
+                <tr>
+                    <td class="left">
+                         <select name='statusUpdate' id='id_statusUpdate'>
+                            <option value='0'>Please Select</option>
+                            {% for cs in crossStatusList %}
+                                {% if cs.isTransactionGenerate %}
+                                    <option class="confirmRequired" value='{{ cs.pk }}'>{{ cs.name }}</option>
+                                {% else %}
+                                    <option value='{{ cs.pk }}'>{{ cs.name }}</option>
+                                {% endif %}
+                            {% endfor %}
+                         </select>
+                    </td>
+                    <td  class="right">
+                        <a class="submitButton" onclick="return updateCrossStatus();">
+                            <span> Update Cross Status </span>
+                        </a>
+                    </td>
+                <td class="left">
+                         <input id="id_inbound_order_number" type="textbox" name="inbound_order_number" value=""/>
+                    </td>
+                    <td class="right">
+                        <a class="submitButton" onclick="return updateInbound();">
+                            <span> Update Inbound Order Number </span>
+                        </a>
+                    </td>
+                    <td class="left">
+                        &nbsp;
+                    </td>
+                    <td class="right" style="text-align: right;">
+                        <a class="submitButton" href="/cross_order/exportOrders/?sup={{ supplier.pk }}&startdate={{ start_date|date:"m/d/Y" }}&enddate={{ end_date|date:"m/d/Y" }}&cstatus={{ cstatus.pk }}">
+                            <span> Export To Excel </span>
+                        </a>
+                    </td>
+                </tr>
+            </table>
+<input type="hidden" value="" id="id_buttonSource" name="buttonSource" />
+</form>
+		</div>
+	</div>
+</div>
+
+{% include "cross_order/boxes/confirm_box.html" %}
+{% include "cross_order/boxes/history_box.html" %}
+    
+<script type="text/javascript">
+    function updateCrossStatus(){
+        debugger;
+        if($('#id_statusUpdate').val() < 1){
+            alert('Lutfen gecerli bir statu seciniz !')
+            return false;
+        }
+
+
+        if(  $('#id_statusUpdate option:selected').hasClass('confirmRequired') ){
+            $( "#dialog:ui-dialog" ).dialog( "destroy" );
+            $( "#dialog-confirm" ).dialog({
+                resizable: false,
+                height:140,
+                modal: true,
+                buttons: {
+                    "Evet": function() {
+                        $('#id_buttonSource').val("status");
+                        $('#orderUpdateForm').submit();
+                    },
+                    Hayir: function() {
+                        $( this ).dialog( "close" );
+                    }
+                }
+            });
+        }else{
+            $('#id_buttonSource').val("status");
+            $('#orderUpdateForm').submit();
+        }
+    }
+
+    function updateInbound(){
+        $('#id_buttonSource').val("inbound");
+        $('#orderUpdateForm').submit();
+    }
+
+    function filterByCrossStatus(){
+        window.location= "{{ current_url|safe }}"+ $('#id_statusFilter').val()
+    }
+
+    $(document).ready(function(){
+        var oTable = $('#orderList').dataTable(
+                {
+                    "sScrollY": "450px",
+                    "bJQueryUI": true,
+                    "bPaginate": false,
+                    "sScrollX": "100%"
+                }
+        );
+        $('#id_statusFilter').val({{ cstatus.pk }});
+        $('.checkboxClass').attr("checked", "");
+        $('.allSelect').click(function(){
+            if($(this).is(':checked')){
+                $('.checkboxClass').attr("checked", 'checked');
+            }
+            else
+                $('.checkboxClass').attr("checked", "");
+        });
+    });
+</script>
+{% endblock %}

@@ -1,0 +1,61 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% load helper %}
+{% block extrahead %}
+{% endblock %}
+
+{% block content %}
+<div class="tabbed">
+	<div class="tab-content" style="display:block;">
+		<div class="items">
+            <div class="dateRangeInfo">
+                My Transactions
+            </div>
+
+            <table id="transactionList">
+                <thead>
+                    <tr>
+                        <th>
+                            Transcation Code
+                        </th>
+                        <th>
+                            Create Date
+                        </th>
+                        <th>
+                            Total Order
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for t in transList %}
+                        <tr>
+                            <td>
+                                <a href="/cross_order/transaction_details/{{ t.code }}/">
+                                    {{ t.code }}
+                                </a>
+                            </td>
+                            <td>
+                                {{ t.create_date }}
+                            </td>
+                            <td>
+                                {{ t|totalOrderCount }}
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+		</div>
+	</div>
+</div>
+<script type="text/javascript">
+    $(document).ready(function(){
+        $('#transactionList').dataTable(
+                {
+                    "bJQueryUI": true,
+                    "bPaginate":true,
+                    "sPaginationType": "full_numbers"
+                }
+        );
+    });
+</script>
+{% endblock %}

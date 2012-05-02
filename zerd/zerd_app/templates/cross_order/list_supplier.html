@@ -1,0 +1,93 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% load helper %}
+{% block extrahead %}
+{% endblock %}
+
+{% block content %}
+<div class="tabbed">
+	<div class="tab-content" style="display:block;">
+		<div class="items">
+            <form id="DateForm" method="POST" action="/cross_order/list_supplier/">
+                {% csrf_token %}
+                <table class="dateFilter" cellspacing="0" cellpadding="0">
+                    <tr>
+                        <td>
+                            Start Date:
+                        </td>
+                        <td>
+                            <input id="id_dateStart" type="textbox" name="dateStart" value=""/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            End Date:
+                        </td>
+                        <td>
+                            <input id="id_dateEnd" type="textbox" name="dateEnd" value=""/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+
+                        </td>
+                        <td style="text-align: right;">
+                            <input id="id_submit" type="submit" name="submit" value="Sorgula" class="button"/>
+                        </td>
+                    </tr>
+                </table>
+            </form>
+            <div class="dateRangeInfo">
+                {{ start_date|date }} - {{ end_date|date }}
+            </div>
+
+            <table id="supplierList">
+                <thead>
+                    <tr>
+                        <th>
+                            Supplier Name
+                        </th>
+                        <th>
+                            Unprocessed Order
+                        </th>
+                        <th>
+                            Total Order
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for s in supList %}
+                        <tr>
+                            <td>
+                                <a href="/cross_order/list_order/?sid={{ s.pk }}&dateStart={{ start_date|date:"m/d/Y" }}&dateEnd={{ end_date|date:"m/d/Y" }}">
+                                    {{ s.name }}
+                                </a>
+                            </td>
+                            <td>
+                                {{ s.unprocessedCount }}
+                            </td>
+                            <td>
+                                {{ s.totalCount }}
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+		</div>
+	</div>
+</div>
+<script type="text/javascript">
+    $(document).ready(function(){
+        $('#supplierList').dataTable(
+                {
+                    "bJQueryUI": true,
+                    "sPaginationType": "full_numbers",
+                    "sScrollY": "220px",
+                }
+        );
+
+        $( "#id_dateStart" ).datepicker({ altFormat: 'yy-mm-dd' });
+	    $( "#id_dateEnd" ).datepicker({  altFormat: 'yy-mm-dd' });
+    });
+</script>
+{% endblock %}

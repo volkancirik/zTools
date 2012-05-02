@@ -2,55 +2,105 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ba66b0b9-79f6-4684-844b-25a684a9ef94" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/zerd/.idea/workspace.xml" />
-      <change type="DELETED" beforePath="C:\Projects\DjangoProjects\cross_dock_order\.idea\.name" afterPath="" />
-      <change type="DELETED" beforePath="C:\Projects\DjangoProjects\cross_dock_order\.idea\cross_dock_order.iml" afterPath="" />
-      <change type="DELETED" beforePath="C:\Projects\DjangoProjects\cross_dock_order\.idea\encodings.xml" afterPath="" />
-      <change type="DELETED" beforePath="C:\Projects\DjangoProjects\cross_dock_order\.idea\misc.xml" afterPath="" />
-      <change type="DELETED" beforePath="C:\Projects\DjangoProjects\cross_dock_order\.idea\modules.xml" afterPath="" />
-      <change type="DELETED" beforePath="C:\Projects\DjangoProjects\cross_dock_order\.idea\vcs.xml" afterPath="" />
-      <change type="DELETED" beforePath="C:\Projects\DjangoProjects\cross_dock_order\.idea\workspace.xml" afterPath="" />
-      <change type="DELETED" beforePath="C:\Projects\DjangoProjects\cross_dock_order\__init__.py" afterPath="" />
-      <change type="DELETED" beforePath="C:\Projects\DjangoProjects\cross_dock_order\manage.py" afterPath="" />
-      <change type="DELETED" beforePath="C:\Projects\DjangoProjects\cross_dock_order\order_check\__init__.py" afterPath="" />
-      <change type="DELETED" beforePath="C:\Projects\DjangoProjects\cross_dock_order\order_check\forms.py" afterPath="" />
-      <change type="DELETED" beforePath="C:\Projects\DjangoProjects\cross_dock_order\order_check\models.py" afterPath="" />
-      <change type="DELETED" beforePath="C:\Projects\DjangoProjects\cross_dock_order\order_check\tests.py" afterPath="" />
-      <change type="DELETED" beforePath="C:\Projects\DjangoProjects\cross_dock_order\order_check\views.py" afterPath="" />
-      <change type="DELETED" beforePath="C:\Projects\DjangoProjects\cross_dock_order\scripts\attribute_fixer.py" afterPath="" />
-      <change type="DELETED" beforePath="C:\Projects\DjangoProjects\cross_dock_order\scripts\status_fixer.py" afterPath="" />
-      <change type="DELETED" beforePath="C:\Projects\DjangoProjects\cross_dock_order\settings.py" afterPath="" />
-      <change type="DELETED" beforePath="C:\Projects\DjangoProjects\cross_dock_order\static\css\ui-lightness\images\ui-bg_diagonals-thick_18_b81900_40x40.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Projects\DjangoProjects\cross_dock_order\static\css\ui-lightness\images\ui-bg_diagonals-thick_20_666666_40x40.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Projects\DjangoProjects\cross_dock_order\static\css\ui-lightness\images\ui-bg_flat_10_000000_40x100.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Projects\DjangoProjects\cross_dock_order\static\css\ui-lightness\images\ui-bg_glass_100_f6f6f6_1x400.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Projects\DjangoProjects\cross_dock_order\static\css\ui-lightness\images\ui-bg_glass_100_fdf5ce_1x400.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Projects\DjangoProjects\cross_dock_order\static\css\ui-lightness\images\ui-bg_glass_65_ffffff_1x400.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Projects\DjangoProjects\cross_dock_order\static\css\ui-lightness\images\ui-bg_gloss-wave_35_f6a828_500x100.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Projects\DjangoProjects\cross_dock_order\static\css\ui-lightness\images\ui-bg_highlight-soft_100_eeeeee_1x100.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Projects\DjangoProjects\cross_dock_order\static\css\ui-lightness\images\ui-bg_highlight-soft_75_ffe45c_1x100.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Projects\DjangoProjects\cross_dock_order\static\css\ui-lightness\images\ui-icons_222222_256x240.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Projects\DjangoProjects\cross_dock_order\static\css\ui-lightness\images\ui-icons_228ef1_256x240.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Projects\DjangoProjects\cross_dock_order\static\css\ui-lightness\images\ui-icons_ef8c08_256x240.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Projects\DjangoProjects\cross_dock_order\static\css\ui-lightness\images\ui-icons_ffd27a_256x240.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Projects\DjangoProjects\cross_dock_order\static\css\ui-lightness\images\ui-icons_ffffff_256x240.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Projects\DjangoProjects\cross_dock_order\static\css\ui-lightness\jquery-ui-1.8.18.custom.css" afterPath="" />
-      <change type="DELETED" beforePath="C:\Projects\DjangoProjects\cross_dock_order\static\images\search-icon.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Projects\DjangoProjects\cross_dock_order\static\images\tarama.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Projects\DjangoProjects\cross_dock_order\static\images\zidaya_logo.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Projects\DjangoProjects\cross_dock_order\static\js\jquery-ui-1.8.18.custom.min.js" afterPath="" />
-      <change type="DELETED" beforePath="C:\Projects\DjangoProjects\cross_dock_order\templates\base.html" afterPath="" />
-      <change type="DELETED" beforePath="C:\Projects\DjangoProjects\cross_dock_order\templates\main.html" afterPath="" />
-      <change type="DELETED" beforePath="C:\Projects\DjangoProjects\cross_dock_order\templates\orderList.html" afterPath="" />
-      <change type="DELETED" beforePath="C:\Projects\DjangoProjects\cross_dock_order\templates\orders.html" afterPath="" />
-      <change type="DELETED" beforePath="C:\Projects\DjangoProjects\cross_dock_order\templates\transactionOrderList.html" afterPath="" />
-      <change type="DELETED" beforePath="C:\Projects\DjangoProjects\cross_dock_order\urls.py" afterPath="" />
-      <change type="MOVED" beforePath="C:\Projects\DjangoProjects\cross_dock_order\.idea\encodings.xml" afterPath="$PROJECT_DIR$/zerd/.idea/encodings.xml" />
-      <change type="MOVED" beforePath="C:\Projects\DjangoProjects\cross_dock_order\.idea\misc.xml" afterPath="$PROJECT_DIR$/zerd/.idea/misc.xml" />
-      <change type="MOVED" beforePath="C:\Projects\DjangoProjects\cross_dock_order\.idea\modules.xml" afterPath="$PROJECT_DIR$/zerd/.idea/modules.xml" />
-      <change type="MOVED" beforePath="C:\Projects\DjangoProjects\cross_dock_order\.idea\vcs.xml" afterPath="$PROJECT_DIR$/zerd/.idea/vcs.xml" />
-      <change type="MOVED" beforePath="C:\Projects\DjangoProjects\cross_dock_order\__init__.py" afterPath="$PROJECT_DIR$/zerd/.idea/.name" />
-      <change type="MOVED" beforePath="C:\Projects\DjangoProjects\cross_dock_order\order_check\__init__.py" afterPath="$PROJECT_DIR$/zerd/.idea/zerd.iml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/zerd/static/images/Sorting icons.psd" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/zerd/static/images/back_disabled.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/zerd/static/images/back_enabled.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/zerd/static/images/back_enabled_hover.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/zerd/static/images/background.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/zerd/static/images/bg.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/zerd/static/images/bg_spotbox_shadow.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/zerd/static/images/bg_spotbox_shadowsmall.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/zerd/static/images/collection.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/zerd/static/images/collection_hover.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/zerd/static/images/container-t.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/zerd/static/images/copy.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/zerd/static/images/copy_hover.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/zerd/static/images/csv.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/zerd/static/images/csv_hover.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/zerd/static/images/dot_overlay.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/zerd/static/images/forward_disabled.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/zerd/static/images/forward_enabled.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/zerd/static/images/forward_enabled_hover.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/zerd/static/images/header_navigation_gradient.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/zerd/static/images/header_navigation_ico_sprite.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/zerd/static/images/icn_warning.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/zerd/static/images/pdf.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/zerd/static/images/pdf_hover.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/zerd/static/images/print.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/zerd/static/images/print_hover.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/zerd/static/images/sort_asc.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/zerd/static/images/sort_asc_disabled.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/zerd/static/images/sort_both.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/zerd/static/images/sort_desc.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/zerd/static/images/sort_desc_disabled.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/zerd/static/images/ui-bg_flat_0_aaaaaa_40x100.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/zerd/static/images/ui-bg_flat_75_ffffff_40x100.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/zerd/static/images/ui-bg_glass_55_fbf9ee_1x400.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/zerd/static/images/ui-bg_glass_65_ffffff_1x400.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/zerd/static/images/ui-bg_glass_75_dadada_1x400.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/zerd/static/images/ui-bg_glass_75_e6e6e6_1x400.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/zerd/static/images/ui-bg_glass_95_fef1ec_1x400.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/zerd/static/images/ui-bg_highlight-soft_75_cccccc_1x100.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/zerd/static/images/ui-icons_222222_256x240.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/zerd/static/images/ui-icons_2e83ff_256x240.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/zerd/static/images/ui-icons_454545_256x240.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/zerd/static/images/ui-icons_888888_256x240.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/zerd/static/images/ui-icons_cd0a0a_256x240.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/zerd/static/images/xls.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/zerd/static/images/xls_hover.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/zerd/static/images/zidaya-logo.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/zerd/static/images/zidaya_logo.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/zerd/zerd_app/.idea/.name" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/zerd/zerd_app/.idea/zerd_app.iml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/zerd/script/init_cross_order.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/zerd/static/css/TableTools.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/zerd/static/css/TableTools_JUI.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/zerd/static/css/jquery-ui-1.8.4.custom.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/zerd/static/css/jquery.dataTables.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/zerd/static/css/jquery.dataTables_themeroller.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/zerd/static/css/zidaya.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/zerd/static/js/FixedColumns.min.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/zerd/static/js/TableTools.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/zerd/static/js/ZeroClipboard.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/zerd/static/js/jquery-1.5.2.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/zerd/static/js/jquery-ui-1.8.18.custom.min.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/zerd/static/js/jquery.dataTables.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/zerd/static/js/zidaya.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/zerd/zerd_app/.idea/encodings.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/zerd/zerd_app/.idea/misc.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/zerd/zerd_app/.idea/modules.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/zerd/zerd_app/.idea/vcs.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/zerd/zerd_app/.idea/workspace.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/zerd/zerd_app/__init__.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/zerd/zerd_app/cross_order/__init__.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/zerd/zerd_app/cross_order/admin.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/zerd/zerd_app/cross_order/helper_functions.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/zerd/zerd_app/cross_order/models.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/zerd/zerd_app/cross_order/templatetags/__init__.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/zerd/zerd_app/cross_order/templatetags/helper.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/zerd/zerd_app/cross_order/tests.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/zerd/zerd_app/cross_order/urls.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/zerd/zerd_app/cross_order/views.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/zerd/zerd_app/manage.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/zerd/zerd_app/settings.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/zerd/zerd_app/templates/base.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/zerd/zerd_app/templates/cross_order/boxes/confirm_box.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/zerd/zerd_app/templates/cross_order/boxes/history_box.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/zerd/zerd_app/templates/cross_order/list_order.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/zerd/zerd_app/templates/cross_order/list_supplier.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/zerd/zerd_app/templates/cross_order/list_transaction.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/zerd/zerd_app/templates/cross_order/list_transaction_details.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/zerd/zerd_app/templates/userprofile/login_or_register.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/zerd/zerd_app/urls.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/zerd/zerd_app/userprofile/__init__.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/zerd/zerd_app/userprofile/admin.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/zerd/zerd_app/userprofile/backends.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/zerd/zerd_app/userprofile/forms.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/zerd/zerd_app/userprofile/models.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/zerd/zerd_app/userprofile/tests.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/zerd/zerd_app/userprofile/urls.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/zerd/zerd_app/userprofile/views.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="cross_dock_order.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -169,6 +219,286 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="zerd" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="zerd_app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="userprofile" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="cross_dock_order" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="cross_dock_order" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="zerd" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="zerd_app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="templates" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="cross_dock_order" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="cross_dock_order" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="zerd" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="zerd_app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="templates" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="userprofile" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="cross_dock_order" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="cross_dock_order" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="zerd" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="zerd_app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="templates" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="cross_order" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="cross_dock_order" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="cross_dock_order" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="zerd" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="zerd_app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="templates" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="cross_order" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="boxes" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="cross_dock_order" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="cross_dock_order" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="zerd" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="zerd_app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="cross_order" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="cross_dock_order" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="cross_dock_order" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="zerd" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="zerd_app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="cross_order" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="templatetags" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="cross_dock_order" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="cross_dock_order" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="zerd" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="zerd_app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value=".idea" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="cross_dock_order" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="cross_dock_order" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="zerd" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="static" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="cross_dock_order" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="cross_dock_order" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="zerd" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="static" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="js" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="cross_dock_order" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="cross_dock_order" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="zerd" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="static" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="css" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="cross_dock_order" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="cross_dock_order" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="zerd" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="script" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="cross_dock_order" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="cross_dock_order" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="zerd" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value=".idea" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -375,11 +705,12 @@
     <frame x="-8" y="-8" width="1554" height="916" extended-state="6" />
     <editor active="false" />
     <layout>
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32918397" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32365146" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.13434727" sideWeight="0.16182573" order="1" side_tool="true" content_ui="tabs" />
       <window_info id="Dependency Viewer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.18205805" sideWeight="0.6710354" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.21635884" sideWeight="0.6710354" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3042877" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24246396" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32896462" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
@@ -417,7 +748,7 @@
     <option name="CHECK_COMMIT_MESSAGE_SPELLING" value="true" />
     <option name="DEFAULT_PATCH_EXTENSION" value="patch" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
-    <option name="LAST_COMMIT_MESSAGE" />
+    <option name="LAST_COMMIT_MESSAGE" value="Models are designed to be more extendable&#10;Base template is created&#10;New UI desing is done&#10;jQuery datatable is embeded - need to be improved&#10;User forms are designed and improved to handle errors&#10;Refactoring is done in some early functions to be more efficient" />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="true" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_FILES_UP_TO_DATE_BEFORE_COMMIT" value="false" />
@@ -430,6 +761,7 @@
     <option name="UPDATE_GROUP_BY_CHANGELIST" value="false" />
     <option name="SHOW_FILE_HISTORY_AS_TREE" value="false" />
     <option name="FILE_HISTORY_SPLITTER_PROPORTION" value="0.6" />
+    <MESSAGE value="Models are designed to be more extendable&#10;Base template is created&#10;New UI desing is done&#10;jQuery datatable is embeded - need to be improved&#10;User forms are designed and improved to handle errors&#10;Refactoring is done in some early functions to be more efficient" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

@@ -1,35 +1,56 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="BookmarkManager">
-    <bookmark url="file://$PROJECT_DIR$/order_check/views.py" line="56" mnemonic="7" />
-  </component>
   <component name="ChangeListManager">
     <list default="true" id="ba66b0b9-79f6-4684-844b-25a684a9ef94" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/css/ui-lightness/images/ui-bg_diagonals-thick_18_b81900_40x40.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/css/ui-lightness/images/ui-bg_diagonals-thick_20_666666_40x40.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/css/ui-lightness/images/ui-bg_flat_10_000000_40x100.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/css/ui-lightness/images/ui-bg_glass_100_f6f6f6_1x400.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/css/ui-lightness/images/ui-bg_glass_100_fdf5ce_1x400.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/css/ui-lightness/images/ui-bg_glass_65_ffffff_1x400.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/css/ui-lightness/images/ui-bg_gloss-wave_35_f6a828_500x100.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/css/ui-lightness/images/ui-bg_highlight-soft_100_eeeeee_1x100.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/css/ui-lightness/images/ui-bg_highlight-soft_75_ffe45c_1x100.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/css/ui-lightness/images/ui-icons_222222_256x240.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/css/ui-lightness/images/ui-icons_228ef1_256x240.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/css/ui-lightness/images/ui-icons_ef8c08_256x240.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/css/ui-lightness/images/ui-icons_ffd27a_256x240.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/css/ui-lightness/images/ui-icons_ffffff_256x240.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/order_check/forms.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/css/ui-lightness/jquery-ui-1.8.18.custom.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/js/jquery-ui-1.8.18.custom.min.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/templates/orderList.html" />
-      <change type="DELETED" beforePath="C:\Projects\DjangoProjects\cross_dock_order\README" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/vcs.xml" afterPath="$PROJECT_DIR$/.idea/vcs.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/order_check/views.py" afterPath="$PROJECT_DIR$/order_check/views.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/settings.py" afterPath="$PROJECT_DIR$/settings.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/orders.html" afterPath="$PROJECT_DIR$/templates/orders.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/urls.py" afterPath="$PROJECT_DIR$/urls.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/zerd/.idea/workspace.xml" />
+      <change type="DELETED" beforePath="C:\Projects\DjangoProjects\cross_dock_order\.idea\.name" afterPath="" />
+      <change type="DELETED" beforePath="C:\Projects\DjangoProjects\cross_dock_order\.idea\cross_dock_order.iml" afterPath="" />
+      <change type="DELETED" beforePath="C:\Projects\DjangoProjects\cross_dock_order\.idea\encodings.xml" afterPath="" />
+      <change type="DELETED" beforePath="C:\Projects\DjangoProjects\cross_dock_order\.idea\misc.xml" afterPath="" />
+      <change type="DELETED" beforePath="C:\Projects\DjangoProjects\cross_dock_order\.idea\modules.xml" afterPath="" />
+      <change type="DELETED" beforePath="C:\Projects\DjangoProjects\cross_dock_order\.idea\vcs.xml" afterPath="" />
+      <change type="DELETED" beforePath="C:\Projects\DjangoProjects\cross_dock_order\.idea\workspace.xml" afterPath="" />
+      <change type="DELETED" beforePath="C:\Projects\DjangoProjects\cross_dock_order\__init__.py" afterPath="" />
+      <change type="DELETED" beforePath="C:\Projects\DjangoProjects\cross_dock_order\manage.py" afterPath="" />
+      <change type="DELETED" beforePath="C:\Projects\DjangoProjects\cross_dock_order\order_check\__init__.py" afterPath="" />
+      <change type="DELETED" beforePath="C:\Projects\DjangoProjects\cross_dock_order\order_check\forms.py" afterPath="" />
+      <change type="DELETED" beforePath="C:\Projects\DjangoProjects\cross_dock_order\order_check\models.py" afterPath="" />
+      <change type="DELETED" beforePath="C:\Projects\DjangoProjects\cross_dock_order\order_check\tests.py" afterPath="" />
+      <change type="DELETED" beforePath="C:\Projects\DjangoProjects\cross_dock_order\order_check\views.py" afterPath="" />
+      <change type="DELETED" beforePath="C:\Projects\DjangoProjects\cross_dock_order\scripts\attribute_fixer.py" afterPath="" />
+      <change type="DELETED" beforePath="C:\Projects\DjangoProjects\cross_dock_order\scripts\status_fixer.py" afterPath="" />
+      <change type="DELETED" beforePath="C:\Projects\DjangoProjects\cross_dock_order\settings.py" afterPath="" />
+      <change type="DELETED" beforePath="C:\Projects\DjangoProjects\cross_dock_order\static\css\ui-lightness\images\ui-bg_diagonals-thick_18_b81900_40x40.png" afterPath="" />
+      <change type="DELETED" beforePath="C:\Projects\DjangoProjects\cross_dock_order\static\css\ui-lightness\images\ui-bg_diagonals-thick_20_666666_40x40.png" afterPath="" />
+      <change type="DELETED" beforePath="C:\Projects\DjangoProjects\cross_dock_order\static\css\ui-lightness\images\ui-bg_flat_10_000000_40x100.png" afterPath="" />
+      <change type="DELETED" beforePath="C:\Projects\DjangoProjects\cross_dock_order\static\css\ui-lightness\images\ui-bg_glass_100_f6f6f6_1x400.png" afterPath="" />
+      <change type="DELETED" beforePath="C:\Projects\DjangoProjects\cross_dock_order\static\css\ui-lightness\images\ui-bg_glass_100_fdf5ce_1x400.png" afterPath="" />
+      <change type="DELETED" beforePath="C:\Projects\DjangoProjects\cross_dock_order\static\css\ui-lightness\images\ui-bg_glass_65_ffffff_1x400.png" afterPath="" />
+      <change type="DELETED" beforePath="C:\Projects\DjangoProjects\cross_dock_order\static\css\ui-lightness\images\ui-bg_gloss-wave_35_f6a828_500x100.png" afterPath="" />
+      <change type="DELETED" beforePath="C:\Projects\DjangoProjects\cross_dock_order\static\css\ui-lightness\images\ui-bg_highlight-soft_100_eeeeee_1x100.png" afterPath="" />
+      <change type="DELETED" beforePath="C:\Projects\DjangoProjects\cross_dock_order\static\css\ui-lightness\images\ui-bg_highlight-soft_75_ffe45c_1x100.png" afterPath="" />
+      <change type="DELETED" beforePath="C:\Projects\DjangoProjects\cross_dock_order\static\css\ui-lightness\images\ui-icons_222222_256x240.png" afterPath="" />
+      <change type="DELETED" beforePath="C:\Projects\DjangoProjects\cross_dock_order\static\css\ui-lightness\images\ui-icons_228ef1_256x240.png" afterPath="" />
+      <change type="DELETED" beforePath="C:\Projects\DjangoProjects\cross_dock_order\static\css\ui-lightness\images\ui-icons_ef8c08_256x240.png" afterPath="" />
+      <change type="DELETED" beforePath="C:\Projects\DjangoProjects\cross_dock_order\static\css\ui-lightness\images\ui-icons_ffd27a_256x240.png" afterPath="" />
+      <change type="DELETED" beforePath="C:\Projects\DjangoProjects\cross_dock_order\static\css\ui-lightness\images\ui-icons_ffffff_256x240.png" afterPath="" />
+      <change type="DELETED" beforePath="C:\Projects\DjangoProjects\cross_dock_order\static\css\ui-lightness\jquery-ui-1.8.18.custom.css" afterPath="" />
+      <change type="DELETED" beforePath="C:\Projects\DjangoProjects\cross_dock_order\static\images\search-icon.png" afterPath="" />
+      <change type="DELETED" beforePath="C:\Projects\DjangoProjects\cross_dock_order\static\images\tarama.png" afterPath="" />
+      <change type="DELETED" beforePath="C:\Projects\DjangoProjects\cross_dock_order\static\images\zidaya_logo.png" afterPath="" />
+      <change type="DELETED" beforePath="C:\Projects\DjangoProjects\cross_dock_order\static\js\jquery-ui-1.8.18.custom.min.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\Projects\DjangoProjects\cross_dock_order\templates\base.html" afterPath="" />
+      <change type="DELETED" beforePath="C:\Projects\DjangoProjects\cross_dock_order\templates\main.html" afterPath="" />
+      <change type="DELETED" beforePath="C:\Projects\DjangoProjects\cross_dock_order\templates\orderList.html" afterPath="" />
+      <change type="DELETED" beforePath="C:\Projects\DjangoProjects\cross_dock_order\templates\orders.html" afterPath="" />
+      <change type="DELETED" beforePath="C:\Projects\DjangoProjects\cross_dock_order\templates\transactionOrderList.html" afterPath="" />
+      <change type="DELETED" beforePath="C:\Projects\DjangoProjects\cross_dock_order\urls.py" afterPath="" />
+      <change type="MOVED" beforePath="C:\Projects\DjangoProjects\cross_dock_order\.idea\encodings.xml" afterPath="$PROJECT_DIR$/zerd/.idea/encodings.xml" />
+      <change type="MOVED" beforePath="C:\Projects\DjangoProjects\cross_dock_order\.idea\misc.xml" afterPath="$PROJECT_DIR$/zerd/.idea/misc.xml" />
+      <change type="MOVED" beforePath="C:\Projects\DjangoProjects\cross_dock_order\.idea\modules.xml" afterPath="$PROJECT_DIR$/zerd/.idea/modules.xml" />
+      <change type="MOVED" beforePath="C:\Projects\DjangoProjects\cross_dock_order\.idea\vcs.xml" afterPath="$PROJECT_DIR$/zerd/.idea/vcs.xml" />
+      <change type="MOVED" beforePath="C:\Projects\DjangoProjects\cross_dock_order\__init__.py" afterPath="$PROJECT_DIR$/zerd/.idea/.name" />
+      <change type="MOVED" beforePath="C:\Projects\DjangoProjects\cross_dock_order\order_check\__init__.py" afterPath="$PROJECT_DIR$/zerd/.idea/zerd.iml" />
     </list>
     <ignored path="cross_dock_order.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -51,62 +72,7 @@
     <favorites_list name="cross_dock_order" />
   </component>
   <component name="FileEditorManager">
-    <leaf>
-      <file leaf-file-name="orders.html" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/templates/orders.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="458" column="38" selection-start="15889" selection-end="15889" vertical-scroll-proportion="-0.65384614">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="forms.py" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/order_check/forms.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="3" column="29" selection-start="101" selection-end="101" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="views.py" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/order_check/views.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="55" column="0" selection-start="1872" selection-end="1872" vertical-scroll-proportion="0.29001883">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="orderList.html" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/templates/orderList.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="532" column="60" selection-start="20567" selection-end="20567" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="urls.py" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/urls.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="16" column="14" selection-start="595" selection-end="601" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="models.py" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/order_check/models.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="76" column="6" selection-start="3504" selection-end="3504" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+    <leaf />
   </component>
   <component name="FindManager">
     <FindUsagesManager>
@@ -120,14 +86,22 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/order_check/models.py" />
         <option value="$PROJECT_DIR$/README" />
-        <option value="$PROJECT_DIR$/settings.py" />
-        <option value="$PROJECT_DIR$/templates/orderList.html" />
         <option value="$PROJECT_DIR$/urls.py" />
         <option value="$PROJECT_DIR$/order_check/forms.py" />
+        <option value="$PROJECT_DIR$/templates/main.html" />
         <option value="$PROJECT_DIR$/templates/orders.html" />
+        <option value="$PROJECT_DIR$/templates/orderList.html" />
+        <option value="$PROJECT_DIR$/templates/base.html" />
+        <option value="$PROJECT_DIR$/templates/transactionOrderList.html" />
+        <option value="$PROJECT_DIR$/settings.py" />
+        <option value="$PROJECT_DIR$/scripts/cross_checker.py" />
+        <option value="$PROJECT_DIR$/settings_cross.py" />
+        <option value="$PROJECT_DIR$/scripts/status_fixer.py" />
+        <option value="$PROJECT_DIR$/scripts/attribute_fixer.py" />
+        <option value="$PROJECT_DIR$/order_check/models.py" />
         <option value="$PROJECT_DIR$/order_check/views.py" />
+        <option value="$PROJECT_DIR$/zerd/zerd_app/settings.py" />
       </list>
     </option>
   </component>
@@ -157,7 +131,6 @@
       <sortByType />
     </navigator>
     <panes>
-      <pane id="Favorites" />
       <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
@@ -176,18 +149,12 @@
               <option name="myItemId" value="cross_dock_order" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
-          </PATH>
-          <PATH>
             <PATH_ELEMENT>
-              <option name="myItemId" value="cross_dock_order" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="cross_dock_order" />
+              <option name="myItemId" value="zerd" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="templates" />
+              <option name="myItemId" value="zerd_app" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -201,43 +168,65 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="static" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="cross_dock_order" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="cross_dock_order" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="order_check" />
+              <option name="myItemId" value="zerd" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
         </subPane>
       </pane>
+      <pane id="Favorites" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="options.splitter.main.proportions" value="0.3" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="options.lastSelected" value="reference.settingsdialog.IDE.editor.colors" />
     <property name="recentsLimit" value="5" />
+    <property name="options.lastSelected" value="reference.settingsdialog.IDE.editor.colors" />
     <property name="DefaultHtmlFileTemplate" value="Html" />
-    <property name="options.searchVisible" value="true" />
     <property name="options.splitter.details.proportions" value="0.2" />
+    <property name="options.searchVisible" value="true" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Projects\DjangoProjects\cross_dock_order" />
       <recent name="C:\Projects\DjangoProjects\cross_dock_order\templates" />
     </key>
   </component>
   <component name="RunManager" selected="Django server.cross_dock_order">
+    <configuration default="false" name="cross_checker" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/scripts" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <module name="cross_dock_order" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/scripts/cross_checker.py" />
+      <option name="PARAMETERS" value="" />
+      <RunnerSettings RunnerId="PythonRunner" />
+      <ConfigurationWrapper RunnerId="PythonRunner" />
+      <method />
+    </configuration>
+    <configuration default="false" name="attribute_fixer" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/scripts" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <module name="cross_dock_order" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/scripts/attribute_fixer.py" />
+      <option name="PARAMETERS" value="" />
+      <RunnerSettings RunnerId="PyDebugRunner" />
+      <RunnerSettings RunnerId="PythonRunner" />
+      <ConfigurationWrapper RunnerId="PyDebugRunner" />
+      <ConfigurationWrapper RunnerId="PythonRunner" />
+      <method />
+    </configuration>
     <configuration default="true" type="PythonUnitTestConfigurationType" factoryName="Python's unittest">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -311,8 +300,8 @@
       <envs>
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="" />
+      <option name="SDK_HOME" value="C:/Python27/python.exe" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/zerd/zerd_app" />
       <option name="IS_MODULE_SDK" value="false" />
       <module name="cross_dock_order" />
       <option name="port" value="8000" />
@@ -329,8 +318,10 @@
       <ConfigurationWrapper RunnerId="PythonRunner" />
       <method />
     </configuration>
-    <list size="1">
+    <list size="3">
       <item index="0" class="java.lang.String" itemvalue="Django server.cross_dock_order" />
+      <item index="1" class="java.lang.String" itemvalue="Python.cross_checker" />
+      <item index="2" class="java.lang.String" itemvalue="Python.attribute_fixer" />
     </list>
   </component>
   <component name="ShelveChangesManager" show_recycled="false" />
@@ -381,21 +372,21 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1616" height="876" extended-state="6" />
+    <frame x="-8" y="-8" width="1554" height="916" extended-state="6" />
     <editor active="false" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32918397" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32365146" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.13434727" sideWeight="0.16182573" order="1" side_tool="true" content_ui="tabs" />
-      <window_info id="Dependency Viewer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.13434727" sideWeight="0.7919556" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Dependency Viewer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.18205805" sideWeight="0.6710354" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3042877" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.20804438" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32918397" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24246396" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32896462" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32918397" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
@@ -445,87 +436,24 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="python-line">
           <url>file://$PROJECT_DIR$/order_check/views.py</url>
-          <line>98</line>
+          <line>93</line>
         </line-breakpoint>
         <line-breakpoint enabled="true" type="python-line">
-          <url>file://$PROJECT_DIR$/order_check/views.py</url>
-          <line>42</line>
+          <url>file://$PROJECT_DIR$/scripts/attribute_fixer.py</url>
+          <line>17</line>
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/__init__.py">
+    <entry file="file://C:/Python27/Lib/site-packages/django/contrib/auth/__init__.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
+        <state line="64" column="4" selection-start="2678" selection-end="2678" vertical-scroll-proportion="0.14625229" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/order_check/tests.py">
+    <entry file="file://C:/Python27/Lib/string.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/manage.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/settings.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="69" column="40" selection-start="2584" selection-end="2584" vertical-scroll-proportion="-10.56" />
-      </provider>
-    </entry>
-    <entry file="file://C:/Python27/Lib/site-packages/django/forms/models.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/orders.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="458" column="38" selection-start="15889" selection-end="15889" vertical-scroll-proportion="-0.65384614">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/order_check/forms.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="3" column="29" selection-start="101" selection-end="101" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/orderList.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="532" column="60" selection-start="20567" selection-end="20567" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/urls.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="16" column="14" selection-start="595" selection-end="601" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/order_check/models.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="76" column="6" selection-start="3504" selection-end="3504" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://C:/Python27/Lib/site-packages/django/contrib/auth/decorators.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="22" column="0" selection-start="796" selection-end="796" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://C:/Python27/Lib/site-packages/django/core/handlers/base.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="124" column="0" selection-start="5412" selection-end="5412" vertical-scroll-proportion="0.5462185">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/order_check/views.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="55" column="0" selection-start="1872" selection-end="1872" vertical-scroll-proportion="0.29001883">
-          <folding />
-        </state>
+        <state line="280" column="4" selection-start="9126" selection-end="9126" vertical-scroll-proportion="0.33288044" />
       </provider>
     </entry>
   </component>

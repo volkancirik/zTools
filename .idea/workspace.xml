@@ -4,7 +4,6 @@
     <list default="true" id="ba66b0b9-79f6-4684-844b-25a684a9ef94" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/zerd/zerd_app/cross_order/views.py" afterPath="$PROJECT_DIR$/zerd/zerd_app/cross_order/views.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/zerd/zerd_app/settings.py" afterPath="$PROJECT_DIR$/zerd/zerd_app/settings.py" />
     </list>
     <ignored path="cross_dock_order.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -66,7 +65,7 @@
       <file leaf-file-name="views.py" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/zerd/zerd_app/cross_order/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="426" column="0" selection-start="16602" selection-end="16602" vertical-scroll-proportion="0.5840708">
+            <state line="413" column="3" selection-start="15955" selection-end="15955" vertical-scroll-proportion="0.32079646">
               <folding />
             </state>
           </provider>
@@ -573,7 +572,7 @@
     <option name="CHECK_COMMIT_MESSAGE_SPELLING" value="true" />
     <option name="DEFAULT_PATCH_EXTENSION" value="patch" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
-    <option name="LAST_COMMIT_MESSAGE" value="Issue 32 and 35 are solved" />
+    <option name="LAST_COMMIT_MESSAGE" value="Export Excel Supplier bug fixed" />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="true" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_FILES_UP_TO_DATE_BEFORE_COMMIT" value="false" />
@@ -590,6 +589,7 @@
     <MESSAGE value="Export to Excel function, differentiated for suppliers" />
     <MESSAGE value="Export to Excel function for suppliers, total cost added" />
     <MESSAGE value="Issue 32 and 35 are solved" />
+    <MESSAGE value="Export Excel Supplier bug fixed" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -695,7 +695,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/zerd/zerd_app/cross_order/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="426" column="0" selection-start="16602" selection-end="16602" vertical-scroll-proportion="0.5840708">
+        <state line="413" column="3" selection-start="15955" selection-end="15955" vertical-scroll-proportion="0.32079646">
           <folding />
         </state>
       </provider>

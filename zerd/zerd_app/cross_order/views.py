@@ -358,3 +358,69 @@ def exportExcelTransactions(request):
 
     book.save(response)
     return response
+
+@login_required
+def exportExcelForSupplier(request):
+    code= ""
+    cs = None
+
+    if "code" in request.GET:
+        code = request.GET["code"]
+    try:
+        cs = CrossStatus.objects.get(pk = int(request.GET['cstatus']))
+    except:
+        pass
+
+    given_transaction = Transactions.objects.get(code = code)
+    orderTransactionPairs = OrderTransaction.objects.filter(trans = given_transaction)
+    if cs is not None:
+        orderTransactionPairs = orderTransactionPairs.filter(order__ordercrossdetails__cross_status=cs)
+        
+    orders = list()
+    skus = dict()
+    total_costs = dict()
+    total_cost = 0
+    for aPair in orderTransactionPairs:
+        anOrder = Order.objects.get(pk = aPair.order.id)
+        sku = aPair.order.sku
+        cost = float(aPair.order.cost)
+        orders.append(anOrder)
+        num_of_same_sku = orderTransactionPairs.filter(order__sku=sku).count()
+        skus[sku] = num_of_same_sku
+        total_costs[sku]  = cost * float(num_of_same_sku)
+
+    x = 5
+    book = xlwt.Workbook(encoding='utf8')
+    sheet = book.add_sheet('untitled')
+    field_names = ['name','sku','sku_supplier_simple','barcode_ean','size','cost']
+
+    index_counter = 1
+    sheet.write(0,0,[unicode("Urun Adi").encode('utf-8') ])
+    sheet.write(0,1,[unicode("SKU").encode('utf-8') ])
+    sheet.write(0,2,[unicode("sku_supplier_simple").encode('utf-8') ])
+    sheet.write(0,3,[unicode("Barkod").encode('utf-8') ])
+    sheet.write(0,4,[unicode("Beden/Boyut").encode('utf-8') ])
+    sheet.write(0,5,[unicode("Tutar").encode('utf-8') ])
+    sheet.write(0,6,[unicode("Miktar").encode('utf-8') ])
+    sheet.write(0,7,[unicode("Toplam Tutar").encode('utf-8') ])
+
+    count_j = 0
+    row_fixer = 0
+    for index_i,an_order in enumerate(orders):
+        if an_order.sku in skus:
+            for index_j,field in enumerate(field_names):
+                sheet.write(index_i+1-row_fixer,index_j,[unicode(getattr(an_order, field)).encode('utf-8') ])
+                count_j = index_j
+            sheet.write(index_i+1-row_fixer,count_j+1,[unicode(skus[an_order.sku]).encode('utf-8') ])
+            sheet.write(index_i+1-row_fixer,count_j+2,[unicode(total_costs[an_order.sku]).encode('utf-8') ])
+            skus.pop(an_order.sku)
+        else:
+            row_fixer = row_fixer + 1
+    response = HttpResponse(mimetype='application/vnd.ms-excel')
+
+    file_string = 'attachment; filename='+code+'.xls'
+    response['Content-Disposition'] = file_string
+
+    book.save(response)
+    return response
+

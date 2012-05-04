@@ -10,4 +10,5 @@ urlpatterns = patterns('',
     (r'^order_history/$', 'zerd_app.cross_order.views.order_history'),
     (r'^exportOrders/$', 'zerd_app.cross_order.views.exportExcelOrders'),
     (r'^exportTransactions/$', 'zerd_app.cross_order.views.exportExcelTransactions'),
+    (r'^exportExcelForSupplier/$', 'zerd_app.cross_order.views.exportExcelForSupplier'),
 )

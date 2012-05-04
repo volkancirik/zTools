@@ -16,6 +16,9 @@
                 <thead>
                     <tr>
                         <th>
+                            Supplier Name
+                        </th>
+                        <th>
                             Transcation Code
                         </th>
                         <th>
@@ -24,11 +27,20 @@
                         <th>
                             Total # of Items
                         </th>
+                        <th>
+                            Total Cost
+                        </th>
+                        <th>
+                            User
+                        </th>
                     </tr>
                 </thead>
                 <tbody>
                     {% for t in transList %}
                         <tr>
+                            <td>
+                                {{ t|getSupplierName }}
+                            </td>
                             <td>
                                 <a href="/cross_order/transaction_details/{{ t.code }}/">
                                     {{ t.code }}
@@ -39,6 +51,12 @@
                             </td>
                             <td>
                                 {{ t|totalOrderCount }}
+                            </td>
+                            <td>
+                                {{ t|getTotalCost }} TL
+                            </td>
+                            <td>
+                                {{ t|getUser }} 
                             </td>
                         </tr>
                     {% endfor %}

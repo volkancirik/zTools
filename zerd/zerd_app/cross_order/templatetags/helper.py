@@ -1,7 +1,7 @@
 import datetime
 from django import template
-from cross_order.models import Supplier, CrossStatus, OrderTransaction
-
+from cross_order.models import Supplier, CrossStatus, OrderTransaction, Transactions
+from django.db.models import Sum
 register = template.Library()
 
 @register.filter
@@ -42,3 +42,15 @@ def total(sup):
 @register.filter
 def totalOrderCount(t):
     return OrderTransaction.objects.filter(trans=t).count()
+
+@register.filter
+def getSupplierName(t):
+    return OrderTransaction.objects.filter(trans=t)[0].order.supplier.name
+
+@register.filter
+def getTotalCost(t):
+    return OrderTransaction.objects.filter(trans=t).aggregate(Sum('order__cost'))["order__cost__sum"]
+
+@register.filter
+def getUser(t):
+    return t.create_user.email

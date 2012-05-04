@@ -96,7 +96,7 @@
                             <td>{{ o.ordercrossdetails.supplier_order_date|date:"d/M/Y H:m:s" }}</td>
                             <td>
                                 {% for lu in o.lastupdate_set.all|slice:":1" %}
-                                     {{ lu.user.email }} {{  lu.update_date|date:"d/M/Y H:i:s" }}
+                                     {{ lu.user.username }} {{  lu.update_date|date:"d/M/Y H:i:s" }}
                                     <br/>
                                     <a href="javascript:viewOrderHistory({{ o.pk }})"> History</a>
                                 {% endfor %}

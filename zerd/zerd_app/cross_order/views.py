@@ -138,7 +138,7 @@ def update_order_list(request):
 def transaction_list(request):
     return render_response(request, 'cross_order/list_transaction.html',
             {
-                'transList':Transactions.objects.filter(create_user=request.user),
+                'transList':Transactions.objects.all(),
             })
 
 @login_required

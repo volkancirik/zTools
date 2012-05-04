@@ -407,8 +407,8 @@ def exportExcelForSupplier(request):
 
     count_j = 0
     row_fixer = 0
-    last_row = 0
-    last_column = 0
+    
+    num_of_item_listed = skus.__len__()
     for index_i,an_order in enumerate(orders):
         if an_order.sku in skus:
             for index_j,field in enumerate(field_names):
@@ -417,11 +417,11 @@ def exportExcelForSupplier(request):
             sheet.write(index_i+1-row_fixer,count_j+1,[unicode(skus[an_order.sku]).encode('utf-8') ])
             sheet.write(index_i+1-row_fixer,count_j+2,[unicode(total_costs[an_order.sku]).encode('utf-8') ])
             skus.pop(an_order.sku)
-            last_column = count_j + 2
         else:
             row_fixer = row_fixer + 1
-        last_row = index_i + 1
-    sheet.write(last_row,last_column,[unicode(total_cost).encode('utf-8') ])
+
+    sheet.write(num_of_item_listed+2,6,[unicode('Genel Toplam').encode('utf-8') ])
+    sheet.write(num_of_item_listed+2,7,[unicode(total_cost).encode('utf-8') ])
     response = HttpResponse(mimetype='application/vnd.ms-excel')
 
     file_string = 'attachment; filename='+code+'.xls'

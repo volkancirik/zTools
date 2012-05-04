@@ -1,8 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="ba66b0b9-79f6-4684-844b-25a684a9ef94" name="Default" comment="">
+    <list default="true" id="ba66b0b9-79f6-4684-844b-25a684a9ef94" name="Default" comment="Merge branch 'master' of github.com:wolet/cross_dock_order&#10;&#10;Conflicts:&#10;&#9;.idea/workspace.xml&#10;">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/zerd/zerd_app/cross_order/views.py" afterPath="$PROJECT_DIR$/zerd/zerd_app/cross_order/views.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/zerd/zerd_app/settings.py" afterPath="$PROJECT_DIR$/zerd/zerd_app/settings.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/zerd/zerd_app/templates/cross_order/list_order.html" afterPath="$PROJECT_DIR$/zerd/zerd_app/templates/cross_order/list_order.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/zerd/zerd_app/templates/cross_order/list_transaction.html" afterPath="$PROJECT_DIR$/zerd/zerd_app/templates/cross_order/list_transaction.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/zerd/zerd_app/templates/cross_order/list_transaction_details.html" afterPath="$PROJECT_DIR$/zerd/zerd_app/templates/cross_order/list_transaction_details.html" />
     </list>
     <ignored path="cross_dock_order.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -28,7 +33,7 @@
       <file leaf-file-name="list_order.html" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/zerd/zerd_app/templates/cross_order/list_order.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-0.0">
+            <state line="196" column="38" selection-start="8304" selection-end="8304" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -37,16 +42,34 @@
       <file leaf-file-name="list_transaction.html" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/zerd/zerd_app/templates/cross_order/list_transaction.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="16" column="24" selection-start="392" selection-end="392" vertical-scroll-proportion="-8.5">
+            <state line="49" column="67" selection-start="1606" selection-end="1606" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="views.py" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="views.py" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/zerd/zerd_app/cross_order/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="413" column="56" selection-start="16000" selection-end="16000" vertical-scroll-proportion="0.63135594">
+            <state line="413" column="56" selection-start="16008" selection-end="16008" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="list_transaction_details.html" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/zerd/zerd_app/templates/cross_order/list_transaction_details.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="177" column="56" selection-start="7696" selection-end="7696" vertical-scroll-proportion="0.7605634">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="list_supplier.html" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/zerd/zerd_app/templates/cross_order/list_supplier.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="84" column="38" selection-start="2967" selection-end="2972" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -66,10 +89,6 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/urls.py" />
-        <option value="$PROJECT_DIR$/order_check/forms.py" />
-        <option value="$PROJECT_DIR$/templates/main.html" />
-        <option value="$PROJECT_DIR$/templates/orders.html" />
         <option value="$PROJECT_DIR$/templates/orderList.html" />
         <option value="$PROJECT_DIR$/templates/base.html" />
         <option value="$PROJECT_DIR$/templates/transactionOrderList.html" />
@@ -82,6 +101,10 @@
         <option value="$PROJECT_DIR$/order_check/views.py" />
         <option value="$PROJECT_DIR$/zerd/zerd_app/settings.py" />
         <option value="$PROJECT_DIR$/zerd/script/update_cross_status.py" />
+        <option value="$PROJECT_DIR$/zerd/zerd_app/templates/cross_order/list_transaction.html" />
+        <option value="$PROJECT_DIR$/zerd/zerd_app/templates/cross_order/list_transaction_details.html" />
+        <option value="$PROJECT_DIR$/zerd/zerd_app/templates/cross_order/list_supplier.html" />
+        <option value="$PROJECT_DIR$/zerd/zerd_app/templates/cross_order/list_order.html" />
       </list>
     </option>
   </component>
@@ -111,6 +134,8 @@
       <sortByType />
     </navigator>
     <panes>
+      <pane id="Favorites" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -134,6 +159,54 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="zerd_app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="cross_dock_order" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="cross_dock_order" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="zerd" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="zerd_app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="templates" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="cross_dock_order" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="cross_dock_order" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="zerd" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="zerd_app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="templates" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="cross_order" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -182,29 +255,9 @@
               <option name="myItemId" value="cross_dock_order" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="zerd" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="script" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="cross_dock_order" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="cross_dock_order" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
           </PATH>
         </subPane>
       </pane>
-      <pane id="Favorites" />
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -405,19 +458,19 @@
     <frame x="-8" y="-8" width="1554" height="916" extended-state="6" />
     <editor active="false" />
     <layout>
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32896462" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32896462" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32365146" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.13434727" sideWeight="0.16182573" order="1" side_tool="true" content_ui="tabs" />
-      <window_info id="Dependency Viewer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.25065964" sideWeight="0.6710354" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Dependency Viewer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.25065964" sideWeight="0.6710354" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3042877" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24246396" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32896462" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32896462" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32918397" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32896462" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
@@ -493,56 +546,58 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/zerd/script/size_fixer.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/zerd/script/duplicate_fixer.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="13" column="0" selection-start="0" selection-end="1439" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
+        <state line="13" column="0" selection-start="0" selection-end="1439" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/zerd/script/update_cross_status.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="32" column="0" selection-start="1024" selection-end="1024" vertical-scroll-proportion="0.30706522">
-          <folding />
-        </state>
+        <state line="32" column="0" selection-start="1024" selection-end="1024" vertical-scroll-proportion="0.30706522" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/zerd/script/init_cross_order.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="107" column="0" selection-start="3780" selection-end="3988" vertical-scroll-proportion="0.023097826">
-          <folding />
-        </state>
+        <state line="107" column="0" selection-start="3780" selection-end="3988" vertical-scroll-proportion="0.023097826" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/zerd/zerd_app/cross_order/models.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="9" column="6" selection-start="275" selection-end="275" vertical-scroll-proportion="0.023097826">
-          <folding />
-        </state>
+        <state line="9" column="6" selection-start="275" selection-end="275" vertical-scroll-proportion="0.023097826" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/zerd/zerd_app/templates/cross_order/list_order.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+        <state line="196" column="38" selection-start="8304" selection-end="8304" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/zerd/zerd_app/templates/cross_order/list_transaction.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="16" column="24" selection-start="392" selection-end="392" vertical-scroll-proportion="-8.5">
+        <state line="49" column="67" selection-start="1606" selection-end="1606" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/zerd/zerd_app/cross_order/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="413" column="56" selection-start="16000" selection-end="16000" vertical-scroll-proportion="0.63135594">
+        <state line="413" column="56" selection-start="16008" selection-end="16008" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/zerd/zerd_app/templates/cross_order/list_supplier.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="84" column="38" selection-start="2967" selection-end="2972" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/zerd/zerd_app/templates/cross_order/list_transaction_details.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="177" column="56" selection-start="7696" selection-end="7696" vertical-scroll-proportion="0.7605634">
           <folding />
         </state>
       </provider>

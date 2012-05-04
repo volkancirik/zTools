@@ -47,7 +47,7 @@
                                 </a>
                             </td>
                             <td>
-                                {{ t.create_date }}
+                                {{ t.create_date|date:"d/M/Y H:i:s" }}
                             </td>
                             <td>
                                 {{ t|totalOrderCount }}

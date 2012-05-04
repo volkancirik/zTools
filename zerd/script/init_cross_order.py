@@ -6,18 +6,42 @@ import datetime
 
 def setup_environment():
 
-    sys.path.append('C:/Projects/DjangoProjects/zerd/')
-    sys.path.append('C:/Projects/DjangoProjects/zerd_app/')
-    os.environ['DJANGO_SETTINGS_MODULE'] = 'zerd_app.settings'
+    sys.path.append('/home/opsland/opsland/bin/zerd/')
+    sys.path.append('/home/opsland/opsland/bin/zerd/zerd_app/')
+    os.environ['DJANGO_SETTINGS_MODULE'] = 'zerd_app.settings_cross2'
 setup_environment()
 
 def fixStatus():
 
     from zerd_app.cross_order.models import OrderLive,CrossStatus,LastUpdate,Supplier,Order
     from django.contrib.auth.models import User
-    from cross_order.models import OrderCrossDetails
+    from zerd_app.cross_order.models import OrderCrossDetails,SimpleSize
 
-    for o in OrderLive.objects.all():
+
+
+#    startdate = datetime.datetime.strptime("03/05/2012:18:00:00","%d/%m/%Y:%H:%M:%S")
+#    enddate = startdate + datetime.timedelta(hours=1)
+    t = Order.objects.all().order_by('-order_date')[:1][0]
+
+    
+#    startdate = Order.objects.all().order_by('-order_date')[:1][0].order_date
+#    enddate = startdate + datetime.timedelta(hours=1)
+	
+    orderList = OrderLive.objects.using('baytas').filter(order_date__range=[t.order_date,datetime.datetime.now()])
+#    orderList = OrderLive.objects.using('baytas').filter(order_date__range=[startdate,enddate])
+    newOrderList = []
+    print str(startdate)
+    print str(enddate)
+    for o in orderList:
+	
+	if Order.objects.filter(id_sales_order_item = o.id_sales_order_item).count() > 0:
+		continue 
+
+	if o.status == "canceled" or o.status == "invalid":
+		continue
+
+	if not o.shipment_type.lower().__contains__("crossdocking"):
+		continue
 
         supplier = None
         if Supplier.objects.filter(name = o.supplier_name).count() is 0:
@@ -65,8 +89,10 @@ def fixStatus():
         no.billing_address = o.billing_address
         no.billing_address2 = o.billing_address2
         no.order_date = o.order_date
+	
 
         no.save()
+	newOrderList.append(no)
 
         # Extended order table is created
         # 5-7 digits in SKU gives the attribute of the order
@@ -78,7 +104,6 @@ def fixStatus():
         ocd.order_attribute = no.sku[5:7]
         ocd.save()
 
-        #IMPORTANT : A group named "fetcher" must be already defined and at least one user is assigned
         # Superuser is the owner of the fetched row
         lu = LastUpdate()
         lu.update_date = datetime.datetime.now()
@@ -87,4 +112,33 @@ def fixStatus():
         lu.user = User.objects.filter(groups__name="fetcher")[0]
         lu.save()
 
-fixStatus()
+
+    print str(len(newOrderList)) + " cross order added"
+    return newOrderList
+
+
+def fixSizes(newOrderList):
+
+    from zerd_app.cross_order.models import OrderLive,CrossStatus,LastUpdate,Supplier,Order
+    from django.contrib.auth.models import User
+    from zerd_app.cross_order.models import OrderCrossDetails,SimpleSize
+    
+    print "Sizes are been fetching and updating..."
+    simpleSizeList = SimpleSize.objects.all()
+    
+
+    counter = 0
+    for no in newOrderList:
+	print counter
+	try:
+		no.size =  simpleSizeList.get(fk_catalog_simple=int(no.sku.split('-')[1])).size
+		no.save()
+	except:
+		print no.sku
+		pass
+		
+	counter +=1
+
+	
+oList = fixStatus()
+fixSizes(oList)

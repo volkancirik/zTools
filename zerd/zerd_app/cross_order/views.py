@@ -15,15 +15,18 @@ from django.core.serializers.json import Serializer, DjangoJSONEncoder
 def list_supplier(request):
 
     start_date = datetime.datetime.now()
+    start_date = datetime.datetime.combine(start_date, datetime.time.min)
+
     end_date = datetime.datetime.now()
     if "dateStart" in request.POST:
         start_date = datetime.datetime.strptime(request.POST['dateStart'], "%m/%d/%Y")
     if "dateEnd" in request.POST:
         end_date = datetime.datetime.strptime(request.POST['dateEnd'], "%m/%d/%Y")
-
-    if start_date == end_date:
-        start_date = datetime.datetime.combine(start_date, datetime.time.min)
         end_date = datetime.datetime.combine(end_date, datetime.time.max)
+
+#    if start_date == end_date:
+#        start_date = datetime.datetime.combine(start_date, datetime.time.min)
+#        end_date = datetime.datetime.combine(end_date, datetime.time.max)
 
     cs = CrossStatus.objects.all().order_by("order")[0]
     supList = []
@@ -59,10 +62,11 @@ def list_order(request):
         start_date = datetime.datetime.strptime(request.GET['dateStart'], "%m/%d/%Y")
     if "dateEnd" in request.GET:
         end_date = datetime.datetime.strptime(request.GET['dateEnd'], "%m/%d/%Y")
-
-    if start_date == end_date:
-        start_date = datetime.datetime.combine(start_date, datetime.time.min)
         end_date = datetime.datetime.combine(end_date, datetime.time.max)
+
+#    if start_date == end_date:
+#        start_date = datetime.datetime.combine(start_date, datetime.time.min)
+#        end_date = datetime.datetime.combine(end_date, datetime.time.max)
 
     current_url = '/cross_order/list_order/?sid='+request.GET["sid"]+"&dateStart="+request.GET['dateStart']+"&dateEnd="+request.GET['dateEnd']+'&cstatus='
     orderList = sup.order_set.filter(order_date__range=(start_date,end_date))
@@ -234,12 +238,16 @@ def exportExcelOrders(request):
         start_date = datetime.datetime.strptime(request.GET['startdate'], "%m/%d/%Y")
     if "enddate" in request.GET:
         end_date = datetime.datetime.strptime(request.GET['enddate'], "%m/%d/%Y")
-    if start_date == end_date:
-        start_date = datetime.datetime.combine(start_date, datetime.time.min)
         end_date = datetime.datetime.combine(end_date, datetime.time.max)
-    if start_date == end_date:
-        start_date = datetime.datetime.combine(start_date, datetime.time.min)
-        end_date = datetime.datetime.combine(end_date, datetime.time.max)
+
+
+#    if start_date == end_date:
+#        start_date = datetime.datetime.combine(start_date, datetime.time.min)
+#        end_date = datetime.datetime.combine(end_date, datetime.time.max)
+#
+
+
+
     try:
         cs = CrossStatus.objects.get(pk = int(request.GET['cstatus']))
     except:

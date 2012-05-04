@@ -17,7 +17,7 @@ class Order(models.Model):
     id_sales_order_item = models.PositiveIntegerField(max_length=10,null=False,default=0)
     id_sales_order = models.PositiveIntegerField(max_length=10,null=True)
     order_nr = models.CharField(max_length=45,null=True)
-    size = models.IntegerField(max_length=11,null=True)
+    size = models.CharField(max_length=45,null=True)
     sku = models.CharField(max_length=255,null=True)
     supplier = models.ForeignKey(Supplier,unique=False,null=False)
     sku_supplier_simple = models.CharField(max_length=50,null=True)
@@ -129,4 +129,11 @@ class OrderLive(models.Model):
         return str(self.id_sales_order_item)
     
     class Meta:
-        db_table = 'order_item_base'
+        db_table = 'orderitem_base_DEV'
+
+class SimpleSize(models.Model): 
+    fk_catalog_simple = models.PositiveIntegerField(max_length=10,primary_key=True)
+    size = models.CharField(max_length=45,null=True)
+
+    class Meta:
+	db_table = 'simples_sizes'

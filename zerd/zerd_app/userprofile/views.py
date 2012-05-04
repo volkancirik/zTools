@@ -9,7 +9,7 @@ def register(request):
     if request.method == 'POST':
         form = RegisterForm(request.POST)
         if form.is_valid():
-            user = User.objects.create_user(form.cleaned_data['email'] , form.cleaned_data['email'], form.cleaned_data['password'])
+            user = User.objects.create_user(form.cleaned_data['email'].split('@')[0] , form.cleaned_data['email'], form.cleaned_data['password'])
             user.first_name = form.cleaned_data['first_name']
             user.last_name = form.cleaned_data['last_name']
             user.is_active = False
@@ -45,3 +45,24 @@ def user_login(request):
             return render_response(request, 'userprofile/login_or_register.html',{'register_form': RegisterForm(), 'login_form':form})
     else:
         return render_response(request, 'userprofile/login_or_register.html', {'register_form': RegisterForm(), 'login_form':LoginForm()})
+
+#        if request.POST:
+#        firstName = request.POST["firstName"]
+#        lastName = request.POST["lastName"]
+#        email = request.POST["email"]
+#        password = request.POST["password"]
+#
+#        try:
+#            User.objects.get(username = email.split('@')[0])
+#        except User.DoesNotExist:
+#            user = User.objects.create_user(email.split('@')[0], email, password)
+#            user.first_name = firstName
+#            user.last_name = lastName
+#        else:
+#            return render_to_response('main.html')
+#
+#        user.save()
+#        login(request, user)
+#        return HttpResponseRedirect("/orders/")
+#    else:
+#        return HttpResponseRedirect("/orders/")

@@ -1,15 +1,135 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="ba66b0b9-79f6-4684-844b-25a684a9ef94" name="Default" comment="Merge branch 'master' of github.com:wolet/cross_dock_order&#10;&#10;Conflicts:&#10;&#9;.idea/workspace.xml&#10;">
+    <list default="true" id="8add21f0-f391-4734-9a3e-d1f94e72dde7" name="Default" comment="git try">
+      <change type="DELETED" beforePath="C:\Projects\DjangoProjects\zTools\zerd\.idea\.name" afterPath="" />
+      <change type="DELETED" beforePath="C:\Projects\DjangoProjects\zTools\zerd\.idea\encodings.xml" afterPath="" />
+      <change type="DELETED" beforePath="C:\Projects\DjangoProjects\zTools\zerd\.idea\misc.xml" afterPath="" />
+      <change type="DELETED" beforePath="C:\Projects\DjangoProjects\zTools\zerd\.idea\modules.xml" afterPath="" />
+      <change type="DELETED" beforePath="C:\Projects\DjangoProjects\zTools\zerd\.idea\vcs.xml" afterPath="" />
+      <change type="DELETED" beforePath="C:\Projects\DjangoProjects\zTools\zerd\.idea\workspace.xml" afterPath="" />
+      <change type="DELETED" beforePath="C:\Projects\DjangoProjects\zTools\zerd\.idea\zerd.iml" afterPath="" />
+      <change type="DELETED" beforePath="C:\Projects\DjangoProjects\zTools\zerd\zerd_app\.idea\.name" afterPath="" />
+      <change type="DELETED" beforePath="C:\Projects\DjangoProjects\zTools\zerd\zerd_app\.idea\encodings.xml" afterPath="" />
+      <change type="DELETED" beforePath="C:\Projects\DjangoProjects\zTools\zerd\zerd_app\.idea\misc.xml" afterPath="" />
+      <change type="DELETED" beforePath="C:\Projects\DjangoProjects\zTools\zerd\zerd_app\.idea\modules.xml" afterPath="" />
+      <change type="DELETED" beforePath="C:\Projects\DjangoProjects\zTools\zerd\zerd_app\.idea\vcs.xml" afterPath="" />
+      <change type="DELETED" beforePath="C:\Projects\DjangoProjects\zTools\zerd\zerd_app\.idea\workspace.xml" afterPath="" />
+      <change type="DELETED" beforePath="C:\Projects\DjangoProjects\zTools\zerd\zerd_app\.idea\zerd_app.iml" afterPath="" />
+      <change type="DELETED" beforePath="C:\Projects\DjangoProjects\zTools\zerd\zerd_app\cross_order\templatetags\__init__.py" afterPath="" />
+      <change type="DELETED" beforePath="C:\Projects\DjangoProjects\zTools\zerd\zerd_app\manage.py" afterPath="" />
+      <change type="DELETED" beforePath="C:\Projects\DjangoProjects\zTools\zerd\zerd_app\settings.py" afterPath="" />
+      <change type="DELETED" beforePath="C:\Projects\DjangoProjects\zTools\zerd\zerd_app\templates\base.html" afterPath="" />
+      <change type="DELETED" beforePath="C:\Projects\DjangoProjects\zTools\zerd\zerd_app\templates\cross_order\boxes\confirm_box.html" afterPath="" />
+      <change type="DELETED" beforePath="C:\Projects\DjangoProjects\zTools\zerd\zerd_app\templates\cross_order\boxes\history_box.html" afterPath="" />
+      <change type="DELETED" beforePath="C:\Projects\DjangoProjects\zTools\zerd\zerd_app\templates\cross_order\list_order.html" afterPath="" />
+      <change type="DELETED" beforePath="C:\Projects\DjangoProjects\zTools\zerd\zerd_app\templates\cross_order\list_supplier.html" afterPath="" />
+      <change type="DELETED" beforePath="C:\Projects\DjangoProjects\zTools\zerd\zerd_app\templates\cross_order\list_transaction.html" afterPath="" />
+      <change type="DELETED" beforePath="C:\Projects\DjangoProjects\zTools\zerd\zerd_app\templates\cross_order\list_transaction_details.html" afterPath="" />
+      <change type="DELETED" beforePath="C:\Projects\DjangoProjects\zTools\zerd\zerd_app\templates\userprofile\login_or_register.html" afterPath="" />
+      <change type="DELETED" beforePath="C:\Projects\DjangoProjects\zTools\zerd\zerd_app\urls.py" afterPath="" />
+      <change type="DELETED" beforePath="C:\Projects\DjangoProjects\zTools\zerd\zerd_app\userprofile\__init__.py" afterPath="" />
+      <change type="DELETED" beforePath="C:\Projects\DjangoProjects\zTools\zerd\zerd_app\userprofile\admin.py" afterPath="" />
+      <change type="DELETED" beforePath="C:\Projects\DjangoProjects\zTools\zerd\zerd_app\userprofile\backends.py" afterPath="" />
+      <change type="DELETED" beforePath="C:\Projects\DjangoProjects\zTools\zerd\zerd_app\userprofile\forms.py" afterPath="" />
+      <change type="DELETED" beforePath="C:\Projects\DjangoProjects\zTools\zerd\zerd_app\userprofile\models.py" afterPath="" />
+      <change type="DELETED" beforePath="C:\Projects\DjangoProjects\zTools\zerd\zerd_app\userprofile\tests.py" afterPath="" />
+      <change type="DELETED" beforePath="C:\Projects\DjangoProjects\zTools\zerd\zerd_app\userprofile\urls.py" afterPath="" />
+      <change type="DELETED" beforePath="C:\Projects\DjangoProjects\zTools\zerd\zerd_app\userprofile\views.py" afterPath="" />
+      <change type="MOVED" beforePath="C:\Projects\DjangoProjects\zTools\zerd\script\cross_checker.py" afterPath="$PROJECT_DIR$/script/cross_checker.py" />
+      <change type="MOVED" beforePath="C:\Projects\DjangoProjects\zTools\zerd\script\duplicate_fixer.py" afterPath="$PROJECT_DIR$/script/duplicate_fixer.py" />
+      <change type="MOVED" beforePath="C:\Projects\DjangoProjects\zTools\zerd\script\init_cross_order.py" afterPath="$PROJECT_DIR$/script/init_cross_order.py" />
+      <change type="MOVED" beforePath="C:\Projects\DjangoProjects\zTools\zerd\script\size_fixer.py" afterPath="$PROJECT_DIR$/script/size_fixer.py" />
+      <change type="MOVED" beforePath="C:\Projects\DjangoProjects\zTools\zerd\script\update_cross_status.py" afterPath="$PROJECT_DIR$/script/update_cross_status.py" />
+      <change type="MOVED" beforePath="C:\Projects\DjangoProjects\zTools\zerd\static\css\TableTools.css" afterPath="$PROJECT_DIR$/static/css/TableTools.css" />
+      <change type="MOVED" beforePath="C:\Projects\DjangoProjects\zTools\zerd\static\css\TableTools_JUI.css" afterPath="$PROJECT_DIR$/static/css/TableTools_JUI.css" />
+      <change type="MOVED" beforePath="C:\Projects\DjangoProjects\zTools\zerd\static\css\jquery-ui-1.8.4.custom.css" afterPath="$PROJECT_DIR$/static/css/jquery-ui-1.8.4.custom.css" />
+      <change type="MOVED" beforePath="C:\Projects\DjangoProjects\zTools\zerd\static\css\jquery.dataTables.css" afterPath="$PROJECT_DIR$/static/css/jquery.dataTables.css" />
+      <change type="MOVED" beforePath="C:\Projects\DjangoProjects\zTools\zerd\static\css\jquery.dataTables_themeroller.css" afterPath="$PROJECT_DIR$/static/css/jquery.dataTables_themeroller.css" />
+      <change type="MOVED" beforePath="C:\Projects\DjangoProjects\zTools\zerd\static\css\zidaya.css" afterPath="$PROJECT_DIR$/static/css/zidaya.css" />
+      <change type="MOVED" beforePath="C:\Projects\DjangoProjects\zTools\zerd\static\images\Sorting icons.psd" afterPath="$PROJECT_DIR$/static/images/Sorting icons.psd" />
+      <change type="MOVED" beforePath="C:\Projects\DjangoProjects\zTools\zerd\static\images\back_disabled.png" afterPath="$PROJECT_DIR$/static/images/back_disabled.png" />
+      <change type="MOVED" beforePath="C:\Projects\DjangoProjects\zTools\zerd\static\images\back_enabled.png" afterPath="$PROJECT_DIR$/static/images/back_enabled.png" />
+      <change type="MOVED" beforePath="C:\Projects\DjangoProjects\zTools\zerd\static\images\back_enabled_hover.png" afterPath="$PROJECT_DIR$/static/images/back_enabled_hover.png" />
+      <change type="MOVED" beforePath="C:\Projects\DjangoProjects\zTools\zerd\static\images\background.png" afterPath="$PROJECT_DIR$/static/images/background.png" />
+      <change type="MOVED" beforePath="C:\Projects\DjangoProjects\zTools\zerd\static\images\bg.gif" afterPath="$PROJECT_DIR$/static/images/bg.gif" />
+      <change type="MOVED" beforePath="C:\Projects\DjangoProjects\zTools\zerd\static\images\bg_spotbox_shadow.png" afterPath="$PROJECT_DIR$/static/images/bg_spotbox_shadow.png" />
+      <change type="MOVED" beforePath="C:\Projects\DjangoProjects\zTools\zerd\static\images\bg_spotbox_shadowsmall.png" afterPath="$PROJECT_DIR$/static/images/bg_spotbox_shadowsmall.png" />
+      <change type="MOVED" beforePath="C:\Projects\DjangoProjects\zTools\zerd\static\images\collection.png" afterPath="$PROJECT_DIR$/static/images/collection.png" />
+      <change type="MOVED" beforePath="C:\Projects\DjangoProjects\zTools\zerd\static\images\collection_hover.png" afterPath="$PROJECT_DIR$/static/images/collection_hover.png" />
+      <change type="MOVED" beforePath="C:\Projects\DjangoProjects\zTools\zerd\static\images\container-t.gif" afterPath="$PROJECT_DIR$/static/images/container-t.gif" />
+      <change type="MOVED" beforePath="C:\Projects\DjangoProjects\zTools\zerd\static\images\copy.png" afterPath="$PROJECT_DIR$/static/images/copy.png" />
+      <change type="MOVED" beforePath="C:\Projects\DjangoProjects\zTools\zerd\static\images\copy_hover.png" afterPath="$PROJECT_DIR$/static/images/copy_hover.png" />
+      <change type="MOVED" beforePath="C:\Projects\DjangoProjects\zTools\zerd\static\images\csv.png" afterPath="$PROJECT_DIR$/static/images/csv.png" />
+      <change type="MOVED" beforePath="C:\Projects\DjangoProjects\zTools\zerd\static\images\csv_hover.png" afterPath="$PROJECT_DIR$/static/images/csv_hover.png" />
+      <change type="MOVED" beforePath="C:\Projects\DjangoProjects\zTools\zerd\static\images\dot_overlay.png" afterPath="$PROJECT_DIR$/static/images/dot_overlay.png" />
+      <change type="MOVED" beforePath="C:\Projects\DjangoProjects\zTools\zerd\static\images\forward_disabled.png" afterPath="$PROJECT_DIR$/static/images/forward_disabled.png" />
+      <change type="MOVED" beforePath="C:\Projects\DjangoProjects\zTools\zerd\static\images\forward_enabled.png" afterPath="$PROJECT_DIR$/static/images/forward_enabled.png" />
+      <change type="MOVED" beforePath="C:\Projects\DjangoProjects\zTools\zerd\static\images\forward_enabled_hover.png" afterPath="$PROJECT_DIR$/static/images/forward_enabled_hover.png" />
+      <change type="MOVED" beforePath="C:\Projects\DjangoProjects\zTools\zerd\static\images\header_navigation_gradient.gif" afterPath="$PROJECT_DIR$/static/images/header_navigation_gradient.gif" />
+      <change type="MOVED" beforePath="C:\Projects\DjangoProjects\zTools\zerd\static\images\header_navigation_ico_sprite.png" afterPath="$PROJECT_DIR$/static/images/header_navigation_ico_sprite.png" />
+      <change type="MOVED" beforePath="C:\Projects\DjangoProjects\zTools\zerd\static\images\icn_warning.png" afterPath="$PROJECT_DIR$/static/images/icn_warning.png" />
+      <change type="MOVED" beforePath="C:\Projects\DjangoProjects\zTools\zerd\static\images\pdf.png" afterPath="$PROJECT_DIR$/static/images/pdf.png" />
+      <change type="MOVED" beforePath="C:\Projects\DjangoProjects\zTools\zerd\static\images\pdf_hover.png" afterPath="$PROJECT_DIR$/static/images/pdf_hover.png" />
+      <change type="MOVED" beforePath="C:\Projects\DjangoProjects\zTools\zerd\static\images\print.png" afterPath="$PROJECT_DIR$/static/images/print.png" />
+      <change type="MOVED" beforePath="C:\Projects\DjangoProjects\zTools\zerd\static\images\print_hover.png" afterPath="$PROJECT_DIR$/static/images/print_hover.png" />
+      <change type="MOVED" beforePath="C:\Projects\DjangoProjects\zTools\zerd\static\images\sort_asc.png" afterPath="$PROJECT_DIR$/static/images/sort_asc.png" />
+      <change type="MOVED" beforePath="C:\Projects\DjangoProjects\zTools\zerd\static\images\sort_asc_disabled.png" afterPath="$PROJECT_DIR$/static/images/sort_asc_disabled.png" />
+      <change type="MOVED" beforePath="C:\Projects\DjangoProjects\zTools\zerd\static\images\sort_both.png" afterPath="$PROJECT_DIR$/static/images/sort_both.png" />
+      <change type="MOVED" beforePath="C:\Projects\DjangoProjects\zTools\zerd\static\images\sort_desc.png" afterPath="$PROJECT_DIR$/static/images/sort_desc.png" />
+      <change type="MOVED" beforePath="C:\Projects\DjangoProjects\zTools\zerd\static\images\sort_desc_disabled.png" afterPath="$PROJECT_DIR$/static/images/sort_desc_disabled.png" />
+      <change type="MOVED" beforePath="C:\Projects\DjangoProjects\zTools\zerd\static\images\ui-bg_flat_0_aaaaaa_40x100.png" afterPath="$PROJECT_DIR$/static/images/ui-bg_flat_0_aaaaaa_40x100.png" />
+      <change type="MOVED" beforePath="C:\Projects\DjangoProjects\zTools\zerd\static\images\ui-bg_flat_75_ffffff_40x100.png" afterPath="$PROJECT_DIR$/static/images/ui-bg_flat_75_ffffff_40x100.png" />
+      <change type="MOVED" beforePath="C:\Projects\DjangoProjects\zTools\zerd\static\images\ui-bg_glass_55_fbf9ee_1x400.png" afterPath="$PROJECT_DIR$/static/images/ui-bg_glass_55_fbf9ee_1x400.png" />
+      <change type="MOVED" beforePath="C:\Projects\DjangoProjects\zTools\zerd\static\images\ui-bg_glass_65_ffffff_1x400.png" afterPath="$PROJECT_DIR$/static/images/ui-bg_glass_65_ffffff_1x400.png" />
+      <change type="MOVED" beforePath="C:\Projects\DjangoProjects\zTools\zerd\static\images\ui-bg_glass_75_dadada_1x400.png" afterPath="$PROJECT_DIR$/static/images/ui-bg_glass_75_dadada_1x400.png" />
+      <change type="MOVED" beforePath="C:\Projects\DjangoProjects\zTools\zerd\static\images\ui-bg_glass_75_e6e6e6_1x400.png" afterPath="$PROJECT_DIR$/static/images/ui-bg_glass_75_e6e6e6_1x400.png" />
+      <change type="MOVED" beforePath="C:\Projects\DjangoProjects\zTools\zerd\static\images\ui-bg_glass_95_fef1ec_1x400.png" afterPath="$PROJECT_DIR$/static/images/ui-bg_glass_95_fef1ec_1x400.png" />
+      <change type="MOVED" beforePath="C:\Projects\DjangoProjects\zTools\zerd\static\images\ui-bg_highlight-soft_75_cccccc_1x100.png" afterPath="$PROJECT_DIR$/static/images/ui-bg_highlight-soft_75_cccccc_1x100.png" />
+      <change type="MOVED" beforePath="C:\Projects\DjangoProjects\zTools\zerd\static\images\ui-icons_222222_256x240.png" afterPath="$PROJECT_DIR$/static/images/ui-icons_222222_256x240.png" />
+      <change type="MOVED" beforePath="C:\Projects\DjangoProjects\zTools\zerd\static\images\ui-icons_2e83ff_256x240.png" afterPath="$PROJECT_DIR$/static/images/ui-icons_2e83ff_256x240.png" />
+      <change type="MOVED" beforePath="C:\Projects\DjangoProjects\zTools\zerd\static\images\ui-icons_454545_256x240.png" afterPath="$PROJECT_DIR$/static/images/ui-icons_454545_256x240.png" />
+      <change type="MOVED" beforePath="C:\Projects\DjangoProjects\zTools\zerd\static\images\ui-icons_888888_256x240.png" afterPath="$PROJECT_DIR$/static/images/ui-icons_888888_256x240.png" />
+      <change type="MOVED" beforePath="C:\Projects\DjangoProjects\zTools\zerd\static\images\ui-icons_cd0a0a_256x240.png" afterPath="$PROJECT_DIR$/static/images/ui-icons_cd0a0a_256x240.png" />
+      <change type="MOVED" beforePath="C:\Projects\DjangoProjects\zTools\zerd\static\images\xls.png" afterPath="$PROJECT_DIR$/static/images/xls.png" />
+      <change type="MOVED" beforePath="C:\Projects\DjangoProjects\zTools\zerd\static\images\xls_hover.png" afterPath="$PROJECT_DIR$/static/images/xls_hover.png" />
+      <change type="MOVED" beforePath="C:\Projects\DjangoProjects\zTools\zerd\static\images\zidaya-logo.jpg" afterPath="$PROJECT_DIR$/static/images/zidaya-logo.jpg" />
+      <change type="MOVED" beforePath="C:\Projects\DjangoProjects\zTools\zerd\static\images\zidaya_logo.png" afterPath="$PROJECT_DIR$/static/images/zidaya_logo.png" />
+      <change type="MOVED" beforePath="C:\Projects\DjangoProjects\zTools\zerd\static\js\FixedColumns.min.js" afterPath="$PROJECT_DIR$/static/js/FixedColumns.min.js" />
+      <change type="MOVED" beforePath="C:\Projects\DjangoProjects\zTools\zerd\static\js\TableTools.js" afterPath="$PROJECT_DIR$/static/js/TableTools.js" />
+      <change type="MOVED" beforePath="C:\Projects\DjangoProjects\zTools\zerd\static\js\ZeroClipboard.js" afterPath="$PROJECT_DIR$/static/js/ZeroClipboard.js" />
+      <change type="MOVED" beforePath="C:\Projects\DjangoProjects\zTools\zerd\static\js\jquery-1.5.2.js" afterPath="$PROJECT_DIR$/static/js/jquery-1.5.2.js" />
+      <change type="MOVED" beforePath="C:\Projects\DjangoProjects\zTools\zerd\static\js\jquery-ui-1.8.18.custom.min.js" afterPath="$PROJECT_DIR$/static/js/jquery-ui-1.8.18.custom.min.js" />
+      <change type="MOVED" beforePath="C:\Projects\DjangoProjects\zTools\zerd\static\js\jquery.dataTables.js" afterPath="$PROJECT_DIR$/static/js/jquery.dataTables.js" />
+      <change type="MOVED" beforePath="C:\Projects\DjangoProjects\zTools\zerd\static\js\zidaya.js" afterPath="$PROJECT_DIR$/static/js/zidaya.js" />
+      <change type="MOVED" beforePath="C:\Projects\DjangoProjects\zTools\zerd\zerd_app\__init__.py" afterPath="$PROJECT_DIR$/zerd_app/cross_order/__init__.py" />
+      <change type="MOVED" beforePath="C:\Projects\DjangoProjects\zTools\zerd\zerd_app\cross_order\__init__.py" afterPath="$PROJECT_DIR$/zerd_app/cross_order/templatetags/__init__.py" />
+      <change type="MOVED" beforePath="C:\Projects\DjangoProjects\zTools\zerd\zerd_app\cross_order\admin.py" afterPath="$PROJECT_DIR$/zerd_app/cross_order/admin.py" />
+      <change type="MOVED" beforePath="C:\Projects\DjangoProjects\zTools\zerd\zerd_app\cross_order\helper_functions.py" afterPath="$PROJECT_DIR$/zerd_app/cross_order/helper_functions.py" />
+      <change type="MOVED" beforePath="C:\Projects\DjangoProjects\zTools\zerd\zerd_app\cross_order\models.py" afterPath="$PROJECT_DIR$/zerd_app/cross_order/models.py" />
+      <change type="MOVED" beforePath="C:\Projects\DjangoProjects\zTools\zerd\zerd_app\cross_order\templatetags\__init__.py" afterPath="$PROJECT_DIR$/zerd_app/userprofile/__init__.py" />
+      <change type="MOVED" beforePath="C:\Projects\DjangoProjects\zTools\zerd\zerd_app\cross_order\templatetags\helper.py" afterPath="$PROJECT_DIR$/zerd_app/cross_order/templatetags/helper.py" />
+      <change type="MOVED" beforePath="C:\Projects\DjangoProjects\zTools\zerd\zerd_app\cross_order\tests.py" afterPath="$PROJECT_DIR$/zerd_app/cross_order/tests.py" />
+      <change type="MOVED" beforePath="C:\Projects\DjangoProjects\zTools\zerd\zerd_app\cross_order\urls.py" afterPath="$PROJECT_DIR$/zerd_app/cross_order/urls.py" />
+      <change type="MOVED" beforePath="C:\Projects\DjangoProjects\zTools\zerd\zerd_app\cross_order\views.py" afterPath="$PROJECT_DIR$/zerd_app/cross_order/views.py" />
+      <change type="MOVED" beforePath="C:\Projects\DjangoProjects\zTools\zerd\zerd_app\templates\base.html" afterPath="$PROJECT_DIR$/zerd_app/templates/base.html" />
+      <change type="MOVED" beforePath="C:\Projects\DjangoProjects\zTools\zerd\zerd_app\templates\cross_order\boxes\confirm_box.html" afterPath="$PROJECT_DIR$/zerd_app/templates/cross_order/boxes/confirm_box.html" />
+      <change type="MOVED" beforePath="C:\Projects\DjangoProjects\zTools\zerd\zerd_app\templates\cross_order\boxes\history_box.html" afterPath="$PROJECT_DIR$/zerd_app/templates/cross_order/boxes/history_box.html" />
+      <change type="MOVED" beforePath="C:\Projects\DjangoProjects\zTools\zerd\zerd_app\templates\cross_order\list_order.html" afterPath="$PROJECT_DIR$/zerd_app/templates/cross_order/list_order.html" />
+      <change type="MOVED" beforePath="C:\Projects\DjangoProjects\zTools\zerd\zerd_app\templates\cross_order\list_supplier.html" afterPath="$PROJECT_DIR$/zerd_app/templates/cross_order/list_supplier.html" />
+      <change type="MOVED" beforePath="C:\Projects\DjangoProjects\zTools\zerd\zerd_app\templates\cross_order\list_transaction.html" afterPath="$PROJECT_DIR$/zerd_app/templates/cross_order/list_transaction.html" />
+      <change type="MOVED" beforePath="C:\Projects\DjangoProjects\zTools\zerd\zerd_app\templates\cross_order\list_transaction_details.html" afterPath="$PROJECT_DIR$/zerd_app/templates/cross_order/list_transaction_details.html" />
+      <change type="MOVED" beforePath="C:\Projects\DjangoProjects\zTools\zerd\zerd_app\templates\userprofile\login_or_register.html" afterPath="$PROJECT_DIR$/zerd_app/templates/userprofile/login_or_register.html" />
+      <change type="MOVED" beforePath="C:\Projects\DjangoProjects\zTools\zerd\zerd_app\userprofile\admin.py" afterPath="$PROJECT_DIR$/zerd_app/userprofile/admin.py" />
+      <change type="MOVED" beforePath="C:\Projects\DjangoProjects\zTools\zerd\zerd_app\userprofile\backends.py" afterPath="$PROJECT_DIR$/zerd_app/userprofile/backends.py" />
+      <change type="MOVED" beforePath="C:\Projects\DjangoProjects\zTools\zerd\zerd_app\userprofile\forms.py" afterPath="$PROJECT_DIR$/zerd_app/userprofile/forms.py" />
+      <change type="MOVED" beforePath="C:\Projects\DjangoProjects\zTools\zerd\zerd_app\userprofile\models.py" afterPath="$PROJECT_DIR$/zerd_app/userprofile/models.py" />
+      <change type="MOVED" beforePath="C:\Projects\DjangoProjects\zTools\zerd\zerd_app\userprofile\tests.py" afterPath="$PROJECT_DIR$/zerd_app/userprofile/tests.py" />
+      <change type="MOVED" beforePath="C:\Projects\DjangoProjects\zTools\zerd\zerd_app\userprofile\urls.py" afterPath="$PROJECT_DIR$/zerd_app/userprofile/urls.py" />
+      <change type="MOVED" beforePath="C:\Projects\DjangoProjects\zTools\zerd\zerd_app\userprofile\views.py" afterPath="$PROJECT_DIR$/zerd_app/userprofile/views.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/zerd/zerd_app/cross_order/views.py" afterPath="$PROJECT_DIR$/zerd/zerd_app/cross_order/views.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/zerd/zerd_app/settings.py" afterPath="$PROJECT_DIR$/zerd/zerd_app/settings.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/zerd/zerd_app/templates/cross_order/list_order.html" afterPath="$PROJECT_DIR$/zerd/zerd_app/templates/cross_order/list_order.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/zerd/zerd_app/templates/cross_order/list_transaction.html" afterPath="$PROJECT_DIR$/zerd/zerd_app/templates/cross_order/list_transaction.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/zerd/zerd_app/templates/cross_order/list_transaction_details.html" afterPath="$PROJECT_DIR$/zerd/zerd_app/templates/cross_order/list_transaction_details.html" />
     </list>
-    <ignored path="cross_dock_order.iws" />
+    <ignored path="zTools.iws" />
     <ignored path=".idea/workspace.xml" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -26,50 +146,14 @@
     <disable_hints />
   </component>
   <component name="FavoritesManager">
-    <favorites_list name="cross_dock_order" />
+    <favorites_list name="zTools" />
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="list_order.html" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/zerd/zerd_app/templates/cross_order/list_order.html">
+      <file leaf-file-name="__init__.py" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/zerd_app/__init__.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="196" column="38" selection-start="8304" selection-end="8304" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="list_transaction.html" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/zerd/zerd_app/templates/cross_order/list_transaction.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="49" column="67" selection-start="1606" selection-end="1606" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="views.py" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/zerd/zerd_app/cross_order/views.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="413" column="56" selection-start="16008" selection-end="16008" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="list_transaction_details.html" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/zerd/zerd_app/templates/cross_order/list_transaction_details.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="177" column="56" selection-start="7696" selection-end="7696" vertical-scroll-proportion="0.7605634">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="list_supplier.html" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/zerd/zerd_app/templates/cross_order/list_supplier.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="84" column="38" selection-start="2967" selection-end="2972" vertical-scroll-proportion="0.0">
+            <state line="0" column="2" selection-start="2" selection-end="2" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -89,22 +173,22 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/templates/orderList.html" />
-        <option value="$PROJECT_DIR$/templates/base.html" />
-        <option value="$PROJECT_DIR$/templates/transactionOrderList.html" />
-        <option value="$PROJECT_DIR$/settings.py" />
-        <option value="$PROJECT_DIR$/scripts/cross_checker.py" />
-        <option value="$PROJECT_DIR$/settings_cross.py" />
-        <option value="$PROJECT_DIR$/scripts/status_fixer.py" />
-        <option value="$PROJECT_DIR$/scripts/attribute_fixer.py" />
-        <option value="$PROJECT_DIR$/order_check/models.py" />
-        <option value="$PROJECT_DIR$/order_check/views.py" />
-        <option value="$PROJECT_DIR$/zerd/zerd_app/settings.py" />
-        <option value="$PROJECT_DIR$/zerd/script/update_cross_status.py" />
-        <option value="$PROJECT_DIR$/zerd/zerd_app/templates/cross_order/list_transaction.html" />
-        <option value="$PROJECT_DIR$/zerd/zerd_app/templates/cross_order/list_transaction_details.html" />
-        <option value="$PROJECT_DIR$/zerd/zerd_app/templates/cross_order/list_supplier.html" />
-        <option value="$PROJECT_DIR$/zerd/zerd_app/templates/cross_order/list_order.html" />
+        <option value="$PROJECT_DIR$/zerd_app/templates/cross_order/history_box.html" />
+        <option value="$PROJECT_DIR$/zerd_app/templates/cross_order/list_transaction.html" />
+        <option value="$PROJECT_DIR$/zerd_app/cross_order/templatetags/helper.py" />
+        <option value="$PROJECT_DIR$/zerd_app/cross_order/urls.py" />
+        <option value="$PROJECT_DIR$/static/js/zidaya.js" />
+        <option value="$PROJECT_DIR$/zerd_app/templates/cross_order/list_transaction_details.html" />
+        <option value="$PROJECT_DIR$/static/css/jquery-ui-1.8.4.custom.css" />
+        <option value="$PROJECT_DIR$/static/css/zidaya.css" />
+        <option value="$PROJECT_DIR$/zerd_app/cross_order/views.py" />
+        <option value="$PROJECT_DIR$/zerd_app/userprofile/views.py" />
+        <option value="$PROJECT_DIR$/zerd_app/templates/userprofile/login_or_register.html" />
+        <option value="$PROJECT_DIR$/zerd_app/templates/cross_order/boxes/confirm_box.html" />
+        <option value="$PROJECT_DIR$/zerd_app/templates/cross_order/list_order.html" />
+        <option value="$PROJECT_DIR$/zerd_app/templates/base.html" />
+        <option value="$PROJECT_DIR$/zerd_app/settings.py" />
+        <option value="$PROJECT_DIR$/zerd_app/__init__.py" />
       </list>
     </option>
   </component>
@@ -134,27 +218,21 @@
       <sortByType />
     </navigator>
     <panes>
-      <pane id="Favorites" />
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
             <PATH_ELEMENT>
-              <option name="myItemId" value="cross_dock_order" />
+              <option name="myItemId" value="zTools" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
           </PATH>
           <PATH>
             <PATH_ELEMENT>
-              <option name="myItemId" value="cross_dock_order" />
+              <option name="myItemId" value="zTools" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="cross_dock_order" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="zerd" />
+              <option name="myItemId" value="zTools" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
@@ -164,15 +242,11 @@
           </PATH>
           <PATH>
             <PATH_ELEMENT>
-              <option name="myItemId" value="cross_dock_order" />
+              <option name="myItemId" value="zTools" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="cross_dock_order" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="zerd" />
+              <option name="myItemId" value="zTools" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
@@ -180,21 +254,17 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="templates" />
+              <option name="myItemId" value="userprofile" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
           <PATH>
             <PATH_ELEMENT>
-              <option name="myItemId" value="cross_dock_order" />
+              <option name="myItemId" value="zTools" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="cross_dock_order" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="zerd" />
+              <option name="myItemId" value="zTools" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
@@ -205,22 +275,14 @@
               <option name="myItemId" value="templates" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="cross_order" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
           </PATH>
           <PATH>
             <PATH_ELEMENT>
-              <option name="myItemId" value="cross_dock_order" />
+              <option name="myItemId" value="zTools" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="cross_dock_order" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="zerd" />
+              <option name="myItemId" value="zTools" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
@@ -234,80 +296,82 @@
           </PATH>
           <PATH>
             <PATH_ELEMENT>
-              <option name="myItemId" value="cross_dock_order" />
+              <option name="myItemId" value="zTools" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="cross_dock_order" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="zerd" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="cross_dock_order" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="cross_dock_order" />
+              <option name="myItemId" value="zTools" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
         </subPane>
       </pane>
+      <pane id="Favorites" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="options.splitter.main.proportions" value="0.3" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="recentsLimit" value="5" />
-    <property name="options.lastSelected" value="reference.settingsdialog.IDE.editor.colors" />
-    <property name="DefaultHtmlFileTemplate" value="Html" />
-    <property name="options.splitter.details.proportions" value="0.2" />
+    <property name="options.lastSelected" value="com.jetbrains.python.configuration.PythonSdkConfigurable" />
     <property name="options.searchVisible" value="true" />
+    <property name="options.splitter.details.proportions" value="0.2" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Projects\DjangoProjects\cross_dock_order" />
-      <recent name="C:\Projects\DjangoProjects\cross_dock_order\templates" />
+      <recent name="C:\Projects\DjangoProjects\zTools\static\images" />
+      <recent name="C:\Projects\DjangoProjects\zTools\static\js" />
+      <recent name="C:\Projects\DjangoProjects\zTools\static" />
+      <recent name="C:\Projects\DjangoProjects\zTools\zerd_app\templates\cross_order" />
+      <recent name="C:\Projects\DjangoProjects\zTools\static\css" />
     </key>
   </component>
-  <component name="RunManager" selected="Django server.cross_dock_order">
-    <configuration default="false" name="cross_checker" type="PythonConfigurationType" factoryName="Python" temporary="true">
+  <component name="RunManager" selected="Django server.zTools">
+    <configuration default="false" name="init_cross_order" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <envs>
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/scripts" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/script" />
       <option name="IS_MODULE_SDK" value="true" />
-      <module name="cross_dock_order" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/scripts/cross_checker.py" />
+      <module name="zTools" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/script/init_cross_order.py" />
       <option name="PARAMETERS" value="" />
       <RunnerSettings RunnerId="PythonRunner" />
       <ConfigurationWrapper RunnerId="PythonRunner" />
       <method />
     </configuration>
-    <configuration default="false" name="attribute_fixer" type="PythonConfigurationType" factoryName="Python" temporary="true">
+    <configuration default="true" type="DjangoTestsConfigurationType" factoryName="Django tests">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <envs>
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/scripts" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <module name="cross_dock_order" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/scripts/attribute_fixer.py" />
-      <option name="PARAMETERS" value="" />
-      <RunnerSettings RunnerId="PyDebugRunner" />
-      <RunnerSettings RunnerId="PythonRunner" />
-      <ConfigurationWrapper RunnerId="PyDebugRunner" />
-      <ConfigurationWrapper RunnerId="PythonRunner" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <module name="zTools" />
+      <option name="TARGET" value="" />
+      <option name="SETTINGS_FILE" value="" />
+      <method />
+    </configuration>
+    <configuration default="true" type="PythonNoseTestRunConfigurationType" factoryName="Python's nosetests">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <module name="zTools" />
+      <option name="SCRIPT_NAME" value="" />
+      <option name="CLASS_NAME" value="" />
+      <option name="METHOD_NAME" value="" />
+      <option name="FOLDER_NAME" value="" />
+      <option name="TEST_TYPE" value="TEST_SCRIPT" />
+      <option name="PARAMS" value="" />
       <method />
     </configuration>
     <configuration default="true" type="PythonUnitTestConfigurationType" factoryName="Python's unittest">
@@ -317,7 +381,7 @@
       <option name="SDK_HOME" value="" />
       <option name="WORKING_DIRECTORY" value="" />
       <option name="IS_MODULE_SDK" value="false" />
-      <module name="cross_dock_order" />
+      <module name="zTools" />
       <option name="SCRIPT_NAME" value="" />
       <option name="CLASS_NAME" value="" />
       <option name="METHOD_NAME" value="" />
@@ -325,6 +389,18 @@
       <option name="TEST_TYPE" value="TEST_SCRIPT" />
       <option name="PATTERN" value="" />
       <option name="PUREUNITTEST" value="true" />
+      <method />
+    </configuration>
+    <configuration default="true" type="Python.AppEngineServer" factoryName="App Engine server">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs />
+      <option name="SDK_HOME" value="C:/Python27/python.exe" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/zerd_app" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <module name="zTools" />
+      <option name="browserUrl" value="" />
+      <option name="additionalOptions" value="" />
       <method />
     </configuration>
     <configuration default="true" type="PythonConfigurationType" factoryName="Python">
@@ -336,7 +412,7 @@
       <option name="SDK_HOME" value="" />
       <option name="WORKING_DIRECTORY" value="" />
       <option name="IS_MODULE_SDK" value="false" />
-      <module name="cross_dock_order" />
+      <module name="zTools" />
       <option name="SCRIPT_NAME" value="" />
       <option name="PARAMETERS" value="" />
       <method />
@@ -347,10 +423,10 @@
       <envs>
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="" />
+      <option name="SDK_HOME" value="C:/Python27/python.exe" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/zerd_app" />
       <option name="IS_MODULE_SDK" value="false" />
-      <module name="cross_dock_order" />
+      <module name="zTools" />
       <option name="port" value="8000" />
       <option name="host" value="" />
       <option name="additionalOptions" value="" />
@@ -361,6 +437,29 @@
       <option name="customRunCommand" value="" />
       <method />
     </configuration>
+    <configuration default="true" type="PyRemoteDebugConfigurationType" factoryName="Python Remote Debug">
+      <module name="" />
+      <option name="PORT" value="0" />
+      <option name="HOST" value="null" />
+      <option name="USE_MAPPING" value="false" />
+      <option name="REMOTE_ROOT" value="" />
+      <option name="LOCAL_ROOT" value="" />
+      <option name="REDIRECT_OUTPUT" value="true" />
+      <option name="SUSPEND_AFTER_CONNECT" value="true" />
+      <method />
+    </configuration>
+    <configuration default="true" type="py.test" factoryName="py.test">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <module name="zTools" />
+      <option name="testToRun" value="" />
+      <option name="keywords" value="" />
+      <method />
+    </configuration>
     <configuration default="true" type="PythonDocTestRunConfigurationType" factoryName="Python's doctests">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -368,7 +467,7 @@
       <option name="SDK_HOME" value="" />
       <option name="WORKING_DIRECTORY" value="" />
       <option name="IS_MODULE_SDK" value="false" />
-      <module name="cross_dock_order" />
+      <module name="zTools" />
       <option name="SCRIPT_NAME" value="" />
       <option name="CLASS_NAME" value="" />
       <option name="METHOD_NAME" value="" />
@@ -377,16 +476,22 @@
       <option name="PATTERN" value="" />
       <method />
     </configuration>
-    <configuration default="false" name="cross_dock_order" type="Python.DjangoServer" factoryName="Django server">
+    <configuration default="true" type="com.intellij.persistence.run.ConsoleRunConfigurationType" factoryName="Query Language Console">
+      <option name="VM_PARAMETERS" value="" />
+      <option name="USER_CFG_CLASS" />
+      <option name="CONTEXT_PROVIDER" />
+      <method />
+    </configuration>
+    <configuration default="false" name="zTools" type="Python.DjangoServer" factoryName="Django server">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <envs>
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="C:/Python27/python.exe" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/zerd/zerd_app" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/zerd_app" />
       <option name="IS_MODULE_SDK" value="false" />
-      <module name="cross_dock_order" />
+      <module name="zTools" />
       <option name="port" value="8000" />
       <option name="host" value="" />
       <option name="additionalOptions" value="" />
@@ -401,10 +506,9 @@
       <ConfigurationWrapper RunnerId="PythonRunner" />
       <method />
     </configuration>
-    <list size="3">
-      <item index="0" class="java.lang.String" itemvalue="Django server.cross_dock_order" />
-      <item index="1" class="java.lang.String" itemvalue="Python.cross_checker" />
-      <item index="2" class="java.lang.String" itemvalue="Python.attribute_fixer" />
+    <list size="2">
+      <item index="0" class="java.lang.String" itemvalue="Python.init_cross_order" />
+      <item index="1" class="java.lang.String" itemvalue="Django server.zTools" />
     </list>
   </component>
   <component name="ShelveChangesManager" show_recycled="false" />
@@ -428,49 +532,29 @@
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="ba66b0b9-79f6-4684-844b-25a684a9ef94" name="Default" comment="" />
-      <created>1333194497938</created>
-      <updated>1333194497938</updated>
+      <changelist id="8add21f0-f391-4734-9a3e-d1f94e72dde7" name="Default" comment="" />
+      <created>1335531646203</created>
+      <updated>1335531646203</updated>
     </task>
     <servers />
-  </component>
-  <component name="TodoView" selected-index="0">
-    <todo-panel id="selected-file">
-      <are-packages-shown value="false" />
-      <are-modules-shown value="false" />
-      <flatten-packages value="false" />
-      <is-autoscroll-to-source value="false" />
-    </todo-panel>
-    <todo-panel id="all">
-      <are-packages-shown value="false" />
-      <are-modules-shown value="false" />
-      <flatten-packages value="false" />
-      <is-autoscroll-to-source value="false" />
-    </todo-panel>
-    <todo-panel id="default-changelist">
-      <are-packages-shown value="false" />
-      <are-modules-shown value="false" />
-      <flatten-packages value="false" />
-      <is-autoscroll-to-source value="false" />
-    </todo-panel>
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1554" height="916" extended-state="6" />
     <editor active="false" />
     <layout>
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32896462" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32365146" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.13434727" sideWeight="0.16182573" order="1" side_tool="true" content_ui="tabs" />
-      <window_info id="Dependency Viewer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.25065964" sideWeight="0.6710354" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3042877" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24246396" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32896462" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
+      <window_info id="Dependency Viewer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3298153" sideWeight="0.75098294" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.22280473" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24901704" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32918397" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32896462" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32896462" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
@@ -501,7 +585,7 @@
     <option name="CHECK_COMMIT_MESSAGE_SPELLING" value="true" />
     <option name="DEFAULT_PATCH_EXTENSION" value="patch" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
-    <option name="LAST_COMMIT_MESSAGE" value="Merge branch 'master' of github.com:wolet/cross_dock_order&#10;&#10;Conflicts:&#10;&#9;.idea/workspace.xml&#10;" />
+    <option name="LAST_COMMIT_MESSAGE" value="git try" />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="true" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_FILES_UP_TO_DATE_BEFORE_COMMIT" value="false" />
@@ -514,90 +598,102 @@
     <option name="UPDATE_GROUP_BY_CHANGELIST" value="false" />
     <option name="SHOW_FILE_HISTORY_AS_TREE" value="false" />
     <option name="FILE_HISTORY_SPLITTER_PROPORTION" value="0.6" />
-    <MESSAGE value="Models are designed to be more extendable&#10;Base template is created&#10;New UI desing is done&#10;jQuery datatable is embeded - need to be improved&#10;User forms are designed and improved to handle errors&#10;Refactoring is done in some early functions to be more efficient" />
-    <MESSAGE value="init" />
-    <MESSAGE value="update script is added" />
-    <MESSAGE value="Merge branch 'master' of github.com:wolet/cross_dock_order&#10;&#10;Conflicts:&#10;&#9;.idea/workspace.xml&#10;" />
+    <MESSAGE value="git refactor try" />
+    <MESSAGE value="git try" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="python-line">
-          <url>file://$PROJECT_DIR$/order_check/views.py</url>
-          <line>93</line>
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="python-line">
-          <url>file://$PROJECT_DIR$/scripts/attribute_fixer.py</url>
-          <line>17</line>
+          <url>file://$PROJECT_DIR$/zerd_app/cross_order/views.py</url>
+          <line>16</line>
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://C:/Python27/Lib/site-packages/django/contrib/auth/__init__.py">
+    <entry file="file://$PROJECT_DIR$/zerd_app/templates/cross_order/list_transaction.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="64" column="4" selection-start="2678" selection-end="2678" vertical-scroll-proportion="0.14625229" />
+        <state line="35" column="33" selection-start="1086" selection-end="1086" vertical-scroll-proportion="0.0018939395" />
       </provider>
     </entry>
-    <entry file="file://C:/Python27/Lib/string.py">
+    <entry file="file://$PROJECT_DIR$/zerd_app/templates/cross_order/list_transaction_details.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="280" column="4" selection-start="9126" selection-end="9126" vertical-scroll-proportion="0.33288044" />
+        <state line="127" column="124" selection-start="5960" selection-end="5960" vertical-scroll-proportion="-6.27451" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/zerd/script/size_fixer.py">
+    <entry file="file://$PROJECT_DIR$/static/css/jquery-ui-1.8.4.custom.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="63" column="74" selection-start="3630" selection-end="3630" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/css/zidaya.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="269" column="23" selection-start="5457" selection-end="5457" vertical-scroll-proportion="-14.32" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/zerd_app/cross_order/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="16" column="14" selection-start="665" selection-end="675" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/zerd_app/userprofile/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="26" column="28" selection-start="1330" selection-end="1330" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/zerd_app/templates/userprofile/login_or_register.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="57" column="131" selection-start="2076" selection-end="2076" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/zerd_app/templates/cross_order/list_supplier.html">
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/zerd/script/duplicate_fixer.py">
+    <entry file="file://$PROJECT_DIR$/zerd_app/templates/cross_order/list_order.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="13" column="0" selection-start="0" selection-end="1439" vertical-scroll-proportion="0.0" />
+        <state line="170" column="60" selection-start="7543" selection-end="7543" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/zerd/script/update_cross_status.py">
+    <entry file="file://$PROJECT_DIR$/script/init_cross_order.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="32" column="0" selection-start="1024" selection-end="1024" vertical-scroll-proportion="0.30706522" />
+        <state line="19" column="18" selection-start="518" selection-end="518" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/zerd/script/init_cross_order.py">
+    <entry file="file://$PROJECT_DIR$/zerd_app/cross_order/models.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="107" column="0" selection-start="3780" selection-end="3988" vertical-scroll-proportion="0.023097826" />
+        <state line="131" column="36" selection-start="7033" selection-end="7033" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/zerd/zerd_app/cross_order/models.py">
+    <entry file="file://$PROJECT_DIR$/static/js/zidaya.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="9" column="6" selection-start="275" selection-end="275" vertical-scroll-proportion="0.023097826" />
+        <state line="80" column="29" selection-start="3011" selection-end="3013" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/zerd/zerd_app/templates/cross_order/list_order.html">
+    <entry file="file://$PROJECT_DIR$/zerd_app/templates/cross_order/boxes/confirm_box.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="196" column="38" selection-start="8304" selection-end="8304" vertical-scroll-proportion="0.0">
+        <state line="4" column="6" selection-start="255" selection-end="255" vertical-scroll-proportion="0.13076924" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/zerd_app/settings.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="19" column="1" selection-start="722" selection-end="722" vertical-scroll-proportion="0.023097826" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/zerd_app/templates/base.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="35" column="29" selection-start="2130" selection-end="2130" vertical-scroll-proportion="0.023943663">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/zerd/zerd_app/templates/cross_order/list_transaction.html">
+    <entry file="file://$PROJECT_DIR$/zerd_app/__init__.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="49" column="67" selection-start="1606" selection-end="1606" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/zerd/zerd_app/cross_order/views.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="413" column="56" selection-start="16008" selection-end="16008" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/zerd/zerd_app/templates/cross_order/list_supplier.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="84" column="38" selection-start="2967" selection-end="2972" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/zerd/zerd_app/templates/cross_order/list_transaction_details.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="177" column="56" selection-start="7696" selection-end="7696" vertical-scroll-proportion="0.7605634">
+        <state line="0" column="2" selection-start="2" selection-end="2" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>

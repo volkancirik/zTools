@@ -1,7 +1,7 @@
 from django.conf.urls.defaults import *
 
 urlpatterns = patterns('',
-    (r'^login/$', '....userprofile.views.user_login'),
+    (r'^login/$', 'cross_app.userprofile.views.user_login'),
     (r'^logout/$', 'django.contrib.auth.views.logout', {"next_page":"/"}),
-    (r'^register/$', '....userprofile.views.register'),
+    (r'^register/$', 'cross_app.userprofile.views.register'),
 )

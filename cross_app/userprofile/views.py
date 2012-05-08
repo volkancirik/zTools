@@ -1,7 +1,7 @@
 from django.contrib.auth import authenticate, login
 from django.contrib.auth.models import User
 from django.shortcuts import redirect
-from cross_order.helper_functions import render_response
+from cross_app.cross_order.helper_functions import render_response
 from cross_app.userprofile.forms import RegisterForm, LoginForm
 from cross_app.userprofile.models import Profile
 

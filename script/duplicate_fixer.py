@@ -14,9 +14,9 @@ setup_environment()
 
 def fixSizes():
 
-    from zerd_app.cross_order.models import OrderLive,CrossStatus,LastUpdate,Supplier,Order
+    from cross_app.cross_order.models import OrderLive,CrossStatus,LastUpdate,Supplier,Order
     from django.contrib.auth.models import User
-    from zerd_app.cross_order.models import OrderCrossDetails,SimpleSize
+    from cross_app.cross_order.models import OrderCrossDetails,SimpleSize
     
       
     oList = Order.objects.filter(order_date__range=[datetime.datetime.strptime("30/04/2012:18:00:00","%d/%m/%Y:%H:%M:%S"),datetime.datetime.strptime("04/05/2012:14:00:00","%d/%m/%Y:%H:%M:%S")])

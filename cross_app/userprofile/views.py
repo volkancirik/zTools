@@ -2,8 +2,8 @@ from django.contrib.auth import authenticate, login
 from django.contrib.auth.models import User
 from django.shortcuts import redirect
 from cross_order.helper_functions import render_response
-from zerd_app.userprofile.forms import RegisterForm, LoginForm
-from zerd_app.userprofile.models import Profile
+from cross_app.userprofile.forms import RegisterForm, LoginForm
+from cross_app.userprofile.models import Profile
 
 def register(request):
     if request.method == 'POST':

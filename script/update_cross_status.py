@@ -14,9 +14,9 @@ setup_environment()
 
 def fixSizes():
 
-    from zerd_app.cross_order.models import OrderLive,CrossStatus,LastUpdate,Supplier,Order
+    from cross_app.cross_order.models import OrderLive,CrossStatus,LastUpdate,Supplier,Order
     from django.contrib.auth.models import User
-    from zerd_app.cross_order.models import OrderCrossDetails,SimpleSize
+    from cross_app.cross_order.models import OrderCrossDetails,SimpleSize
 
 
     cancelCounter = 0

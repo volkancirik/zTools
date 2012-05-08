@@ -6,8 +6,8 @@ admin.autodiscover()
 
 urlpatterns = patterns('',
     (r'^admin/', include(admin.site.urls)),
-    (r'^$', '.userprofile.views.user_login'),
-    (r'^user/', include('.userprofile.urls')),
-    (r'^cross_order/', include('.cross_order.urls')),
+    (r'^$', 'cross_app.userprofile.views.user_login'),
+    (r'^user/', include('cross_app.userprofile.urls')),
+    (r'^cross_order/', include('cross_app.cross_order.urls')),
     (r'^static/(.*)$', 'django.views.static.serve', {'document_root': '%s' % DOCUMENT_ROOT, 'show_indexes': True}),
 )

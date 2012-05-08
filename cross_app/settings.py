@@ -13,7 +13,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql', # Add 'postgresql_psycopg2', 'postgresql', 'mysql', 'sqlite3' or 'oracle'.
         'NAME': 'rocket_orders_v03',                      # Or path to database file if using sqlite3.
         'USER': 'root',                      # Not used with sqlite3.
-        'PASSWORD': 'root',                  # Not used with sqlite3.
+        'PASSWORD': '123123',                  # Not used with sqlite3.
         'HOST': '',                      # Set to empty string for localhost. Not used with sqlite3.
         'PORT': '3306',                      # Set to empty string for default. Not used with sqlite3.
     }
@@ -56,7 +56,7 @@ ADMIN_MEDIA_PREFIX = '/static/admin/'
 
 # Additional locations of static files
 STATICFILES_DIRS = (
-    'C:/Projects/rocket/cross_dock_order/zerd/static'
+    'C:/Projects/DjangoProjects/zTools/static'
 )
 
 # List of finder classes that know how to find static files in
@@ -85,9 +85,9 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.messages.middleware.MessageMiddleware',
 )
 
-ROOT_URLCONF = 'zerd_app.urls'
+ROOT_URLCONF = 'cross_app.urls'
 
-TEMPLATE_DIRS = ('C:/Projects/rocket/cross_dock_order/zerd/zerd_app/templates',)
+TEMPLATE_DIRS = ('C:/Projects/DjangoProjects/zTools/cross_app/templates',)
 
 INSTALLED_APPS = (
     'django.contrib.auth',
@@ -96,7 +96,6 @@ INSTALLED_APPS = (
     'django.contrib.sites',
     'django.contrib.messages',
     'django.contrib.admin',
-    #'django.contrib.staticfiles',
     'userprofile',
     'cross_order',  
 )
@@ -125,4 +124,4 @@ AUTHENTICATION_BACKENDS = (
 )
 
 AUTH_PROFILE_MODULE = 'userprofile.Profile'
-DOCUMENT_ROOT = 'C:/Projects/rocket/cross_dock_order/zerd'
+DOCUMENT_ROOT = 'C:/Projects/DjangoProjects/zTools'

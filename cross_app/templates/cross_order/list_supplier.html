@@ -28,6 +28,19 @@
                         </td>
                     </tr>
                     <tr>
+                        <td class="left">
+                            Select an Attribute
+                        </td>
+                        <td class="right">
+                            <select name='attributeFilter' id='id_attributeFilter'>
+                                <option value='all'>All</option>
+                                {% for oa in attributeList %}
+                                        <option value='{{ oa.pk }}'>{{ oa.attributeName }}</option>
+                                {% endfor %}
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
                         <td>
 
                         </td>
@@ -35,6 +48,7 @@
                             <input id="id_submit" type="submit" name="submit" value="Sorgula" class="button"/>
                         </td>
                     </tr>
+
                 </table>
             </form>
             <div class="dateRangeInfo">
@@ -78,13 +92,15 @@
 </div>
 <script type="text/javascript">
     $(document).ready(function(){
+        $('#id_attributeFilter').val({{ oattribute.pk }});
         $('#supplierList').dataTable(
                 {
                     "bJQueryUI": true,
                     "sPaginationType": "full_numbers",
-                    "sScrollY": "220px",
+                    "sScrollY": "220px"
                 }
         );
+
 
         $( "#id_dateStart" ).datepicker({ altFormat: 'yy-mm-dd' });
 	    $( "#id_dateEnd" ).datepicker({  altFormat: 'yy-mm-dd' });

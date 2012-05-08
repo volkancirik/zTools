@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+from datetime import  datetime
 from django.db.models.signals import post_save
 
 class Supplier(models.Model):
@@ -12,6 +13,16 @@ class CrossStatus(models.Model):
     isTransactionGenerate = models.BooleanField(null=False,default=False)
     isInvalid = models.BooleanField(null=False,default=False)
     order = models.IntegerField(default=9999)
+
+class OrderAttributeSet(models.Model):
+    attributeName = models.CharField(max_length=50,null=False)
+    attributeCode = models.CharField(max_length=50,null=False)
+    isInvalid = models.BooleanField(null=False,default=False)
+    createTime = models.DateTimeField(default= datetime.now())
+    order = models.IntegerField(default=9999)
+    def __unicode__(self):
+        return str(self.attributeName)
+
 
 class Order(models.Model):
     id_sales_order_item = models.PositiveIntegerField(max_length=10,null=False,default=0)
@@ -61,6 +72,7 @@ class OrderCrossDetails(models.Model):
     supplier_order_date = models.DateTimeField(null=True,blank=True)
     order_attribute = models.CharField(max_length=10,null=False)
     inbound_order_number = models.CharField(max_length=30,null=True)
+    
 
     def __unicode__(self):
         return str(self.order)+' '+self.cross_status.name

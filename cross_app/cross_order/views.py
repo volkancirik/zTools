@@ -8,7 +8,7 @@ from django.utils import simplejson
 from django.views.decorators.csrf import csrf_exempt
 import xlwt
 from cross_order.helper_functions import render_response, generateTransactionString
-from cross_order.models import Supplier, CrossStatus, Order, LastUpdate, Transactions, OrderTransaction, OrderCrossDetails
+from cross_order.models import Supplier, CrossStatus, Order, LastUpdate, Transactions, OrderTransaction, OrderCrossDetails, OrderAttributeSet
 from django.core.serializers.json import Serializer, DjangoJSONEncoder
 
 @login_required
@@ -24,23 +24,42 @@ def list_supplier(request):
         end_date = datetime.datetime.strptime(request.POST['dateEnd'], "%m/%d/%Y")
         end_date = datetime.datetime.combine(end_date, datetime.time.max)
 
-#    if start_date == end_date:
-#        start_date = datetime.datetime.combine(start_date, datetime.time.min)
-#        end_date = datetime.datetime.combine(end_date, datetime.time.max)
-
+    oa = None
     cs = CrossStatus.objects.all().order_by("order")[0]
     supList = []
-    for s in Supplier.objects.all().order_by("name"):
-        if s.order_set.filter(order_date__range=[start_date, end_date]).count() >0:
-            s.unprocessedCount = s.order_set.filter(ordercrossdetails__cross_status=cs,order_date__range=[start_date, end_date]).count()
-            s.totalCount = s.order_set.filter(order_date__range=[start_date, end_date]).count()
-            supList.append(s)
+
+    try:
+        oa = OrderAttributeSet.objects.get(pk = int(request.POST['attributeFilter']))
+        for s in Supplier.objects.all().order_by("name"):
+            if s.order_set.filter(order_date__range=[start_date, end_date],ordercrossdetails__order_attribute = oa.attributeCode).count() >0:
+                s.unprocessedCount = s.order_set.filter(ordercrossdetails__cross_status=cs,order_date__range=[start_date, end_date]).count()
+                s.totalCount = s.order_set.filter(order_date__range=[start_date, end_date]).count()
+                supList.append(s)
+    except:
+        for s in Supplier.objects.all().order_by("name"):
+            if s.order_set.filter(order_date__range=[start_date, end_date]).count() >0:
+               s.unprocessedCount = s.order_set.filter(ordercrossdetails__cross_status=cs,order_date__range=[start_date, end_date]).count()
+               s.totalCount = s.order_set.filter(order_date__range=[start_date, end_date]).count()
+               supList.append(s)
+
+
+#    for s in Supplier.objects.all().order_by("name"):
+#        if s.order_set.filter(order_date__range=[start_date, end_date]).count() >0:
+#            if oa is not None:
+#                s.unprocessedCount = s.order_set.filter(ordercrossdetails__cross_status=cs,ordercrossdetails__order_attribute = oa.attributeCode,order_date__range=[start_date, end_date]).count()
+#            else:
+#                s.unprocessedCount = s.order_set.filter(ordercrossdetails__cross_status=cs,order_date__range=[start_date, end_date]).count()
+#            s.totalCount = s.order_set.filter(order_date__range=[start_date, end_date]).count()
+#            supList.append(s)
+
 
     return render_response(request, 'cross_order/list_supplier.html',
             {
                 'supList':supList,
                 'start_date':start_date,
                 'end_date':end_date,
+                'attributeList':OrderAttributeSet.objects.all().order_by("order"),
+                'oattribute':oa
             })
 
 @login_required

@@ -59,7 +59,7 @@
                     {% for s in supList %}
                         <tr>
                             <td>
-                                <a href="/cross_order/list_order/?sid={{ s.pk }}&dateStart={{ start_date|date:"m/d/Y" }}&dateEnd={{ end_date|date:"m/d/Y" }}">
+                                <a href="/cross_order/list_order/?sid={{ s.pk }}&dateStart={{ start_date|date:"m/d/Y" }}&dateEnd={{ end_date|date:"m/d/Y" }}&cstatus=1">
                                     {{ s.name }}
                                 </a>
                             </td>

@@ -1,4 +1,3 @@
-# Django settings for zerd_app project.
 
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG

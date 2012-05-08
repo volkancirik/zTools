@@ -53,7 +53,8 @@
                         <th>Zidaya Order Number</th>
                         <th>Size</th>
                         <th>SKU</th>
-                        <th>Supplier SKU</th>
+                        <th>Supplier SKU Config</th>
+                        <th>Supplier SKU Simple</th>
                         <th>Barcode</th>
                         <th>Name</th>
                         <th>BOB Status</th>
@@ -76,6 +77,7 @@
                             <td>{{ o.order.order_nr }}</td>
                             <td>{{ o.order.size }}</td>
                             <td>{{ o.order.sku }}</td>
+                            <td>{{ o.sku_supplier_config }}</td>
                             <td>{{ o.order.sku_supplier_simple }}</td>
                             <td>{{ o.order.barcode_ean }}</td>
                             <td>{{ o.order.name }}</td>

@@ -199,7 +199,11 @@
                     "sScrollY": "350px",
                     "bJQueryUI": true,
                     "bPaginate": false,
-                    "sScrollX": "100%"
+                    "sScrollX": "100%",
+                    "aoColumnDefs": [{
+                                        "bVisible": false, "aTargets": [ 10,11] // destroy BOB Status and suborder#
+                                    }]
+
                 }
         );
         $('#id_statusFilter').val({{ cstatus.pk }});

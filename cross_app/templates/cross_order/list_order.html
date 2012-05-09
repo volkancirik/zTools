@@ -25,6 +25,21 @@
                         {{ start_date|date }} - {{ end_date|date }}
                     </td>
                 </tr>
+
+                <tr>
+                    <td class="left">
+                        Order Attribute:
+                    </td>
+                    <td class="right">
+                        {% if oattribute %}
+                            {{ oattribute.attributeName }}
+                        {% else %} 
+                            All
+                        {% endif %}
+                    </td>
+                </tr>
+
+
                 <tr>
                     <td class="left">
                         Cross Status:
@@ -126,7 +141,8 @@
                             <span> Update Cross Status </span>
                         </a>
                     </td>
-                <td class="left">
+
+                    <td class="left">
                          <input id="id_inbound_order_number" type="textbox" name="inbound_order_number" value=""/>
                     </td>
                     <td class="right">
@@ -134,6 +150,7 @@
                             <span> Update Inbound Order Number </span>
                         </a>
                     </td>
+
                     <td class="left">
                         &nbsp;
                     </td>

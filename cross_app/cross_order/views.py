@@ -32,8 +32,8 @@ def list_supplier(request):
         oa = OrderAttributeSet.objects.get(pk = int(request.POST['attributeFilter']))
         for s in Supplier.objects.all().order_by("name"):
             if s.order_set.filter(order_date__range=[start_date, end_date],ordercrossdetails__order_attribute = oa.attributeCode).count() >0:
-                s.unprocessedCount = s.order_set.filter(ordercrossdetails__cross_status=cs,order_date__range=[start_date, end_date]).count()
-                s.totalCount = s.order_set.filter(order_date__range=[start_date, end_date]).count()
+                s.unprocessedCount = s.order_set.filter(ordercrossdetails__cross_status=cs,ordercrossdetails__order_attribute = oa.attributeCode,order_date__range=[start_date, end_date]).count()
+                s.totalCount = s.order_set.filter(ordercrossdetails__order_attribute = oa.attributeCode,order_date__range=[start_date, end_date]).count()
                 supList.append(s)
     except:
         for s in Supplier.objects.all().order_by("name"):
@@ -42,13 +42,10 @@ def list_supplier(request):
                s.totalCount = s.order_set.filter(order_date__range=[start_date, end_date]).count()
                supList.append(s)
 
-
+#   below is the older version of filterin suppliers
 #    for s in Supplier.objects.all().order_by("name"):
 #        if s.order_set.filter(order_date__range=[start_date, end_date]).count() >0:
-#            if oa is not None:
-#                s.unprocessedCount = s.order_set.filter(ordercrossdetails__cross_status=cs,ordercrossdetails__order_attribute = oa.attributeCode,order_date__range=[start_date, end_date]).count()
-#            else:
-#                s.unprocessedCount = s.order_set.filter(ordercrossdetails__cross_status=cs,order_date__range=[start_date, end_date]).count()
+#            s.unprocessedCount = s.order_set.filter(ordercrossdetails__cross_status=cs,order_date__range=[start_date, end_date]).count()
 #            s.totalCount = s.order_set.filter(order_date__range=[start_date, end_date]).count()
 #            supList.append(s)
 
@@ -69,8 +66,14 @@ def list_order(request):
         return redirect('/cross_order/list_supplier/')
 
     cs = None
+    oa = None
     try:
         cs = CrossStatus.objects.get(pk = int(request.GET['cstatus']))
+    except:
+        pass
+
+    try:
+        oa = OrderAttributeSet.objects.get(pk = int(request.GET['oattributeid']))
     except:
         pass
 
@@ -83,14 +86,13 @@ def list_order(request):
         end_date = datetime.datetime.strptime(request.GET['dateEnd'], "%m/%d/%Y")
         end_date = datetime.datetime.combine(end_date, datetime.time.max)
 
-#    if start_date == end_date:
-#        start_date = datetime.datetime.combine(start_date, datetime.time.min)
-#        end_date = datetime.datetime.combine(end_date, datetime.time.max)
 
     current_url = '/cross_order/list_order/?sid='+request.GET["sid"]+"&dateStart="+request.GET['dateStart']+"&dateEnd="+request.GET['dateEnd']+'&cstatus='
     orderList = sup.order_set.filter(order_date__range=(start_date,end_date))
     if cs is not None:
         orderList = orderList.filter(ordercrossdetails__cross_status=cs)
+    if oa is not None:
+        orderList = orderList.filter(ordercrossdetails__order_attribute = oa.attributeCode)
 
     return render_response(request, 'cross_order/list_order.html',
             {
@@ -100,7 +102,8 @@ def list_order(request):
                 'orderList':orderList,
                 'crossStatusList':CrossStatus.objects.all().order_by("order"),
                 'current_url':current_url,
-                'cstatus':cs
+                'cstatus':cs,
+                'oattribute':oa,
             })
 
 @login_required

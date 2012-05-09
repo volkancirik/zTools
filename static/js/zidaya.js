@@ -40,6 +40,23 @@ function closePopupBox(){
     return false;
 }
 
+function closeCommentBox(){
+    $('.commentBox').hide();
+    return false;
+}
+
+function viewCommentBox(){
+    $('.commentBox').show();
+    return false;
+}
+function submitComment(){
+                //open popup first
+                 $('#comment').val($('#userComment').val());
+                $('#id_buttonSource').val("comment");
+                $('#orderUpdateForm').submit();
+}
+
+
 function viewOrderHistory(pk){
         url1 = "/cross_order/order_history/?pk="+pk;
         jQuery.ajax(

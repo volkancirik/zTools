@@ -72,8 +72,8 @@ class OrderCrossDetails(models.Model):
     supplier_order_date = models.DateTimeField(null=True,blank=True)
     order_attribute = models.CharField(max_length=10,null=False)
     inbound_order_number = models.CharField(max_length=30,null=True)
+    comment = models.TextField(null=True)
     
-
     def __unicode__(self):
         return str(self.order)+' '+self.cross_status.name
 

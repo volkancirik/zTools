@@ -117,6 +117,8 @@ def update_order_list(request):
         return redirect('/cross_order/list_order/')
     if action == "inbound" and request.POST['inbound_order_number'] == "":
         return redirect('/cross_order/list_order/')
+    if action == "comment" and request.POST['comment'] == "":
+        return redirect('/cross_order/list_order/')
 
     if action == "status":
         cs = CrossStatus.objects.get(pk = request.POST['statusUpdate'])
@@ -149,6 +151,13 @@ def update_order_list(request):
         for oid in order_id_list:
             o = Order.objects.get(pk=oid)
             o.ordercrossdetails.inbound_order_number = ion
+            o.ordercrossdetails.save()
+            
+    elif action == "comment":
+        comment = request.POST['comment']
+        for oid in order_id_list:
+            o = Order.objects.get(pk=oid)
+            o.ordercrossdetails.comment = comment
             o.ordercrossdetails.save()
 
     sid = request.GET['sid']
@@ -261,14 +270,6 @@ def exportExcelOrders(request):
     if "enddate" in request.GET:
         end_date = datetime.datetime.strptime(request.GET['enddate'], "%m/%d/%Y")
         end_date = datetime.datetime.combine(end_date, datetime.time.max)
-
-
-#    if start_date == end_date:
-#        start_date = datetime.datetime.combine(start_date, datetime.time.min)
-#        end_date = datetime.datetime.combine(end_date, datetime.time.max)
-#
-
-
 
     try:
         cs = CrossStatus.objects.get(pk = int(request.GET['cstatus']))

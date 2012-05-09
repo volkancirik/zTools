@@ -86,6 +86,7 @@
                         <th>Order Date</th>
                         <th>Attribute Set</th>
                         <th>Inbound Order Number</th>
+                        <th>Comment</th>
                         <th>Supplier Order Date</th>
                         <th>Last Update</th>
                     </tr>
@@ -110,6 +111,7 @@
                             <td>{{ o.order_date|date:"d/M/Y H:m:s" }}</td>
                             <td>{{ o.ordercrossdetails.order_attribute }}</td>
                             <td>{{ o.ordercrossdetails.inbound_order_number }}</td>
+                            <td>{{ o.ordercrossdetails.comment }}</td>
                             <td>{{ o.ordercrossdetails.supplier_order_date|date:"d/M/Y H:m:s" }}</td>
                             <td>
                                 {% for lu in o.lastupdate_set.all|slice:":1" %}
@@ -137,6 +139,7 @@
                          </select>
                     </td>
                     <td  class="right">
+                        <input type="hidden" id="comment" name="comment"/>
                         <a class="submitButton" onclick="return updateCrossStatus();">
                             <span> Update Cross Status </span>
                         </a>
@@ -152,7 +155,9 @@
                     </td>
 
                     <td class="left">
-                        &nbsp;
+                        <a class="submitButton" onclick="return viewCommentBox();">
+                            <span> Add Comment </span>
+                        </a>
                     </td>
                     <td class="right" style="text-align: right;">
                         <a class="submitButton" href="/cross_order/exportOrders/?sup={{ supplier.pk }}&startdate={{ start_date|date:"m/d/Y" }}&enddate={{ end_date|date:"m/d/Y" }}&cstatus={{ cstatus.pk }}">
@@ -169,6 +174,7 @@
 
 {% include "cross_order/boxes/confirm_box.html" %}
 {% include "cross_order/boxes/history_box.html" %}
+{% include "cross_order/boxes/comment_box.html" %}
     
 <script type="text/javascript">
     function updateCrossStatus(){
@@ -177,7 +183,6 @@
             alert('Lutfen gecerli bir statu seciniz !')
             return false;
         }
-
 
         if(  $('#id_statusUpdate option:selected').hasClass('confirmRequired') ){
             $( "#dialog:ui-dialog" ).dialog( "destroy" );

@@ -232,6 +232,11 @@ body{
     width: 205px;
 }
 
+select,textarea{
+    border: 1px solid #CCCCCC;
+    padding: 2px;
+}
+
 .FormWrapper .submitButtonContainer{
     text-align: right;
     width: 320px;

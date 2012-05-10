@@ -50,8 +50,7 @@ function viewCommentBox(){
     return false;
 }
 function submitComment(){
-                //open popup first
-                 $('#comment').val($('#userComment').val());
+                 //$('#comment').val($('#userComment').val());
                 $('#id_buttonSource').val("comment");
                 $('#orderUpdateForm').submit();
 }

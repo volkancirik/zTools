@@ -7,9 +7,9 @@ import datetime
 
 def setup_environment():
 
-    sys.path.append('/home/opsland/opsland/bin/zerd/')
-    sys.path.append('/home/opsland/opsland/bin/zerd/zerd_app/')
-    os.environ['DJANGO_SETTINGS_MODULE'] = 'zerd_app.settings_cross2'
+    sys.path.append('/home/opsland/opsland/bin/zTools/')
+    sys.path.append('/home/opsland/opsland/bin/zTools/cross_app/')
+    os.environ['DJANGO_SETTINGS_MODULE'] = 'cross_app.settings_cross2'
 setup_environment()
 
 def fixSizes():
@@ -22,8 +22,11 @@ def fixSizes():
     cancelCounter = 0
     shipCounter = 0
     for o in Order.objects.all():
-        live = OrderLive.objects.using('baytas').get(id_sales_order_item = o.id_sales_order_item)
+        live = OrderLive.objects.get(id_sales_order_item = o.id_sales_order_item)
         cs = None
+
+	    o.status = live.status
+	    o.save()
 
         # TODO  Remove hardcoded ip by a config. parameter (a boolean field etc.)
         # o.ordercrossdetails.cross_status.pk means SHIPPED
@@ -50,7 +53,5 @@ def fixSizes():
     print "Total : " + str(Order.objects.all().count())
     print "Shipped : " + str(shipCounter)
     print "Canceled : " + str(cancelCounter)
-
-
 
 fixSizes()

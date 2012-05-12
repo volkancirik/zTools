@@ -62,6 +62,7 @@ class Order(models.Model):
     billing_address = models.CharField(max_length=255,null=True)
     billing_address2 = models.CharField(max_length=255,null=True)
     order_date = models.DateTimeField(blank=True)
+    last_status_change = models.DateTimeField(blank=True,null=True)
     def __unicode__(self):
         return str(self.id_sales_order_item)
 
@@ -136,16 +137,18 @@ class OrderLive(models.Model):
     billing_address = models.CharField(max_length=255,null=True)
     billing_address2 = models.CharField(max_length=255,null=True)
     order_date = models.DateTimeField(blank=True, auto_now_add=True)
+    order_date = models.DateTimeField(blank=True, auto_now_add=True)
+    last_status_change = models.DateTimeField(blank=True)
 
     def __unicode__(self):
         return str(self.id_sales_order_item)
     
     class Meta:
-        db_table = 'orderitem_base_DEV'
+        db_table = 'orderitem_base'
 
 class SimpleSize(models.Model): 
     fk_catalog_simple = models.PositiveIntegerField(max_length=10,primary_key=True)
     size = models.CharField(max_length=45,null=True)
 
     class Meta:
-	db_table = 'simples_sizes'
+        db_table = 'simples_sizes'

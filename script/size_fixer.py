@@ -6,9 +6,9 @@ import datetime
 
 def setup_environment():
 
-    sys.path.append('/home/opsland/opsland/bin/zerd/')
-    sys.path.append('/home/opsland/opsland/bin/zerd/zerd_app/')
-    os.environ['DJANGO_SETTINGS_MODULE'] = 'zerd_app.settings_cross2'
+    sys.path.append('/home/opsland/opsland/bin/zTools/')
+    sys.path.append('/home/opsland/opsland/bin/zTools/cross_app/')
+    os.environ['DJANGO_SETTINGS_MODULE'] = 'cross_app.settings_cross2'
 setup_environment()
 
 def fixSizes():

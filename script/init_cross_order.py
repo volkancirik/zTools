@@ -6,9 +6,9 @@ import datetime
 
 def setup_environment():
 
-    sys.path.append('/home/opsland/opsland/bin/zerd/')
-    sys.path.append('/home/opsland/opsland/bin/zerd/zerd_app/')
-    os.environ['DJANGO_SETTINGS_MODULE'] = 'zerd_app.settings_cross2'
+    sys.path.append('/home/opsland/opsland/bin/zTools/')
+    sys.path.append('/home/opsland/opsland/bin/zTools/cross_app/')
+    os.environ['DJANGO_SETTINGS_MODULE'] = 'cross_app.settings_cross2'
 setup_environment()
 
 def fixStatus():
@@ -21,27 +21,53 @@ def fixStatus():
 
 #    startdate = datetime.datetime.strptime("03/05/2012:18:00:00","%d/%m/%Y:%H:%M:%S")
 #    enddate = startdate + datetime.timedelta(hours=1)
-    t = Order.objects.all().order_by('-order_date')[:1][0]
+     t = OrderLive.objects.all().order_by('-last_status_change')[:1][0]
 
-    
+
 #    startdate = Order.objects.all().order_by('-order_date')[:1][0].order_date
 #    enddate = startdate + datetime.timedelta(hours=1)
-	
-    orderList = OrderLive.objects.using('baytas').filter(order_date__range=[t.order_date,datetime.datetime.now()])
+
+    startdate = t.last_status_change - datetime.timedelta(hours=2)
+    orderList = OrderLive.objects.filter(order_date__range=[startdate,t.last_status_change])
+
 #    orderList = OrderLive.objects.using('baytas').filter(order_date__range=[startdate,enddate])
     newOrderList = []
+    print str(t.last_status_change)
     print str(startdate)
-    print str(enddate)
     for o in orderList:
-	
-	if Order.objects.filter(id_sales_order_item = o.id_sales_order_item).count() > 0:
-		continue 
+	    if Order.objects.filter(id_sales_order_item = o.id_sales_order_item).count() > 0:
+            live = OrderLive.objects.get(id_sales_order_item = o.id_sales_order_item)
+            cs = None
+    
+            o.status = live.status
+            o.save()
+            if live.status == "shipped" and o.ordercrossdetails.cross_status.pk != 7:
+                cs = CrossStatus.objects.get(pk=7)
+                shipCounter += 1
 
-	if o.status == "canceled" or o.status == "invalid":
-		continue
+            if live.status == "canceled" and o.ordercrossdetails.cross_status.pk != 6:
+                cs = CrossStatus.objects.get(pk=6)
+                cancelCounter += 1
 
-	if not o.shipment_type.lower().__contains__("crossdocking"):
-		continue
+
+            if cs is not None:
+                o.ordercrossdetails.cross_status = cs
+                o.ordercrossdetails.save()
+
+                lu = LastUpdate()
+                lu.update_date = datetime.datetime.now()
+                lu.cross_status = cs
+                lu.order = o
+                lu.user = User.objects.filter(groups__name="fetcher")[0]
+                lu.save()
+            continue
+
+
+        if o.status != "exported" and o.status != "office_pending":
+            continue
+
+        if not o.shipment_type.lower().__contains__("crossdocking"):
+            continue
 
         supplier = None
         if Supplier.objects.filter(name = o.supplier_name).count() is 0:
@@ -50,7 +76,7 @@ def fixStatus():
             supplier.save()
         else:
             supplier = Supplier.objects.filter(name = o.supplier_name)[0]
-        
+
         no = Order()
         no.id_sales_order_item = o.id_sales_order_item
         no.id_sales_order = o.id_sales_order
@@ -89,10 +115,10 @@ def fixStatus():
         no.billing_address = o.billing_address
         no.billing_address2 = o.billing_address2
         no.order_date = o.order_date
-	
+
 
         no.save()
-	newOrderList.append(no)
+        newOrderList.append(no)
 
         # Extended order table is created
         # 5-7 digits in SKU gives the attribute of the order
@@ -112,33 +138,5 @@ def fixStatus():
         lu.user = User.objects.filter(groups__name="fetcher")[0]
         lu.save()
 
-
-    print str(len(newOrderList)) + " cross order added"
-    return newOrderList
-
-
-def fixSizes(newOrderList):
-
-    from cross_app.cross_order.models import OrderLive,CrossStatus,LastUpdate,Supplier,Order
-    from django.contrib.auth.models import User
-    from cross_app.cross_order.models import OrderCrossDetails,SimpleSize
-    
-    print "Sizes are been fetching and updating..."
-    simpleSizeList = SimpleSize.objects.all()
-    
-
-    counter = 0
-    for no in newOrderList:
-	print counter
-	try:
-		no.size =  simpleSizeList.get(fk_catalog_simple=int(no.sku.split('-')[1])).size
-		no.save()
-	except:
-		print no.sku
-		pass
-		
-	counter +=1
-
-	
-oList = fixStatus()
-fixSizes(oList)
+    print str(len(newOrderList)) + " cross order added" 
+fixStatus()

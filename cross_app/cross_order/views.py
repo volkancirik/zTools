@@ -284,7 +284,7 @@ def exportExcelOrders(request):
     book = xlwt.Workbook(encoding='utf8')
     sheet = book.add_sheet('untitled')
 
-    field_names = ['id_sales_order_item','order_nr','size','sku','sku_supplier_simple','barcode_ean','name','status','suborder_number','paid_price','cost','order_date']
+    field_names = ['id_sales_order_item','order_nr','size','sku','sku_supplier_config','sku_supplier_simple','barcode_ean','name','status','suborder_number','paid_price','cost','order_date']
     cross_status_fields = ['order_attribute','inbound_order_number','supplier_order_date',]
     order_cross_details_fields = ['name']
 
@@ -306,7 +306,7 @@ def exportExcelOrders(request):
             sheet.write(index_i+1,index_j,[unicode(getattr(a_cross_statuss, field)).encode('utf-8') ])
 
         for index_j,field in enumerate(field_names):
-            if index_j == 9 or index_j == 10:
+            if index_j == 11 or index_j == 10:
                 sheet.write(index_i+1,index_j+1,Decimal(getattr(an_order, field)))
             else:
                 sheet.write(index_i+1,index_j+1,[unicode(getattr(an_order, field)).encode('utf-8') ])
@@ -351,7 +351,7 @@ def exportExcelTransactions(request):
     book = xlwt.Workbook(encoding='utf8')
     sheet = book.add_sheet('untitled')
 
-    field_names = ['id_sales_order_item','order_nr','size','sku','sku_supplier_simple','barcode_ean','name','status','suborder_number','paid_price','cost','order_date']
+    field_names = ['id_sales_order_item','order_nr','size','sku','sku_supplier_config','sku_supplier_simple','barcode_ean','name','status','suborder_number','paid_price','cost','order_date']
     cross_status_fields = ['order_attribute','inbound_order_number','supplier_order_date',]
     order_cross_details_fields = ['name']
 
@@ -373,7 +373,7 @@ def exportExcelTransactions(request):
             sheet.write(index_i+1,index_j,[unicode(getattr(a_cross_statuss, field)).encode('utf-8') ])
 
         for index_j,field in enumerate(field_names):
-            if index_j == 9 or index_j == 10:
+            if index_j == 11 or index_j == 10:
                 sheet.write(index_i+1,index_j+1,Decimal(getattr(an_order, field)))
             else:
                 sheet.write(index_i+1,index_j+1,[unicode(getattr(an_order, field)).encode('utf-8') ])
@@ -423,17 +423,18 @@ def exportExcelForSupplier(request):
     x = 5
     book = xlwt.Workbook(encoding='utf8')
     sheet = book.add_sheet('untitled')
-    field_names = ['name','sku','sku_supplier_simple','barcode_ean','size','cost']
+    field_names = ['name','sku','sku_supplier_config','sku_supplier_simple','barcode_ean','size','cost']
 
     index_counter = 1
     sheet.write(0,0,[unicode("Urun Adi").encode('utf-8') ])
-    sheet.write(0,1,[unicode("SKU").encode('utf-8') ])
-    sheet.write(0,2,[unicode("sku_supplier_simple").encode('utf-8') ])
-    sheet.write(0,3,[unicode("Barkod").encode('utf-8') ])
-    sheet.write(0,4,[unicode("Beden/Boyut").encode('utf-8') ])
-    sheet.write(0,5,[unicode("Tutar").encode('utf-8') ])
-    sheet.write(0,6,[unicode("Miktar").encode('utf-8') ])
-    sheet.write(0,7,[unicode("Toplam Tutar").encode('utf-8') ])
+    sheet.write(0,1,[unicode("Zidaya SKU").encode('utf-8') ])
+    sheet.write(0,2,[unicode("Tedaricki SKU Config").encode('utf-8') ])
+    sheet.write(0,3,[unicode("Tedarikci SKU Simple").encode('utf-8') ])
+    sheet.write(0,4,[unicode("Barkod").encode('utf-8') ])
+    sheet.write(0,5,[unicode("Beden/Boyut").encode('utf-8') ])
+    sheet.write(0,6,[unicode("Tutar").encode('utf-8') ])
+    sheet.write(0,7,[unicode("Miktar").encode('utf-8') ])
+    sheet.write(0,8,[unicode("Toplam Tutar").encode('utf-8') ])
 
     count_j = 0
     row_fixer = 0
@@ -442,7 +443,7 @@ def exportExcelForSupplier(request):
     for index_i,an_order in enumerate(orders):
         if an_order.sku in skus:
             for index_j,field in enumerate(field_names):
-                if index_j == 5:
+                if index_j == 6:
                     sheet.write(index_i+1-row_fixer,index_j,Decimal(getattr(an_order, field)))
                 else:
                     sheet.write(index_i+1-row_fixer,index_j,[unicode(getattr(an_order, field)).encode('utf-8') ])
@@ -455,8 +456,8 @@ def exportExcelForSupplier(request):
         else:
             row_fixer = row_fixer + 1
 
-    sheet.write(num_of_item_listed+2,6,[unicode('Genel Toplam').encode('utf-8') ])
-    sheet.write(num_of_item_listed+2,7,Decimal(total_cost))
+    sheet.write(num_of_item_listed+2,7,[unicode('Genel Toplam').encode('utf-8') ])
+    sheet.write(num_of_item_listed+2,8,Decimal(total_cost))
     response = HttpResponse(mimetype='application/vnd.ms-excel')
 
     file_string = 'attachment; filename='+code+'.xls'

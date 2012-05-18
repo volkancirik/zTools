@@ -1,4 +1,5 @@
 import datetime
+from decimal import Decimal
 from django.contrib.auth.decorators import login_required
 from django.core import serializers
 from django.http import HttpResponse
@@ -305,7 +306,10 @@ def exportExcelOrders(request):
             sheet.write(index_i+1,index_j,[unicode(getattr(a_cross_statuss, field)).encode('utf-8') ])
 
         for index_j,field in enumerate(field_names):
-            sheet.write(index_i+1,index_j+1,[unicode(getattr(an_order, field)).encode('utf-8') ])
+            if index_j == 9 or index_j == 10:
+                sheet.write(index_i+1,index_j+1,Decimal(getattr(an_order, field)))
+            else:
+                sheet.write(index_i+1,index_j+1,[unicode(getattr(an_order, field)).encode('utf-8') ])
 
         for index_j,field in enumerate(cross_status_fields):
             sheet.write(index_i+1,index_j+index_counter,[unicode(getattr(cross_statuss, field)).encode('utf-8') ])
@@ -369,7 +373,10 @@ def exportExcelTransactions(request):
             sheet.write(index_i+1,index_j,[unicode(getattr(a_cross_statuss, field)).encode('utf-8') ])
 
         for index_j,field in enumerate(field_names):
-            sheet.write(index_i+1,index_j+1,[unicode(getattr(an_order, field)).encode('utf-8') ])
+            if index_j == 9 or index_j == 10:
+                sheet.write(index_i+1,index_j+1,Decimal(getattr(an_order, field)))
+            else:
+                sheet.write(index_i+1,index_j+1,[unicode(getattr(an_order, field)).encode('utf-8') ])
 
         for index_j,field in enumerate(cross_status_fields):
             sheet.write(index_i+1,index_j+index_counter,[unicode(getattr(cross_statuss, field)).encode('utf-8') ])
@@ -435,16 +442,21 @@ def exportExcelForSupplier(request):
     for index_i,an_order in enumerate(orders):
         if an_order.sku in skus:
             for index_j,field in enumerate(field_names):
-                sheet.write(index_i+1-row_fixer,index_j,[unicode(getattr(an_order, field)).encode('utf-8') ])
+                if index_j == 5:
+                    sheet.write(index_i+1-row_fixer,index_j,Decimal(getattr(an_order, field)))
+                else:
+                    sheet.write(index_i+1-row_fixer,index_j,[unicode(getattr(an_order, field)).encode('utf-8') ])
                 count_j = index_j
+
+
             sheet.write(index_i+1-row_fixer,count_j+1,[unicode(skus[an_order.sku]).encode('utf-8') ])
-            sheet.write(index_i+1-row_fixer,count_j+2,[unicode(total_costs[an_order.sku]).encode('utf-8') ])
+            sheet.write(index_i+1-row_fixer,count_j+2,Decimal(total_costs[an_order.sku]))
             skus.pop(an_order.sku)
         else:
             row_fixer = row_fixer + 1
 
     sheet.write(num_of_item_listed+2,6,[unicode('Genel Toplam').encode('utf-8') ])
-    sheet.write(num_of_item_listed+2,7,[unicode(total_cost).encode('utf-8') ])
+    sheet.write(num_of_item_listed+2,7,Decimal(total_cost))
     response = HttpResponse(mimetype='application/vnd.ms-excel')
 
     file_string = 'attachment; filename='+code+'.xls'

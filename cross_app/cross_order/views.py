@@ -451,13 +451,13 @@ def exportExcelForSupplier(request):
 
 
             sheet.write(index_i+1-row_fixer,count_j+1,[unicode(skus[an_order.sku]).encode('utf-8') ])
-            sheet.write(index_i+1-row_fixer,count_j+2,Decimal(total_costs[an_order.sku]))
+            sheet.write(index_i+1-row_fixer,count_j+2,total_costs[an_order.sku])
             skus.pop(an_order.sku)
         else:
             row_fixer = row_fixer + 1
 
     sheet.write(num_of_item_listed+2,7,[unicode('Genel Toplam').encode('utf-8') ])
-    sheet.write(num_of_item_listed+2,8,Decimal(total_cost))
+    sheet.write(num_of_item_listed+2,8,total_cost)
     response = HttpResponse(mimetype='application/vnd.ms-excel')
 
     file_string = 'attachment; filename='+code+'.xls'

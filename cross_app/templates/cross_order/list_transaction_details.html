@@ -64,6 +64,7 @@
                         <th>Order Date</th>
                         <th>Attribute Set</th>
                         <th>Inbound Order Number</th>
+                        <th>Comment</th>
                         <th>Supplier Order Date</th>
                         <th>Last Update</th>
                     </tr>
@@ -88,6 +89,7 @@
                             <td>{{ o.order.order_date|date:"d/M/Y H:m:s" }}</td>
                             <td>{{ o.order.ordercrossdetails.order_attribute }}</td>
                             <td>{{ o.order.ordercrossdetails.inbound_order_number }}</td>
+                            <td>{{ o.order.ordercrossdetails.comment }}</td>
                             <td>{{ o.order.ordercrossdetails.supplier_order_date|date:"d/M/Y H:m:s" }}</td>
                             <td>
                                 {% for lu in o.order.lastupdate_set.all|slice:":1" %}
@@ -123,8 +125,13 @@
                             <span> Update Inbound Order Number </span>
                         </a>
                     </td>
+{#                    <td class="left">#}
+{#                        &nbsp;#}
+{#                    </td>#}
                     <td class="left">
-                        &nbsp;
+                        <a class="submitButton" onclick="return viewCommentBox();">
+                            <span> Add Comment </span>
+                        </a>
                     </td>
                     <td class="right" style="text-align: right;">
                         <a class="submitButton" href="/cross_order/exportExcelForSupplier/?code={{ code }}&cstatus={{ cstatus.pk }}">
@@ -139,12 +146,14 @@
                 </tr>
             </table>
 <input type="hidden" value="" id="id_buttonSource" name="buttonSource" />
+{% include "cross_order/boxes/comment_box.html" %}
 </form>
 		</div>
 	</div>
 </div>
 
 {% include "cross_order/boxes/history_box.html" %}
+{% include "cross_order/boxes/column_box.html" %}
 <script type="text/javascript">
     function updateCrossStatus(){
         $('#id_buttonSource').val("status");
@@ -182,6 +191,9 @@
             else
                 $('.checkboxClass').attr("checked", "");
         });
+        $('#orderList_filter').append('<a class="submitButton" onclick="return viewColumnBox();"><span> Hide/Show Columns </span></a>');
+
     });
+
 </script>
 {% endblock %}

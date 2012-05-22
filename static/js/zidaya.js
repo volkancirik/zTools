@@ -44,15 +44,40 @@ function closeCommentBox(){
     $('.commentBox').hide();
     return false;
 }
+function closeColumnBox(){
+    $('.columnBox').hide();
+    return false;
+}
 
 function viewCommentBox(){
     $('.commentBox').show();
+    return false;
+}
+
+function viewColumnBox(){
+    $('.columnBox').show();
     return false;
 }
 function submitComment(){
                  //$('#comment').val($('#userComment').val());
                 $('#id_buttonSource').val("comment");
                 $('#orderUpdateForm').submit();
+}
+function fnShowHide( iCol, status )
+{
+	/* Get the DataTables object again - this is not a recreation, just a get of the object */
+	var oTable = $('#orderList').dataTable();
+
+	var bVis = oTable.fnSettings().aoColumns[iCol].bVisible;
+	oTable.fnSetColumnVis( iCol, status );
+}
+
+function submitColumn(){
+     closeColumnBox();
+     $('input:checkbox[name=columnChecked]').each(function() {
+       fnShowHide($(this).val(),$(this).attr("checked"));
+     });
+
 }
 
 

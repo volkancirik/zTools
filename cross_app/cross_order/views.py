@@ -204,6 +204,8 @@ def update_trans_order_list(request):
         return redirect('/cross_order/transaction_details/'+request.GET['code']+'/')
     if action == "inbound" and request.POST['inbound_order_number'] == "":
         return redirect('/cross_order/transaction_details/'+request.GET['code']+'/')
+    if action == "comment" and request.POST['comment'] == "":
+        return redirect('/cross_order/transaction_details/'+request.GET['code']+'/')
 
     if action == "status":
         cs = CrossStatus.objects.get(pk = request.POST['statusUpdate'])
@@ -226,6 +228,12 @@ def update_trans_order_list(request):
         for oid in order_id_list:
             o = Order.objects.get(pk=oid)
             o.ordercrossdetails.inbound_order_number = ion
+            o.ordercrossdetails.save()
+    elif action == "comment":
+        comment = request.POST['comment']
+        for oid in order_id_list:
+            o = Order.objects.get(pk=oid)
+            o.ordercrossdetails.comment = comment
             o.ordercrossdetails.save()
 
     return redirect('/cross_order/transaction_details/'+request.GET['code']+'/')

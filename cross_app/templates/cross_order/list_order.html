@@ -175,6 +175,7 @@
 
 {% include "cross_order/boxes/confirm_box.html" %}
 {% include "cross_order/boxes/history_box.html" %}
+{% include "cross_order/boxes/column_box.html" %}
     
 <script type="text/javascript">
     function updateCrossStatus(){
@@ -236,6 +237,11 @@
             else
                 $('.checkboxClass').attr("checked", "");
         });
+
+        $('#orderList_filter').append('<a class="submitButton" onclick="return viewColumnBox();"><span> Hide/Show Columns </span></a>');
+
+
+
     });
 </script>
 {% endblock %}

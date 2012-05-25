@@ -92,18 +92,17 @@ function viewOrderHistory(pk){
         		'success' : function(data){
                     kList = data.split(',');
 
-                    con="<thead><tr><th>User</th><th>Date</th><th>Action</th></tr></thead><tbody>";
+                    con="<thead><tr><th>Date</th><th>User</th><th>Action</th></tr></thead><tbody>";
                     for(i=0; i < kList.length ;i+=3){
-                        con+="<tr><td>"+kList[i]+"</td><td>"+kList[i+1]+"</td><td>"+kList[i+2]+"</td></tr>";
+                        con+="<tr><td>"+kList[i+1]+"</td><td>"+kList[i]+"</td><td>"+kList[i+2]+"</td></tr>";
                     }
                     con +="</tbody>";
 
                     $('#history').html(con);
-                    $('#history').dataTable({
+                     $('#history').dataTable({
                         "bJQueryUI": true,
                         "bDestroy":true
                     });
-
 /*
                     var mv = JSON.parse(data);
 

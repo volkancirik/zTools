@@ -90,7 +90,7 @@
                             <td>{{ o.order.ordercrossdetails.order_attribute }}</td>
                             <td>{{ o.order.ordercrossdetails.inbound_order_number }}</td>
                             <td>{{ o.order.ordercrossdetails.comment }}</td>
-                            <td>{{ o.order.ordercrossdetails.supplier_order_date|date:"d/M/Y H:m:s" }}</td>
+                            <td>{{ o.order.ordercrossdetails.supplier_order_date|date:"d/M/Y H:i:s" }}</td>
                             <td>
                                 {% for lu in o.order.lastupdate_set.all|slice:":1" %}
                                      {{ lu.user.username }} {{  lu.update_date|date:"d/M/Y H:i:s" }}

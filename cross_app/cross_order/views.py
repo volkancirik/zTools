@@ -292,7 +292,7 @@ def exportExcelOrders(request):
     book = xlwt.Workbook(encoding='utf8')
     sheet = book.add_sheet('untitled')
 
-    field_names = ['id_sales_order_item','order_nr','size','sku','sku_supplier_config','sku_supplier_simple','barcode_ean','name','status','suborder_number','paid_price','cost','order_date']
+    field_names = ['id_sales_order_item','order_nr','size','sku','sku_supplier_config','sku_supplier_simple','barcode_ean','name','status','suborder_number','paid_price','cost','tax_percent','tax_amount','order_date']
     cross_status_fields = ['order_attribute','inbound_order_number','supplier_order_date',]
     order_cross_details_fields = ['name']
 
@@ -359,7 +359,7 @@ def exportExcelTransactions(request):
     book = xlwt.Workbook(encoding='utf8')
     sheet = book.add_sheet('untitled')
 
-    field_names = ['id_sales_order_item','order_nr','size','sku','sku_supplier_config','sku_supplier_simple','barcode_ean','name','status','suborder_number','paid_price','cost','order_date']
+    field_names = ['id_sales_order_item','order_nr','size','sku','sku_supplier_config','sku_supplier_simple','barcode_ean','name','status','suborder_number','paid_price','cost','tax_percent','tax_amount','order_date']
     cross_status_fields = ['order_attribute','inbound_order_number','supplier_order_date',]
     order_cross_details_fields = ['name']
 

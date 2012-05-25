@@ -193,6 +193,7 @@
                 buttons: {
                     "Evet": function() {
                         $('#id_buttonSource').val("status");
+                        $( this ).dialog( "close" );
                         $('#orderUpdateForm').submit();
                     },
                     Hayir: function() {

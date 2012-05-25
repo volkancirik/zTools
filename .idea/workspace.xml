@@ -4,7 +4,8 @@
     <bookmark url="file://$PROJECT_DIR$/cross_app/cross_order/views.py" line="381" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="cdaf22e8-a513-4f8e-bc84-b762ed1517a7" name="Default" comment="Refactoring problems are resloved">
+    <list default="true" id="cdaf22e8-a513-4f8e-bc84-b762ed1517a7" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/cross_app/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="zTools.iws" />
@@ -223,7 +224,7 @@
       <recent name="C:\Projects\DjangoProjects\zTools\script" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.kayako_mass_ticket">
+  <component name="RunManager" selected="Django server.zTools">
     <configuration default="false" name="kayako_mass_ticket" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />

@@ -57,8 +57,8 @@
                         <th>Supplier SKU Simple</th>
                         <th>Barcode</th>
                         <th>Name</th>
-                        <th>BOB Status</th>
-                        <th>Suborder Number</th>
+{#                        <th>BOB Status</th>#}
+{#                        <th>Suborder Number</th>#}
                         <th>Paid Price</th>
                         <th>Cost</th>
                         <th>Order Date</th>
@@ -75,15 +75,17 @@
                             <td><input type=checkbox class="checkboxClass" name='orderChecked' value="{{ o.order.pk }}"></td>
                             <td>{{ o.order.ordercrossdetails.cross_status.name }}</td>
                             <td>{{ o.order.id_sales_order_item }}</td>
-                            <td>{{ o.order.order_nr }}</td>
+                            <td>
+                                <a href="https://bob.zidaya.com/orderprocessing/order/index/id/{{ o.order.id_sales_order }})">{{ o.order.order_nr }}</a>
+                            </td>
                             <td>{{ o.order.size }}</td>
                             <td>{{ o.order.sku }}</td>
                             <td>{{ o.order.sku_supplier_config }}</td>
                             <td>{{ o.order.sku_supplier_simple }}</td>
                             <td>{{ o.order.barcode_ean }}</td>
                             <td>{{ o.order.name }}</td>
-                            <td>{{ o.order.status }}</td>
-                            <td>{{ o.order.suborder_number }}</td>
+{#                            <td>{{ o.order.status }}</td>#}
+{#                            <td>{{ o.order.suborder_number }}</td>#}
                             <td>{{ o.order.paid_price }}</td>
                             <td>{{ o.order.cost }}</td>
                             <td>{{ o.order.order_date|date:"d/M/Y H:m:s" }}</td>
@@ -175,10 +177,10 @@
                     "bJQueryUI": true,
                     "bPaginate": false,
                     "sScrollX": "100%",
-                    "sScrollY": "350px",
-                    "aoColumnDefs": [{
-                                        "bVisible": false, "aTargets": [ 10,11] // destroy BOB Status and suborder#
-                                    }]
+                    "sScrollY": "350px"
+//                    "aoColumnDefs": [{
+////                                        "bVisible": false, "aTargets": [ 10,11] // destroy BOB Status and suborder#
+//                                    }]
                 }
         );
         
@@ -192,6 +194,18 @@
                 $('.checkboxClass').attr("checked", "");
         });
         $('#orderList_filter').append('<a class="submitButton" onclick="return viewColumnBox();"><span> Hide/Show Columns </span></a>');
+
+        $('.DataTables_sort_wrapper').each(function(index) {
+                 debugger;
+                 headerVal = $(this).text();
+//                alert(headerVal);
+//                $('#test-div').append(headerVal+' - '+index);
+            if(index >0)
+            {
+                columnRow = "<tr><td><input type=checkbox class='columnChecked' name='columnChecked' value='"+index+"'checked>"+ headerVal + "</td></tr>";
+                $('#columnBoxTable').append(columnRow);
+            }
+        });
 
     });
 

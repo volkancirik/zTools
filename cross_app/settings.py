@@ -13,7 +13,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql', # Add 'postgresql_psycopg2', 'postgresql', 'mysql', 'sqlite3' or 'oracle'.
         'NAME': 'rocket_orders_v03',                      # Or path to database file if using sqlite3.
         'USER': 'root',                      # Not used with sqlite3.
-        'PASSWORD': '123123',                  # Not used with sqlite3.
+        'PASSWORD': '221221',                  # Not used with sqlite3.
         'HOST': '',                      # Set to empty string for localhost. Not used with sqlite3.
         'PORT': '3306',                      # Set to empty string for default. Not used with sqlite3.
     }
@@ -56,7 +56,8 @@ ADMIN_MEDIA_PREFIX = '/static/admin/'
 
 # Additional locations of static files
 STATICFILES_DIRS = (
-    'C:/Projects/DjangoProjects/zTools/static'
+#    'C:/Projects/DjangoProjects/zTools/static'
+    'C:/Users/cirik/Desktop/dropbox/Dropbox/Rocket/projects/zTools/static'
 )
 
 # List of finder classes that know how to find static files in
@@ -87,7 +88,10 @@ MIDDLEWARE_CLASSES = (
 
 ROOT_URLCONF = 'cross_app.urls'
 
-TEMPLATE_DIRS = ('C:/Projects/DjangoProjects/zTools/cross_app/templates',)
+TEMPLATE_DIRS = (
+#    'C:/Projects/DjangoProjects/zTools/cross_app/templates',
+    'C:/Users/cirik/Desktop/dropbox/Dropbox/Rocket/projects/zTools/cross_app/templates',
+    )
 
 INSTALLED_APPS = (
     'django.contrib.auth',
@@ -124,4 +128,5 @@ AUTHENTICATION_BACKENDS = (
 )
 
 AUTH_PROFILE_MODULE = 'userprofile.Profile'
-DOCUMENT_ROOT = 'C:/Projects/DjangoProjects/zTools'
+#DOCUMENT_ROOT = 'C:/Projects/DjangoProjects/zTools'
+DOCUMENT_ROOT = 'C:/Users/cirik/Desktop/dropbox/Dropbox/Rocket/projects/zTools'

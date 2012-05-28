@@ -7,6 +7,7 @@
     <list default="true" id="cdaf22e8-a513-4f8e-bc84-b762ed1517a7" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/script/mass_ticket_list.xls" afterPath="$PROJECT_DIR$/script/mass_ticket_list.xls" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/script/kayako_mass_ticket.py" afterPath="$PROJECT_DIR$/script/kayako_mass_ticket.py" />
     </list>
     <ignored path="zTools.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -29,19 +30,28 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="kayako_mass_ticket.py" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/script/kayako_mass_ticket.py">
+      <file leaf-file-name="settings.py" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/cross_app/settings.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="108" column="4" selection-start="4446" selection-end="4446" vertical-scroll-proportion="0.4741036">
+            <state line="19" column="1" selection-start="724" selection-end="724" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="settings.py" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/cross_app/settings.py">
+      <file leaf-file-name="kayako_mass_ticket.py" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/script/kayako_mass_ticket.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="19" column="1" selection-start="724" selection-end="724" vertical-scroll-proportion="0.0">
+            <state line="172" column="0" selection-start="6748" selection-end="6748" vertical-scroll-proportion="1.1437125">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="smtplib.py" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://C:/Python27/Lib/smtplib.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="566" column="0" selection-start="19653" selection-end="19653" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -79,7 +89,6 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/cross_app/settings.py" />
         <option value="$PROJECT_DIR$/cross_app/urls.py" />
         <option value="$PROJECT_DIR$/cross_app/templates/cross_order/list_supplier.html" />
         <option value="$PROJECT_DIR$/cross_app/templates/base.html" />
@@ -93,6 +102,8 @@
         <option value="$PROJECT_DIR$/cross_app/cross_order/models.py" />
         <option value="$PROJECT_DIR$/cross_app/cross_order/views.py" />
         <option value="$PROJECT_DIR$/script/kayako_mass_ticket_v2.py" />
+        <option value="$PROJECT_DIR$/script/py2exe_setup.py" />
+        <option value="$PROJECT_DIR$/script/Makespec.py" />
         <option value="$PROJECT_DIR$/script/kayako_mass_ticket.py" />
       </list>
     </option>
@@ -124,6 +135,7 @@
     </navigator>
     <panes>
       <pane id="Favorites" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -188,27 +200,8 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="zTools" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="zTools" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="cross_app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value=".idea" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -407,15 +400,15 @@
     <frame x="-8" y="-8" width="1554" height="916" extended-state="6" />
     <editor active="false" />
     <layout>
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32909784" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32909784" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.22493404" sideWeight="0.3151207" order="1" side_tool="true" content_ui="tabs" />
       <window_info id="Dependency Viewer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.22493404" sideWeight="0.6721728" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.35069886" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.22493404" sideWeight="0.67090213" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.31257942" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.28716645" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3278272" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3278272" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -450,7 +443,7 @@
     <option name="CHECK_COMMIT_MESSAGE_SPELLING" value="true" />
     <option name="DEFAULT_PATCH_EXTENSION" value="patch" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
-    <option name="LAST_COMMIT_MESSAGE" value="Refactoring problems are resloved" />
+    <option name="LAST_COMMIT_MESSAGE" value="Kayako script autoresponder disabled.&#10;" />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="true" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_FILES_UP_TO_DATE_BEFORE_COMMIT" value="false" />
@@ -470,6 +463,7 @@
     <MESSAGE value="Kayako create ticket script" />
     <MESSAGE value="Kayako script first draft" />
     <MESSAGE value="Refactoring problems are resloved" />
+    <MESSAGE value="Kayako script autoresponder disabled.&#10;" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -494,31 +488,10 @@
           <url>jar://C:/Python27/Lib/site-packages/kayako-1.1.5-py2.7.egg!/kayako/objects/ticket/ticket.py</url>
           <line>248</line>
         </line-breakpoint>
-        <line-breakpoint enabled="true" type="python-line">
-          <url>file://$PROJECT_DIR$/script/kayako_mass_ticket.py</url>
-          <line>74</line>
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="python-line">
-          <url>file://$PROJECT_DIR$/script/kayako_mass_ticket.py</url>
-          <line>85</line>
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="python-line">
-          <url>file://$PROJECT_DIR$/script/kayako_mass_ticket.py</url>
-          <line>80</line>
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="python-line">
-          <url>file://$PROJECT_DIR$/script/kayako_mass_ticket.py</url>
-          <line>83</line>
-        </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/script/update_cross_status.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="50" column="21" selection-start="909" selection-end="1571" vertical-scroll-proportion="0.79211956" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/script/init_cross_order.py">
       <provider selected="true" editor-type-id="text-editor">
         <state line="137" column="64" selection-start="4997" selection-end="4997" vertical-scroll-proportion="2.6861413" />
@@ -558,9 +531,7 @@
     </entry>
     <entry file="jar://C:/Python27/Lib/site-packages/kayako-1.1.5-py2.7.egg!/kayako/exception.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="29" column="6" selection-start="788" selection-end="788" vertical-scroll-proportion="0.33289474">
-          <folding />
-        </state>
+        <state line="29" column="6" selection-start="788" selection-end="788" vertical-scroll-proportion="0.33289474" />
       </provider>
     </entry>
     <entry file="jar://C:/Python27/Lib/site-packages/kayako-1.1.5-py2.7.egg!/kayako/core/object.py">
@@ -570,9 +541,7 @@
     </entry>
     <entry file="file://C:/Python27/Lib/site-packages/xlrd/__init__.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="429" column="4" selection-start="20574" selection-end="20574" vertical-scroll-proportion="-2.2171052">
-          <folding />
-        </state>
+        <state line="429" column="4" selection-start="20574" selection-end="20574" vertical-scroll-proportion="-2.2171052" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/cross_app/settings.py">
@@ -596,9 +565,16 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://C:/Python27/Lib/smtplib.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="566" column="0" selection-start="19653" selection-end="19653" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/script/kayako_mass_ticket.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="108" column="4" selection-start="4446" selection-end="4446" vertical-scroll-proportion="0.4741036">
+        <state line="172" column="0" selection-start="6748" selection-end="6748" vertical-scroll-proportion="1.1437125">
           <folding />
         </state>
       </provider>

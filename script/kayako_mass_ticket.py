@@ -1,3 +1,4 @@
+import smtplib
 import urllib2
 from kayako import KayakoAPI
 from kayako import Ticket, TicketAttachment, TicketNote, TicketPost, TicketPriority, TicketStatus, TicketType, Department
@@ -106,9 +107,9 @@ def createTicket(ticketList):
         return
 
     ticketTypeList = api.get_all(TicketType)
-    
+
+    failCounter = 0
     for t in ticketList:
-        
         dep = api.first(Department, title=t['department'])
         ticket_type= None
         for ttype in ticketTypeList:
@@ -136,18 +137,26 @@ def createTicket(ticketList):
                 'autouserid':'1',
                 'templategroup':t['department'],
                 'type':t['type'],
+                #'ignoreautoresponder':'1',
+                'dispatchAutoResponder':'0',
             }
             add('/Tickets/Ticket/Create',parameters)
         except:
-            e = sys.exc_info()[1]
-            print e
+            failCounter +=1
+            #e = sys.exc_info()[1]
+            #print e
+    return failCounter
 
 def readExcel():
     book = open_workbook('mass_ticket_list.xls',encoding_override='utf-8')
     sheet = book.sheet_by_index(0)
 
     ticketList = []
-    for rownum in range(1,5):
+    for rownum in range(1,sheet.nrows):
+
+        if sheet.cell(rownum,0).value is None or sheet.cell(rownum,0).value == "":
+            continue
+
         data = {'department':sheet.cell(rownum,0).value,
                 'ticket_type':sheet.cell(rownum,1).value,
                 'subject':sheet.cell(rownum,2).value,
@@ -157,8 +166,34 @@ def readExcel():
                 'type':sheet.cell(rownum,6).value}
         ticketList.append(data)
 
-    createTicket(ticketList)
+    failNumber = createTicket(ticketList)
+    
+    msg = "Successful : " + str(len(ticketList)-failNumber)+ ". Fail : "+ str(failNumber)
+    sendEmail(msg)
 
+def sendEmail(msg_content):
+    fromaddr = 'baris.bilgic@rocket-internet.com.tr'
+    toaddrs  = ['brsbilgic@gmail.com']
+
+    msg = """"From: Kayako Ticket Creator <baris.bilgic@rocket-internet.com.tr>
+            To: To Person <brsbilgic@gmail.com>
+            MIME-Version: 1.0
+            Content-type: text/html
+            Subject: SMTP HTML e-mail test
+
+            Ticket creation results:
+            %s
+            """%msg_content
+    
+    # Credentials (if needed)
+    username = 'baris.bilgic@rocket-internet.com.tr'
+    password = '25baris_'
+
+    # The actual mail send
+    server = smtplib.SMTP('smtp.gmail.com:587')
+    server.starttls()
+    server.login(username,password)
+    server.sendmail(fromaddr, toaddrs, str(msg))
+    server.quit()
 
 readExcel()
-#createTicket()

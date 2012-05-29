@@ -64,7 +64,7 @@
                     </td>
                 </tr>
             </table>
-<form id ="orderUpdateForm" action="/cross_order/update_order_list/?sid={{ supplier.pk }}&dateStart={{ start_date|date:"m/d/Y" }}&dateEnd={{ end_date|date:"m/d/Y" }}" method='post'>
+<form id ="orderUpdateForm" action="/cross_order/update_order_list/?sid={{ supplier.pk }}&dateStart={{ start_date|date:"m/d/Y" }}&dateEnd={{ end_date|date:"m/d/Y" }}&oattributeid={{ oattribute.id }}" method='post'>
     {% csrf_token %}
     <table id="orderList">
                 <thead>
@@ -222,7 +222,7 @@
     }
 
     function filterByCrossStatus(){
-        window.location= "{{ current_url|safe }}"+ $('#id_statusFilter').val()
+        window.location= "{{ current_url|safe }}"+ $('#id_statusFilter').val() + '&oattributeid={{ oattribute.id }}'
     }
 
     $(document).ready(function(){

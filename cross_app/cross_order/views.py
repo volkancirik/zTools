@@ -164,13 +164,13 @@ def update_order_list(request):
     sid = request.GET['sid']
     dateStart = request.GET['dateStart']
     dateEnd = request.GET['dateEnd']
-    return redirect('/cross_order/list_order/?sid='+sid+"&dateStart="+dateStart+"&dateEnd="+dateEnd)
+    return redirect('/cross_order/list_order/?sid='+sid+"&dateStart="+dateStart+"&dateEnd="+dateEnd+"&oattributeid="+request.GET['oattributeid'])
 
 @login_required
 def transaction_list(request):
     return render_response(request, 'cross_order/list_transaction.html',
             {
-                'transList':Transactions.objects.all(),
+                'transList':Transactions.objects.order_by('-create_date'),
             })
 
 @login_required
@@ -431,18 +431,26 @@ def exportExcelForSupplier(request):
     x = 5
     book = xlwt.Workbook(encoding='utf8')
     sheet = book.add_sheet('untitled')
-    field_names = ['name','sku','sku_supplier_config','sku_supplier_simple','barcode_ean','size','cost']
+    field_names = ['name','sku','sku_supplier_config','sku_supplier_simple','barcode_ean','size','tax_percent','tax_amount','cost']
 
     index_counter = 1
     sheet.write(0,0,[unicode("Urun Adi").encode('utf-8') ])
     sheet.write(0,1,[unicode("Zidaya SKU").encode('utf-8') ])
-    sheet.write(0,2,[unicode("Tedaricki SKU Config").encode('utf-8') ])
+    sheet.write(0,2,[unicode("Tedarikci SKU Config").encode('utf-8') ])
     sheet.write(0,3,[unicode("Tedarikci SKU Simple").encode('utf-8') ])
     sheet.write(0,4,[unicode("Barkod").encode('utf-8') ])
     sheet.write(0,5,[unicode("Beden/Boyut").encode('utf-8') ])
-    sheet.write(0,6,[unicode("Tutar").encode('utf-8') ])
-    sheet.write(0,7,[unicode("Miktar").encode('utf-8') ])
-    sheet.write(0,8,[unicode("Toplam Tutar").encode('utf-8') ])
+
+    sheet.write(0,6,[unicode("KDV Orani").encode('utf-8') ])
+    sheet.write(0,7,[unicode("KDV Tutari").encode('utf-8') ])
+
+    sheet.write(0,8,[unicode("Tutar").encode('utf-8') ])
+    sheet.write(0,9,[unicode("Miktar").encode('utf-8') ])
+    sheet.write(0,10,[unicode("Toplam Tutar").encode('utf-8') ])
+
+#    sheet.write(0,6,[unicode("Tutar").encode('utf-8') ])
+#    sheet.write(0,7,[unicode("Miktar").encode('utf-8') ])
+#    sheet.write(0,8,[unicode("Toplam Tutar").encode('utf-8') ])
 
     count_j = 0
     row_fixer = 0
@@ -451,21 +459,20 @@ def exportExcelForSupplier(request):
     for index_i,an_order in enumerate(orders):
         if an_order.sku in skus:
             for index_j,field in enumerate(field_names):
-                if index_j == 6:
+                if index_j == 6 or index_j == 7 or index_j == 8:
                     sheet.write(index_i+1-row_fixer,index_j,Decimal(getattr(an_order, field)))
                 else:
                     sheet.write(index_i+1-row_fixer,index_j,[unicode(getattr(an_order, field)).encode('utf-8') ])
                 count_j = index_j
 
-
-            sheet.write(index_i+1-row_fixer,count_j+1,[unicode(skus[an_order.sku]).encode('utf-8') ])
+            sheet.write(index_i+1-row_fixer,count_j+1,skus[an_order.sku])
             sheet.write(index_i+1-row_fixer,count_j+2,total_costs[an_order.sku])
             skus.pop(an_order.sku)
         else:
             row_fixer = row_fixer + 1
 
-    sheet.write(num_of_item_listed+2,7,[unicode('Genel Toplam').encode('utf-8') ])
-    sheet.write(num_of_item_listed+2,8,total_cost)
+    sheet.write(num_of_item_listed+2,9,[unicode('Genel Toplam').encode('utf-8') ])
+    sheet.write(num_of_item_listed+2,10,total_cost)
     response = HttpResponse(mimetype='application/vnd.ms-excel')
 
     file_string = 'attachment; filename='+code+'.xls'

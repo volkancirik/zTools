@@ -16,13 +16,13 @@
                 <thead>
                     <tr>
                         <th>
+                            Create Date
+                        </th>
+                        <th>
                             Supplier Name
                         </th>
                         <th>
                             Transcation Code
-                        </th>
-                        <th>
-                            Create Date
                         </th>
                         <th>
                             Total # of Items
@@ -39,15 +39,15 @@
                     {% for t in transList %}
                         <tr>
                             <td>
+                                {{ t.create_date|date:"d/M/Y H:i:s" }}
+                            </td>
+                            <td>
                                 {{ t|getSupplierName }}
                             </td>
                             <td>
                                 <a href="/cross_order/transaction_details/{{ t.code }}/">
                                     {{ t.code }}
                                 </a>
-                            </td>
-                            <td>
-                                {{ t.create_date|date:"d/M/Y H:i:s" }}
                             </td>
                             <td>
                                 {{ t|totalOrderCount }}
@@ -71,7 +71,14 @@
                 {
                     "bJQueryUI": true,
                     "bPaginate":true,
-                    "sPaginationType": "full_numbers"
+                    "sPaginationType": "full_numbers",
+                    "iDisplayLength": 25,
+                    "aoColumnDefs":
+                            [
+                               { "bSortable": false, "aTargets": [ 0 ] }
+//                               { "asSorting": [ "desc"], "aTargets": [ 1 ] }
+                            ]
+                    
                 }
         );
     });

@@ -16,14 +16,14 @@
     <link rel="stylesheet" href="{{ STATIC_URL }}css/TableTools_JUI.css" type="text/css">
     <link rel="stylesheet" href="{{ STATIC_URL }}css/jquery-ui-1.8.4.custom.css" type="text/css">
     <link rel="stylesheet" href="{{ STATIC_URL }}css/zidaya.css" type="text/css">
-    <script type="text/javascript">
-      var uvOptions = {};
-      (function() {
-        var uv = document.createElement('script'); uv.type = 'text/javascript'; uv.async = true;
-        uv.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'widget.uservoice.com/usMncu79ZDeEJP1EVJe0bQ.js';
-        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(uv, s);
-      })();
-    </script>
+{#    <script type="text/javascript">#}
+{#      var uvOptions = {};#}
+{#      (function() {#}
+{#        var uv = document.createElement('script'); uv.type = 'text/javascript'; uv.async = true;#}
+{#        uv.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'widget.uservoice.com/usMncu79ZDeEJP1EVJe0bQ.js';#}
+{#        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(uv, s);#}
+{#      })();#}
+{#    </script>#}
     {% block extra_head %}{% endblock %}
 </head>
 <body>
@@ -68,7 +68,7 @@
 </div>
 <div id="footer">
     <div class="pagewrap">
-        <div class="mark">Rocket Internet TR & MENA | Zidaya Cross Order Tracking System</div>
+        <div class="mark">Rocket Internet TR & MENA | Zidaya Cross Order Tracking System | To Contact send an e-mail to <a href="mailto:ops-dev@zidaya.com">ops-dev@zidaya.com</a></div>
     </div>
 </div>
 </body>

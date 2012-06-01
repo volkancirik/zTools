@@ -25,10 +25,13 @@
                             Transcation Code
                         </th>
                         <th>
+                            # of Items Confirmed
+                        </th>
+                        <th>
                             Total # of Items
                         </th>
                         <th>
-                            Total Cost
+                            Total Cost (TL)
                         </th>
                         <th>
                             User
@@ -50,10 +53,13 @@
                                 </a>
                             </td>
                             <td>
+                                {{ t|totalConfirmed}}
+                            </td>
+                            <td>
                                 {{ t|totalOrderCount }}
                             </td>
                             <td>
-                                {{ t|getTotalCost }} TL
+                                {{ t|getTotalCost }}
                             </td>
                             <td>
                                 {{ t|getUser }} 

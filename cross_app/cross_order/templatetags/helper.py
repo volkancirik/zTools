@@ -50,7 +50,10 @@ def totalConfirmed(t):
 
 @register.filter
 def getSupplierName(t):
-    return OrderTransaction.objects.filter(trans=t)[0].order.supplier.name
+    try:
+        return OrderTransaction.objects.filter(trans=t)[0].order.supplier.name
+    except:
+        return "ERROR - Invalid sup. name"
 
 @register.filter
 def getTotalCost(t):

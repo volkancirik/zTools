@@ -9,5 +9,6 @@ urlpatterns = patterns('',
     (r'^$', 'cross_app.userprofile.views.user_login'),
     (r'^user/', include('cross_app.userprofile.urls')),
     (r'^cross_order/', include('cross_app.cross_order.urls')),
+    (r'^dms/', include('cross_app.dms.urls')),
     (r'^static/(.*)$', 'django.views.static.serve', {'document_root': '%s' % DOCUMENT_ROOT, 'show_indexes': True}),
 )

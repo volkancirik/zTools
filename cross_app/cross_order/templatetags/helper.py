@@ -62,3 +62,9 @@ def getTotalCost(t):
 @register.filter
 def getUser(t):
     return t.create_user.email
+
+@register.filter
+def is_dms_user(user):
+    if user:
+        return user.groups.filter(name='Dms').count() > 0
+    return False

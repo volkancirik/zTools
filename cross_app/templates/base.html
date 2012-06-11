@@ -1,3 +1,4 @@
+{% load helper %}
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -52,6 +53,18 @@
             </span>
             <a class="item ico icoLogout" href="/user/logout/"></a>
         </div>
+
+
+        {% if user|is_dms_user %}
+            <div class="extraNavigation">
+                        <a href="/dms/list_documents/">
+                            <span class="label">
+                                Document Management System
+                            </span>
+                        </a>
+            </div>
+        {% endif %}
+
         {% else %}
         <div id="navigation">
             <span class="item">

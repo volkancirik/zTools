@@ -12,7 +12,3 @@ def filename(value):
 @register.filter
 def lineCount(value):
     return 0
-
-@register.filter
-def getUser(t):
-    return t.create_user.email

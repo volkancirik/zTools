@@ -1,14 +1,16 @@
 # Create your views here.
 import datetime
 import os
-from django.contrib.auth.decorators import login_required
+from django.contrib.auth.decorators import login_required, user_passes_test
 from django.shortcuts import redirect
 from cross_order.helper_functions import render_response
 from dms.forms import DocumentUploadForm
+from dms.helper import not_in_dms_group
 from dms.models import Document
-from settings import MEDIA_ROOT
+from settings import MEDIA_ROOT, LOGIN_URL
 
 @login_required
+@user_passes_test(not_in_dms_group, login_url=LOGIN_URL)
 def upload_document(request):
 
     if request.method == 'POST':
@@ -27,6 +29,7 @@ def upload_document(request):
 
 
 @login_required
+@user_passes_test(not_in_dms_group, login_url=LOGIN_URL)
 def list_documents(request):
     return render_response(request, 'dms/list_documents.html',
             {
@@ -34,6 +37,7 @@ def list_documents(request):
             })
 
 @login_required
+@user_passes_test(not_in_dms_group, login_url=LOGIN_URL)
 def document_action(request):
 
     docList = request.POST.getlist('docChecked')

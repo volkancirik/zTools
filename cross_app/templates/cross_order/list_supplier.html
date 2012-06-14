@@ -13,7 +13,7 @@
                 <table class="dateFilter" cellspacing="0" cellpadding="0">
                     <tr>
                         <td>
-                            Start Date:
+                            {% trans "start_date" %}
                         </td>
                         <td>
                             <input id="id_dateStart" type="textbox" name="dateStart" value="{{ start_date|date:"m/j/Y" }}"/>
@@ -21,7 +21,7 @@
                     </tr>
                     <tr>
                         <td>
-                            End Date:
+                            {% trans "end_date" %}
                         </td>
                         <td>
                             <input id="id_dateEnd" type="textbox" name="dateEnd" value="{{ end_date|date:"m/j/Y" }}"/>
@@ -29,11 +29,11 @@
                     </tr>
                     <tr>
                         <td class="left">
-                            Attribute
+                            {% trans "attribute" %}
                         </td>
                         <td class="right">
                             <select name='attributeFilter' id='id_attributeFilter'>
-                                <option value='all'>All</option>
+                                <option value='all'>{% trans "all" %}</option>
                                 {% for oa in attributeList %}
                                         <option value='{{ oa.pk }}'>{{ oa.attributeName }}</option>
                                 {% endfor %}
@@ -59,13 +59,13 @@
                 <thead>
                     <tr>
                         <th>
-                            Supplier Name
+                            {% trans "supplier_name" %}
                         </th>
                         <th>
-                            Unprocessed Order Items
+                            {% trans "unprocessed_order_items" %}
                         </th>
                         <th>
-                            Total Order Items
+                            {% trans "total_order_items" %}
                         </th>
                     </tr>
                 </thead>

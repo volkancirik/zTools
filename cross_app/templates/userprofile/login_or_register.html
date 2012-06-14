@@ -21,7 +21,7 @@
 							<div class="TemaIcon NewAccout">
 								 
 							</div>
-							<a href="#">Kayıt Olmak İstiyorum</a>
+							<a href="#">{% trans "register_header" %}</a>
 						</li>
 					</ul>
 					<ul class="SpotBox">
@@ -55,8 +55,8 @@
                                             {% if register_success %}
 											<li>
 												<div style="margin-left:10px;margin-bottom:10px;">
-                                                    <span style="color:green;"> Üyeliğiniz başarıyla gerçekleştirildi! </span><br/>
-													Üyeliğiniz admin tarafından onaylandıktan sonra sisteme giriş yapabilirsiniz.
+                                                    <span style="color:green;"> {% trans "register_successful_message1" %}</span><br/>
+													{% trans "register_successful_message2" %}
 												</div>
 											</li>
                                             {% endif %}
@@ -83,7 +83,7 @@
 							<div class="TemaIcon Login">
 								 
 							</div>
-							<a href="#">Giriş</a>
+							<a href="#">{% trans "login_header" %}</a>
 						</li>
 					</ul>
 					<ul class="SpotBox">
@@ -115,8 +115,8 @@
 											</li>
                                             <li class="FormLineWrapper">
 												{% if user_inactive %}
-                                                    <span style="color:red;"> Hesabınız henüz aktifleştirilmemiştir.</span> <br/>
-                                                    İletişim için lütfen <a href="mailto:can.kaya@rocket-internet.com.tr">can.kaya@rocket-internet.com.tr</a> e-posta atınız.
+                                                    <span style="color:red;">{% trans "login_fail_message1" %} </span> <br/>
+                                                    {% trans "login_fail_message2" %}<a href="mailto:can.kaya@rocket-internet.com.tr">can.kaya@rocket-internet.com.tr</a> {% trans "login_fail_message3" %}
                                                 {% endif %}
 											</li>
 										</ul>

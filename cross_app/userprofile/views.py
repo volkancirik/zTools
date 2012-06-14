@@ -4,6 +4,15 @@ from django.shortcuts import redirect
 from cross_app.cross_order.helper_functions import render_response
 from cross_app.userprofile.forms import RegisterForm, LoginForm
 from cross_app.userprofile.models import Profile
+from django.utils.translation import activate
+
+
+def change_language(request):
+    if request.GET['lang'] == "tr":
+        activate("tr")
+    else:
+        activate("en")
+    return redirect("/")
 
 def register(request):
     if request.method == 'POST':

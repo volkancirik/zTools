@@ -10,7 +10,7 @@
 		<div class="items">
         <div style="margin:10px 0;">
             <a class="submitButton" href="/dms/upload_document/">
-                <span> Dosya Yükle </span>
+                <span>{% trans "document_upload" %}</span>
             </a>
         </div>
 <form id ="docListAction" action="/dms/document_action/" method='post'>
@@ -19,13 +19,13 @@
                 <thead>
                     <tr>
                         <th><input type=checkbox name='allSelect' class="allSelect"></th>
-                        <th>Dosya Adı</th>
-                        <th>Satır Sayısı</th>
-                        <th>Kısa Açıklama</th>
-                        <th>Yüklenme Tarihi</th>
-                        <th>Yükleyen</th>
-                        <th>Son İncelenme Tarihi</th>
-                        <th>Son İnceleyen</th>
+                        <th>{% trans "document_name" %}</th>
+                        <th>{% trans "line_number" %}</th>
+                        <th>{% trans "short_description" %}</th>
+                        <th>{% trans "upload_date" %}</th>
+                        <th>{% trans "upload_user" %}</th>
+                        <th>{% trans "last_updaate_date" %}</th>
+                        <th>{% trans "last_update_user" %}</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -47,12 +47,12 @@
                 <tr>
                     <td  class="left">
                         <a class="submitButton" onclick="return updateFile();">
-                            <span> Seçilenler İncelendi</span>
+                            <span>{% trans "update_selected" %}</span>
                         </a>
                     </td>
                     <td  class="right" style="text-align:right;">
                         <a class="submitButton" onclick="return deleteFile();">
-                            <span class="red">Seçilenleri Sil</span>
+                            <span class="red">{% trans "delete_selected" %}</span>
                         </a>
                     </td>
                 </tr>

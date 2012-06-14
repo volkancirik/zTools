@@ -1,3 +1,4 @@
+{% load i18n %}
 {% load helper %}
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -39,7 +40,7 @@
                 <span class="label">
                     <a href="/">
                         <span class="label">
-                            Welcome {{ user.username }}
+                            {% trans "welcome" %} {{ user.username }}
                         </span>
                     </a>
                 </span>
@@ -47,11 +48,19 @@
             <span class="item">
                     <a href="/cross_order/transaction_list/">
                         <span class="label">
-                            Transactions
+                            {% trans "transactions" %}
                         </span>
                     </a>
             </span>
             <a class="item ico icoLogout" href="/user/logout/"></a>
+
+            <div style="text-align: right;margin-top:40px;margin-right: 10px;">
+                {% if LANGUAGE_CODE == "tr" %}
+                    <a href="/user/change_language/?lang=en">English</a>
+                {% else %}
+                    <a href="/user/change_language/?lang=tr">Türkçe</a>
+                {% endif %}
+            </div>
         </div>
 
 
@@ -59,7 +68,7 @@
             <div class="extraNavigation">
                         <a href="/dms/list_documents/">
                             <span class="label">
-                                Document Management System
+                                {% trans "document_management_system" %}
                             </span>
                         </a>
             </div>
@@ -69,7 +78,7 @@
         <div id="navigation">
             <span class="item">
                         <span class="label">
-                            Zidaya Cross Order Tracking System
+                            {% trans "cross_order_tracking_system" %}
                         </span>
             </span>
         </div>  
@@ -81,7 +90,10 @@
 </div>
 <div id="footer">
     <div class="pagewrap">
-        <div class="mark">Rocket Internet TR & MENA | Zidaya Cross Order Tracking System | To Contact send an e-mail to <a href="mailto:ops-dev@zidaya.com">ops-dev@zidaya.com</a></div>
+        <div class="mark">
+            {% trans "footer" %}
+            <a href="mailto:ops-dev@zidaya.com">ops-dev@zidaya.com</a>
+        </div>
     </div>
 </div>
 </body>

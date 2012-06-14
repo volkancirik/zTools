@@ -22,13 +22,18 @@ DATABASES = {
 
 TIME_ZONE = 'Europe/Istanbul'
 
-LANGUAGE_CODE = 'en-us'
+#LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'tr'
 
 SITE_ID = 1
 
 USE_I18N = True
 
 USE_L10N = True
+
+LOCALE_PATHS = (
+    'C:/Projects/DjangoProjects/zTools/cross_app/locale',
+)
 
 # Absolute filesystem path to the directory that will hold user-uploaded files.
 # Example: "/home/media/media.lawrence.com/media/"
@@ -107,6 +112,7 @@ INSTALLED_APPS = (
     'userprofile',
     'cross_order',
     'dms',
+    'rosetta',
 )
 
 LOGGING = {

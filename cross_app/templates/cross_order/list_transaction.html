@@ -13,11 +13,11 @@
 
                 <tr>
                     <td class="left">
-                        Status:
+                        {% trans "status" %}
                     </td>
                     <td class="right">
                         <select name='statusFilter' id='id_statusFilter' style="width:175px;">
-                            <option value='all'>All</option>
+                            <option value='all'>{% trans "all" %}</option>
                             {% for s in statusList %}
                                     <option value='{{ s.pk }}'>{{ s.name }}</option>
                             {% endfor %}
@@ -30,7 +30,7 @@
                     </td>
                     <td style="text-align: right;">
                         <a class="submitButton" href="javascript:filterByStatus();" >
-                            <span> Filtrele </span>
+                            <span>{% trans "filter" %} </span>
                         </a>
                     </td>
                 </tr>
@@ -44,28 +44,28 @@
                     <tr>
                         <th><input type=checkbox name='allSelect' class="allSelect"></th>
                         <th>
-                            Create Date
+                            {% trans "create_date" %}
                         </th>
                         <th>
-                            Supplier Name
+                            {% trans "supplier_name" %}
                         </th>
                         <th>
-                            Transcation Code
+                            {% trans "transaction_code" %}
                         </th>
                         <th>
-                            Status
+                            {% trans "status" %}
                         </th>
                         <th>
-                            # of Items Confirmed
+                            {% trans "number_of_items_confirmed" %}
                         </th>
                         <th>
-                            Total # of Items
+                            {% trans "total_number_of_items" %}
                         </th>
                         <th>
-                            Total Cost (TL)
+                            {% trans "total_tl_cost" %}
                         </th>
                         <th>
-                            User
+                            {% trans "user" %}
                         </th>
                     </tr>
                 </thead>
@@ -108,7 +108,7 @@
                 <tr>
                     <td class="left">
                          <select name='statusUpdate' id='id_statusUpdate'>
-                            <option value='0'>Please Select</option>
+                            <option value='0'>{% trans "please_select" %}</option>
                             {% for s in statusList %}
                                     <option value='{{ s.pk }}'>{{ s.name }}</option>
                             {% endfor %}
@@ -116,7 +116,7 @@
                     </td>
                     <td  class="right">
                         <a class="submitButton" onclick="return updateStatus();">
-                            <span> Update Status </span>
+                            <span> {% trans "update_status" %}</span>
                         </a>
                     </td>
                 </tr>

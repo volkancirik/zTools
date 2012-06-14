@@ -11,7 +11,7 @@
             <table class="filterPanel">
                 <tr>
                     <td class="left">
-                        Supplier Name:
+                        {% trans "supplier_name" %}
                     </td>
                     <td  class="right">
                         {{ supplier.name }}
@@ -19,7 +19,7 @@
                 </tr>
                 <tr>
                     <td class="left">
-                        Date Range:
+                        {% trans "date_range" %}
                     </td>
                     <td class="right">
                         {{ start_date|date }} - {{ end_date|date }}
@@ -28,13 +28,13 @@
 
                 <tr>
                     <td class="left">
-                        Attribute:
+                        {% trans "attribute" %}
                     </td>
                     <td class="right">
                         {% if oattribute %}
                             {{ oattribute.attributeName }}
                         {% else %} 
-                            All
+                            {% trans "all" %}
                         {% endif %}
                     </td>
                 </tr>
@@ -42,11 +42,11 @@
 
                 <tr>
                     <td class="left">
-                        Cross Status:
+                        {% trans "cross_status" %}
                     </td>
                     <td class="right">
                         <select name='statusFilter' id='id_statusFilter'>
-                            <option value='all'>All</option>
+                            <option value='all'>{% trans "all" %}</option>
                             {% for cs in crossStatusList %}
                                     <option value='{{ cs.pk }}'>{{ cs.name }}</option>
                             {% endfor %}
@@ -59,7 +59,7 @@
                     </td>
                     <td style="text-align: right;">
                         <a class="submitButton" href="javascript:cstatus();" >
-                            <span> Filtrele </span>
+                            <span> {% trans "filter" %} </span>
                         </a>
                     </td>
                 </tr>
@@ -70,25 +70,25 @@
                 <thead>
                     <tr>
                         <th><input type=checkbox name='allSelect' class="allSelect"></th>
-                        <th>Cross Status</th>
-                        <th>Order Item ID</th>
-                        <th>Zidaya Order Number</th>
-                        <th>Size</th>
-                        <th>SKU</th>
-                        <th>Supplier SKU Config</th>
-                        <th>Supplier SKU Simple</th>
-                        <th>Barcode</th>
-                        <th>Name</th>
+                        <th>{% trans "cross_status" %} </th>
+                        <th>{% trans "order_item_id" %}</th>
+                        <th>{% trans "zidaya_order_number" %}  </th>
+                        <th>{% trans "size" %}</th>
+                        <th>{% trans "sku" %}</th>
+                        <th>{% trans "supplier_sku_config" %}</th>
+                        <th>{% trans "supplier_sku_simple" %}</th>
+                        <th>{% trans "barcode" %}</th>
+                        <th>{% trans "name" %}</th>
 {#                        <th>BOB Status</th>#}
 {#                        <th>Suborder Number</th>#}
-                        <th>Paid Price</th>
-                        <th>Cost</th>
-                        <th>Order Date</th>
-                        <th>Attribute Set</th>
-                        <th>Inbound Order Number</th>
-                        <th>Comment</th>
-                        <th>Supplier Order Date</th>
-                        <th>Last Update</th>
+                        <th>{% trans "paid_price" %}</th>
+                        <th>{% trans "cost" %}</th>
+                        <th>{% trans "order_date" %}</th>
+                        <th>{% trans "attribute_set" %}</th>
+                        <th>{% trans "inbound_order_number" %}</th>
+                        <th>{% trans "comment" %}</th>
+                        <th>{% trans "supplier_order_date" %}</th>
+                        <th>{% trans "last_update" %}</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -130,7 +130,7 @@
                 <tr>
                     <td class="left">
                          <select name='statusUpdate' id='id_statusUpdate'>
-                            <option value='0'>Please Select</option>
+                            <option value='0'>{% trans "please_select" %}</option>
                             {% for cs in crossStatusList %}
                                 {% if cs.isTransactionGenerate %}
                                     <option class="confirmRequired" value='{{ cs.pk }}'>{{ cs.name }}</option>
@@ -142,7 +142,7 @@
                     </td>
                     <td  class="right">
                         <a class="submitButton" onclick="return updateCrossStatus();">
-                            <span> Update Cross Status </span>
+                            <span> {% trans "update_cross_status" %} </span>
                         </a>
                     </td>
 
@@ -151,18 +151,18 @@
                     </td>
                     <td class="right">
                         <a class="submitButton" onclick="return updateInbound();">
-                            <span> Update Inbound Order Number </span>
+                            <span> {% trans "update_inbound_order_number" %} </span>
                         </a>
                     </td>
 
                     <td class="left">
                         <a class="submitButton" onclick="return viewCommentBox();">
-                            <span> Add Comment </span>
+                            <span> {% trans "add_comment" %} </span>
                         </a>
                     </td>
                     <td class="right" style="text-align: right;">
                         <a class="submitButton" href="/cross_order/exportOrders/?sup={{ supplier.pk }}&startdate={{ start_date|date:"m/d/Y" }}&enddate={{ end_date|date:"m/d/Y" }}&cstatus={{ cstatus.pk }}">
-                            <span> Export To Excel </span>
+                            <span>{% trans "export_to_excel" %} </span>
                         </a>
                     </td>
                 </tr>

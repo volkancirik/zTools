@@ -1,8 +1,9 @@
+{% load i18n %}
 <div class="columnBox" style="display:none;" title = "Choose Columns to Display">
     <div class="black_overlay" id="fade"></div>
     <div class="column_box_content">
 <div id="columnCheckBoxes" style="margin-bottom: 10px;" align="center">
-    <h6>Choose Columns To Display</h6><br>
+    <h6>{% trans "choose_column_to_display" %}</h6><br>
     <table id="columnBoxTable">
         
 {##}
@@ -108,13 +109,13 @@
 </div>
             <div  style="float:right;margin-left: 10px;">
                 <a href="#" onclick="return closeColumnBox();">
-                    Close
+                    {% trans "close" %}
                 </a>
             </div>
         <div class="closeButton">
             <div style="float:right;">
                 <a href="#" onclick="return submitColumn();" class="submitButton">
-                    <span> Show These Columns</span>
+                    <span>{% trans "show_these_columns" %}</span>
                 </a>
             </div>
         </div>

@@ -1,0 +1,352 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2012-06-14 15:43+0300\n"
+"PO-Revision-Date: 2012-06-14 15:54\n"
+"Last-Translator:   <brsbilgic@gmail.com>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Translated-Using: django-rosetta 0.6.8\n"
+
+#: .\templates\base.html.py:43
+msgid "welcome"
+msgstr "Welcome"
+
+#: .\templates\base.html.py:51
+msgid "transactions"
+msgstr "Transactions"
+
+#: .\templates\base.html.py:64
+msgid "document_management_system"
+msgstr "Document Management System"
+
+#: .\templates\base.html.py:75
+msgid "cross_order_tracking_system"
+msgstr "Zidaya Cross Order Tracking System"
+
+#: .\templates\base.html.py:89
+msgid "footer"
+msgstr ""
+"Rocket Internet TR & MENA | Zidaya Cross Order Tracking System | To Contact "
+"send an e-mail to"
+
+#: .\templates\cross_order\list_order.html.py:14
+#: .\templates\cross_order\list_supplier.html.py:65
+#: .\templates\cross_order\list_transaction.html.py:52
+msgid "supplier_name"
+msgstr "Supplier Name"
+
+#: .\templates\cross_order\list_order.html.py:23
+msgid "date_range"
+msgstr "Date Range"
+
+#: .\templates\cross_order\list_order.html.py:32
+#: .\templates\cross_order\list_supplier.html.py:34
+msgid "attribute"
+msgstr "Attribute"
+
+#: .\templates\cross_order\list_order.html.py:38
+#: .\templates\cross_order\list_order.html.py:50
+#: .\templates\cross_order\list_supplier.html.py:39
+#: .\templates\cross_order\list_transaction.html.py:21
+#: .\templates\cross_order\list_transaction_details.html.py:29
+msgid "all"
+msgstr "All"
+
+#: .\templates\cross_order\list_order.html.py:46
+#: .\templates\cross_order\list_order.html.py:74
+#: .\templates\cross_order\list_transaction_details.html.py:24
+#: .\templates\cross_order\list_transaction_details.html.py:53
+msgid "cross_status"
+msgstr "Cross Status"
+
+#: .\templates\cross_order\list_order.html.py:63
+#: .\templates\cross_order\list_transaction.html.py:34
+#: .\templates\cross_order\list_transaction_details.html.py:42
+msgid "filter"
+msgstr "Filter"
+
+#: .\templates\cross_order\list_order.html.py:75
+#: .\templates\cross_order\list_transaction_details.html.py:54
+msgid "order_item_id"
+msgstr "Order Item Id"
+
+#: .\templates\cross_order\list_order.html.py:76
+#: .\templates\cross_order\list_transaction_details.html.py:55
+msgid "zidaya_order_number"
+msgstr "Zidaya Order Number"
+
+#: .\templates\cross_order\list_order.html.py:77
+#: .\templates\cross_order\list_transaction_details.html.py:56
+msgid "size"
+msgstr "Size"
+
+#: .\templates\cross_order\list_order.html.py:78
+#: .\templates\cross_order\list_transaction_details.html.py:57
+msgid "sku"
+msgstr "SKU"
+
+#: .\templates\cross_order\list_order.html.py:79
+#: .\templates\cross_order\list_transaction_details.html.py:58
+msgid "supplier_sku_config"
+msgstr "Supplier SKU Config"
+
+#: .\templates\cross_order\list_order.html.py:80
+#: .\templates\cross_order\list_transaction_details.html.py:59
+msgid "supplier_sku_simple"
+msgstr "Supplier SKU Simple"
+
+#: .\templates\cross_order\list_order.html.py:81
+#: .\templates\cross_order\list_transaction_details.html.py:60
+msgid "barcode"
+msgstr "Barcode"
+
+#: .\templates\cross_order\list_order.html.py:82
+#: .\templates\cross_order\list_transaction_details.html.py:61
+msgid "name"
+msgstr "Name"
+
+#: .\templates\cross_order\list_order.html.py:85
+#: .\templates\cross_order\list_transaction_details.html.py:64
+msgid "paid_price"
+msgstr "Paid Price"
+
+#: .\templates\cross_order\list_order.html.py:86
+#: .\templates\cross_order\list_transaction_details.html.py:65
+msgid "cost"
+msgstr "Cost"
+
+#: .\templates\cross_order\list_order.html.py:87
+#: .\templates\cross_order\list_transaction_details.html.py:66
+msgid "order_date"
+msgstr "Order Date"
+
+#: .\templates\cross_order\list_order.html.py:88
+#: .\templates\cross_order\list_transaction_details.html.py:67
+msgid "attribute_set"
+msgstr "Attribute Set"
+
+#: .\templates\cross_order\list_order.html.py:89
+#: .\templates\cross_order\list_transaction_details.html.py:68
+msgid "inbound_order_number"
+msgstr "Inbound Order Number"
+
+#: .\templates\cross_order\list_order.html.py:90
+#: .\templates\cross_order\list_transaction_details.html.py:69
+#: .\templates\cross_order\boxes\comment_box.html.py:7
+msgid "comment"
+msgstr "Comment"
+
+#: .\templates\cross_order\list_order.html.py:91
+#: .\templates\cross_order\list_transaction_details.html.py:70
+msgid "supplier_order_date"
+msgstr "Supplier Order Date"
+
+#: .\templates\cross_order\list_order.html.py:92
+#: .\templates\cross_order\list_transaction_details.html.py:71
+msgid "last_update"
+msgstr "Last Update"
+
+#: .\templates\cross_order\list_order.html.py:134
+#: .\templates\cross_order\list_transaction.html.py:120
+#: .\templates\cross_order\list_transaction_details.html.py:113
+msgid "please_select"
+msgstr "Please Select"
+
+#: .\templates\cross_order\list_order.html.py:146
+#: .\templates\cross_order\list_transaction_details.html.py:121
+msgid "update_cross_status"
+msgstr "Update Cross Status"
+
+#: .\templates\cross_order\list_order.html.py:155
+#: .\templates\cross_order\list_transaction_details.html.py:129
+msgid "update_inbound_order_number"
+msgstr "Update Inbound Order Number"
+
+#: .\templates\cross_order\list_order.html.py:161
+#: .\templates\cross_order\list_transaction_details.html.py:137
+msgid "add_comment"
+msgstr "Add Comment"
+
+#: .\templates\cross_order\list_order.html.py:166
+#: .\templates\cross_order\list_transaction_details.html.py:147
+msgid "export_to_excel"
+msgstr "Export To Excel"
+
+#: .\templates\cross_order\list_supplier.html.py:16
+msgid "start_date"
+msgstr "Start Date"
+
+#: .\templates\cross_order\list_supplier.html.py:25
+msgid "end_date"
+msgstr "End Date"
+
+#: .\templates\cross_order\list_supplier.html.py:69
+msgid "unprocessed_order_items"
+msgstr "Unprocessed Order Items"
+
+#: .\templates\cross_order\list_supplier.html.py:73
+msgid "total_order_items"
+msgstr "Total Order Items"
+
+#: .\templates\cross_order\list_transaction.html.py:16
+#: .\templates\cross_order\list_transaction.html.py:60
+msgid "status"
+msgstr "Status"
+
+#: .\templates\cross_order\list_transaction.html.py:48
+msgid "create_date"
+msgstr "Create Date"
+
+#: .\templates\cross_order\list_transaction.html.py:56
+#: .\templates\cross_order\list_transaction_details.html.py:15
+msgid "transaction_code"
+msgstr "Transaction Code"
+
+#: .\templates\cross_order\list_transaction.html.py:64
+msgid "number_of_items_confirmed"
+msgstr "# of Items Confirmed"
+
+#: .\templates\cross_order\list_transaction.html.py:68
+msgid "total_number_of_items"
+msgstr "Total # of Items"
+
+#: .\templates\cross_order\list_transaction.html.py:72
+msgid "total_tl_cost"
+msgstr "Total Cost (TL)"
+
+#: .\templates\cross_order\list_transaction.html.py:76
+msgid "user"
+msgstr "User"
+
+#: .\templates\cross_order\list_transaction.html.py:128
+msgid "update_status"
+msgstr "Update Status"
+
+#: .\templates\cross_order\list_transaction_details.html.py:142
+msgid "supplier_excel"
+msgstr "Supplier Excel"
+
+#: .\templates\cross_order\list_transaction_details.html.py:198
+msgid "hide_show_columns"
+msgstr "Hide/Show Columns"
+
+#: .\templates\cross_order\boxes\column_box.html.py:6
+msgid "choose_column_to_display"
+msgstr "Choose columns to display"
+
+#: .\templates\cross_order\boxes\column_box.html.py:112
+#: .\templates\cross_order\boxes\comment_box.html.py:13
+#: .\templates\cross_order\boxes\history_box.html.py:7
+msgid "close"
+msgstr "Close"
+
+#: .\templates\cross_order\boxes\column_box.html.py:118
+msgid "show_these_columns"
+msgstr "Show these columns"
+
+#: .\templates\cross_order\boxes\comment_box.html.py:19
+msgid "submit_comment"
+msgstr "Submit Content"
+
+#: .\templates\cross_order\boxes\confirm_box.html.py:4
+msgid "supplier_informed_alert_message"
+msgstr "New transaction will be created.Do you confirm?"
+
+#: .\templates\dms\list_documents.html.py:13
+#: .\templates\dms\upload_document.html.py:13
+msgid "document_upload"
+msgstr "Document Upload"
+
+#: .\templates\dms\list_documents.html.py:22
+msgid "document_name"
+msgstr "Document Name"
+
+#: .\templates\dms\list_documents.html.py:23
+msgid "line_number"
+msgstr "Line Count"
+
+#: .\templates\dms\list_documents.html.py:24
+msgid "short_description"
+msgstr "Short Description"
+
+#: .\templates\dms\list_documents.html.py:25
+msgid "upload_date"
+msgstr "Upload Date"
+
+#: .\templates\dms\list_documents.html.py:26
+msgid "upload_user"
+msgstr "Upload User"
+
+#: .\templates\dms\list_documents.html.py:27
+msgid "last_updaate_date"
+msgstr "Last Update Date"
+
+#: .\templates\dms\list_documents.html.py:28
+msgid "last_update_user"
+msgstr "Last Update User"
+
+#: .\templates\dms\list_documents.html.py:50
+msgid "update_selected"
+msgstr "Update Selected"
+
+#: .\templates\dms\list_documents.html.py:55
+msgid "delete_selected"
+msgstr "Delete"
+
+#: .\templates\userprofile\login_or_register.html.py:24
+msgid "register_header"
+msgstr "Register"
+
+#: .\templates\userprofile\login_or_register.html.py:58
+msgid "register_successful_message1"
+msgstr "Register is completed successfully"
+
+#: .\templates\userprofile\login_or_register.html.py:59
+msgid "register_successful_message2"
+msgstr "You can login to the system after your accout is activated by admin"
+
+#: .\templates\userprofile\login_or_register.html.py:86
+msgid "login_header"
+msgstr "Login"
+
+#: .\templates\userprofile\login_or_register.html.py:118
+msgid "login_fail_message1"
+msgstr "Your account is not activated"
+
+#: .\templates\userprofile\login_or_register.html.py:119
+msgid "login_fail_message2"
+msgstr "Pleae send email to "
+
+#: .\templates\userprofile\login_or_register.html.py:119
+msgid "login_fail_message3"
+msgstr " "
+
+#: .\userprofile\forms.py:28
+msgid "login_err_username_not_found"
+msgstr "This email is not registered"
+
+#: .\userprofile\forms.py:33
+msgid "login_err_password"
+msgstr "Password is incorrect"
+
+#: .\userprofile\forms.py:38
+msgid "PleaseEnterEmail"
+msgstr "Pleae enter a valid email"
+
+#: .\userprofile\forms.py:42
+msgid "AtLeastFive1"
+msgstr "Password must contain at least 5 characters"
+
+#: .\userprofile\forms.py:52
+msgid "AlreadyRegisteredEmail"
+msgstr "This email is already registered"

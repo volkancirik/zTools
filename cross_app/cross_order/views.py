@@ -227,7 +227,8 @@ def transaction_details(request,code):
                 'orderTransactionList': orderList,
                 'crossStatusList':CrossStatus.objects.all().order_by("order"),
                 'code':code,
-                'cstatus':cs
+                'cstatus':cs,
+                'trans':Transactions.objects.get(code=code)
             })
 
 @login_required

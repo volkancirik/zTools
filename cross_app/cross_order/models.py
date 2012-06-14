@@ -14,6 +14,12 @@ class CrossStatus(models.Model):
     isInvalid = models.BooleanField(null=False,default=False)
     order = models.IntegerField(default=9999)
 
+class TransactionStatus(models.Model):
+    name = models.CharField(max_length=250,null=False)
+    order = models.IntegerField(default=9999)
+    def __unicode__(self):
+        return self.name
+
 class OrderAttributeSet(models.Model):
     attributeName = models.CharField(max_length=50,null=False)
     attributeCode = models.CharField(max_length=50,null=False)
@@ -94,6 +100,7 @@ class Transactions(models.Model):
     code = models.CharField(max_length=255,null=True)
     create_date = models.DateTimeField(blank=False)
     create_user = models.ForeignKey(User)
+    status   = models.ForeignKey(TransactionStatus,unique=False,null=False)
 
 class OrderTransaction(models.Model):
     trans = models.ForeignKey(Transactions)

@@ -11,4 +11,5 @@ urlpatterns = patterns('',
     (r'^exportOrders/$', 'cross_app.cross_order.views.exportExcelOrders'),
     (r'^exportTransactions/$', 'cross_app.cross_order.views.exportExcelTransactions'),
     (r'^exportExcelForSupplier/$', 'cross_app.cross_order.views.exportExcelForSupplier'),
+    (r'^update_transaction_status/$', 'cross_app.cross_order.views.update_transaction_status'),
 )

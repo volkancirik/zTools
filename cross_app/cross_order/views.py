@@ -2,6 +2,7 @@ import datetime
 from decimal import Decimal
 from django.contrib.auth.decorators import login_required
 from django.core import serializers
+from django.db.transaction import Transaction
 from django.http import HttpResponse
 from django.shortcuts import redirect
 from django.template.defaultfilters import slugify
@@ -9,7 +10,7 @@ from django.utils import simplejson
 from django.views.decorators.csrf import csrf_exempt
 import xlwt
 from cross_order.helper_functions import render_response, generateTransactionString
-from cross_order.models import Supplier, CrossStatus, Order, LastUpdate, Transactions, OrderTransaction, OrderCrossDetails, OrderAttributeSet
+from cross_order.models import Supplier, CrossStatus, Order, LastUpdate, Transactions, OrderTransaction, OrderCrossDetails, OrderAttributeSet, TransactionStatus
 from django.core.serializers.json import Serializer, DjangoJSONEncoder
 
 @login_required
@@ -108,6 +109,26 @@ def list_order(request):
             })
 
 @login_required
+def update_transaction_status(request):
+    trans_id_list = request.POST.getlist('transChecked')
+    if not len(trans_id_list) or "buttonSource" not in request.POST:
+        return redirect('/cross_order/transaction_list/')
+
+    action = request.POST['buttonSource']
+    if action == "status" and request.POST['statusUpdate'] is 0:
+        return redirect('/cross_order/transaction_list/')
+
+    if action == "status":
+        for tid in trans_id_list:
+            t = Transactions.objects.get(pk=tid)
+            ts = TransactionStatus.objects.get(pk=request.POST['statusUpdate'])
+            t.status = ts
+            t.save()
+
+    return redirect('/cross_order/transaction_list/?status='+request.GET['status'])
+
+
+@login_required
 def update_order_list(request):
     order_id_list = request.POST.getlist('orderChecked')
     if not len(order_id_list) or "buttonSource" not in request.POST:
@@ -168,9 +189,25 @@ def update_order_list(request):
 
 @login_required
 def transaction_list(request):
+
+    status = None
+    try:
+        status = TransactionStatus.objects.get(pk = int(request.GET['status']))
+    except:
+        if request.GET.get('status','') == "":
+            status = TransactionStatus.objects.all().order_by("order")[0]
+
+    current_url = '/cross_order/transaction_list/?status='
+    tList = Transactions.objects.order_by('-create_date')
+    if status is not None:
+        tList = tList.filter(status = status)
+
     return render_response(request, 'cross_order/list_transaction.html',
             {
-                'transList':Transactions.objects.order_by('-create_date'),
+                'transList':tList,
+                'statusList':TransactionStatus.objects.all().order_by("order"),
+                'current_url':current_url,
+                'status':request.GET.get('status','1')
             })
 
 @login_required

@@ -8,13 +8,41 @@
 <div class="tabbed">
 	<div class="tab-content" style="display:block;">
 		<div class="items">
-            <div class="dateRangeInfo">
-                All Transactions
-            </div>
 
+        <table class="filterPanel">
+
+                <tr>
+                    <td class="left">
+                        Status:
+                    </td>
+                    <td class="right">
+                        <select name='statusFilter' id='id_statusFilter' style="width:175px;">
+                            <option value='all'>All</option>
+                            {% for s in statusList %}
+                                    <option value='{{ s.pk }}'>{{ s.name }}</option>
+                            {% endfor %}
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="left">
+                        &nbsp;
+                    </td>
+                    <td style="text-align: right;">
+                        <a class="submitButton" href="javascript:filterByStatus();" >
+                            <span> Filtrele </span>
+                        </a>
+                    </td>
+                </tr>
+            </table>
+        <br>
+
+<form id ="transUpdateForm" action="/cross_order/update_transaction_status/?status={{ status }}" method='post'>
+    {% csrf_token %}
             <table id="transactionList">
                 <thead>
                     <tr>
+                        <th><input type=checkbox name='allSelect' class="allSelect"></th>
                         <th>
                             Create Date
                         </th>
@@ -23,6 +51,9 @@
                         </th>
                         <th>
                             Transcation Code
+                        </th>
+                        <th>
+                            Status
                         </th>
                         <th>
                             # of Items Confirmed
@@ -41,6 +72,7 @@
                 <tbody>
                     {% for t in transList %}
                         <tr>
+                            <td><input type=checkbox class="checkboxClass" name='transChecked' value="{{ t.pk }}"></td>
                             <td>
                                 {{ t.create_date|date:"d/M/Y H:i:s" }}
                             </td>
@@ -51,6 +83,9 @@
                                 <a href="/cross_order/transaction_details/{{ t.code }}/">
                                     {{ t.code }}
                                 </a>
+                            </td>
+                            <td>
+                                {{ t.status.name }}
                             </td>
                             <td>
                                 {{ t|totalConfirmed}}
@@ -68,6 +103,26 @@
                     {% endfor %}
                 </tbody>
             </table>
+
+        <table class="actionPanel" cellpadding="0" cellspacing="0" width="100%">
+                <tr>
+                    <td class="left">
+                         <select name='statusUpdate' id='id_statusUpdate'>
+                            <option value='0'>Please Select</option>
+                            {% for s in statusList %}
+                                    <option value='{{ s.pk }}'>{{ s.name }}</option>
+                            {% endfor %}
+                         </select>
+                    </td>
+                    <td  class="right">
+                        <a class="submitButton" onclick="return updateStatus();">
+                            <span> Update Status </span>
+                        </a>
+                    </td>
+                </tr>
+            </table>
+<input type="hidden" value="" id="id_buttonSource" name="buttonSource" />
+</form>
 		</div>
 	</div>
 </div>
@@ -87,6 +142,29 @@
                     
                 }
         );
+
+        $('#id_statusFilter').val('{{ status }}');
+        $('.allSelect').click(function(){
+            if($(this).is(':checked')){
+                $('.checkboxClass').attr("checked", 'checked');
+            }
+            else
+                $('.checkboxClass').attr("checked", "");
+        });
     });
+
+    function filterByStatus(){
+        window.location= "{{ current_url|safe }}"+ $('#id_statusFilter').val()
+    }
+
+    function updateStatus(){
+        if($('#id_statusUpdate').val() < 1){
+            alert('Lutfen gecerli bir statu seciniz !')
+            return false;
+        }
+
+        $('#id_buttonSource').val("status");
+        $('#transUpdateForm').submit();
+    }
 </script>
 {% endblock %}

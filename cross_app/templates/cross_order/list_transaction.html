@@ -47,13 +47,13 @@
                             {% trans "create_date" %}
                         </th>
                         <th>
+                            {% trans "status" %}
+                        </th>
+                        <th>
                             {% trans "supplier_name" %}
                         </th>
                         <th>
                             {% trans "transaction_code" %}
-                        </th>
-                        <th>
-                            {% trans "status" %}
                         </th>
                         <th>
                             {% trans "number_of_items_confirmed" %}
@@ -77,15 +77,15 @@
                                 {{ t.create_date|date:"d/M/Y H:i:s" }}
                             </td>
                             <td>
+                                {{ t.status.name }}
+                            </td>
+                            <td>
                                 {{ t|getSupplierName }}
                             </td>
                             <td>
                                 <a href="/cross_order/transaction_details/{{ t.code }}/">
                                     {{ t.code }}
                                 </a>
-                            </td>
-                            <td>
-                                {{ t.status.name }}
                             </td>
                             <td>
                                 {{ t|totalConfirmed}}

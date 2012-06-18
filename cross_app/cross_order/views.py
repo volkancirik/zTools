@@ -9,9 +9,32 @@ from django.template.defaultfilters import slugify
 from django.utils import simplejson
 from django.views.decorators.csrf import csrf_exempt
 import xlwt
-from cross_order.helper_functions import render_response, generateTransactionString
-from cross_order.models import Supplier, CrossStatus, Order, LastUpdate, Transactions, OrderTransaction, OrderCrossDetails, OrderAttributeSet, TransactionStatus
+from cross_order.helper_functions import render_response, generateTransactionString, modelToExcel
+from cross_order.models import Supplier, CrossStatus, Order, LastUpdate, Transactions, OrderTransaction, OrderCrossDetails, OrderAttributeSet, TransactionStatus, ReportConfirmedSkuBase, ReportConfirmedSupplierBase, ReportOutOfStockCrossDock, ReportUnprocessedCrossDock
 from django.core.serializers.json import Serializer, DjangoJSONEncoder
+
+@login_required
+def report_list(request):
+    return render_response(request, 'cross_order/report_list.html')
+
+@login_required
+def get_excel_report(request):
+
+    if request.GET["report"] == "1":
+        field_names = ['sku','barcode_ean','item_count','name','attribute_set','supplier_name']
+        return modelToExcel(ReportConfirmedSkuBase.objects.all(),field_names,"confirmed_number_of_items_sku_base")
+    elif request.GET["report"] == "2":
+        field_names = ['supplier_name','item_count']
+        return modelToExcel(ReportConfirmedSupplierBase.objects.all(),field_names,"confirmed_number_of_items_supplier_base")
+    elif request.GET["report"] == "3":
+        field_names = ['id_sales_order_item','suborder_number','order_nr','order_date','sku','barcode_ean','item_count','name','attribute_set','supplier_name','bob_status']
+        return modelToExcel(ReportOutOfStockCrossDock.objects.all(),field_names,"out_of_stock_crossdock_order_item")
+    elif request.GET["report"] == "4":
+        field_names = ['id_sales_order_item','suborder_number','order_nr','order_date','sku','barcode_ean','item_count','name','attribute_set','supplier_name','bob_status']
+        return modelToExcel(ReportUnprocessedCrossDock.objects.all(),field_names,"unprocessed_crossdock_order_items")
+
+    return render_response(request, 'cross_order/report_list.html')
+
 
 @login_required
 def list_supplier(request):
@@ -151,6 +174,7 @@ def update_order_list(request):
             trans.code = generateTransactionString(Supplier.objects.get(pk=request.GET['sid']).name)
             trans.create_date = datetime.datetime.now()
             trans.create_user = request.user
+            trans.status = TransactionStatus.objects.all().order_by("order")[0]
             trans.save()
 
         for oid in order_id_list:

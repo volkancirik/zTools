@@ -433,3 +433,14 @@ select,textarea{
     border-radius: 5px;
     text-decoration: none;
 }
+
+ul.reports {
+    list-style-type: disc;
+    margin-left: 30px;
+}
+
+ul.reports  li{
+    width: 100%;
+    overflow: visible;
+    padding: 5px;
+}

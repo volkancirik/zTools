@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% load helper %}
+{% block extrahead %}
+{% endblock %}
+
+{% block content %}
+<div class="tabbed">
+	<div class="tab-content" style="display:block;">
+		<div class="items">
+            <div style="border-bottom: 1px solid #333333;font-size: 14px;color:#000000;">
+               Reports
+            </div>
+
+                <ul class="reports">
+                    <li>
+                        <a href="/cross_order/get_excel_report/?report=1"> Confirmed_number_of_items_sku_base </a>
+                    </li>
+                    <li>
+                        <a href="/cross_order/get_excel_report/?report=2"> Confirmed_number_of_items_supplier_base </a>
+                    </li>
+                    <li>
+                        <a href="/cross_order/get_excel_report/?report=3"> Out_of_stock_crossdock_order_items  </a>
+                    </li>
+                    <li>
+                        <a href="/cross_order/get_excel_report/?report=4"> Unprocessed_crossdock_order_items </a>
+                    </li>
+                </ul>
+
+
+		</div>
+	</div>
+</div>
+<script type="text/javascript">
+</script>
+{% endblock %}

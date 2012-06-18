@@ -3,6 +3,65 @@ from django.contrib.auth.models import User
 from datetime import  datetime
 from django.db.models.signals import post_save
 
+class ReportUnprocessedCrossDock(models.Model):
+    id_sales_order_item = models.PositiveIntegerField(max_length=10,primary_key=True)
+    suborder_number = models.CharField(max_length=20,null=True)
+    order_nr = models.CharField(max_length=45,null=True)
+    order_date = models.DateTimeField(blank=True)
+    sku = models.CharField(max_length=255,null=True)
+    barcode_ean = models.CharField(max_length=255,null=True)
+    name = models.CharField(max_length=2000,null=False)
+    attribute_set = models.CharField(max_length=50,null=False)
+    bob_status = models.CharField(max_length=200,null=True)
+
+    def __unicode__(self):
+        return str(self.sku)
+
+    class Meta:
+        db_table = 'unprocessed_crossdock_order_items'
+
+class ReportOutOfStockCrossDock(models.Model):
+    id_sales_order_item = models.PositiveIntegerField(max_length=10,primary_key=True)
+    suborder_number = models.CharField(max_length=20,null=True)
+    order_nr = models.CharField(max_length=45,null=True)
+    order_date = models.DateTimeField(blank=True)
+    sku = models.CharField(max_length=255,null=True)
+    barcode_ean = models.CharField(max_length=255,null=True)
+    name = models.CharField(max_length=2000,null=False)
+    attribute_set = models.CharField(max_length=50,null=False)
+    bob_status = models.CharField(max_length=200,null=True)
+    
+    def __unicode__(self):
+        return str(self.sku)
+
+    class Meta:
+        db_table = 'outofstock_crossdock_order_items'
+
+class ReportConfirmedSupplierBase(models.Model):
+    item_count = models.IntegerField()
+    supplier_name = models.CharField(max_length=2000,null=False)
+
+    def __unicode__(self):
+        return str(self.supplier_name)
+
+    class Meta:
+        db_table = 'confirmed_number_of_items_supplier_base'
+
+class ReportConfirmedSkuBase(models.Model):
+    sku = models.CharField(max_length=255,null=True,primary_key=True)
+    barcode_ean = models.CharField(max_length=255,null=True)
+    item_count = models.IntegerField()
+    name = models.CharField(max_length=2000,null=False)
+    attribute_set = models.CharField(max_length=50,null=False)
+    supplier_name = models.CharField(max_length=2000,null=False)
+
+    def __unicode__(self):
+        return str(self.sku)
+
+    class Meta:
+        db_table = 'confirmed_number_of_items_sku_base'
+    
+
 class Supplier(models.Model):
     name = models.CharField(max_length=1000,null=False)
     code  = models.CharField(max_length=100,null=False)
@@ -143,7 +202,6 @@ class OrderLive(models.Model):
     address2 = models.CharField(max_length=255,null=True)
     billing_address = models.CharField(max_length=255,null=True)
     billing_address2 = models.CharField(max_length=255,null=True)
-    order_date = models.DateTimeField(blank=True, auto_now_add=True)
     order_date = models.DateTimeField(blank=True, auto_now_add=True)
     last_status_change = models.DateTimeField(blank=True)
 

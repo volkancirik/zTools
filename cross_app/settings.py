@@ -23,7 +23,7 @@ DATABASES = {
 TIME_ZONE = 'Europe/Istanbul'
 
 #LANGUAGE_CODE = 'en-us'
-LANGUAGE_CODE = 'tr'
+LANGUAGE_CODE = 'en'
 
 SITE_ID = 1
 

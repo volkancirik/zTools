@@ -10,7 +10,7 @@ from django.utils import simplejson
 from django.views.decorators.csrf import csrf_exempt
 import xlwt
 from cross_order.helper_functions import render_response, generateTransactionString, modelToExcel
-from cross_order.models import Supplier, CrossStatus, Order, LastUpdate, Transactions, OrderTransaction, OrderCrossDetails, OrderAttributeSet, TransactionStatus, ReportConfirmedSkuBase, ReportConfirmedSupplierBase, ReportOutOfStockCrossDock, ReportUnprocessedCrossDock
+from cross_order.models import Supplier, CrossStatus, Order, LastUpdate, Transactions, OrderTransaction, OrderCrossDetails, OrderAttributeSet, TransactionStatus, ReportConfirmedSkuBase, ReportConfirmedSupplierBase, ReportOutOfStockCrossDock, ReportUnprocessedCrossDock, OverdueCrossDock
 from django.core.serializers.json import Serializer, DjangoJSONEncoder
 
 @login_required
@@ -32,6 +32,9 @@ def get_excel_report(request):
     elif request.GET["report"] == "4":
         field_names = ['id_sales_order_item','suborder_number','order_nr','order_date','sku','barcode_ean','name','attribute_set','supplier_name','bob_status']
         return modelToExcel(ReportUnprocessedCrossDock.objects.all(),field_names,"unprocessed_crossdock_order_items")
+    elif request.GET["report"] == "5":
+        field_names = ['id_sales_order_item','suborder_number','order_nr','order_date','sku','barcode_ean','name','attribute_set','bob_status','days_overdue','delivery_time_max']
+        return modelToExcel(OverdueCrossDock.objects.all(),field_names,"overdue_crossdock_order_item")
 
     return render_response(request, 'cross_order/report_list.html')
 

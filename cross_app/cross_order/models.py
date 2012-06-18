@@ -21,6 +21,25 @@ class ReportUnprocessedCrossDock(models.Model):
     class Meta:
         db_table = 'unprocessed_crossdock_order_items'
 
+class OverdueCrossDock(models.Model):
+    id_sales_order_item = models.PositiveIntegerField(max_length=10,primary_key=True)
+    suborder_number = models.CharField(max_length=20,null=True)
+    order_nr = models.CharField(max_length=45,null=True)
+    order_date = models.DateTimeField(blank=True)
+    sku = models.CharField(max_length=255,null=True)
+    barcode_ean = models.CharField(max_length=255,null=True)
+    name = models.CharField(max_length=2000,null=False)
+    attribute_set = models.CharField(max_length=50,null=False)
+    bob_status = models.CharField(max_length=200,null=True)
+    days_overdue = models.PositiveIntegerField(max_length=10)
+    delivery_time_max = models.PositiveIntegerField(max_length=10)
+
+    def __unicode__(self):
+        return str(self.sku)
+
+    class Meta:
+        db_table = 'overdue_crossdock_order_items'
+
 class ReportOutOfStockCrossDock(models.Model):
     id_sales_order_item = models.PositiveIntegerField(max_length=10,primary_key=True)
     suborder_number = models.CharField(max_length=20,null=True)

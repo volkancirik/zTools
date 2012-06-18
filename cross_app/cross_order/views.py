@@ -27,10 +27,10 @@ def get_excel_report(request):
         field_names = ['supplier_name','item_count']
         return modelToExcel(ReportConfirmedSupplierBase.objects.all(),field_names,"confirmed_number_of_items_supplier_base")
     elif request.GET["report"] == "3":
-        field_names = ['id_sales_order_item','suborder_number','order_nr','order_date','sku','barcode_ean','item_count','name','attribute_set','supplier_name','bob_status']
+        field_names = ['id_sales_order_item','suborder_number','order_nr','order_date','sku','barcode_ean','name','attribute_set','bob_status']
         return modelToExcel(ReportOutOfStockCrossDock.objects.all(),field_names,"out_of_stock_crossdock_order_item")
     elif request.GET["report"] == "4":
-        field_names = ['id_sales_order_item','suborder_number','order_nr','order_date','sku','barcode_ean','item_count','name','attribute_set','supplier_name','bob_status']
+        field_names = ['id_sales_order_item','suborder_number','order_nr','order_date','sku','barcode_ean','name','attribute_set','supplier_name','bob_status']
         return modelToExcel(ReportUnprocessedCrossDock.objects.all(),field_names,"unprocessed_crossdock_order_items")
 
     return render_response(request, 'cross_order/report_list.html')

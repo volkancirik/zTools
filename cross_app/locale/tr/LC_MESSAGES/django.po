@@ -9,8 +9,8 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2012-06-14 15:22+0300\n"
-"PO-Revision-Date: 2012-06-14 15:41\n"
-"Last-Translator:   <brsbilgic@gmail.com>\n"
+"PO-Revision-Date: 2012-06-18 14:26\n"
+"Last-Translator: Can Kaya <can.kaya@rocket-internet.com.tr>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -24,7 +24,7 @@ msgstr "Hoşgeldin"
 
 #: .\templates\base.html.py:51
 msgid "transactions"
-msgstr "Transaction"
+msgstr "Transaction Takibi"
 
 #: .\templates\base.html.py:64
 msgid "document_management_system"
@@ -36,9 +36,7 @@ msgstr "Cross Order Takip Sistemi"
 
 #: .\templates\base.html.py:89
 msgid "footer"
-msgstr ""
-"Rocket Internet TR & MENA | Zidaya Cross Order Takip Sistemi | İletişim için"
-" "
+msgstr "Rocket Internet TR & MENA | zTools | İletişim:"
 
 #: .\templates\cross_order\list_order.html.py:14
 #: .\templates\cross_order\list_supplier.html.py:65
@@ -53,7 +51,7 @@ msgstr "Tarih Aralığı"
 #: .\templates\cross_order\list_order.html.py:32
 #: .\templates\cross_order\list_supplier.html.py:34
 msgid "attribute"
-msgstr "Özellik"
+msgstr "Attribute Set"
 
 #: .\templates\cross_order\list_order.html.py:38
 #: .\templates\cross_order\list_order.html.py:50
@@ -79,17 +77,17 @@ msgstr "Filtrele"
 #: .\templates\cross_order\list_order.html.py:75
 #: .\templates\cross_order\list_transaction_details.html.py:54
 msgid "order_item_id"
-msgstr "Order Item Id"
+msgstr "Order Item ID"
 
 #: .\templates\cross_order\list_order.html.py:76
 #: .\templates\cross_order\list_transaction_details.html.py:55
 msgid "zidaya_order_number"
-msgstr "Zidaya Order Number"
+msgstr "Zidaya Sipariş Numarası"
 
 #: .\templates\cross_order\list_order.html.py:77
 #: .\templates\cross_order\list_transaction_details.html.py:56
 msgid "size"
-msgstr "Size"
+msgstr "Beden/Boy"
 
 #: .\templates\cross_order\list_order.html.py:78
 #: .\templates\cross_order\list_transaction_details.html.py:57
@@ -99,12 +97,12 @@ msgstr "SKU"
 #: .\templates\cross_order\list_order.html.py:79
 #: .\templates\cross_order\list_transaction_details.html.py:58
 msgid "supplier_sku_config"
-msgstr "Supplier SKU Config"
+msgstr "Tedarikçi SKU Config"
 
 #: .\templates\cross_order\list_order.html.py:80
 #: .\templates\cross_order\list_transaction_details.html.py:59
 msgid "supplier_sku_simple"
-msgstr "Supplier SKU Simple"
+msgstr "Tedarikçi SKU Simple"
 
 #: .\templates\cross_order\list_order.html.py:81
 #: .\templates\cross_order\list_transaction_details.html.py:60
@@ -124,22 +122,22 @@ msgstr "Ödenen Fiyat"
 #: .\templates\cross_order\list_order.html.py:86
 #: .\templates\cross_order\list_transaction_details.html.py:65
 msgid "cost"
-msgstr "Maaliyet"
+msgstr "Maliyet"
 
 #: .\templates\cross_order\list_order.html.py:87
 #: .\templates\cross_order\list_transaction_details.html.py:66
 msgid "order_date"
-msgstr "Order Tarihi"
+msgstr "Sipariş Tarihi"
 
 #: .\templates\cross_order\list_order.html.py:88
 #: .\templates\cross_order\list_transaction_details.html.py:67
 msgid "attribute_set"
-msgstr "Özellik Seti"
+msgstr "Attribute Set"
 
 #: .\templates\cross_order\list_order.html.py:89
 #: .\templates\cross_order\list_transaction_details.html.py:68
 msgid "inbound_order_number"
-msgstr "Inbound Order Number"
+msgstr "Tedarikçi Sipariş Numarası"
 
 #: .\templates\cross_order\list_order.html.py:90
 #: .\templates\cross_order\list_transaction_details.html.py:69
@@ -150,12 +148,12 @@ msgstr "Not"
 #: .\templates\cross_order\list_order.html.py:91
 #: .\templates\cross_order\list_transaction_details.html.py:70
 msgid "supplier_order_date"
-msgstr "Supplier Order Date"
+msgstr "Tedarikçi Sipariş Tarihi"
 
 #: .\templates\cross_order\list_order.html.py:92
 #: .\templates\cross_order\list_transaction_details.html.py:71
 msgid "last_update"
-msgstr "Last Update"
+msgstr "Son Güncelleme"
 
 #: .\templates\cross_order\list_order.html.py:134
 #: .\templates\cross_order\list_transaction.html.py:120
@@ -171,7 +169,7 @@ msgstr "Cross Status Güncelle"
 #: .\templates\cross_order\list_order.html.py:155
 #: .\templates\cross_order\list_transaction_details.html.py:129
 msgid "update_inbound_order_number"
-msgstr "Inbound Order Number Güncelle"
+msgstr "Tedarikçi Sipariş Numarası Güncelle"
 
 #: .\templates\cross_order\list_order.html.py:161
 #: .\templates\cross_order\list_transaction_details.html.py:137
@@ -193,11 +191,11 @@ msgstr "Son Tarih"
 
 #: .\templates\cross_order\list_supplier.html.py:69
 msgid "unprocessed_order_items"
-msgstr "Unprocessed Order Items"
+msgstr "Unprocessed Ürün Adedi"
 
 #: .\templates\cross_order\list_supplier.html.py:73
 msgid "total_order_items"
-msgstr "Toplam Order Items"
+msgstr "Toplam Ürün Adedi"
 
 #: .\templates\cross_order\list_transaction.html.py:16
 #: .\templates\cross_order\list_transaction.html.py:60
@@ -215,15 +213,15 @@ msgstr "Transaction Kodu"
 
 #: .\templates\cross_order\list_transaction.html.py:64
 msgid "number_of_items_confirmed"
-msgstr "# of Items Confirmed"
+msgstr "Onaylanmış Ürün Adedi"
 
 #: .\templates\cross_order\list_transaction.html.py:68
 msgid "total_number_of_items"
-msgstr "Total number of items"
+msgstr "Toplam Ürün Adedi"
 
 #: .\templates\cross_order\list_transaction.html.py:72
 msgid "total_tl_cost"
-msgstr "Toplam Maaliyet (TL)"
+msgstr "Toplam Maliyet (TL)"
 
 #: .\templates\cross_order\list_transaction.html.py:76
 msgid "user"
@@ -231,11 +229,11 @@ msgstr "Oluşturan"
 
 #: .\templates\cross_order\list_transaction.html.py:128
 msgid "update_status"
-msgstr "Update Status"
+msgstr "Durumu Güncelle"
 
 #: .\templates\cross_order\list_transaction_details.html.py:142
 msgid "supplier_excel"
-msgstr "Supplier Excel"
+msgstr "Tedarikçi için Excel"
 
 #: .\templates\cross_order\list_transaction_details.html.py:198
 msgid "hide_show_columns"
@@ -243,7 +241,7 @@ msgstr "Kolon Gizle/Göster"
 
 #: .\templates\cross_order\boxes\column_box.html.py:6
 msgid "choose_column_to_display"
-msgstr "Gösterilecek Kolonları Seçiniz"
+msgstr "Gösterilecek kolonları seçiniz"
 
 #: .\templates\cross_order\boxes\column_box.html.py:112
 #: .\templates\cross_order\boxes\comment_box.html.py:13
@@ -261,9 +259,7 @@ msgstr "Gönder"
 
 #: .\templates\cross_order\boxes\confirm_box.html.py:4
 msgid "supplier_informed_alert_message"
-msgstr ""
-"\"Supplier Informed\" statüsü yeni bir transaction yaratacaktır. Onaylıyor "
-"musunuz?"
+msgstr "Yeni bir transaction yaratılacaktır. Emin misiniz?"
 
 #: .\templates\dms\list_documents.html.py:13
 #: .\templates\dms\upload_document.html.py:13
@@ -280,7 +276,7 @@ msgstr "Satır Sayısı"
 
 #: .\templates\dms\list_documents.html.py:24
 msgid "short_description"
-msgstr "Kısa Açıklama"
+msgstr "Açıklama"
 
 #: .\templates\dms\list_documents.html.py:25
 msgid "upload_date"
@@ -338,19 +334,19 @@ msgstr "e-posta atınız."
 
 #: .\userprofile\forms.py:28
 msgid "login_err_username_not_found"
-msgstr "Girilen e-posta bulunamadı"
+msgstr "E-posta bulunamadı"
 
 #: .\userprofile\forms.py:33
 msgid "login_err_password"
-msgstr "Hatalı parola girdiniz"
+msgstr "Hatalı şifre girdiniz"
 
 #: .\userprofile\forms.py:38
 msgid "PleaseEnterEmail"
-msgstr "Lütfen geçerli bir e-posta giriniz"
+msgstr "Lütfen geçerli bir e-posta adresi giriniz"
 
 #: .\userprofile\forms.py:42
 msgid "AtLeastFive1"
-msgstr "Parola en az 5 karakterden oluşmalıdır"
+msgstr "Şifre en az 5 karakterden oluşmalıdır"
 
 #: .\userprofile\forms.py:52
 msgid "AlreadyRegisteredEmail"

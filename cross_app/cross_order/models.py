@@ -13,6 +13,7 @@ class ReportUnprocessedCrossDock(models.Model):
     name = models.CharField(max_length=2000,null=False)
     attribute_set = models.CharField(max_length=50,null=False)
     bob_status = models.CharField(max_length=200,null=True)
+    supplier_name = models.CharField(max_length=2000,null=False)
 
     def __unicode__(self):
         return str(self.sku)

@@ -13,12 +13,12 @@ def modelToExcel(data,field_names,file_name):
 
     index_counter = 1
     for index_i,field in enumerate(field_names):
-         sheet.write(0,1+index_i,[unicode(field).encode('utf-8') ])
+         sheet.write(0,index_i,[unicode(field).encode('utf-8') ])
          index_counter +=1
 
     for index_i,an_order in enumerate(data):
         for index_j,field in enumerate(field_names):
-            sheet.write(index_i+1,index_j+1,[unicode(getattr(an_order, field)).encode('utf-8') ])
+            sheet.write(index_i+1,index_j,[unicode(getattr(an_order, field)).encode('utf-8') ])
 
     response = HttpResponse(mimetype='application/vnd.ms-excel')
 

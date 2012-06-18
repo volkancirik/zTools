@@ -8,9 +8,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-06-14 15:43+0300\n"
-"PO-Revision-Date: 2012-06-18 14:21\n"
-"Last-Translator: Can Kaya <can.kaya@rocket-internet.com.tr>\n"
+"POT-Creation-Date: 2012-06-18 14:35+0300\n"
+"PO-Revision-Date: 2012-06-18 14:36\n"
+"Last-Translator:   <brsbilgic@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -22,161 +22,165 @@ msgid "welcome"
 msgstr "Welcome"
 
 #: .\templates\base.html.py:51
+msgid "reports"
+msgstr "Reports"
+
+#: .\templates\base.html.py:58
 msgid "transactions"
 msgstr "Transactions"
 
-#: .\templates\base.html.py:64
+#: .\templates\base.html.py:78
 msgid "document_management_system"
 msgstr "Document Management System"
 
-#: .\templates\base.html.py:75
+#: .\templates\base.html.py:88
 msgid "cross_order_tracking_system"
 msgstr "Zidaya Cross Order Tracking System"
 
-#: .\templates\base.html.py:89
+#: .\templates\base.html.py:101
 msgid "footer"
 msgstr "Rocket Internet TR & MENA | zTools | Contact:"
 
 #: .\templates\cross_order\list_order.html.py:14
-#: .\templates\cross_order\list_supplier.html.py:65
-#: .\templates\cross_order\list_transaction.html.py:52
+#: .\templates\cross_order\list_supplier.html.py:62
+#: .\templates\cross_order\list_transaction.html.py:53
 msgid "supplier_name"
 msgstr "Supplier Name"
 
-#: .\templates\cross_order\list_order.html.py:23
+#: .\templates\cross_order\list_order.html.py:22
 msgid "date_range"
 msgstr "Date Range"
 
-#: .\templates\cross_order\list_order.html.py:32
-#: .\templates\cross_order\list_supplier.html.py:34
+#: .\templates\cross_order\list_order.html.py:31
+#: .\templates\cross_order\list_supplier.html.py:32
 msgid "attribute"
 msgstr "Attribute Set"
 
-#: .\templates\cross_order\list_order.html.py:38
-#: .\templates\cross_order\list_order.html.py:50
-#: .\templates\cross_order\list_supplier.html.py:39
-#: .\templates\cross_order\list_transaction.html.py:21
-#: .\templates\cross_order\list_transaction_details.html.py:29
+#: .\templates\cross_order\list_order.html.py:37
+#: .\templates\cross_order\list_order.html.py:49
+#: .\templates\cross_order\list_supplier.html.py:36
+#: .\templates\cross_order\list_transaction.html.py:20
+#: .\templates\cross_order\list_transaction_details.html.py:35
 msgid "all"
 msgstr "All"
 
-#: .\templates\cross_order\list_order.html.py:46
-#: .\templates\cross_order\list_order.html.py:74
-#: .\templates\cross_order\list_transaction_details.html.py:24
-#: .\templates\cross_order\list_transaction_details.html.py:53
+#: .\templates\cross_order\list_order.html.py:45
+#: .\templates\cross_order\list_order.html.py:73
+#: .\templates\cross_order\list_transaction_details.html.py:31
+#: .\templates\cross_order\list_transaction_details.html.py:59
 msgid "cross_status"
 msgstr "Cross Status"
 
-#: .\templates\cross_order\list_order.html.py:63
-#: .\templates\cross_order\list_transaction.html.py:34
-#: .\templates\cross_order\list_transaction_details.html.py:42
+#: .\templates\cross_order\list_order.html.py:62
+#: .\templates\cross_order\list_transaction.html.py:33
+#: .\templates\cross_order\list_transaction_details.html.py:48
 msgid "filter"
 msgstr "Filter"
 
-#: .\templates\cross_order\list_order.html.py:75
-#: .\templates\cross_order\list_transaction_details.html.py:54
+#: .\templates\cross_order\list_order.html.py:74
+#: .\templates\cross_order\list_transaction_details.html.py:60
 msgid "order_item_id"
 msgstr "Order Item ID"
 
-#: .\templates\cross_order\list_order.html.py:76
-#: .\templates\cross_order\list_transaction_details.html.py:55
+#: .\templates\cross_order\list_order.html.py:75
+#: .\templates\cross_order\list_transaction_details.html.py:61
 msgid "zidaya_order_number"
 msgstr "Zidaya Order Number"
 
-#: .\templates\cross_order\list_order.html.py:77
-#: .\templates\cross_order\list_transaction_details.html.py:56
+#: .\templates\cross_order\list_order.html.py:76
+#: .\templates\cross_order\list_transaction_details.html.py:62
 msgid "size"
 msgstr "Size"
 
-#: .\templates\cross_order\list_order.html.py:78
-#: .\templates\cross_order\list_transaction_details.html.py:57
+#: .\templates\cross_order\list_order.html.py:77
+#: .\templates\cross_order\list_transaction_details.html.py:63
 msgid "sku"
 msgstr "SKU"
 
-#: .\templates\cross_order\list_order.html.py:79
-#: .\templates\cross_order\list_transaction_details.html.py:58
+#: .\templates\cross_order\list_order.html.py:78
+#: .\templates\cross_order\list_transaction_details.html.py:64
 msgid "supplier_sku_config"
 msgstr "Supplier SKU Config"
 
-#: .\templates\cross_order\list_order.html.py:80
-#: .\templates\cross_order\list_transaction_details.html.py:59
+#: .\templates\cross_order\list_order.html.py:79
+#: .\templates\cross_order\list_transaction_details.html.py:65
 msgid "supplier_sku_simple"
 msgstr "Supplier SKU Simple"
 
-#: .\templates\cross_order\list_order.html.py:81
-#: .\templates\cross_order\list_transaction_details.html.py:60
+#: .\templates\cross_order\list_order.html.py:80
+#: .\templates\cross_order\list_transaction_details.html.py:66
 msgid "barcode"
 msgstr "Barcode"
 
-#: .\templates\cross_order\list_order.html.py:82
-#: .\templates\cross_order\list_transaction_details.html.py:61
+#: .\templates\cross_order\list_order.html.py:81
+#: .\templates\cross_order\list_transaction_details.html.py:67
 msgid "name"
 msgstr "Name"
 
-#: .\templates\cross_order\list_order.html.py:85
-#: .\templates\cross_order\list_transaction_details.html.py:64
+#: .\templates\cross_order\list_order.html.py:84
+#: .\templates\cross_order\list_transaction_details.html.py:70
 msgid "paid_price"
 msgstr "Paid Price"
 
-#: .\templates\cross_order\list_order.html.py:86
-#: .\templates\cross_order\list_transaction_details.html.py:65
+#: .\templates\cross_order\list_order.html.py:85
+#: .\templates\cross_order\list_transaction_details.html.py:71
 msgid "cost"
 msgstr "Cost"
 
-#: .\templates\cross_order\list_order.html.py:87
-#: .\templates\cross_order\list_transaction_details.html.py:66
+#: .\templates\cross_order\list_order.html.py:86
+#: .\templates\cross_order\list_transaction_details.html.py:72
 msgid "order_date"
 msgstr "Order Date"
 
-#: .\templates\cross_order\list_order.html.py:88
-#: .\templates\cross_order\list_transaction_details.html.py:67
+#: .\templates\cross_order\list_order.html.py:87
+#: .\templates\cross_order\list_transaction_details.html.py:73
 msgid "attribute_set"
 msgstr "Attribute Set"
 
-#: .\templates\cross_order\list_order.html.py:89
-#: .\templates\cross_order\list_transaction_details.html.py:68
+#: .\templates\cross_order\list_order.html.py:88
+#: .\templates\cross_order\list_transaction_details.html.py:74
 msgid "inbound_order_number"
 msgstr "Inbound Order Number"
 
-#: .\templates\cross_order\list_order.html.py:90
-#: .\templates\cross_order\list_transaction_details.html.py:69
+#: .\templates\cross_order\list_order.html.py:89
+#: .\templates\cross_order\list_transaction_details.html.py:75
 #: .\templates\cross_order\boxes\comment_box.html.py:7
 msgid "comment"
 msgstr "Comment"
 
-#: .\templates\cross_order\list_order.html.py:91
-#: .\templates\cross_order\list_transaction_details.html.py:70
+#: .\templates\cross_order\list_order.html.py:90
+#: .\templates\cross_order\list_transaction_details.html.py:76
 msgid "supplier_order_date"
 msgstr "Supplier Order Date"
 
-#: .\templates\cross_order\list_order.html.py:92
-#: .\templates\cross_order\list_transaction_details.html.py:71
+#: .\templates\cross_order\list_order.html.py:91
+#: .\templates\cross_order\list_transaction_details.html.py:77
 msgid "last_update"
 msgstr "Last Update"
 
-#: .\templates\cross_order\list_order.html.py:134
-#: .\templates\cross_order\list_transaction.html.py:120
-#: .\templates\cross_order\list_transaction_details.html.py:113
+#: .\templates\cross_order\list_order.html.py:133
+#: .\templates\cross_order\list_transaction.html.py:111
+#: .\templates\cross_order\list_transaction_details.html.py:119
 msgid "please_select"
 msgstr "Please Select"
 
-#: .\templates\cross_order\list_order.html.py:146
-#: .\templates\cross_order\list_transaction_details.html.py:121
+#: .\templates\cross_order\list_order.html.py:145
+#: .\templates\cross_order\list_transaction_details.html.py:127
 msgid "update_cross_status"
 msgstr "Update Cross Status"
 
-#: .\templates\cross_order\list_order.html.py:155
-#: .\templates\cross_order\list_transaction_details.html.py:129
+#: .\templates\cross_order\list_order.html.py:154
+#: .\templates\cross_order\list_transaction_details.html.py:135
 msgid "update_inbound_order_number"
 msgstr "Update Inbound Order Number"
 
-#: .\templates\cross_order\list_order.html.py:161
-#: .\templates\cross_order\list_transaction_details.html.py:137
+#: .\templates\cross_order\list_order.html.py:160
+#: .\templates\cross_order\list_transaction_details.html.py:143
 msgid "add_comment"
 msgstr "Add Comment"
 
-#: .\templates\cross_order\list_order.html.py:166
-#: .\templates\cross_order\list_transaction_details.html.py:147
+#: .\templates\cross_order\list_order.html.py:165
+#: .\templates\cross_order\list_transaction_details.html.py:153
 msgid "export_to_excel"
 msgstr "Export to Excel"
 
@@ -184,24 +188,25 @@ msgstr "Export to Excel"
 msgid "start_date"
 msgstr "Start Date"
 
-#: .\templates\cross_order\list_supplier.html.py:25
+#: .\templates\cross_order\list_supplier.html.py:24
 msgid "end_date"
 msgstr "End Date"
 
-#: .\templates\cross_order\list_supplier.html.py:69
+#: .\templates\cross_order\list_supplier.html.py:65
 msgid "unprocessed_order_items"
 msgstr "Unprocessed Order Items"
 
-#: .\templates\cross_order\list_supplier.html.py:73
+#: .\templates\cross_order\list_supplier.html.py:68
 msgid "total_order_items"
 msgstr "Total Order Items"
 
 #: .\templates\cross_order\list_transaction.html.py:16
-#: .\templates\cross_order\list_transaction.html.py:60
+#: .\templates\cross_order\list_transaction.html.py:50
+#: .\templates\cross_order\list_transaction_details.html.py:23
 msgid "status"
 msgstr "Status"
 
-#: .\templates\cross_order\list_transaction.html.py:48
+#: .\templates\cross_order\list_transaction.html.py:47
 msgid "create_date"
 msgstr "Create Date"
 
@@ -210,31 +215,31 @@ msgstr "Create Date"
 msgid "transaction_code"
 msgstr "Transaction Code"
 
-#: .\templates\cross_order\list_transaction.html.py:64
+#: .\templates\cross_order\list_transaction.html.py:59
 msgid "number_of_items_confirmed"
 msgstr "# of Items Confirmed"
 
-#: .\templates\cross_order\list_transaction.html.py:68
+#: .\templates\cross_order\list_transaction.html.py:62
 msgid "total_number_of_items"
 msgstr "Total # of Items"
 
-#: .\templates\cross_order\list_transaction.html.py:72
+#: .\templates\cross_order\list_transaction.html.py:65
 msgid "total_tl_cost"
 msgstr "Total Cost (TL)"
 
-#: .\templates\cross_order\list_transaction.html.py:76
+#: .\templates\cross_order\list_transaction.html.py:68
 msgid "user"
 msgstr "User"
 
-#: .\templates\cross_order\list_transaction.html.py:128
+#: .\templates\cross_order\list_transaction.html.py:119
 msgid "update_status"
 msgstr "Update Status"
 
-#: .\templates\cross_order\list_transaction_details.html.py:142
+#: .\templates\cross_order\list_transaction_details.html.py:148
 msgid "supplier_excel"
 msgstr "Supplier Excel"
 
-#: .\templates\cross_order\list_transaction_details.html.py:198
+#: .\templates\cross_order\list_transaction_details.html.py:204
 msgid "hide_show_columns"
 msgstr "Hide/Show Columns"
 

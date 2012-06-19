@@ -2,6 +2,37 @@ from django.db import models
 from django.contrib.auth.models import User
 from datetime import  datetime
 from django.db.models.signals import post_save
+from django.utils.translation import gettext_lazy as _
+
+class ColumnType():
+    CHAR = 0
+    INT = 1
+    FLOAT = 2
+    
+    TYPE = (
+            (CHAR,_("CHAR")),
+            (INT ,_("INT")),
+            (FLOAT ,_("FLOAT")),
+            )
+
+class ReportSql2Excel(models.Model):
+    name = models.CharField(max_length=2000,null=True)
+    excel_name = models.CharField(max_length=2000,null=True)
+    tb_name = models.CharField(max_length=2000,null=True)
+
+    isActive = models.BooleanField(null=False,default=True)
+    order = models.IntegerField(default=9999)
+
+    def __unicode__(self):
+        return str(self.name)
+
+class Sql2ExcelColumn(models.Model):
+    report = models.ForeignKey(ReportSql2Excel,unique=False,null=False)
+    name = models.CharField(max_length=2000,null=True)
+    type = models.IntegerField(default=ColumnType.CHAR,choices=ColumnType.TYPE)
+
+    def __unicode__(self):
+        return str(self.name)
 
 class ReportUnprocessedCrossDock(models.Model):
     id_sales_order_item = models.PositiveIntegerField(max_length=10,primary_key=True)

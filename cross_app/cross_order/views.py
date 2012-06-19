@@ -10,33 +10,58 @@ from django.utils import simplejson
 from django.views.decorators.csrf import csrf_exempt
 import xlwt
 from cross_order.helper_functions import render_response, generateTransactionString, modelToExcel
-from cross_order.models import Supplier, CrossStatus, Order, LastUpdate, Transactions, OrderTransaction, OrderCrossDetails, OrderAttributeSet, TransactionStatus, ReportConfirmedSkuBase, ReportConfirmedSupplierBase, ReportOutOfStockCrossDock, ReportUnprocessedCrossDock, OverdueCrossDock
+from cross_order.models import Supplier, CrossStatus, Order, LastUpdate, Transactions, OrderTransaction, OrderCrossDetails, OrderAttributeSet, TransactionStatus, ReportConfirmedSkuBase, ReportConfirmedSupplierBase, ReportOutOfStockCrossDock, ReportUnprocessedCrossDock, OverdueCrossDock, ReportSql2Excel, ColumnType
 from django.core.serializers.json import Serializer, DjangoJSONEncoder
+from django.db import transaction, connection
 
 @login_required
 def report_list(request):
-    return render_response(request, 'cross_order/report_list.html')
+    return render_response(request, 'cross_order/report_list.html',{'report_list':ReportSql2Excel.objects.filter(isActive=True).order_by('order')})
+
 
 @login_required
 def get_excel_report(request):
+    rep = ReportSql2Excel.objects.get(pk=request.GET["report"])
+    cursor = connection.cursor()
 
-    if request.GET["report"] == "1":
-        field_names = ['sku','barcode_ean','item_count','name','attribute_set','supplier_name']
-        return modelToExcel(ReportConfirmedSkuBase.objects.all(),field_names,"confirmed_number_of_items_sku_base")
-    elif request.GET["report"] == "2":
-        field_names = ['supplier_name','item_count']
-        return modelToExcel(ReportConfirmedSupplierBase.objects.all(),field_names,"confirmed_number_of_items_supplier_base")
-    elif request.GET["report"] == "3":
-        field_names = ['id_sales_order_item','suborder_number','order_nr','order_date','sku','barcode_ean','name','attribute_set','bob_status']
-        return modelToExcel(ReportOutOfStockCrossDock.objects.all(),field_names,"out_of_stock_crossdock_order_item")
-    elif request.GET["report"] == "4":
-        field_names = ['id_sales_order_item','suborder_number','order_nr','order_date','sku','barcode_ean','name','attribute_set','supplier_name','bob_status']
-        return modelToExcel(ReportUnprocessedCrossDock.objects.all(),field_names,"unprocessed_crossdock_order_items")
-    elif request.GET["report"] == "5":
-        field_names = ['id_sales_order_item','suborder_number','order_nr','order_date','sku','barcode_ean','name','attribute_set','bob_status','days_overdue','delivery_time_max']
-        return modelToExcel(OverdueCrossDock.objects.all(),field_names,"overdue_crossdock_order_item")
+    book = xlwt.Workbook(encoding='utf8')
+    sheet = book.add_sheet('untitled')
 
-    return render_response(request, 'cross_order/report_list.html')
+    index_counter = 0
+    for field in rep.sql2excelcolumn_set.all():
+         sheet.write(0,index_counter,[unicode(field.name).encode('utf-8') ])
+         index_counter +=1
+
+
+    query = "SELECT "
+    for col in rep.sql2excelcolumn_set.all():
+        query += (col.name + ",")
+
+    query = query[0:len(query)-1]
+    query += " FROM "
+    query += rep.tb_name.replace('\'','')
+
+    cursor.execute(query)
+    index_i = 1
+    for row in cursor.fetchall():
+        index_j = 0
+        for col in rep.sql2excelcolumn_set.all():
+            if col.type == ColumnType.CHAR:
+                sheet.write(index_i,index_j,[unicode(row[index_j]).encode('utf-8') ])
+            elif col.type == ColumnType.FLOAT:
+                sheet.write(index_i,index_j,Decimal(row[index_j]))
+            elif col.type == ColumnType.INT:
+                sheet.write(index_i,index_j,int(row[index_j]))
+            index_j += 1
+        index_i += 1
+
+    response = HttpResponse(mimetype='application/vnd.ms-excel')
+
+    file_string = 'attachment; filename='+rep.excel_name+'.xls'
+    response['Content-Disposition'] = file_string
+
+    book.save(response)
+    return response
 
 
 @login_required

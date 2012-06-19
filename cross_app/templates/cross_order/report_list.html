@@ -13,21 +13,11 @@
             </div>
 
                 <ul class="reports">
+                    {% for r in report_list %}
                     <li>
-                        <a href="/cross_order/get_excel_report/?report=1"> Confirmed_number_of_items_sku_base </a>
+                        <a href="/cross_order/get_excel_report/?report={{ r.pk }}"> {{ r.name }} </a>
                     </li>
-                    <li>
-                        <a href="/cross_order/get_excel_report/?report=2"> Confirmed_number_of_items_supplier_base </a>
-                    </li>
-                    <li>
-                        <a href="/cross_order/get_excel_report/?report=3"> Out_of_stock_crossdock_order_items  </a>
-                    </li>
-                    <li>
-                        <a href="/cross_order/get_excel_report/?report=4"> Unprocessed_crossdock_order_items </a>
-                    </li>
-                    <li>
-                        <a href="/cross_order/get_excel_report/?report=5"> Overdue_crossdock_order_items </a>
-                    </li>
+                    {% endfor %}
                 </ul>
 
 

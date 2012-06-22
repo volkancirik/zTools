@@ -1,0 +1,181 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% load helper %}
+{% block extrahead %}
+{% endblock %}
+
+{% block content %}
+<div class="tabbed">
+	<div class="tab-content" style="display:block;">
+		<div class="items">
+            <form id="SearchForm" action="/cross_order/order_search/" method="POST">
+                {% csrf_token %}
+                <div class="FormWrapper">
+                <div>
+                    <ul class="FormPosition">
+                        {% for field in form.visible_fields %}
+                            {% if "date" not in field.label and "Date" not in field.label %}
+                                <li class="FormLineWrapper">
+                                    <div class="FormObjectSearch">
+                                        {% if field.errors %}
+                                            {% for error in field.errors %}
+                                                <div class="FormObject ErrorArea"> {{ error }}</div>
+                                            {% endfor %}
+                                        {% endif %}
+                                        <div class="FormLabel">
+                                            {{ field.label }}
+                                        </div>
+                                        <span id="id_{{ field.name }}" ></span>
+                                    </div>
+                                </li>
+                            {% endif %}
+                        {% endfor %}
+                    </ul>
+                    </div>
+                <!--
+                <div class="clear"></div>
+                <div>
+                    <ul class="FormPosition">
+                        {% for field in form.visible_fields %}
+                            {% if "_start" in field.name or "_Start" in field.name %}
+                                <li class="FormLineWrapper">
+                                    <div class="FormObjectSearch">
+                                        {% if field.errors %}
+                                            {% for error in field.errors %}
+                                                <div class="FormObject ErrorArea"> {{ error }}</div>
+                                            {% endfor %}
+                                        {% endif %}
+                                        <div class="FormLabel">
+                                            {{ field.label }}
+                                        </div>
+                                        <div id="id_{{ field.name }}" ></div>
+                                    </div>
+                                </li>
+                            {% endif %}
+                        {% endfor %}
+                    </ul>
+                </div>
+                <div class="clear"></div>
+                <div>
+                    <ul class="FormPosition">
+                        {% for field in form.visible_fields %}
+                            {% if "_end" in field.name or "_End" in field.name %}
+                                <li class="FormLineWrapper">
+                                    <div class="FormObjectSearch">
+                                        {% if field.errors %}
+                                            {% for error in field.errors %}
+                                                <div class="FormObject ErrorArea"> {{ error }}</div>
+                                            {% endfor %}
+                                        {% endif %}
+                                        <div class="FormLabel">
+                                            {{ field.label }}
+                                        </div>
+                                        <div id="id_{{ field.name }}" ></div>
+                                    </div>
+                                </li>
+                            {% endif %}
+                        {% endfor %}
+                    </ul>
+                </div>
+                -->
+                <div class="clear"></div>
+                <div style="text-align: right;">
+                    <a class="submitButton" href="javascript:$.noop();" >
+                            <span>{% trans "filter" %} </span>
+                    </a>
+                </div>
+                </div>
+                {% for field in form.hidden_fields %}
+                    {{ field }}
+                {% endfor %}
+            </form>
+
+<div class="clear"></div>
+        <br/>   
+            <table id="orderList">
+                <thead>
+                    <tr>
+                        <th><input type=checkbox name='allSelect' class="allSelect"></th>
+                        <th>{% trans "cross_status" %} </th>
+                        <th>{% trans "supplier_name" %} </th>
+                        <th>{% trans "order_item_id" %}</th>
+                        <th>{% trans "zidaya_order_number" %}  </th>
+                        <th>{% trans "suborder_number" %}  </th>
+                        <th>{% trans "sku" %}</th>
+                        <th>{% trans "size" %}</th>
+                        <th>{% trans "supplier_sku_config" %}</th>
+                        <th>{% trans "supplier_sku_simple" %}</th>
+                        <th>{% trans "barcode" %}</th>
+                        <th>{% trans "name" %}</th>
+                        <th>{% trans "paid_price" %}</th>
+                        <th>{% trans "cost" %}</th>
+                        <th>{% trans "order_date" %}</th>
+                        <th>{% trans "attribute_set" %}</th>
+                        <th>{% trans "inbound_order_number" %}</th>
+                        <th>{% trans "comment" %}</th>
+                        <th>{% trans "supplier_order_date" %}</th>
+                        <th>{% trans "last_update" %}</th>
+                    </tr>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
+		</div>
+	</div>
+</div>
+
+
+<script type="text/javascript">
+    $(document).ready(function(){
+        var oTable = $('#orderList').dataTable(
+                {
+                    "sScrollY": "350px",
+                    "sScrollX": "100%",
+                    "bJQueryUI": true,
+                    "sPaginationType": "full_numbers",
+                    "bProcessing": true,
+                    "bServerSide": true,
+                    "sAjaxSource": "/cross_order/order_search_ajax/",
+                    "aoColumnDefs": [
+                      { 'bSortable': false, 'aTargets': [ 0 ] }
+                   ]
+                }
+        ).columnFilter(
+                {sPlaceHolder: "head:after",
+                    aoColumns:[
+                            null,
+                            { sSelector:"#id_cross_status",type:"select", values: [{% for c in crossList %} '{{ c.name }}', {% endfor %} ]},
+                            { sSelector:"#id_supplier_name"},
+                            { sSelector:"#id_order_item_id"},
+                            { sSelector:"#id_zidaya_order_item"},
+                            { sSelector:"#id_suborder_number"},
+                            { sSelector:"#id_sku"},
+                            null,
+                            { sSelector:"#id_supplier_sku_config"},
+                            { sSelector:"#id_supplier_sku_simple"},
+                            { sSelector:"#id_barcode"},
+                            { sSelector:"#id_name"},
+                            null,
+                            null,
+                            null,
+                            { sSelector:"#id_attribute_set",type:"select", values: [{% for c in attributeList %} '{{ c.attributeCode }}', {% endfor %} ]},
+                            { sSelector:"#id_inbound_order_number"},
+                            { sSelector:"#id_comment"},
+                                null,
+                            null
+                    ]
+                }
+        );
+
+        
+
+        $('.allSelect').click(function(){
+            if($(this).is(':checked')){
+                $('.checkboxClass').attr("checked", 'checked');
+            }
+            else
+                $('.checkboxClass').attr("checked", "");
+        });
+    });
+</script>
+{% endblock %}

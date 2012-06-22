@@ -2,6 +2,7 @@ import datetime
 from decimal import Decimal
 from django.contrib.auth.decorators import login_required
 from django.core import serializers
+from django.db.models.query_utils import Q
 from django.db.transaction import Transaction
 from django.http import HttpResponse
 from django.shortcuts import redirect
@@ -9,10 +10,64 @@ from django.template.defaultfilters import slugify
 from django.utils import simplejson
 from django.views.decorators.csrf import csrf_exempt
 import xlwt
-from cross_order.helper_functions import render_response, generateTransactionString, modelToExcel
+from cross_order.forms import OrderSearchForm
+from cross_order.helper_functions import render_response, generateTransactionString, modelToExcel, getOrderSearchQuery
 from cross_order.models import Supplier, CrossStatus, Order, LastUpdate, Transactions, OrderTransaction, OrderCrossDetails, OrderAttributeSet, TransactionStatus, ReportConfirmedSkuBase, ReportConfirmedSupplierBase, ReportOutOfStockCrossDock, ReportUnprocessedCrossDock, OverdueCrossDock, ReportSql2Excel, ColumnType
 from django.core.serializers.json import Serializer, DjangoJSONEncoder
 from django.db import transaction, connection
+from cross_order.utils import get_datatables_records
+
+@login_required
+def order_search_ajax(request):
+    columnIndexNameMap = {
+        0:'pk',
+        1:'ordercrossdetails__cross_status__name',
+        2:'supplier__name',
+        3:'id_sales_order_item',
+        4:'order_nr',
+        5:'suborder_number',
+        6:'sku',
+        7:'size',
+        8:'sku_supplier_simple',
+        9:'sku_supplier_config',
+        10:'barcode_ean',
+        11:'name',
+        12:'paid_price',
+        13:'cost',
+        14:'order_date',
+        15:'ordercrossdetails__order_attribute',
+        16:'ordercrossdetails__inbound_order_number',
+        17:'ordercrossdetails__comment',
+        18:'ordercrossdetails__supplier_order_date',
+        19:'lastupdate__update_date',
+        }
+    return get_datatables_records(request,
+                                  Order.objects.values(
+                                      'pk',
+                                      'ordercrossdetails__cross_status__name',
+                                      'id_sales_order_item',
+                                      'order_nr',
+                                      'suborder_number',
+                                      'sku',
+                                      'size',
+                                      'sku_supplier_simple',
+                                      'sku_supplier_config',
+                                      'barcode_ean',
+                                      'name',
+                                      'paid_price',
+                                      'cost',
+                                      'order_date',
+                                      'ordercrossdetails__order_attribute',
+                                      'ordercrossdetails__inbound_order_number',
+                                      'ordercrossdetails__comment',
+                                      'ordercrossdetails__supplier_order_date',
+                                      'lastupdate__update_date',
+                                      'supplier__name'
+                                      ).all(),columnIndexNameMap)
+
+@login_required
+def order_search(request):
+    return render_response(request, 'cross_order/order_search.html',{'form':form,'crossList':CrossStatus.objects.all(),'attributeList':OrderAttributeSet.objects.all()})
 
 @login_required
 def report_list(request):

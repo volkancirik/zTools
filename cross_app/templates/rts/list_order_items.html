@@ -12,34 +12,40 @@
                 <thead>
                     <tr>
                         <th><input type=checkbox name='allSelect' class="allSelect"></th>
+                        <th>{% trans "id_sales" %}</th>
                         <th>{% trans "order_nr" %} </th>
                         <th>{% trans "sku" %}</th>
+                        <th>{% trans "order_date" %}</th>
                         <th>{% trans "barcode_ean" %}  </th>
-{#                        <th>{% trans "size" %}</th>#}
-{#                        <th>{% trans "sku" %}</th>#}
-{#                        <th>{% trans "supplier_sku_config" %}</th>#}
-{#                        <th>{% trans "supplier_sku_simple" %}</th>#}
-{#                        <th>{% trans "barcode" %}</th>#}
-{#                        <th>{% trans "name" %}</th>#}
-{#                        <th>BOB Status</th>#}
-{#                        <th>Suborder Number</th>#}
-{#                        <th>{% trans "paid_price" %}</th>#}
-{#                        <th>{% trans "cost" %}</th>#}
-{#                        <th>{% trans "order_date" %}</th>#}
-{#                        <th>{% trans "attribute_set" %}</th>#}
-{#                        <th>{% trans "inbound_order_number" %}</th>#}
-{#                        <th>{% trans "comment" %}</th>#}
-{#                        <th>{% trans "supplier_order_date" %}</th>#}
-{#                        <th>{% trans "last_update" %}</th>#}
+                        <th>{% trans "name" %}</th>
+                        <th>{% trans "suborder_number" %}</th>
+                        <th>{% trans "shipping_name" %}</th>
+                        <th>{% trans "billing_name" %}</th>
+                        <th>{% trans "bob_status" %}</th>
+                        <th>{% trans "return_reason" %}</th>
+                        <th>{% trans "action_type" %}</th>
+                        <th>{% trans "comment" %}</th>
+                        <th>{% trans "time_stamp" %}</th>
                     </tr>
                 </thead>
                 <tbody>
                     {% for o in oibfr_list %}
                         <tr>
                             <td><input type=checkbox class="checkboxClass" name='orderChecked' value="{{ o.pk }}"></td>
+                            <td>{{ o.id_sales_order_item }}</td>
                             <td>{{ o.order_nr }}</td>
                             <td>{{ o.sku }}</td>
+                            <td>{{ o.order_date }}</td>
                             <td>{{ o.barcode_ean }}</td>
+                            <td>{{ o.name }}</td>
+                            <td>{{ o.suborder_number }}</td>
+                            <td>{{ o.shipping_name }}</td>
+                            <td>{{ o.billing_name }}</td>
+                            <td>{{ o.bob_status }}</td>
+                            <td>{{ o.returneditemdetails.return_reason }}</td>
+                            <td>{{ o.returneditemdetails.action_type }}</td>
+                            <td>{{ o.returneditemdetails.comment }}</td>
+                            <td>{{ o.returneditemdetails.time_stamp }}</td>
 {#                            <td>#}
 {#                                <a href="https://bob.zidaya.com/orderprocessing/order/index/id/{{ o.id_sales_order }}" target="_blank">{{ o.order_nr }}</a>#}
 {#                            </td>#}
@@ -125,7 +131,7 @@
     $(document).ready(function(){
         var oTable = $('#orderList').dataTable(
                 {
-                    "sScrollY": "350px",
+                    "sScrollY": "150px",
                     "bJQueryUI": true,
                     "bPaginate": false,
                     "sScrollX": "100%"

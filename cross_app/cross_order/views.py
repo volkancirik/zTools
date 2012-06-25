@@ -67,6 +67,7 @@ def order_search_ajax(request):
 
 @login_required
 def order_search(request):
+    form = OrderSearchForm()
     return render_response(request, 'cross_order/order_search.html',{'form':form,'crossList':CrossStatus.objects.all(),'attributeList':OrderAttributeSet.objects.all()})
 
 @login_required

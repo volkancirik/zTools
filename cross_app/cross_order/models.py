@@ -124,6 +124,9 @@ class CrossStatus(models.Model):
     isInvalid = models.BooleanField(null=False,default=False)
     order = models.IntegerField(default=9999)
 
+    def __unicode__(self):
+        return str(self.name)
+
 class TransactionStatus(models.Model):
     name = models.CharField(max_length=250,null=False)
     order = models.IntegerField(default=9999)

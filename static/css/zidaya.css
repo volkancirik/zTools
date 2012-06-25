@@ -232,6 +232,22 @@ body{
     width: 205px;
 }
 
+.FormLineWrapper .FormObjectSearch input {
+    border: 1px solid #CCCCCC;
+    padding: 4px;
+    width: 100px;
+}
+
+.FormLineWrapper .FormObjectSearch select {
+border: 1px solid #CCCCCC;
+    padding: 2px;
+    width: 110px;
+}
+.FormLineWrapper .FormObjectSearch .FormLabel {
+    line-height: 13px;
+    width:120px;
+}
+
 select,textarea{
     border: 1px solid #CCCCCC;
     padding: 2px;
@@ -270,7 +286,7 @@ select,textarea{
     font-weight: bold;
     margin-left: 10px;
     margin-top: 17px;
-    padding: 6px;
+    padding: 5px;
     text-align: center;
     border-radius: 5px;
 }
@@ -443,4 +459,12 @@ ul.reports  li{
     width: 100%;
     overflow: visible;
     padding: 5px;
+}
+
+div.clear {
+	clear: both !important;
+	height: 0 !important;
+	margin: 0 !important;
+	max-height: 0 !important;
+	padding: 0 !important;
 }

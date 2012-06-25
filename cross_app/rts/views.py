@@ -26,4 +26,8 @@ def search_returned_item(request):
             return render_response(request, 'rts/list_order_items.html',{'oibfr_list': None})
 def list_all(request):
     oibfr_list = OrderItemBaseForReturns.objects.all()
-    return render_response(request, 'rts/list_order_items.html',{'oibfr_list': oibfr_list})
+    return render_response(request, 'rts/list_order_items.html',{
+        'oibfr_list': oibfr_list,
+        'actionList':ActionType.objects.all().order_by("order"),
+        'reasonList':ReturnReason.objects.all().order_by("order"),
+    })

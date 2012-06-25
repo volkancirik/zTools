@@ -44,6 +44,10 @@ function closeCommentBox(){
     $('.commentBox').hide();
     return false;
 }
+function closeReturnBox(){
+    $('.returnBox').hide();
+    return false;
+}
 function closeColumnBox(){
     $('.columnBox').hide();
     return false;
@@ -51,6 +55,12 @@ function closeColumnBox(){
 
 function viewCommentBox(){
     $('.commentBox').show();
+    return false;
+}
+function viewReturnBox(suborderNumber,orderNumber){
+    $('#id_returnedSuborder').text(suborderNumber);
+    $('#id_orderSuborder').text(orderNumber);
+    $('.returnBox').show();
     return false;
 }
 
@@ -62,6 +72,11 @@ function submitComment(){
                  //$('#comment').val($('#userComment').val());
                 $('#id_buttonSource').val("comment");
                 $('#orderUpdateForm').submit();
+}
+function submitReturnForm(){
+                 //$('#comment').val($('#userComment').val());
+//                $('#id_buttonSource').val("comment");
+//                $('#orderUpdateForm').submit();
 }
 function fnShowHide( iCol, status )
 {

@@ -41,11 +41,15 @@ class ActionType(models.Model):
     name = models.CharField(max_length=250,null=False)
     isInvalid = models.BooleanField(null=False,default=False)
     order = models.IntegerField(default=9999)
+    def __unicode__(self):
+        return str(self.name)
 
 class ReturnReason(models.Model):
     name = models.CharField(max_length=250,null=False)
     isInvalid = models.BooleanField(null=False,default=False)
     order = models.IntegerField(default=9999)
+    def __unicode__(self):
+        return str(self.name)
 
 class ReturnedItemDetails(models.Model):
     order_item = models.ForeignKey(OrderItemBaseForReturns,unique=True,null=False)
@@ -53,4 +57,6 @@ class ReturnedItemDetails(models.Model):
     action_type = models.ForeignKey(ActionType,unique=False,null=False)
     comment = models.TextField(null=True)
     time_stamp = models.DateTimeField(default= datetime.now())
+    def __unicode__(self):
+        return str(self.order_item.id + ' ' + self.return_reason.name + ' ' + self.action_type.name + ' on ' + self.time_stamp)
 

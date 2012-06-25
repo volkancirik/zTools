@@ -1,0 +1,47 @@
+{% load i18n %}
+<div id="dialog-confirm"  class="returnBox" style="display:none;" title ="Edit Order With SKU : {{ o.sku }}">
+{#    <div class="black_overlay" id="fade"></div>#}
+    <div class="white_content">
+    <div style="margin-bottom: 10px;" align="left">
+            <div>
+                Suborder Number : <span id="id_returnedSuborder"></span><br>
+                Order Number : <span id="id_orderSuborder"></span>
+            </div>
+            <br>
+            <form id ="returnedOrderForm" action="/rts/update_returned_order/" method='post'>
+            {% csrf_token %}
+                <select name='actionList' id='id_actionList'>
+                    <option value='0'>Select an Action</option> {# translation needed #}
+                    {% for action in actionList %}
+                        <option value='{{ action.pk }}'>{{ action.name }}</option>
+                    {% endfor %}
+                </select>
+                <br>
+                <select name='reasonList' id='id_reasonList'>
+                    <option value='0'>Select an Reason</option> {# translation needed #}
+                    {% for reason in reasonList %}
+                        <option value='{{ reason.pk }}'>{{ reason.name }}</option>
+                    {% endfor %}
+                </select>
+                <br>
+                <p>
+                   {% trans "comment" %}
+                </p>
+                    <textarea id="comment" name="comment" cols="94" rows="10"></textarea><br>
+                <input type="hidden" value="" id="id_returnedItemID" name="returnedItemID" />
+            </form>
+    </div>
+            <div  style="float:right;margin-left: 10px;">
+                <a href="#" onclick="return closeReturnBox();">
+                    {% trans "close" %}
+                </a>
+            </div>
+        <div class="closeButton">
+            <div style="float:right;">
+                <a href="#" onclick="return submitReturnForm();" class="submitButton">
+                    <span> Update Returned Item </span> {# translation needed #}
+                </a>
+            </div>
+        </div>
+    </div>
+</div>

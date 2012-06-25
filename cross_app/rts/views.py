@@ -31,3 +31,12 @@ def list_all(request):
         'actionList':ActionType.objects.all().order_by("order"),
         'reasonList':ReturnReason.objects.all().order_by("order"),
     })
+
+def update_returned_order(request):
+    if request.method == 'POST':
+        returnedOrder = OrderItemBaseForReturns.objects.get(id_sales_order_item = int(request.POST['returnedItemID']))
+        returnReason = ReturnReason.objects.get(pk = int(request.POST['reasonList']))
+        actionType = ActionType.objects.get(pk = int(request.POST['actionList']))
+        comment = request.POST['comment']
+        ReturnedItemDetails.objects.create(order_item = returnedOrder, return_reason = returnReason, action_type = actionType, comment = comment)
+        return redirect('/rts/list_all/')

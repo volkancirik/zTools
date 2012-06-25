@@ -7,10 +7,10 @@ from django.utils.translation import gettext_lazy as _
 import settings
 
 class OrderItemBaseForReturns(models.Model):
-    id_sales_order_item = models.PositiveIntegerField(max_length=10,null=False,default=0)
+    id_sales_order_item = models.PositiveIntegerField(max_length=10,null=False,default=0,primary_key=True)
     id_sales_order = models.PositiveIntegerField(max_length=10,null=True)
     id_catalog_simple = models.IntegerField(max_length=11,null=False)
-    order_nr = models.CharField(max_length=45,null=True,primary_key=True)
+    order_nr = models.CharField(max_length=45,null=True)
     sku = models.CharField(max_length=255,null=True)
     order_date = models.DateTimeField(blank=True)
     supplier_name = models.CharField(max_length=511,null=True)
@@ -32,7 +32,7 @@ class OrderItemBaseForReturns(models.Model):
     coupon_percent = models.IntegerField(max_length=11,null=True)
     bob_status = models.CharField(max_length=255,null=True)
     def __unicode__(self):
-        return str(self.order_nr)
+        return str(self.id_sales_order_item)
 
     class Meta:
         db_table = 'rts_orderitemview'
@@ -52,11 +52,11 @@ class ReturnReason(models.Model):
         return str(self.name)
 
 class ReturnedItemDetails(models.Model):
-    order_item = models.ForeignKey(OrderItemBaseForReturns,unique=True,null=False)
+    order_item = models.OneToOneField(OrderItemBaseForReturns, to_field='id_sales_order_item',unique=True,null=False)
     return_reason = models.ForeignKey(ReturnReason,unique=False,null=False)
     action_type = models.ForeignKey(ActionType,unique=False,null=False)
     comment = models.TextField(null=True)
     time_stamp = models.DateTimeField(default= datetime.now())
     def __unicode__(self):
-        return str(self.order_item.id + ' ' + self.return_reason.name + ' ' + self.action_type.name + ' on ' + self.time_stamp)
+        return str(self.order_item.name + ' ' + self.return_reason.name + ' ' + self.action_type.name + ' on ' + str(self.time_stamp))
 

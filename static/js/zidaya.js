@@ -57,9 +57,10 @@ function viewCommentBox(){
     $('.commentBox').show();
     return false;
 }
-function viewReturnBox(suborderNumber,orderNumber){
+function viewReturnBox(suborderNumber,orderNumber,returnedOrderID){
     $('#id_returnedSuborder').text(suborderNumber);
     $('#id_orderSuborder').text(orderNumber);
+    $('#id_returnedItemID').val(returnedOrderID);
     $('.returnBox').show();
     return false;
 }
@@ -74,9 +75,8 @@ function submitComment(){
                 $('#orderUpdateForm').submit();
 }
 function submitReturnForm(){
-                 //$('#comment').val($('#userComment').val());
-//                $('#id_buttonSource').val("comment");
-//                $('#orderUpdateForm').submit();
+    closeReturnBox();
+    $('#returnedOrderForm').submit();
 }
 function fnShowHide( iCol, status )
 {

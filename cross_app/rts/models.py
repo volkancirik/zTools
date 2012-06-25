@@ -9,7 +9,8 @@ import settings
 class OrderItemBaseForReturns(models.Model):
     id_sales_order_item = models.PositiveIntegerField(max_length=10,null=False,default=0)
     id_sales_order = models.PositiveIntegerField(max_length=10,null=True)
-    order_nr = models.CharField(max_length=45,null=True,primary_key= True)
+    id_catalog_simple = models.IntegerField(max_length=11,null=False)
+    order_nr = models.CharField(max_length=45,null=True,primary_key=True)
     sku = models.CharField(max_length=255,null=True)
     order_date = models.DateTimeField(blank=True)
     supplier_name = models.CharField(max_length=511,null=True)
@@ -29,9 +30,12 @@ class OrderItemBaseForReturns(models.Model):
     coupon_code = models.CharField(max_length=511,null=True)
     coupon_money_value = models.DecimalField(max_digits=10,decimal_places=2, null=True)
     coupon_percent = models.IntegerField(max_length=11,null=True)
-    status = models.CharField(max_length=255,null=True)
+    bob_status = models.CharField(max_length=255,null=True)
     def __unicode__(self):
         return str(self.order_nr)
+
+    class Meta:
+        db_table = 'rts_orderitemview'
 
 class ActionType(models.Model):
     name = models.CharField(max_length=250,null=False)

@@ -1,0 +1,156 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% load helper %}
+{% block extrahead %}
+{% endblock %}
+
+{% block content %}
+<div class="tabbed">
+	<div class="tab-content" style="display:block;">
+		<div class="items">
+    <table id="orderList">
+                <thead>
+                    <tr>
+                        <th><input type=checkbox name='allSelect' class="allSelect"></th>
+                        <th>{% trans "order_nr" %} </th>
+                        <th>{% trans "sku" %}</th>
+                        <th>{% trans "barcode_ean" %}  </th>
+{#                        <th>{% trans "size" %}</th>#}
+{#                        <th>{% trans "sku" %}</th>#}
+{#                        <th>{% trans "supplier_sku_config" %}</th>#}
+{#                        <th>{% trans "supplier_sku_simple" %}</th>#}
+{#                        <th>{% trans "barcode" %}</th>#}
+{#                        <th>{% trans "name" %}</th>#}
+{#                        <th>BOB Status</th>#}
+{#                        <th>Suborder Number</th>#}
+{#                        <th>{% trans "paid_price" %}</th>#}
+{#                        <th>{% trans "cost" %}</th>#}
+{#                        <th>{% trans "order_date" %}</th>#}
+{#                        <th>{% trans "attribute_set" %}</th>#}
+{#                        <th>{% trans "inbound_order_number" %}</th>#}
+{#                        <th>{% trans "comment" %}</th>#}
+{#                        <th>{% trans "supplier_order_date" %}</th>#}
+{#                        <th>{% trans "last_update" %}</th>#}
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for o in oibfr_list %}
+                        <tr>
+                            <td><input type=checkbox class="checkboxClass" name='orderChecked' value="{{ o.pk }}"></td>
+                            <td>{{ o.order_nr }}</td>
+                            <td>{{ o.sku }}</td>
+                            <td>{{ o.barcode_ean }}</td>
+{#                            <td>#}
+{#                                <a href="https://bob.zidaya.com/orderprocessing/order/index/id/{{ o.id_sales_order }}" target="_blank">{{ o.order_nr }}</a>#}
+{#                            </td>#}
+{#                            <td>{{ o.size }}</td>#}
+{#                            <td>{{ o.sku }}</td>#}
+{#                            <td>{{ o.sku_supplier_config }}</td>#}
+{#                            <td>{{ o.sku_supplier_simple }}</td>#}
+{#                            <td>{{ o.barcode_ean }}</td>#}
+{#                            <td>{{ o.name }}</td>#}
+{#                            <td>{{ o.status }}</td>#}
+{#                            <td>{{ o.suborder_number }}</td>#}
+{#                            <td>{{ o.paid_price }}</td>#}
+{#                            <td>{{ o.cost }}</td>#}
+{#                            <td>{{ o.order_date|date:"d/M/Y H:i:s" }}</td>#}
+{#                            <td>{{ o.ordercrossdetails.order_attribute }}</td>#}
+{#                            <td>{{ o.ordercrossdetails.inbound_order_number }}</td>#}
+{#                            <td>{{ o.ordercrossdetails.comment }}</td>#}
+{#                            <td>{{ o.ordercrossdetails.supplier_order_date|date:"d/M/Y H:m:s" }}</td>#}
+{#                            <td>#}
+{#                                {% for lu in o.lastupdate_set.all|slice:":1" %}#}
+{#                                     {{ lu.user.username }} {{  lu.update_date|date:"d/M/Y H:i:s" }}#}
+{#                                    <br/>#}
+{#                                    <a href="javascript:viewOrderHistory({{ o.pk }})"> History</a>#}
+{#                                {% endfor %}#}
+{#                            </td>#}
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+{#            <table class="actionPanel" cellpadding="0" cellspacing="0" width="100%">#}
+{#                <tr>#}
+{#                    <td class="left">#}
+{#                         <select name='statusUpdate' id='id_statusUpdate'>#}
+{#                            <option value='0'>{% trans "please_select" %}</option>#}
+{#                            {% for cs in crossStatusList %}#}
+{#                                {% if cs.isTransactionGenerate %}#}
+{#                                    <option class="confirmRequired" value='{{ cs.pk }}'>{{ cs.name }}</option>#}
+{#                                {% else %}#}
+{#                                    <option value='{{ cs.pk }}'>{{ cs.name }}</option>#}
+{#                                {% endif %}#}
+{#                            {% endfor %}#}
+{#                         </select>#}
+{#                    </td>#}
+{#                    <td  class="right">#}
+{#                        <a class="submitButton" onclick="return updateCrossStatus();">#}
+{#                            <span> {% trans "update_cross_status" %} </span>#}
+{#                        </a>#}
+{#                    </td>#}
+{##}
+{#                    <td class="left">#}
+{#                         <input id="id_inbound_order_number" type="textbox" name="inbound_order_number" value=""/>#}
+{#                    </td>#}
+{#                    <td class="right">#}
+{#                        <a class="submitButton" onclick="return updateInbound();">#}
+{#                            <span> {% trans "update_inbound_order_number" %} </span>#}
+{#                        </a>#}
+{#                    </td>#}
+{##}
+{#                    <td class="left">#}
+{#                        <a class="submitButton" onclick="return viewCommentBox();">#}
+{#                            <span> {% trans "add_comment" %} </span>#}
+{#                        </a>#}
+{#                    </td>#}
+{#                    <td class="right" style="text-align: right;">#}
+{#                        <a class="submitButton" href="/cross_order/exportOrders/?sup={{ supplier.pk }}&startdate={{ start_date|date:"m/d/Y" }}&enddate={{ end_date|date:"m/d/Y" }}&cstatus={{ cstatus.pk }}">#}
+{#                            <span>{% trans "export_to_excel" %} </span>#}
+{#                        </a>#}
+{#                    </td>#}
+{#                </tr>#}
+{#            </table>#}
+{#<input type="hidden" value="" id="id_buttonSource" name="buttonSource" />#}
+		</div>
+	</div>
+
+
+
+    <div id="test-div">
+
+    </div>
+
+</div>
+<script type="text/javascript">
+    $(document).ready(function(){
+        var oTable = $('#orderList').dataTable(
+                {
+                    "sScrollY": "350px",
+                    "bJQueryUI": true,
+                    "bPaginate": false,
+                    "sScrollX": "100%"
+                }
+        );
+{#        $('#id_statusFilter').val({{ cstatus.pk }});#}
+        $('.checkboxClass').attr("checked", "");
+        $('.allSelect').click(function(){
+            if($(this).is(':checked')){
+                $('.checkboxClass').attr("checked", 'checked');
+            }
+            else
+                $('.checkboxClass').attr("checked", "");
+        });
+
+//        $('#orderList_filter').append('<a class="submitButton" onclick="return viewColumnBox();"><span> Hide/Show Columns </span></a>');
+
+//        $('.DataTables_sort_wrapper').each(function(index) {
+//                 headerVal = $(this).text();
+//            if(index >0)
+//            {
+//                columnRow = "<tr><td><input type=checkbox class='columnChecked' name='columnChecked' value='"+index+"'checked>"+ headerVal + "</td></tr>";
+//                $('#columnBoxTable').append(columnRow);
+//            }
+//        });
+    });
+</script>
+{% endblock %}

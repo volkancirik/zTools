@@ -10,17 +10,17 @@ from rts.models import OrderItemBaseForReturns, ReturnedItemDetails,ReturnReason
 from settings import MEDIA_ROOT, LOGIN_URL
 
 @login_required
-@user_passes_test(not_in_rts_group, login_url=LOGIN_URL)
+#@user_passes_test(not_in_rts_group, login_url=LOGIN_URL)
 def search_page(request):
     return render_response(request, 'rts/search_page.html',{})
 
 def search_returned_item(request):
 
     if request.method == 'POST':
-        sku_ = request.POST['sku']
+        suborder_ = request.POST['suborder_nr']
         order_nr_ = request.POST['order_nr']
         try:
-            oibfr_list = OrderItemBaseForReturns.objects.filter(sku = sku_,order_nr = order_nr_ )
+            oibfr_list = OrderItemBaseForReturns.objects.filter(suborder_number = suborder_,order_nr = order_nr_ )
             return render_response(request, 'rts/list_order_items.html',{'oibfr_list': oibfr_list})
         except:
             return render_response(request, 'rts/list_order_items.html',{'oibfr_list': None})

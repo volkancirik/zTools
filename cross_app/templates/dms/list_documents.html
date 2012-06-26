@@ -1,6 +1,7 @@
 {% extends "base.html" %}
 {% load i18n %}
 {% load file_helper %}
+{% load enum_helper %}
 {% block extrahead %}
 {% endblock %}
 
@@ -22,29 +23,48 @@
                         <th>{% trans "document_name" %}</th>
                         <th>{% trans "line_number" %}</th>
                         <th>{% trans "short_description" %}</th>
+                        <!--
                         <th>{% trans "upload_date" %}</th>
                         <th>{% trans "upload_user" %}</th>
+                        -->
                         <th>{% trans "last_updaate_date" %}</th>
                         <th>{% trans "last_update_user" %}</th>
+                        <th>Ekol_Doc_Num</th>
+                        <th>Ekol Link</th>
+                        <th>Status</th>
                     </tr>
                 </thead>
                 <tbody>
                     {% for d in docList %}
-                        <tr>
+                        <tr id="{{ d.pk }}">
                             <td><input type=checkbox class="checkboxClass" name='docChecked' value="{{ d.pk }}"></td>
                             <td><a href="{{ STATIC_URL }}{{ d.file.name }}" target="_blank" > {{ d.file|filename }} </a>    </td>
                             <td>{{ d.file|lineCount }}</td>
                             <td>{{ d.title }}</td>
-                            <td>{{ d.upload_date|date:"d/M/Y H:i:s"  }}</td>
-                            <td>{{ d.upload_user.email }}</td>
+
                             <td>{{ d.update_date|date:"d/M/Y H:i:s"  }}</td>
                             <td>{{ d.update_user.email }}</td>
+                            <td class="editable">{{ d.ekol_doc_number }}</td>
+                            <td>
+                                {% if d.ekol_doc_number != None %}
+                                <a href="http://quadronet.ekol.com/form.aspx?fid=938&key={{ d.ekol_doc_number }}" target="_blank">
+                                    Download
+                                </a>
+                                {% endif %}
+                            </td>
+                        <td>{{ d.get_status_display }}</td>
                         </tr>
                     {% endfor %}
                 </tbody>
             </table>
 <table class="actionPanel" cellpadding="0" cellspacing="0" width="100%">
                 <tr>
+                    <td class="left">
+                         <select name='statusUpdate' id='id_statusUpdate'>
+                            <option value='0'>{% trans "please_select" %}</option>
+                            {% enum2option statusList %}
+                         </select>
+                    </td>
                     <td  class="left">
                         <a class="submitButton" onclick="return updateFile();">
                             <span>{% trans "update_selected" %}</span>
@@ -69,9 +89,53 @@
                     "sScrollY": "350px",
                     "bJQueryUI": true,
                     "bPaginate": false,
-                    "sScrollX": "100%"
+                    "sScrollX": "100%",
+                    "aoColumnDefs": [
+                      { 'bSortable': false, 'aTargets': [ 0,8 ] }
+                   ],
+                    "aoColumns" : [
+                        null,
+                        null,
+                        null,
+                        null,
+                        null,
+                        null,
+                        null,
+                        null,
+                        {"sType": "string", "sWidth": "150px"}
+                    ]
                 }
         );
+        
+        $('td.editable', oTable.fnGetNodes()).editable( '/dms/edit_row/', {
+            "callback": function( sValue, y ) {
+                var aPos = oTable.fnGetPosition( this );
+                oTable.fnUpdate( sValue, aPos[0], aPos[1] );
+
+                oTable.fnUpdate( "<a href='http://quadronet.ekol.com/form.aspx?fid=938&key="+sValue+"' target='_blank' > Download </a>", aPos[0], (aPos[1]+1) );
+            },
+            "submitdata": function ( value, settings ) {
+                return {
+                    "row_id": this.parentNode.getAttribute('id'),
+                    "column": oTable.fnGetPosition( this )[2]
+                };
+            },
+            "height": "14px"
+	    });
+
+        oTable.columnFilter({sPlaceHolder: "head:before",
+                    aoColumns:[
+                            null,
+                            null,
+                            null,
+                            null,
+                            null,
+                            null,
+                            null,
+                            null,
+                            { type:"select", values: [{% for c in statusList %} '{{ c|getEnumName }}', {% endfor %} ]},
+                    ]
+        });
 
         $('.allSelect').click(function(){
             if($(this).is(':checked')){

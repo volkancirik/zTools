@@ -5,4 +5,4 @@ from dms.models import Document
 class DocumentUploadForm(ModelForm):
     class Meta:
         model = Document
-        exclude = ('comment','upload_user', 'upload_date','update_user', 'update_date','downloadCount')
+        fields = ('file', 'title','ekol_doc_number')

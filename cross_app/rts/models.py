@@ -54,14 +54,16 @@ class ReturnReason(models.Model):
 
 class rts_status():
 
-    EDITED = 0
-    COMPLETED = 1
-    PENDING = 2
+    RETURNED = 0
+    REFUNDED = 1
+    COUPON_PENDING = 2
+    RETURN_DENIED = 3
 
     TYPE = (
-            (EDITED ,_("RTS_EDITED")),
-            (COMPLETED,_("RTS_COMPLETED")),
-            (PENDING,_("RTS_PENDING")),
+            (RETURNED ,_("RTS_RETURNED")),
+            (REFUNDED,_("RTS_REFUNDED")),
+            (COUPON_PENDING,_("RTS_COUPON_PENDING")),
+            (RETURN_DENIED ,_("RTS_RETURN_DENIED")),
             )
 
 class ReturnedItemDetails(models.Model):
@@ -71,10 +73,22 @@ class ReturnedItemDetails(models.Model):
     comment = models.TextField(null=True)
     create_date = models.DateTimeField(default= datetime.now())
     create_user = models.ForeignKey(User)
-    status = models.IntegerField(default=rts_status.EDITED,choices=rts_status.TYPE)
+    status = models.IntegerField(default=rts_status.RETURNED,choices=rts_status.TYPE)
 
     def __unicode__(self):
         return self.order_item.name + ' ' + self.return_reason.name + ' ' + self.action_type.name
 
+class RefundedItemDetails(models.Model):
+    returned_item = models.OneToOneField(ReturnedItemDetails)
+    create_date = models.DateTimeField(default= datetime.now())
+    create_user = models.ForeignKey(User)
+    status = models.IntegerField(default=rts_status.REFUNDED,choices=rts_status.TYPE)
+    customer_contacted = models.CharField(max_length=250,null=False)
+    refund_reference_number = models.CharField(max_length=250,null=False)
+    isCouponNeeded = models.BooleanField(null=False,default=False)
+    new_coupon = models.CharField(max_length=511,null=True)
+
+    def __unicode__(self):
+        return str(self.returned_item.order_item.id_sales_order_item)
 
 

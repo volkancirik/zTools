@@ -51,6 +51,14 @@ function closeReturnBox(){
     $('.returnBox').hide();
     return false;
 }
+function closeRefundBox(){
+    $('#id_refundReferenceNumber').val('');
+    $('#id_customerContactedList>option:eq(0)').attr('selected', true);
+    $('#id_refundedIsCouponNeeded').attr("checked", "");
+    $('#id_newCoupon').val('');
+    $('.refundBox').hide();
+    return false;
+}
 function closeColumnBox(){
     $('.columnBox').hide();
     return false;
@@ -68,6 +76,15 @@ function viewReturnBox(suborderNumber,orderNumber,sku,returnedOrderID){
     $('.returnBox').show();
     return false;
 }
+function viewRefundBox(orderNumber,idSalesOrder,sku,returnedOrderID){
+    $('#id_refundedOrderNumber').text(orderNumber);
+    $('#id_refundedIdSalesOrderItem').text(idSalesOrder);
+    $('#id_refundedSku').text(sku);
+    $('#id_returnedItemID').val(returnedOrderID);
+    $('.refundBox').show();
+    return false;
+}
+
 
 function viewColumnBox(){
     $('.columnBox').show();
@@ -79,8 +96,12 @@ function submitComment(){
                 $('#orderUpdateForm').submit();
 }
 function submitReturnForm(){
-    closeReturnBox();
     $('#returnedOrderForm').submit();
+    closeReturnBox();
+}
+function submitRefundedForm(){
+    $('#refundedOrderForm').submit();
+    closeRefundBox();
 }
 function fnShowHide( iCol, status )
 {

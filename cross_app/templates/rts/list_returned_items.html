@@ -1,0 +1,128 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% load helper %}
+{% block extrahead %}
+{% endblock %}
+
+{% block content %}
+     <form id="searchReturnedItemsForm" action="/rts/search_returned_item/" method="post">
+        {% csrf_token %}
+            <table class="actionPanel" cellpadding="0" cellspacing="0" width="100%">
+
+                        <tr>
+                            <td style="font-weight: bold; color: #FFFFFF; font-size: 14px;">
+                                Returned Order Tracking Search :
+                            </td>
+                            <td>Suborder Number : </td>
+                            <td class="left">
+                                <input id="rts_snr_search" type="textbox" name="suborder_nr" value=""/>
+                            </td>
+                            <td>
+                                Order Number :
+                            </td>
+                            <td class="left">
+                                <input id="rts_order_nr" type="textbox" name="order_nr" value=""/>
+                            </td>
+                            <td class="right">
+                                <a class="submitButton" onclick="return rts_search();">
+                                    <span> {% trans "Search" %} </span>
+                                </a>
+                            </td>
+                        </tr>
+                </table>
+                <script type="text/javascript">
+                    function rts_search(){
+                        $('#id_buttonSource').val("search");
+                        $('#searchReturnedItemsForm').submit();
+                    }
+                </script>
+     </form>
+<div class="tabbed">
+	<div class="tab-content" style="display:block;">
+		<div class="items">
+    <table id="orderList">
+                <thead>
+                    <tr>
+                        {# translation needed #}
+                        <th> Select To Take an Action </th>
+                        <th> Order Number </th>
+                        <th> SKU </th>
+                        <th> ID Sales Order Item</th>
+                        <th> Customer Billing Name </th>
+                        <th> Customer Phone </th>
+                        <th> Customer e-mail </th>
+                        <th> Coupon Code  </th>
+                        <th> Coupon Money Value</th>
+                        <th> Coupon Percent </th>
+                        <th> Bank Name </th>
+                        <th> Customer Contacted</th>
+                        <th> Refund Reference Number</th>
+                        <th> New Coupon Need</th>
+                        <th> New Coupon Code</th>
+                        <th> Refund Status</th>
+                        <th> Return Date</th>
+                        {# translation needed #}
+                    </tr>
+                </thead>
+                <tbody >
+                    {% for r in refunded_list %}
+
+                        <tr>
+                            <td>
+                                <span class="actionLabel" onclick="viewRefundBox('{{ r.order_item.order_nr  }}','{{ r.order_item.id_sales_order_item }}','{{ r.order_item.sku }}','{{ r.pk }}')">
+                                    Select {# translation needed #}
+                                </span>
+                            </td>
+                            <td>{{ r.order_item.order_nr }}</td>
+                            <td>{{ r.order_item.sku }}</td>
+                            <td>{{ r.order_item.id_sales_order_item}}</td>
+                            <td>{{ r.order_item.billing_name }}</td>
+                            <td></td>
+                            <td>{{ r.order_item.customer_email}}</td>
+                            <td>{{ r.order_item.coupon_code }}</td>
+                            <td>{{ r.order_item.coupon_money_value }}</td>
+                            <td>{{ r.order_item.coupon_percent }}</td>
+                            <td>{{ r.order_item.payment_method}}</td>
+                            <td>{{ r.refundeditemdetails.customer_contacted }}</td>
+                            <td>{{ r.refundeditemdetails.refund_reference_number }}</td>
+                            <td>{{ r.refundeditemdetails.isCouponNeeded}}</td>
+                            <td>{{ r.refundeditemdetails.new_coupon }}</td>
+                            <td>{{ r.refundeditemdetails.get_status_display}}</td>
+                            <td>{{ r.refundeditemdetails.create_date }}</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+		</div>
+	</div>
+    {% include "cross_order/boxes/refunded_item_box.html" %}
+
+
+    <div id="test-div">
+
+    </div>
+
+</div>
+<script type="text/javascript">
+    $(document).ready(function(){
+        var oTable = $('#orderList').dataTable(
+                {
+                    "sScrollY": "480px",
+                    "bJQueryUI": true,
+                    "bPaginate": false,
+                    "sScrollX": "100%"
+                }
+        );
+{#        $('#id_statusFilter').val({{ cstatus.pk }});#}
+        $('.checkboxClass').attr("checked", "");
+        $('.allSelect').click(function(){
+            if($(this).is(':checked')){
+                $('.checkboxClass').attr("checked", 'checked');
+            }
+            else
+                $('.checkboxClass').attr("checked", "");
+        });
+    });
+</script>
+
+{% endblock %}

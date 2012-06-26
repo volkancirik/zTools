@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-06-25 11:41+0300\n"
-"PO-Revision-Date: 2012-06-25 11:42\n"
+"POT-Creation-Date: 2012-06-26 11:27+0300\n"
+"PO-Revision-Date: 2012-06-26 11:40\n"
 "Last-Translator:   <brsbilgic@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -19,7 +19,6 @@ msgstr ""
 "X-Translated-Using: django-rosetta 0.6.8\n"
 
 #: .\cross_order\forms.py:6
-#, fuzzy
 msgid "search_cross_status"
 msgstr "Cross Status"
 
@@ -28,90 +27,76 @@ msgid "search_all"
 msgstr "Hepsi"
 
 #: .\cross_order\forms.py:7
-#, fuzzy
 msgid "search_order_item_id"
 msgstr "Order Item ID"
 
 #: .\cross_order\forms.py:8
-#, fuzzy
 msgid "search_zidaya_order_item"
 msgstr "Zidaya Sipariş Numarası"
 
 #: .\cross_order\forms.py:9
 msgid "search_sku"
-msgstr ""
+msgstr "SKU"
 
 #: .\cross_order\forms.py:11
-#, fuzzy
 msgid "search_suborder_number"
-msgstr "Zidaya Sipariş Numarası"
+msgstr "Suborder Number"
 
 #: .\cross_order\forms.py:12
-#, fuzzy
 msgid "search_supplier_name"
 msgstr "Tedarikçi"
 
 #: .\cross_order\forms.py:13
-#, fuzzy
 msgid "search_attribute_set"
 msgstr "Attribute Set"
 
 #: .\cross_order\forms.py:15
-#, fuzzy
 msgid "search_cross_supplier_sku_config"
 msgstr "Tedarikçi SKU Config"
 
 #: .\cross_order\forms.py:16
-#, fuzzy
 msgid "search_cross_supplier_sku_simple"
 msgstr "Tedarikçi SKU Simple"
 
 #: .\cross_order\forms.py:17
 msgid "search_cross_barcode"
-msgstr ""
+msgstr "Barkod"
 
 #: .\cross_order\forms.py:19
 msgid "search_cross_name"
-msgstr ""
+msgstr "Ürün Adı"
 
 #: .\cross_order\forms.py:20
 msgid "search_cross_order_date_start"
-msgstr ""
+msgstr "Sipariş Tarihi (Başlangıç)"
 
 #: .\cross_order\forms.py:21
-#, fuzzy
 msgid "search_cross_order_date_end"
-msgstr "Tedarikçi Sipariş Tarihi"
+msgstr "Sipariş Tarihi (Son)"
 
 #: .\cross_order\forms.py:23
-#, fuzzy
 msgid "search_inbound_order_number"
 msgstr "Tedarikçi Sipariş Numarası"
 
 #: .\cross_order\forms.py:24
-#, fuzzy
 msgid "search_supplier_order_date_start"
-msgstr "Tedarikçi Sipariş Tarihi"
+msgstr "Tedarikçi Sipariş Tarihi (Başlangıç)"
 
 #: .\cross_order\forms.py:25
-#, fuzzy
 msgid "search_supplier_order_date_end"
-msgstr "Tedarikçi Sipariş Tarihi"
+msgstr "Tedarikçi Sipariş Tarihi (Son)"
 
 #: .\cross_order\forms.py:27
-#, fuzzy
 msgid "search_last_update_date_start"
-msgstr "Son İncelenme Tarihi"
+msgstr "Son Güncellenme (Başlangıç)"
 
 #: .\cross_order\forms.py:28
-#, fuzzy
 msgid "search_last_update_date_end"
-msgstr "Son İncelenme Tarihi"
+msgstr "Son Güncellenme (Son)"
 
 #: .\cross_order\forms.py:29
-#, fuzzy
 msgid "search_comment"
-msgstr "Not Ekle"
+msgstr "Not"
 
 #: .\cross_order\models.py:13
 msgid "CHAR"
@@ -124,6 +109,22 @@ msgstr ""
 #: .\cross_order\models.py:15
 msgid "FLOAT"
 msgstr ""
+
+#: .\dms\models.py:15
+msgid "dms_status_new"
+msgstr "New"
+
+#: .\dms\models.py:16
+msgid "dms_status_uploaded_to_ekol"
+msgstr "Uploaded_To_Ekol"
+
+#: .\dms\models.py:17
+msgid "dms_status_processed"
+msgstr "Processed"
+
+#: .\dms\models.py:18
+msgid "dms_status_closed"
+msgstr "Closed"
 
 #: .\templates\base.html.py:43
 msgid "welcome"
@@ -213,6 +214,7 @@ msgstr "Beden/Boy"
 #: .\templates\cross_order\list_order.html.py:77
 #: .\templates\cross_order\list_transaction_details.html.py:63
 #: .\templates\cross_order\order_search.html.py:104
+#: .\templates\rts\list_order_items.html.py:49
 msgid "sku"
 msgstr "SKU"
 
@@ -237,6 +239,7 @@ msgstr "Barkod"
 #: .\templates\cross_order\list_order.html.py:81
 #: .\templates\cross_order\list_transaction_details.html.py:67
 #: .\templates\cross_order\order_search.html.py:109
+#: .\templates\rts\list_order_items.html.py:52
 msgid "name"
 msgstr "Ad"
 
@@ -255,6 +258,7 @@ msgstr "Maliyet"
 #: .\templates\cross_order\list_order.html.py:86
 #: .\templates\cross_order\list_transaction_details.html.py:72
 #: .\templates\cross_order\order_search.html.py:112
+#: .\templates\rts\list_order_items.html.py:50
 msgid "order_date"
 msgstr "Sipariş Tarihi"
 
@@ -274,6 +278,8 @@ msgstr "Tedarikçi Sipariş Numarası"
 #: .\templates\cross_order\list_transaction_details.html.py:75
 #: .\templates\cross_order\order_search.html.py:115
 #: .\templates\cross_order\boxes\comment_box.html.py:7
+#: .\templates\cross_order\boxes\returned_item_box.html.py:28
+#: .\templates\rts\list_order_items.html.py:59
 msgid "comment"
 msgstr "Not"
 
@@ -292,6 +298,7 @@ msgstr "Son Güncelleme"
 #: .\templates\cross_order\list_order.html.py:133
 #: .\templates\cross_order\list_transaction.html.py:111
 #: .\templates\cross_order\list_transaction_details.html.py:119
+#: .\templates\dms\list_documents.html.py:63
 msgid "please_select"
 msgstr "Lütfen Seçiniz"
 
@@ -375,9 +382,9 @@ msgid "hide_show_columns"
 msgstr "Kolon Gizle/Göster"
 
 #: .\templates\cross_order\order_search.html.py:103
-#, fuzzy
+#: .\templates\rts\list_order_items.html.py:53
 msgid "suborder_number"
-msgstr "Tedarikçi Sipariş Numarası"
+msgstr "Suborder Number"
 
 #: .\templates\cross_order\boxes\column_box.html.py:6
 msgid "choose_column_to_display"
@@ -386,6 +393,7 @@ msgstr "Gösterilecek kolonları seçiniz"
 #: .\templates\cross_order\boxes\column_box.html.py:112
 #: .\templates\cross_order\boxes\comment_box.html.py:13
 #: .\templates\cross_order\boxes\history_box.html.py:7
+#: .\templates\cross_order\boxes\returned_item_box.html.py:36
 msgid "close"
 msgstr "Kapat"
 
@@ -401,46 +409,91 @@ msgstr "Gönder"
 msgid "supplier_informed_alert_message"
 msgstr "Yeni bir transaction yaratılacaktır. Emin misiniz?"
 
-#: .\templates\dms\list_documents.html.py:13
+#: .\templates\dms\list_documents.html.py:14
 #: .\templates\dms\upload_document.html.py:13
 msgid "document_upload"
 msgstr "Dosya Yükle"
 
-#: .\templates\dms\list_documents.html.py:22
+#: .\templates\dms\list_documents.html.py:23
 msgid "document_name"
 msgstr "Dosya Adı"
 
-#: .\templates\dms\list_documents.html.py:23
+#: .\templates\dms\list_documents.html.py:24
 msgid "line_number"
 msgstr "Satır Sayısı"
 
-#: .\templates\dms\list_documents.html.py:24
+#: .\templates\dms\list_documents.html.py:25
 msgid "short_description"
 msgstr "Açıklama"
 
-#: .\templates\dms\list_documents.html.py:25
+#: .\templates\dms\list_documents.html.py:26
 msgid "upload_date"
 msgstr "Yüklenme Tarihi"
 
-#: .\templates\dms\list_documents.html.py:26
+#: .\templates\dms\list_documents.html.py:27
 msgid "upload_user"
 msgstr "Yükleyen"
 
-#: .\templates\dms\list_documents.html.py:27
+#: .\templates\dms\list_documents.html.py:28
 msgid "last_updaate_date"
 msgstr "Son İncelenme Tarihi"
 
-#: .\templates\dms\list_documents.html.py:28
+#: .\templates\dms\list_documents.html.py:29
 msgid "last_update_user"
 msgstr "Son İnceleyen"
 
-#: .\templates\dms\list_documents.html.py:50
+#: .\templates\dms\list_documents.html.py:69
 msgid "update_selected"
 msgstr "Seçilenler İncelendi"
 
-#: .\templates\dms\list_documents.html.py:55
+#: .\templates\dms\list_documents.html.py:74
 msgid "delete_selected"
 msgstr "Seçilenleri Sil"
+
+#: .\templates\rts\list_order_items.html.py:28
+#, fuzzy
+msgid "Search"
+msgstr "Hepsi"
+
+#: .\templates\rts\list_order_items.html.py:47
+msgid "id_sales"
+msgstr ""
+
+#: .\templates\rts\list_order_items.html.py:48
+#, fuzzy
+msgid "order_nr"
+msgstr "Suborder Number"
+
+#: .\templates\rts\list_order_items.html.py:51
+msgid "barcode_ean"
+msgstr "Barkod"
+
+#: .\templates\rts\list_order_items.html.py:54
+#, fuzzy
+msgid "shipping_name"
+msgstr "Tedarikçi"
+
+#: .\templates\rts\list_order_items.html.py:55
+#, fuzzy
+msgid "billing_name"
+msgstr "Satır Sayısı"
+
+#: .\templates\rts\list_order_items.html.py:56
+#, fuzzy
+msgid "bob_status"
+msgstr "Durum"
+
+#: .\templates\rts\list_order_items.html.py:57
+msgid "return_reason"
+msgstr ""
+
+#: .\templates\rts\list_order_items.html.py:58
+msgid "action_type"
+msgstr ""
+
+#: .\templates\rts\list_order_items.html.py:60
+msgid "time_stamp"
+msgstr ""
 
 #: .\templates\userprofile\login_or_register.html.py:24
 msgid "register_header"

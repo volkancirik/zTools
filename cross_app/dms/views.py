@@ -1,12 +1,15 @@
 # Create your views here.
 import datetime
 import os
+from pydoc import Doc
 from django.contrib.auth.decorators import login_required, user_passes_test
+from django.http import HttpResponse
 from django.shortcuts import redirect
+from django.utils import simplejson
 from cross_order.helper_functions import render_response
 from dms.forms import DocumentUploadForm
 from dms.helper import not_in_dms_group
-from dms.models import Document
+from dms.models import Document, DocumentStatus
 from settings import MEDIA_ROOT, LOGIN_URL
 
 @login_required
@@ -27,6 +30,16 @@ def upload_document(request):
     else:
         return render_response(request, 'dms/upload_document.html',{'form':DocumentUploadForm()})
 
+@login_required
+@user_passes_test(not_in_dms_group, login_url=LOGIN_URL)
+def edit_row(request):
+    try:
+        d = Document.objects.get(pk=request.POST.get("row_id",0))
+    except:
+        return HttpResponse(simplejson.dumps("",default=dthandler),'application/json')
+    d.ekol_doc_number = request.POST.get("value",0)
+    d.save()
+    return HttpResponse(simplejson.dumps(request.POST.get("value")).replace("\"",""),'application/json')
 
 @login_required
 @user_passes_test(not_in_dms_group, login_url=LOGIN_URL)
@@ -34,6 +47,7 @@ def list_documents(request):
     return render_response(request, 'dms/list_documents.html',
             {
                 'docList':Document.objects.order_by('-upload_date'),
+                'statusList':DocumentStatus.TYPE
             })
 
 @login_required
@@ -47,10 +61,13 @@ def document_action(request):
     action = request.POST['buttonSource']
     if action == "update":
         for did in docList:
-            d = Document.objects.get(pk=did)
-            d.update_date = datetime.datetime.now()
-            d.update_user = request.user
-            d.save()
+            s = request.POST.get("statusUpdate",None)
+            if s is not None:
+                d = Document.objects.get(pk=did)
+                d.update_date = datetime.datetime.now()
+                d.update_user = request.user
+                d.status = int(s)
+                d.save()
     elif action == "delete":
         for did in docList:
             d = Document.objects.get(pk=did)
@@ -61,4 +78,5 @@ def document_action(request):
     return render_response(request, 'dms/list_documents.html',
             {
                 'docList':Document.objects.order_by('-upload_date'),
+                'statusList':DocumentStatus.TYPE
             })

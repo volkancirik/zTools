@@ -44,6 +44,7 @@
                 <thead>
                     <tr>
 {#                        <th><input type=checkbox name='allSelect' class="allSelect"></th>#}
+                        <th>{% trans "Select Item" %}</th>
                         <th>{% trans "id_sales" %}</th>
                         <th>{% trans "order_nr" %} </th>
                         <th>{% trans "sku" %}</th>
@@ -63,8 +64,13 @@
                 <tbody >
                     {% for o in oibfr_list %}
 
-                        <tr onclick="viewReturnBox('{{ o.suborder_number }}','{{ o.order_nr }}','{{ o.id_sales_order_item }}')">
+                        <tr>
 {#                            <td><input type=checkbox class="checkboxClass" name='orderChecked' value="{{ o.pk }}"></td>#}
+                            <td>
+                                <span class="actionLabel" onclick="viewReturnBox('{{ o.suborder_number }}','{{ o.order_nr }}','{{ o.sku }}','{{ o.id_sales_order_item }}')">
+                                    Select {# translation needed #}
+                                </span>
+                            </td>
                             <td>{{ o.id_sales_order_item }}</td>
                             <td>{{ o.order_nr }}</td>
                             <td>{{ o.sku }}</td>
@@ -78,7 +84,7 @@
                             <td>{{ o.returneditemdetails.return_reason }}</td>
                             <td>{{ o.returneditemdetails.action_type.name }}</td>
                             <td>{{ o.returneditemdetails.comment }}</td>
-                            <td>{{ o.returneditemdetails.time_stamp }}</td>
+                            <td>{{ o.returneditemdetails.create_date }}</td>
                         </tr>
                     {% endfor %}
                 </tbody>
@@ -114,4 +120,5 @@
         });
     });
 </script>
+
 {% endblock %}

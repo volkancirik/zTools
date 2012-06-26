@@ -45,6 +45,9 @@ function closeCommentBox(){
     return false;
 }
 function closeReturnBox(){
+    $('#id_reasonList>option:eq(0)').attr('selected', true);
+    $('#id_actionList>option:eq(0)').attr('selected', true);
+    $('#id_returnedComment').val('');
     $('.returnBox').hide();
     return false;
 }
@@ -57,9 +60,10 @@ function viewCommentBox(){
     $('.commentBox').show();
     return false;
 }
-function viewReturnBox(suborderNumber,orderNumber,returnedOrderID){
+function viewReturnBox(suborderNumber,orderNumber,sku,returnedOrderID){
     $('#id_returnedSuborder').text(suborderNumber);
-    $('#id_orderSuborder').text(orderNumber);
+    $('#id_returnedOrder').text(orderNumber);
+    $('#id_returnedSku').text(sku);
     $('#id_returnedItemID').val(returnedOrderID);
     $('.returnBox').show();
     return false;

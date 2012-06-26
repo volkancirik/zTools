@@ -46,7 +46,7 @@
                             <td>{{ d.update_user.email }}</td>
                             <td class="editable">{{ d.ekol_doc_number }}</td>
                             <td>
-                                {% if d.ekol_doc_number != None %}
+                                {% if d.ekol_doc_number != None and d.ekol_doc_number != "" %}
                                 <a href="http://quadronet.ekol.com/form.aspx?fid=938&key={{ d.ekol_doc_number }}" target="_blank">
                                     Download
                                 </a>

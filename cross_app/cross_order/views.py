@@ -39,7 +39,7 @@ def order_search_ajax(request):
         16:'ordercrossdetails__inbound_order_number',
         17:'ordercrossdetails__comment',
         18:'ordercrossdetails__supplier_order_date',
-        19:'lastupdate__update_date',
+        #19:'lastupdate__update_date',
         }
     return get_datatables_records(request,
                                   Order.objects.values(
@@ -61,7 +61,7 @@ def order_search_ajax(request):
                                       'ordercrossdetails__inbound_order_number',
                                       'ordercrossdetails__comment',
                                       'ordercrossdetails__supplier_order_date',
-                                      'lastupdate__update_date',
+                                      #'lastupdate__update_date',
                                       'supplier__name'
                                       ).all(),columnIndexNameMap)
 

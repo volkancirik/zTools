@@ -114,7 +114,9 @@
                         <th>{% trans "inbound_order_number" %}</th>
                         <th>{% trans "comment" %}</th>
                         <th>{% trans "supplier_order_date" %}</th>
+                        <!--
                         <th>{% trans "last_update" %}</th>
+                        -->
                     </tr>
                 </thead>
                 <tbody>
@@ -135,6 +137,7 @@
                     "sPaginationType": "full_numbers",
                     "bProcessing": true,
                     "bServerSide": true,
+                    
                     "sAjaxSource": "/cross_order/order_search_ajax/",
                     "aoColumnDefs": [
                       { 'bSortable': false, 'aTargets': [ 0 ] }
@@ -160,14 +163,13 @@
                             null,
                             { sSelector:"#id_attribute_set",type:"select", values: [{% for c in attributeList %} '{{ c.attributeCode }}', {% endfor %} ]},
                             { sSelector:"#id_inbound_order_number"},
-                            { sSelector:"#id_comment"},
+                            null,
                                 null,
-                            null
+                           // null
                     ]
                 }
         );
-
-        
+        $("#orderList_filter").hide();
 
         $('.allSelect').click(function(){
             if($(this).is(':checked')){

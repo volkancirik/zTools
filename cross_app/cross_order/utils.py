@@ -4,6 +4,7 @@ from django.http import HttpResponse
 from django.utils.cache import add_never_cache_headers
 from django.utils import simplejson
 from django.utils.safestring import mark_safe
+from cross_order.models import Order
 
 def get_datatables_records(request, querySet, columnIndexNameMap, jsonTemplatePath=None, *args):
     """
@@ -87,6 +88,9 @@ def get_datatables_records(request, querySet, columnIndexNameMap, jsonTemplatePa
                     if val == colitems[col]:
                         if val == "pk":
                             rowlist.append(mark_safe("<input type=checkbox class=\"checkboxClass\" name=\"orderChecked\" value=\"%s\" />"%str(rowvalues[idx])))
+                        elif val == "order_nr":
+                            order = Order.objects.get(id_sales_order_item = rowvalues[0])
+                            rowlist.append(mark_safe("<a href='https://bob.zidaya.com/orderprocessing/order/index/id/"+str(order.id_sales_order)+"' target='_blank'>"+str(rowvalues[idx])+"</a>"))
                         else:
                             try:
                                 rowlist.append(unicode(rowvalues[idx]))

@@ -45,7 +45,18 @@ function closeCommentBox(){
     return false;
 }
 function closeReturnBox(){
+    $('#id_reasonList>option:eq(0)').attr('selected', true);
+    $('#id_actionList>option:eq(0)').attr('selected', true);
+    $('#id_returnedComment').val('');
     $('.returnBox').hide();
+    return false;
+}
+function closeRefundBox(){
+    $('#id_refundReferenceNumber').val('');
+    $('#id_customerContactedList>option:eq(0)').attr('selected', true);
+    $('#id_refundedIsCouponNeeded').attr("checked", "");
+    $('#id_newCoupon').val('');
+    $('.refundBox').hide();
     return false;
 }
 function closeColumnBox(){
@@ -57,13 +68,23 @@ function viewCommentBox(){
     $('.commentBox').show();
     return false;
 }
-function viewReturnBox(suborderNumber,orderNumber,returnedOrderID){
+function viewReturnBox(suborderNumber,orderNumber,sku,returnedOrderID){
     $('#id_returnedSuborder').text(suborderNumber);
-    $('#id_orderSuborder').text(orderNumber);
+    $('#id_returnedOrder').text(orderNumber);
+    $('#id_returnedSku').text(sku);
     $('#id_returnedItemID').val(returnedOrderID);
     $('.returnBox').show();
     return false;
 }
+function viewRefundBox(orderNumber,idSalesOrder,sku,returnedOrderID){
+    $('#id_refundedOrderNumber').text(orderNumber);
+    $('#id_refundedIdSalesOrderItem').text(idSalesOrder);
+    $('#id_refundedSku').text(sku);
+    $('#id_returnedItemID').val(returnedOrderID);
+    $('.refundBox').show();
+    return false;
+}
+
 
 function viewColumnBox(){
     $('.columnBox').show();
@@ -75,8 +96,12 @@ function submitComment(){
                 $('#orderUpdateForm').submit();
 }
 function submitReturnForm(){
-    closeReturnBox();
     $('#returnedOrderForm').submit();
+    closeReturnBox();
+}
+function submitRefundedForm(){
+    $('#refundedOrderForm').submit();
+    closeRefundBox();
 }
 function fnShowHide( iCol, status )
 {

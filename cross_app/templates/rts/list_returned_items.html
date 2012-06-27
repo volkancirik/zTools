@@ -43,55 +43,59 @@
     <table id="orderList">
                 <thead>
                     <tr>
-{#                        <th><input type=checkbox name='allSelect' class="allSelect"></th>#}
-                        <th>{% trans "Select Item" %}</th>
-                        <th>{% trans "id_sales" %}</th>
-                        <th>{% trans "order_nr" %} </th>
-                        <th>{% trans "sku" %}</th>
-                        <th>{% trans "order_date" %}</th>
-                        <th>{% trans "barcode_ean" %}  </th>
-                        <th>{% trans "name" %}</th>
-                        <th>{% trans "suborder_number" %}</th>
-                        <th>{% trans "shipping_name" %}</th>
-                        <th>{% trans "billing_name" %}</th>
-                        <th>{% trans "bob_status" %}</th>
-                        <th>{% trans "return_reason" %}</th>
-                        <th>{% trans "action_type" %}</th>
-                        <th>{% trans "comment" %}</th>
-                        <th>{% trans "time_stamp" %}</th>
+                        {# translation needed #}
+                        <th> Select To Take an Action </th>
+                        <th> Order Number </th>
+                        <th> SKU </th>
+                        <th> ID Sales Order Item</th>
+                        <th> Customer Billing Name </th>
+                        <th> Customer Phone </th>
+                        <th> Customer e-mail </th>
+                        <th> Coupon Code  </th>
+                        <th> Coupon Money Value</th>
+                        <th> Coupon Percent </th>
+                        <th> Bank Name </th>
+                        <th> Customer Contacted</th>
+                        <th> Refund Reference Number</th>
+                        <th> New Coupon Need</th>
+                        <th> New Coupon Code</th>
+                        <th> Refund Status</th>
+                        <th> Return Date</th>
+                        {# translation needed #}
                     </tr>
                 </thead>
                 <tbody >
-                    {% for o in oibfr_list %}
+                    {% for r in refunded_list %}
 
                         <tr>
-{#                            <td><input type=checkbox class="checkboxClass" name='orderChecked' value="{{ o.pk }}"></td>#}
                             <td>
-                                <span class="actionLabel" onclick="viewReturnBox('{{ o.suborder_number }}','{{ o.order_nr }}','{{ o.sku }}','{{ o.id_sales_order_item }}')">
+                                <span class="actionLabel" onclick="viewRefundBox('{{ r.order_item.order_nr  }}','{{ r.order_item.id_sales_order_item }}','{{ r.order_item.sku }}','{{ r.pk }}')">
                                     Select {# translation needed #}
                                 </span>
                             </td>
-                            <td>{{ o.id_sales_order_item }}</td>
-                            <td>{{ o.order_nr }}</td>
-                            <td>{{ o.sku }}</td>
-                            <td>{{ o.order_date }}</td>
-                            <td>{{ o.barcode_ean }}</td>
-                            <td>{{ o.name }}</td>
-                            <td>{{ o.suborder_number }}</td>
-                            <td>{{ o.shipping_name }}</td>
-                            <td>{{ o.billing_name }}</td>
-                            <td>{{ o.bob_status }}</td>
-                            <td>{{ o.returneditemdetails.return_reason }}</td>
-                            <td>{{ o.returneditemdetails.action_type.name }}</td>
-                            <td>{{ o.returneditemdetails.comment }}</td>
-                            <td>{{ o.returneditemdetails.create_date }}</td>
+                            <td>{{ r.order_item.order_nr }}</td>
+                            <td>{{ r.order_item.sku }}</td>
+                            <td>{{ r.order_item.id_sales_order_item}}</td>
+                            <td>{{ r.order_item.billing_name }}</td>
+                            <td></td>
+                            <td>{{ r.order_item.customer_email}}</td>
+                            <td>{{ r.order_item.coupon_code }}</td>
+                            <td>{{ r.order_item.coupon_money_value }}</td>
+                            <td>{{ r.order_item.coupon_percent }}</td>
+                            <td>{{ r.order_item.payment_method}}</td>
+                            <td>{{ r.refundeditemdetails.customer_contacted }}</td>
+                            <td>{{ r.refundeditemdetails.refund_reference_number }}</td>
+                            <td>{{ r.refundeditemdetails.isCouponNeeded}}</td>
+                            <td>{{ r.refundeditemdetails.new_coupon }}</td>
+                            <td>{{ r.refundeditemdetails.get_status_display}}</td>
+                            <td>{{ r.refundeditemdetails.create_date }}</td>
                         </tr>
                     {% endfor %}
                 </tbody>
             </table>
 		</div>
 	</div>
-    {% include "cross_order/boxes/returned_item_box.html" %}
+    {% include "cross_order/boxes/refunded_item_box.html" %}
 
 
     <div id="test-div">

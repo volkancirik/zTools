@@ -113,6 +113,7 @@ INSTALLED_APPS = (
     'cross_order',
     'dms',
     'rosetta',
+    'rts'
 )
 
 LOGGING = {

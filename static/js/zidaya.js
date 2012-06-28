@@ -76,11 +76,18 @@ function viewReturnBox(suborderNumber,orderNumber,sku,returnedOrderID){
     $('.returnBox').show();
     return false;
 }
-function viewRefundBox(orderNumber,idSalesOrder,sku,returnedOrderID){
+function viewRefundBox(orderNumber,idSalesOrder,sku,returnedOrderID,refundReferenceNumber,customerContactedList,refundedIsCouponNeeded,newCoupon){
     $('#id_refundedOrderNumber').text(orderNumber);
     $('#id_refundedIdSalesOrderItem').text(idSalesOrder);
     $('#id_refundedSku').text(sku);
     $('#id_returnedItemID').val(returnedOrderID);
+    $('#id_refundReferenceNumber').val(refundReferenceNumber);
+    $('#id_customerContactedList').val(customerContactedList);
+
+    if(refundedIsCouponNeeded == "True")
+        $('#id_refundedIsCouponNeeded').attr('checked','checked');
+    $('#id_newCoupon').val(newCoupon);
+
     $('.refundBox').show();
     return false;
 }

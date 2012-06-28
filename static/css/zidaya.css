@@ -481,3 +481,31 @@ div.clear {
         text-align: center;
         text-decoration: none;
     }
+
+.FormWrapper .ReturnedItemFormLine{
+    padding-left: 0;
+    text-align: left;
+}
+
+.FormWrapper .ReturnedItemFormLine .FormLabel{
+    width:160px;
+}
+
+.FormWrapper .ReturnedItemFormLine select{
+    width:200px;
+}
+
+.FormWrapper .ReturnedItemFormLine input{
+    width:190px;
+}
+
+.FormWrapper .FormPosition{
+    list-style: none;
+}
+
+.searchPanel td{
+    background-color: #CCCCCC;
+    border: 1px solid #999999;
+    border-radius: 5px 5px 5px 5px;
+    padding-left: 10px;
+}

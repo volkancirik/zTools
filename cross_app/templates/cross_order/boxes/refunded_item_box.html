@@ -1,74 +1,95 @@
 {% load i18n %}
-<div id="dialog-confirm"  class="refundBox" style="display:none;" title ="Edit Order With SKU : {{ o.sku }}">
-{#    <div class="black_overlay" id="fade"></div>#}
+<div class="refundBox" style="display:none;" title="Edit Order With SKU : {{ o.sku }}">
+    <div class="black_overlay" id="fade"></div>
     <div class="white_content">
-    <div style="margin-bottom: 10px;" align="left">
-            <table>
-                <tr>
-                    <td>Order Number</td>
+        <div style="border-bottom: 1px solid #333333;margin-bottom: 10px;text-align: left;">
+            Returned Orderitem
+         </div>
 
-                    <td>
-                        <span id="id_refundedOrderNumber"></span>
-                    </td>
-                </tr>
-                <tr>
-                    <td>ID Sales Order Item</td>
-
-                    <td>
-                        <span id="id_refundedIdSalesOrderItem"></span>
-                    </td>
-                </tr>
-                <tr>
-                    <td>SKU</td>
-
-                    <td>
-                        <span id="id_refundedSku"></span>
-                    </td>
-                </tr>
+        <div class="FormWrapper">
+            <ul class="FormPosition">
+                <li class="FormLineWrapper ReturnedItemFormLine">
+                    <div class="FormObjectSearch">
+                        <div class="FormLabel">
+                            Order Number
+                        </div>
+                        <div>
+                            <span id="id_refundedOrderNumber"></span>
+                        </div>
+                    </div>
+                </li>
+                <li class="FormLineWrapper ReturnedItemFormLine">
+                    <div class="FormObjectSearch">
+                        <div class="FormLabel">
+                            Order Item Id
+                        </div>
+                        <div>
+                            <span id="id_refundedIdSalesOrderItem"></span>
+                        </div>
+                    </div>
+                </li>
+                <li class="FormLineWrapper ReturnedItemFormLine">
+                    <div class="FormObjectSearch">
+                        <div class="FormLabel">
+                            SKU
+                        </div>
+                        <div>
+                            <span id="id_refundedSku"></span>
+                        </div>
+                    </div>
+                </li>
                 <form id ="refundedOrderForm" action="/rts/update_refunded_order/" method='post'>
-                 {% csrf_token %}
-                <tr>
-                    <td>
-                        Refund Reference Number
-                    </td>
-                    <td>
-                        <input type="textbox" name="refundReferenceNumber" id = "id_refundReferenceNumber" value="">
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        Customer Contacted
-                    </td>
-                    <td>
-                       <select name='customerContacted' id='id_customerContactedList'>
-                            <option value='No'>No</option> {# translation needed #}
-                            <option value='Phone'>Via Phone</option>
-                            <option value='Email'>Via e-mail</option>
-                        </select>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        Is Coupon Needed?
-                    </td>
-                    <td>
-                        <input type=checkbox name='isCouponNeeded' id= 'id_refundedIsCouponNeeded'>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        New Coupon Code
-                    </td>
-                    <td>
-                        <input type="textbox" name="newCoupon" value="" id="id_newCoupon">
-                    </td>
-                </tr>
+                    {% csrf_token %}
+                    <li class="FormLineWrapper ReturnedItemFormLine">
+                        <div class="FormObjectSearch">
+                            <div class="FormLabel">
+                                Refund Reference Number
+                            </div>
+                            <div>
+                                <input type="textbox" name="refundReferenceNumber" id = "id_refundReferenceNumber" value="">
+                            </div>
+                        </div>
+                    </li>
+                    <li class="FormLineWrapper ReturnedItemFormLine">
+                        <div class="FormObjectSearch">
+                            <div class="FormLabel">
+                                Customer Contacted
+                            </div>
+                            <div>
+                                <select name='customerContacted' id='id_customerContactedList'>
+                                    <option value='No'>No</option> {# translation needed #}
+                                    <option value='Phone'>Via Phone</option>
+                                    <option value='Email'>Via e-mail</option>
+                                </select>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="FormLineWrapper ReturnedItemFormLine">
+                        <div class="FormObjectSearch">
+                            <div class="FormLabel">
+                                Is Coupon Needed?
+                            </div>
+                            <div style="text-align: left;">
+                                <input type=checkbox name='isCouponNeeded' id= 'id_refundedIsCouponNeeded'>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="FormLineWrapper ReturnedItemFormLine">
+                        <div class="FormObjectSearch">
+                            <div class="FormLabel">
+                                New Coupon Code
+                            </div>
+                            <div>
+                                <input type="textbox" name="newCoupon" value="" id="id_newCoupon">
+                            </div>
+                        </div>
+                    </li>
                  <input type="hidden" value="" id="id_returnedItemID" name="returnedItemID" />
-            </form>
-            </table>
+                </form>
+            </ul>
+        </div>
 
-    </div>
-            <div  style="float:right;margin-left: 10px;">
+        <div  style="float:right;margin-left: 10px;">
                 <a href="#" onclick="return closeRefundBox();">
                     {% trans "close" %}
                 </a>

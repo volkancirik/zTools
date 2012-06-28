@@ -1,78 +1,95 @@
 {% load i18n %}
-<div id="dialog-confirm"  class="returnBox" style="display:none;" title ="Edit Order With SKU : {{ o.sku }}">
-{#    <div class="black_overlay" id="fade"></div>#}
+<div class="returnBox" style="display:none;" title="Edit Order With SKU : {{ o.sku }}">
+    <div class="black_overlay" id="fade"></div>
     <div class="white_content">
-    <div style="margin-bottom: 10px;" align="left">
-            <table>
-                <tr>
-                    <td>Suborder Number</td>
+        <div style="border-bottom: 1px solid #333333;margin-bottom: 10px;text-align: left;">
+            Returned Orderitem
+         </div>
 
-                    <td>
-                        <span id="id_returnedSuborder"></span>
-                    </td>
-                </tr>
-                <tr>
-                    <td>Order Number</td>
-
-                    <td>
-                        <span id="id_returnedOrder"></span>
-                    </td>
-                </tr>
-                <tr>
-                    <td>SKU</td>
-
-                    <td>
-                        <span id="id_returnedSku"></span>
-                    </td>
-                </tr>
+        <div class="FormWrapper">
+            <ul class="FormPosition">
+                <li class="FormLineWrapper ReturnedItemFormLine">
+                    <div class="FormObjectSearch">
+                        <div class="FormLabel">
+                            Suborder Number
+                        </div>
+                        <div>
+                            <span id="id_returnedSuborder"></span>
+                        </div>
+                    </div>
+                </li>
+                <li class="FormLineWrapper ReturnedItemFormLine">
+                    <div class="FormObjectSearch">
+                        <div class="FormLabel">
+                            Order Number
+                        </div>
+                        <div>
+                            <span id="id_returnedOrder"></span>
+                        </div>
+                    </div>
+                </li>
+                <li class="FormLineWrapper ReturnedItemFormLine">
+                    <div class="FormObjectSearch">
+                        <div class="FormLabel">
+                            SKU
+                        </div>
+                        <div>
+                            <span id="id_returnedSku"></span>
+                        </div>
+                    </div>
+                </li>
                 <form id ="returnedOrderForm" action="/rts/update_returned_order/" method='post'>
-                 {% csrf_token %}
-                <tr>
-                    <td>
-                        Action
-                    </td>
-                    <td>
-                        <select name='actionList' id='id_actionList'>
-                        <option value='0'>Select an Action</option> {# translation needed #}
-                        {% for action in actionList %}
-                            <option value='{{ action.pk }}'>{{ action.name }}</option>
-                        {% endfor %}
-                    </select>
-                    </td>
-
-                </tr>
-                <tr>
-                    <td>
-                        Return Reason
-                    </td>
-                    <td>
-                       <select name='reasonList' id='id_reasonList'>
-                            <option value='0'>Select an Reason</option> {# translation needed #}
-                            {% for reason in reasonList %}
-                                <option value='{{ reason.pk }}'>{{ reason.name }}</option>
-                            {% endfor %}
-                        </select>
-                    </td>
-
-                </tr>
-                <tr>
-                    <td>
-                        Comment
-                    </td>
-                    <td>
-                        <textarea id="id_returnedComment" name="comment" cols="94" rows="10"></textarea><br>
-                    </td>
-                </tr>
+                    {% csrf_token %}
+                    <li class="FormLineWrapper ReturnedItemFormLine">
+                        <div class="FormObjectSearch">
+                            <div class="FormLabel">
+                                Select an Action
+                            </div>
+                            <div>
+                                <select name='actionList' id='id_actionList'>
+                                    <option value='0'>Select an Action</option> {# translation needed #}
+                                    {% for action in actionList %}
+                                        <option value='{{ action.pk }}'>{{ action.name }}</option>
+                                    {% endfor %}
+                                </select>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="FormLineWrapper ReturnedItemFormLine">
+                        <div class="FormObjectSearch">
+                            <div class="FormLabel">
+                                Return Reason
+                            </div>
+                            <div>
+                                <select name='reasonList' id='id_reasonList'>
+                                    <option value='0'>Select an Reason</option> {# translation needed #}
+                                    {% for reason in reasonList %}
+                                        <option value='{{ reason.pk }}'>{{ reason.name }}</option>
+                                    {% endfor %}
+                                </select>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="FormLineWrapper ReturnedItemFormLine">
+                        <div class="FormObjectSearch">
+                            <div class="FormLabel">
+                                Comment
+                            </div>
+                            <div>
+                                <textarea id="id_returnedComment" name="comment" cols="94" rows="10"></textarea><br>
+                            </div>
+                        </div>
+                    </li>
                  <input type="hidden" value="" id="id_returnedItemID" name="returnedItemID" />
-            </form>
-            </table>
+                </form>
+            </ul>
+        </div>
 
-    </div>
-            <div  style="float:right;margin-left: 10px;">
-                <a href="#" onclick="return closeReturnBox();">
-                    {% trans "close" %}
-                </a>
-            </div>
+        <div style="float:right;margin-left: 10px;">
+            <a href="#" onclick="return closeReturnBox();">
+                {% trans "close" %}
+            </a>
+        </div>
         <div class="closeButton">
             <div style="float:right;">
                 <a href="#" onclick="return submitReturnForm();" class="submitButton">

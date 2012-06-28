@@ -7,11 +7,11 @@
 {% block content %}
     <br/>
      <div style="border-bottom: 1px solid #333333;font-size: 14px;color:#000000;">
-        Returned Orderitem Tracking System
+        Returned Orderitem Tracking System <b>For Warehouse</b>
      </div>
-     <form id="searchReturnedItemsForm" action="/rts/search_returned_item/" method="post">
+     <form id="searchReturnedItemsForm" action="/rts/home_warehouse/" method="GET">
         {% csrf_token %}
-            <table class="actionPanel" cellpadding="0" cellspacing="0" width="100%">
+            <table class="actionPanel searchPanel" cellpadding="0" cellspacing="0" width="100%">
 
                         <tr>
                             <td style="background-color: none;">
@@ -39,6 +39,7 @@
                     <tr>
 {#                        <th><input type=checkbox name='allSelect' class="allSelect"></th>#}
                         <th>{% trans "Select Item" %}</th>
+                        <th>{% trans "return_status" %}</th>
                         <th>{% trans "id_sales" %}</th>
                         <th>{% trans "order_nr" %} </th>
                         <th>{% trans "sku" %}</th>
@@ -64,6 +65,13 @@
                                 <span class="actionLabel" onclick="viewReturnBox('{{ o.suborder_number }}','{{ o.order_nr }}','{{ o.sku }}','{{ o.id_sales_order_item }}')">
                                     Select {# translation needed #}
                                 </span>
+                            </td>
+                            <td>
+                                {% if o.returneditemdetails  %}
+                                    {{ o.returneditemdetails.get_status_display }}
+                                {% else %}
+                                    -
+                                {% endif %}
                             </td>
                             <td>{{ o.id_sales_order_item }}</td>
                             <td>{{ o.order_nr }}</td>
@@ -103,7 +111,7 @@
                     "sScrollX": "100%"
                 }
         );
-{#        $('#id_statusFilter').val({{ cstatus.pk }});#}
+        $('#rts_snr_search').val("{{ suborder_nr }}");
         $('.checkboxClass').attr("checked", "");
         $('.allSelect').click(function(){
             if($(this).is(':checked')){

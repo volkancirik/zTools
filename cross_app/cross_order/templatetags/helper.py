@@ -68,3 +68,15 @@ def is_dms_user(user):
     if user:
         return user.groups.filter(name='Dms').count() > 0
     return False
+
+@register.filter
+def is_rts_warehouse_user(user):
+    if user:
+        return user.groups.filter(name='RtsWarehouse').count() > 0
+    return False
+
+@register.filter
+def is_rts_customer_user(user):
+    if user:
+        return user.groups.filter(name='RtsCustomer').count() > 0
+    return False

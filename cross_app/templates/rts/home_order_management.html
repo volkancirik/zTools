@@ -92,7 +92,6 @@
                             <td>{{ r.coupon_percent }}</td>
                             <td>{{ r.payment_method}}</td>
                             <td>
-                            {{ r.returneditemdetails.status }}
                                 {% if r.returneditemdetails.status > 0 %}
                                     {{ r.returneditemdetails.customer_contacted }}
                                 {% endif %}

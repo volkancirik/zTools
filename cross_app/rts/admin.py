@@ -1,5 +1,5 @@
 from django.contrib import admin
-from rts.models import OrderItemBaseForReturns,ActionType,ReturnedItemDetails,ReturnReason,RefundedItemDetails
+from rts.models import OrderItemBaseForReturns,ActionType,ReturnedItemDetails,ReturnReason
 
 admin.site.register(OrderItemBaseForReturns)
 admin.site.register(ActionType)

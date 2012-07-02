@@ -6,7 +6,7 @@ from django.shortcuts import redirect
 from cross_order.helper_functions import render_response
 #from dms.forms import DocumentUploadForm
 from rts.helper import not_in_rts_warehouse_group, not_in_rts_customer_group
-from rts.models import OrderItemBaseForReturns, ReturnedItemDetails,ReturnReason,ActionType,rts_status, RefundedItemDetails
+from rts.models import OrderItemBaseForReturns, ReturnedItemDetails,ReturnReason,ActionType,rts_status
 from settings import MEDIA_ROOT, LOGIN_URL
 
 @login_required

@@ -92,18 +92,3 @@ class ReturnedItemDetails(models.Model):
 
     def __unicode__(self):
         return self.order_item.name + ' ' + self.return_reason.name + ' ' + self.action_type.name
-
-class RefundedItemDetails(models.Model):
-    order_item = models.OneToOneField(OrderItemBaseForReturns)
-    create_date = models.DateTimeField(default= datetime.now())
-    create_user = models.ForeignKey(User)
-    status = models.IntegerField(default=rts_status.REFUNDED,choices=rts_status.TYPE)
-    customer_contacted = models.CharField(max_length=250,null=False)
-    refund_reference_number = models.CharField(max_length=250,null=False)
-    isCouponNeeded = models.BooleanField(null=False,default=False)
-    new_coupon = models.CharField(max_length=511,null=True)
-
-    def __unicode__(self):
-        return str(self.order_item.id_sales_order_item)
-
-

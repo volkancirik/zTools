@@ -62,7 +62,13 @@
                         <tr>
 {#                            <td><input type=checkbox class="checkboxClass" name='orderChecked' value="{{ o.pk }}"></td>#}
                             <td>
-                                <span class="actionLabel" onclick="viewReturnBox('{{ o.suborder_number }}','{{ o.order_nr }}','{{ o.sku }}','{{ o.id_sales_order_item }}')">
+                                <span class="actionLabel" onclick="viewReturnBox('{{ o.suborder_number }}',
+                                        '{{ o.order_nr }}',
+                                        '{{ o.sku }}',
+                                        '{{ o.id_sales_order_item }}',
+                                        '{{ o.returneditemdetails.action_type.pk }}',
+                                        '{{ o.returneditemdetails.return_reason.pk }}',
+                                        '{{ o.returneditemdetails.comment }}')">
                                     Select {# translation needed #}
                                 </span>
                             </td>
@@ -107,7 +113,7 @@
                 {
                     "sScrollY": "480px",
                     "bJQueryUI": true,
-                    "bPaginate": false,
+                    "sPaginationType": "full_numbers",
                     "sScrollX": "100%"
                 }
         );

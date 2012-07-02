@@ -42,7 +42,7 @@ class OrderItemBaseForReturns(models.Model):
         return str(self.id_sales_order_item)
 
     class Meta:
-        db_table = 'rts_orderitemview'
+        db_table = 'orderitem_base_for_returns'
 
 class ActionType(models.Model):
     name = models.CharField(max_length=250,null=False)
@@ -74,8 +74,8 @@ class rts_status():
 
 class ReturnedItemDetails(models.Model):
     order_item = models.OneToOneField(OrderItemBaseForReturns, to_field='id_sales_order_item',unique=True,null=False)
-    return_reason = models.ForeignKey(ReturnReason,unique=False,null=False)
-    action_type = models.ForeignKey(ActionType,unique=False,null=False)
+    return_reason = models.ForeignKey(ReturnReason,unique=False,null=True)
+    action_type = models.ForeignKey(ActionType,unique=False,null=True)
     comment = models.TextField(null=True)
 
     create_date = models.DateTimeField(default= datetime.now())

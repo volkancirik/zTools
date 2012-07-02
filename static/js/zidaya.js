@@ -68,11 +68,14 @@ function viewCommentBox(){
     $('.commentBox').show();
     return false;
 }
-function viewReturnBox(suborderNumber,orderNumber,sku,returnedOrderID){
+function viewReturnBox(suborderNumber,orderNumber,sku,returnedOrderID,action,reason,comment){
     $('#id_returnedSuborder').text(suborderNumber);
     $('#id_returnedOrder').text(orderNumber);
     $('#id_returnedSku').text(sku);
     $('#id_returnedItemID').val(returnedOrderID);
+    $('#id_actionList').val(action);
+    $('#id_reasonList').val(reason);
+    $('#id_returnedComment').val(comment);
     $('.returnBox').show();
     return false;
 }

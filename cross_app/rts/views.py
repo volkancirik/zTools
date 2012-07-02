@@ -9,6 +9,8 @@ from rts.helper import not_in_rts_warehouse_group, not_in_rts_customer_group
 from rts.models import OrderItemBaseForReturns, ReturnedItemDetails,ReturnReason,ActionType,rts_status, RefundedItemDetails
 from settings import MEDIA_ROOT, LOGIN_URL
 
+@login_required
+@user_passes_test(not_in_rts_customer_group, login_url=LOGIN_URL)
 def home_order_management(request):
     dict = {
         'statusList':rts_status.TYPE,
@@ -70,20 +72,31 @@ def update_refunded_order(request):
 
 def update_returned_order(request):
     if request.method == 'POST':
-        returnedOrder = OrderItemBaseForReturns.objects.get(id_sales_order_item = int(request.POST['returnedItemID']))
-        returnReason = ReturnReason.objects.get(pk = int(request.POST['reasonList']))
-        actionType = ActionType.objects.get(pk = int(request.POST['actionList']))
+        oib = OrderItemBaseForReturns.objects.get(id_sales_order_item = int(request.POST['returnedItemID']))
+        returnReason = None
+        if ReturnReason.objects.filter(pk = int(request.POST['reasonList'])).count() > 0:
+            returnReason = ReturnReason.objects.get(pk = int(request.POST['reasonList']))
+        actionType = None
+        if ActionType.objects.filter(pk = int(request.POST['actionList'])).count() > 0:
+            returnReason = ReturnReason.objects.get(pk = int(request.POST['reasonList']))
         comment = request.POST['comment']
-        ReturnedItemDetails.objects.create(
-            order_item = returnedOrder,
-            return_reason = returnReason,
-            action_type = actionType,
-            comment = comment,
-            create_user = request.user,
-            create_date = datetime.now(),
-            update_user = request.user,
-            update_date = datetime.now(),
-            status = rts_status.RETURNED)
-        return redirect('/rts/home_warehouse/?suborder_nr='+returnedOrder.suborder_number)
+
+        rid = ReturnedItemDetails()
+        if ReturnedItemDetails.objects.filter(order_item=oib).count() > 0:
+            rid = ReturnedItemDetails.objects.get(order_item=oib)
+        else:
+            rid.create_user = request.user
+            rid.create_date = datetime.now()
+            
+        rid.return_reason = returnReason
+        rid.action_type = actionType
+        rid.comment = comment
+        rid.status = rts_status.RETURNED
+        rid.update_user = request.user
+        rid.update_date = datetime.now()
+        rid.order_item = oib
+        rid.save()
+
+        return redirect('/rts/home_warehouse/?suborder_nr='+oib.suborder_number)
     else:
         return redirect('/rts/home_warehouse/')

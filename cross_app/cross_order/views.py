@@ -11,7 +11,7 @@ from django.utils import simplejson
 from django.views.decorators.csrf import csrf_exempt
 import xlwt
 from cross_order.forms import OrderSearchForm
-from cross_order.helper_functions import render_response, generateTransactionString, modelToExcel, getOrderSearchQuery
+from cross_order.helper_functions import render_response, generateTransactionString, modelToExcel, getOrderSearchQuery, getTodayAsString
 from cross_order.models import Supplier, CrossStatus, Order, LastUpdate, Transactions, OrderTransaction, OrderCrossDetails, OrderAttributeSet, TransactionStatus, ReportConfirmedSkuBase, ReportConfirmedSupplierBase, ReportOutOfStockCrossDock, ReportUnprocessedCrossDock, OverdueCrossDock, ReportSql2Excel, ColumnType
 from django.core.serializers.json import Serializer, DjangoJSONEncoder
 from django.db import transaction, connection
@@ -113,7 +113,8 @@ def get_excel_report(request):
 
     response = HttpResponse(mimetype='application/vnd.ms-excel')
 
-    file_string = 'attachment; filename='+rep.excel_name+'.xls'
+
+    file_string = 'attachment; filename='+rep.excel_name+"_"+getTodayAsString()+'.xls'
     response['Content-Disposition'] = file_string
 
     book.save(response)

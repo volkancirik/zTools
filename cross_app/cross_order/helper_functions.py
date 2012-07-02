@@ -129,3 +129,7 @@ def generateTransactionString(supplier_name):
     #number yerine id, acronym yerine supplier table'dan abbreviation gelecek!
     transaction_string = 'TR'  + today + '-' + acronym(supplier_name) + '-' + number
     return transaction_string
+
+def getTodayAsString():
+    today = datetime.datetime.now()
+    return str(today.year) +"_"+ str(today.month).zfill(2) +"_"+ str(today.day).zfill(2) +"_"+ str(today.hour).zfill(2) +"_"+ str(today.minute).zfill(2)

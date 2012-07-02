@@ -50,6 +50,7 @@
                         <th> Customer Billing Name </th>
                         <th> Customer Phone </th>
                         <th> Customer e-mail </th>
+                        <th> Paid Price </th>
                         <th> Coupon Code  </th>
                         <th> Coupon Money Value</th>
                         <th> Coupon Percent </th>
@@ -71,10 +72,10 @@
                                         '{{ r.id_sales_order_item }}',
                                         '{{ r.sku }}',
                                         '{{ r.pk }}',
-                                        '{{ r.returneditemdetails.refund_reference_number }}',
-                                        '{{ r.returneditemdetails.customer_contacted }}',
-                                        '{{ r.returneditemdetails.isCouponNeeded }}',
-                                        '{{ r.returneditemdetails.new_coupon }}')">
+                                        '{{ r.returneditemdetails.refund_reference_number|None2Empty }}',
+                                        '{{ r.returneditemdetails.customer_contacted|None2Empty }}',
+                                        '{{ r.returneditemdetails.isCouponNeeded|None2Empty }}',
+                                        '{{ r.returneditemdetails.new_coupon|None2Empty }}')">
                                     Select {# translation needed #}
                                 </span>
                             </td>
@@ -84,31 +85,32 @@
                             <td>{{ r.order_nr }}</td>
                             <td>{{ r.sku }}</td>
                             <td>{{ r.id_sales_order_item}}</td>
-                            <td>{{ r.billing_name }}</td>
-                            <td>{{ r.customer_phone}}</td>
-                            <td>{{ r.customer_email}}</td>
-                            <td>{{ r.coupon_code }}</td>
-                            <td>{{ r.coupon_money_value }}</td>
-                            <td>{{ r.coupon_percent }}</td>
-                            <td>{{ r.payment_method}}</td>
+                            <td>{{ r.billing_name|None2Empty }}</td>
+                            <td>{{ r.billing_phone|None2Empty }}</td>
+                            <td>{{ r.customer_email|None2Empty }}</td>
+                            <td>{{ r.paid_price|None2Empty }}</td>
+                            <td>{{ r.coupon_code|None2Empty }}</td>
+                            <td>{{ r.coupon_money_value|None2Empty }}</td>
+                            <td>{{ r.coupon_percent|None2Empty }}</td>
+                            <td>{{ r.payment_method|None2Empty }}</td>
                             <td>
                                 {% if r.returneditemdetails.status > 0 %}
-                                    {{ r.returneditemdetails.customer_contacted }}
+                                    {{ r.returneditemdetails.customer_contacted|None2Empty }}
                                 {% endif %}
                             </td>
                             <td>
                                 {% if r.returneditemdetails.status > 0 %}
-                                    {{ r.returneditemdetails.refund_reference_number }}
+                                    {{ r.returneditemdetails.refund_reference_number|None2Empty }}
                                 {% endif %}
                             </td>
                             <td>
                                 {% if r.returneditemdetails.status > 0 %}
-                                    {{ r.returneditemdetails.isCouponNeeded}}
+                                    {{ r.returneditemdetails.isCouponNeeded|None2Empty }}
                                 {% endif %}
                             </td>
                             <td>
                                 {% if r.returneditemdetails.status > 0 and r.returneditemdetails.isCouponNeeded %}
-                                    {{ r.returneditemdetails.new_coupon }}
+                                    {{ r.returneditemdetails.new_coupon|None2Empty }}
                                 {% endif %}
                             </td>
                             <td>
@@ -134,7 +136,7 @@
     $(document).ready(function(){
         var oTable = $('#orderList').dataTable(
                 {
-                    "sScrollY": "480px",
+                    "sScrollY": "320px",
                     "bJQueryUI": true,
                     "sPaginationType": "full_numbers",
                     "sScrollX": "100%"

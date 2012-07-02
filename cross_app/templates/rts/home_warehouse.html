@@ -89,9 +89,9 @@
                             <td>{{ o.shipping_name }}</td>
                             <td>{{ o.billing_name }}</td>
                             <td>{{ o.bob_status }}</td>
-                            <td>{{ o.returneditemdetails.return_reason }}</td>
-                            <td>{{ o.returneditemdetails.action_type.name }}</td>
-                            <td>{{ o.returneditemdetails.comment }}</td>
+                            <td>{{ o.returneditemdetails.return_reason|None2Empty }}</td>
+                            <td>{{ o.returneditemdetails.action_type.name|None2Empty }}</td>
+                            <td>{{ o.returneditemdetails.comment|None2Empty }}</td>
                             <td>{{ o.returneditemdetails.create_date|date:"d/M/Y H:i:s" }}</td>
                         </tr>
                     {% endfor %}
@@ -111,7 +111,7 @@
     $(document).ready(function(){
         var oTable = $('#orderList').dataTable(
                 {
-                    "sScrollY": "480px",
+                    "sScrollY": "320px",
                     "bJQueryUI": true,
                     "sPaginationType": "full_numbers",
                     "sScrollX": "100%"

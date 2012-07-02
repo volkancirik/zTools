@@ -60,8 +60,8 @@ def update_refunded_order(request):
             if newCoupon == '':
                 oib.returneditemdetails.status = rts_status.COUPON_PENDING
 
-        oib.returneditemdetails.create_date = datetime.now()
-        oib.returneditemdetails.create_user = request.user
+        oib.returneditemdetails.update_date = datetime.now()
+        oib.returneditemdetails.update_user = request.user
         oib.returneditemdetails.customer_contacted = customerContacted
         oib.returneditemdetails.refund_reference_number = refundReferenceNumber
         oib.returneditemdetails.isCouponNeeded = isCouponNeeded

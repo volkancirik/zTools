@@ -80,6 +80,16 @@
                         </span>
                     </a>
             </span>
+        {% if user|is_dms_user %}
+            <span class="item">
+                    <a href="/dms/list_documents/">
+                            <span class="label">
+                                {% trans "document_management_system" %}
+                            </span>
+                        </a>
+            </span>
+
+        {% endif %}
             <a class="item ico icoLogout" href="/user/logout/"></a>
 
             <div style="text-align: right;margin-top:40px;margin-right: 10px;">
@@ -90,8 +100,7 @@
                 {% endif %}
             </div>
         </div>
-
-        {% if user|is_dms_user %}
+<!--
             <div class="extraNavigation">
                         <a href="/dms/list_documents/">
                             <span class="label">
@@ -99,7 +108,7 @@
                             </span>
                         </a>
             </div>
-        {% endif %}
+            -->
         {% else %}
         <div id="navigation">
             <span class="item">

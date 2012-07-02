@@ -80,3 +80,10 @@ def is_rts_customer_user(user):
     if user:
         return user.groups.filter(name='RtsCustomer').count() > 0
     return False
+
+@register.filter
+def None2Empty(value):
+    if value is None:
+        return ""
+    else:
+        return value

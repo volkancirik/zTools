@@ -10,6 +10,7 @@ class OrderItemBaseForReturns(models.Model):
     id_sales_order_item = models.PositiveIntegerField(max_length=10,null=False,default=0,unique=True,primary_key=True)
     id_sales_order = models.PositiveIntegerField(max_length=10,null=True)
     id_catalog_simple = models.IntegerField(max_length=11,null=False)
+    id_catalog_config = models.IntegerField(max_length=11)
     order_nr = models.CharField(max_length=45,null=True)
     sku = models.CharField(max_length=255,null=True)
     order_date = models.DateTimeField(blank=True)

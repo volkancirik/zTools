@@ -87,3 +87,7 @@ def None2Empty(value):
         return ""
     else:
         return value
+
+@register.filter
+def reverse(value):
+    return str(value)[::-1]

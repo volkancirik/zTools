@@ -1,7 +1,8 @@
 {% extends "base.html" %}
 {% load i18n %}
 {% load helper %}
-{% block extrahead %}
+{% block extra_head %}
+    <script type="text/javascript" src="{{ STATIC_URL }}js/popup-plugin.js"></script>
 {% endblock %}
 
 {% block content %}
@@ -53,7 +54,7 @@
                         <th>{% trans "return_reason" %}</th>
                         <th>{% trans "action_type" %}</th>
                         <th>{% trans "comment" %}</th>
-                        <th>{% trans "time_stamp" %}</th>
+                        <th>{% trans "return_date" %}</th>
                     </tr>
                 </thead>
                 <tbody >
@@ -80,8 +81,10 @@
                                 {% endif %}
                             </td>
                             <td>{{ o.id_sales_order_item }}</td>
-                            <td>{{ o.order_nr }}</td>
-                            <td>{{ o.sku }}</td>
+                            <td><a href="https://bob.zidaya.com/orderprocessing/order/index/id/{{ o.id_sales_order }})" target="_blank">{{ o.order_nr }}</a></td>
+                            <td>
+                                <a onmouseover="popup('<img src=http://static.zidaya.com/p/-{{ o.id_catalog_config|reverse }}-1-catalog.jpg />', '90px');">{{ o.sku }}</a>
+                            </td>
                             <td>{{ o.order_date|date:"d/M/Y H:i:s" }}</td>
                             <td>{{ o.barcode_ean }}</td>
                             <td>{{ o.name }}</td>

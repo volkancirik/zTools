@@ -2,7 +2,8 @@
 {% load i18n %}
 {% load helper %}
 {% load enum_helper %}
-{% block extrahead %}
+{% block extra_head %}
+    <script type="text/javascript" src="{{ STATIC_URL }}js/popup-plugin.js"></script>
 {% endblock %}
 
 {% block content %}
@@ -60,6 +61,7 @@
                         <th> New Coupon Need</th>
                         <th> New Coupon Code</th>
                         <th> Return Date</th>
+                        <th> Refund Date</th>
                         {# translation needed #}
                     </tr>
                 </thead>
@@ -82,8 +84,8 @@
                             <td>
                                 {{ r.returneditemdetails.get_status_display }}
                             </td>
-                            <td>{{ r.order_nr }}</td>
-                            <td>{{ r.sku }}</td>
+                            <td><a href="https://bob.zidaya.com/orderprocessing/order/index/id/{{ r.id_sales_order }})" target="_blank">{{ r.order_nr }}</a></td>
+                            <td><a href="http://static.zidaya.com/p/-{{ r.id_catalog_config|reverse }}-1-zoom.jpg" target="_blank">{{ r.sku }}</a></td>
                             <td>{{ r.id_sales_order_item}}</td>
                             <td>{{ r.billing_name|None2Empty }}</td>
                             <td>{{ r.billing_phone|None2Empty }}</td>
@@ -114,8 +116,11 @@
                                 {% endif %}
                             </td>
                             <td>
-                                {% if r.returneditemdetails.status > 0 %}
                                     {{ r.returneditemdetails.create_date|date:"d/M/Y H:i:s" }}
+                            </td>
+                            <td>
+                                {% if r.returneditemdetails.status > 0 %}
+                                    {{ r.returneditemdetails.update_date|date:"d/M/Y H:i:s" }}
                                 {% endif %}
                             </td>
                         </tr>

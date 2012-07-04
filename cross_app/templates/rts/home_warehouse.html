@@ -54,6 +54,7 @@
                         <th>{% trans "return_reason" %}</th>
                         <th>{% trans "action_type" %}</th>
                         <th>{% trans "comment" %}</th>
+                        <th>{% trans "is_with_invoice" %}</th>
                         <th>{% trans "return_date" %}</th>
                     </tr>
                 </thead>
@@ -69,7 +70,8 @@
                                         '{{ o.id_sales_order_item }}',
                                         '{{ o.returneditemdetails.action_type.pk }}',
                                         '{{ o.returneditemdetails.return_reason.pk }}',
-                                        '{{ o.returneditemdetails.comment }}')">
+                                        '{{ o.returneditemdetails.comment }}',
+                                        '{{ o.returneditemdetails.is_with_invoice }}')">
                                     Select {# translation needed #}
                                 </span>
                             </td>
@@ -95,6 +97,7 @@
                             <td>{{ o.returneditemdetails.return_reason|None2Empty }}</td>
                             <td>{{ o.returneditemdetails.action_type.name|None2Empty }}</td>
                             <td>{{ o.returneditemdetails.comment|None2Empty }}</td>
+                            <td>{{ o.returneditemdetails.is_with_invoice }}</td>
                             <td>{{ o.returneditemdetails.create_date|date:"d/M/Y H:i:s" }}</td>
                         </tr>
                     {% endfor %}

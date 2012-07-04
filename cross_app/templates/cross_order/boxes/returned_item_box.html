@@ -3,7 +3,7 @@
     <div class="black_overlay" id="fade"></div>
     <div class="white_content">
         <div style="border-bottom: 1px solid #333333;margin-bottom: 10px;text-align: left;">
-            Returned Orderitem
+            {% trans "returned_orderitem_header" %}
          </div>
 
         <div class="FormWrapper">
@@ -11,7 +11,7 @@
                 <li class="FormLineWrapper ReturnedItemFormLine">
                     <div class="FormObjectSearch">
                         <div class="FormLabel">
-                            Suborder Number
+                            {% trans "suborder_number" %}
                         </div>
                         <div>
                             <span id="id_returnedSuborder"></span>
@@ -21,7 +21,7 @@
                 <li class="FormLineWrapper ReturnedItemFormLine">
                     <div class="FormObjectSearch">
                         <div class="FormLabel">
-                            Order Number
+                            {% trans "order_nr" %}
                         </div>
                         <div>
                             <span id="id_returnedOrder"></span>
@@ -31,7 +31,7 @@
                 <li class="FormLineWrapper ReturnedItemFormLine">
                     <div class="FormObjectSearch">
                         <div class="FormLabel">
-                            SKU
+                            {% trans "sku" %}
                         </div>
                         <div>
                             <span id="id_returnedSku"></span>
@@ -43,26 +43,11 @@
                     <li class="FormLineWrapper ReturnedItemFormLine">
                         <div class="FormObjectSearch">
                             <div class="FormLabel">
-                                Select an Action
-                            </div>
-                            <div>
-                                <select name='actionList' id='id_actionList'>
-                                    <option value='0'>Select an Action</option> {# translation needed #}
-                                    {% for action in actionList %}
-                                        <option value='{{ action.pk }}'>{{ action.name }}</option>
-                                    {% endfor %}
-                                </select>
-                            </div>
-                        </div>
-                    </li>
-                    <li class="FormLineWrapper ReturnedItemFormLine">
-                        <div class="FormObjectSearch">
-                            <div class="FormLabel">
-                                Return Reason
+                                {% trans "return_reason" %}
                             </div>
                             <div>
                                 <select name='reasonList' id='id_reasonList'>
-                                    <option value='0'>Select an Reason</option> {# translation needed #}
+                                    <option value='0'>{% trans "please_select_return_reason" %}</option> {# translation needed #}
                                     {% for reason in reasonList %}
                                         <option value='{{ reason.pk }}'>{{ reason.name }}</option>
                                     {% endfor %}
@@ -73,7 +58,32 @@
                     <li class="FormLineWrapper ReturnedItemFormLine">
                         <div class="FormObjectSearch">
                             <div class="FormLabel">
-                                Comment
+                                {% trans "select_action" %}
+                            </div>
+                            <div>
+                                <select name='actionList' id='id_actionList'>
+                                    <option value='0'>{% trans "please_select_action" %}</option> {# translation needed #}
+                                    {% for action in actionList %}
+                                        <option value='{{ action.pk }}'>{{ action.name }}</option>
+                                    {% endfor %}
+                                </select>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="FormLineWrapper ReturnedItemFormLine">
+                        <div class="FormObjectSearch">
+                            <div class="FormLabel">
+                                {% trans "is_with_invoice" %}
+                            </div>
+                            <div style="text-align: left;">
+                                <input checked="checked" type=checkbox name='isWithInvoice' id= 'id_isWithInvoice'>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="FormLineWrapper ReturnedItemFormLine">
+                        <div class="FormObjectSearch">
+                            <div class="FormLabel">
+                                {% trans "comment" %}
                             </div>
                             <div>
                                 <textarea id="id_returnedComment" name="comment" cols="94" rows="10"></textarea><br>
@@ -93,7 +103,7 @@
         <div class="closeButton">
             <div style="float:right;">
                 <a href="#" onclick="return submitReturnForm();" class="submitButton">
-                    <span> Update Returned Item </span> {# translation needed #}
+                    <span> {% trans "update_returned_item" %} </span> {# translation needed #}
                 </a>
             </div>
         </div>

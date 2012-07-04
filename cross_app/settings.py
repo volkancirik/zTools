@@ -19,6 +19,12 @@ DATABASES = {
     }
 }
 
+EMAIL_USE_TLS = True
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_USER = 'musterihizmetleri@zidaya.com'
+EMAIL_HOST_PASSWORD = 'f8q9VXgKN5'
+EMAIL_PORT = 587
+
 
 TIME_ZONE = 'Europe/Istanbul'
 

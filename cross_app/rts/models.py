@@ -79,6 +79,8 @@ class ReturnedItemDetails(models.Model):
     action_type = models.ForeignKey(ActionType,unique=False,null=True)
     comment = models.TextField(null=True)
 
+    is_with_invoice = models.BooleanField(null=False,default=True)
+
     create_date = models.DateTimeField(default= datetime.now())
     create_user = models.ForeignKey(User, related_name='%(class)s_user_create')
     update_date = models.DateTimeField(default= datetime.now())
@@ -90,6 +92,8 @@ class ReturnedItemDetails(models.Model):
     refund_reference_number = models.CharField(max_length=250,null=True)
     isCouponNeeded = models.BooleanField(null=False,default=False)
     new_coupon = models.CharField(max_length=511,null=True)
+
+    isEmailSent = models.BooleanField(null=False,default=False)
 
     def __unicode__(self):
         return self.order_item.name + ' ' + self.return_reason.name + ' ' + self.action_type.name

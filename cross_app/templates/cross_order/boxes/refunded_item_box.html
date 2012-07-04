@@ -3,7 +3,7 @@
     <div class="black_overlay" id="fade"></div>
     <div class="white_content">
         <div style="border-bottom: 1px solid #333333;margin-bottom: 10px;text-align: left;">
-            Returned Orderitem
+           {% trans "refund_orderitem_header" %}
          </div>
 
         <div class="FormWrapper">
@@ -11,7 +11,7 @@
                 <li class="FormLineWrapper ReturnedItemFormLine">
                     <div class="FormObjectSearch">
                         <div class="FormLabel">
-                            Order Number
+                           {% trans "order_nr" %}
                         </div>
                         <div>
                             <span id="id_refundedOrderNumber"></span>
@@ -21,7 +21,7 @@
                 <li class="FormLineWrapper ReturnedItemFormLine">
                     <div class="FormObjectSearch">
                         <div class="FormLabel">
-                            Order Item Id
+                            {% trans "id_sales" %}
                         </div>
                         <div>
                             <span id="id_refundedIdSalesOrderItem"></span>
@@ -31,7 +31,7 @@
                 <li class="FormLineWrapper ReturnedItemFormLine">
                     <div class="FormObjectSearch">
                         <div class="FormLabel">
-                            SKU
+                            {% trans "sku" %}
                         </div>
                         <div>
                             <span id="id_refundedSku"></span>
@@ -43,7 +43,7 @@
                     <li class="FormLineWrapper ReturnedItemFormLine">
                         <div class="FormObjectSearch">
                             <div class="FormLabel">
-                                Refund Reference Number
+                                {% trans "refund_reference_number" %}
                             </div>
                             <div>
                                 <input type="textbox" name="refundReferenceNumber" id = "id_refundReferenceNumber" value="">
@@ -53,13 +53,13 @@
                     <li class="FormLineWrapper ReturnedItemFormLine">
                         <div class="FormObjectSearch">
                             <div class="FormLabel">
-                                Customer Contacted
+                                {% trans "customer_contacted" %}
                             </div>
                             <div>
                                 <select name='customerContacted' id='id_customerContactedList'>
-                                    <option value='No'>No</option> {# translation needed #}
-                                    <option value='Phone'>Via Phone</option>
-                                    <option value='Email'>Via e-mail</option>
+                                    <option value='No'>{% trans "no" %}</option> {# translation needed #}
+                                    <option value='Phone'>{% trans "via_phone" %}</option>
+                                    <option value='Email'>{% trans "via_email" %}</option>
                                 </select>
                             </div>
                         </div>
@@ -67,7 +67,7 @@
                     <li class="FormLineWrapper ReturnedItemFormLine">
                         <div class="FormObjectSearch">
                             <div class="FormLabel">
-                                Is Coupon Needed?
+                                {% trans "is_coupon_needed" %}
                             </div>
                             <div style="text-align: left;">
                                 <input type=checkbox name='isCouponNeeded' id= 'id_refundedIsCouponNeeded'>
@@ -77,7 +77,7 @@
                     <li class="FormLineWrapper ReturnedItemFormLine">
                         <div class="FormObjectSearch">
                             <div class="FormLabel">
-                                New Coupon Code
+                                {% trans "new_coupon_code" %}
                             </div>
                             <div>
                                 <input type="textbox" name="newCoupon" value="" id="id_newCoupon">
@@ -97,7 +97,7 @@
         <div class="closeButton">
             <div style="float:right;">
                 <a href="#" onclick="return submitRefundedForm();" class="submitButton">
-                    <span> Update Returned Item </span> {# translation needed #}
+                    <span> {% trans "update_returned_item" %} </span> {# translation needed #}
                 </a>
             </div>
         </div>

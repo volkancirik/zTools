@@ -8,9 +8,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-06-26 11:27+0300\n"
-"PO-Revision-Date: 2012-06-26 11:40\n"
-"Last-Translator:   <brsbilgic@gmail.com>\n"
+"POT-Creation-Date: 2012-07-03 21:53+0300\n"
+"PO-Revision-Date: 2012-07-03 22:40\n"
+"Last-Translator: Can Kaya <can.kaya@rocket-internet.com.tr>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -19,84 +19,80 @@ msgstr ""
 "X-Translated-Using: django-rosetta 0.6.8\n"
 
 #: .\cross_order\forms.py:6
-msgid "search_cross_status"
-msgstr "Cross Status"
-
-#: .\cross_order\forms.py:6 .\cross_order\forms.py:13
-msgid "search_all"
-msgstr "Hepsi"
-
-#: .\cross_order\forms.py:7
 msgid "search_order_item_id"
 msgstr "Order Item ID"
 
-#: .\cross_order\forms.py:8
+#: .\cross_order\forms.py:7
 msgid "search_zidaya_order_item"
 msgstr "Zidaya Sipariş Numarası"
 
-#: .\cross_order\forms.py:9
+#: .\cross_order\forms.py:8 .\rts\forms.py:9
 msgid "search_sku"
 msgstr "SKU"
 
-#: .\cross_order\forms.py:11
+#: .\cross_order\forms.py:10
 msgid "search_suborder_number"
 msgstr "Suborder Number"
 
-#: .\cross_order\forms.py:12
+#: .\cross_order\forms.py:11
 msgid "search_supplier_name"
 msgstr "Tedarikçi"
 
 #: .\cross_order\forms.py:13
-msgid "search_attribute_set"
-msgstr "Attribute Set"
-
-#: .\cross_order\forms.py:15
 msgid "search_cross_supplier_sku_config"
 msgstr "Tedarikçi SKU Config"
 
-#: .\cross_order\forms.py:16
+#: .\cross_order\forms.py:14
 msgid "search_cross_supplier_sku_simple"
 msgstr "Tedarikçi SKU Simple"
 
-#: .\cross_order\forms.py:17
+#: .\cross_order\forms.py:15
 msgid "search_cross_barcode"
 msgstr "Barkod"
 
-#: .\cross_order\forms.py:19
+#: .\cross_order\forms.py:17
 msgid "search_cross_name"
 msgstr "Ürün Adı"
 
-#: .\cross_order\forms.py:20
+#: .\cross_order\forms.py:18
 msgid "search_cross_order_date_start"
 msgstr "Sipariş Tarihi (Başlangıç)"
 
-#: .\cross_order\forms.py:21
+#: .\cross_order\forms.py:19
 msgid "search_cross_order_date_end"
 msgstr "Sipariş Tarihi (Son)"
 
-#: .\cross_order\forms.py:23
+#: .\cross_order\forms.py:21
 msgid "search_inbound_order_number"
 msgstr "Tedarikçi Sipariş Numarası"
 
-#: .\cross_order\forms.py:24
+#: .\cross_order\forms.py:22
 msgid "search_supplier_order_date_start"
 msgstr "Tedarikçi Sipariş Tarihi (Başlangıç)"
 
-#: .\cross_order\forms.py:25
+#: .\cross_order\forms.py:23
 msgid "search_supplier_order_date_end"
 msgstr "Tedarikçi Sipariş Tarihi (Son)"
 
-#: .\cross_order\forms.py:27
+#: .\cross_order\forms.py:25
 msgid "search_last_update_date_start"
 msgstr "Son Güncellenme (Başlangıç)"
 
-#: .\cross_order\forms.py:28
+#: .\cross_order\forms.py:26
 msgid "search_last_update_date_end"
 msgstr "Son Güncellenme (Son)"
 
+#: .\cross_order\forms.py:28
+msgid "search_cross_status"
+msgstr "Cross Status"
+
+#: .\cross_order\forms.py:28 .\cross_order\forms.py:29
+msgid "search_all"
+msgstr "Hepsi"
+
 #: .\cross_order\forms.py:29
-msgid "search_comment"
-msgstr "Not"
+msgid "search_attribute_set"
+msgstr "Attribute Set"
 
 #: .\cross_order\models.py:13
 msgid "CHAR"
@@ -126,31 +122,55 @@ msgstr "Processed"
 msgid "dms_status_closed"
 msgstr "Closed"
 
+#: .\rts\helper.py:13
+msgid "rts_email_from_name"
+msgstr "Müşteri Hizmetleri"
+
+#: .\rts\helper.py:14
+msgid "rts_email_subject"
+msgstr "Zidaya.com - İade İşleminiz Yapılmıştır"
+
+#: .\rts\models.py:70
+msgid "RTS_RETURNED"
+msgstr ""
+
+#: .\rts\models.py:71
+msgid "RTS_REFUNDED"
+msgstr ""
+
+#: .\rts\models.py:72
+msgid "RTS_COUPON_PENDING"
+msgstr ""
+
+#: .\rts\models.py:73
+msgid "RTS_RETURN_DENIED"
+msgstr ""
+
 #: .\templates\base.html.py:43
 msgid "welcome"
 msgstr "Hoşgeldin"
 
-#: .\templates\base.html.py:51
+#: .\templates\base.html.py:65
 msgid "reports"
 msgstr "Raporlar"
 
-#: .\templates\base.html.py:58
+#: .\templates\base.html.py:72
 msgid "advanced_search"
 msgstr "Detaylı Arama"
 
-#: .\templates\base.html.py:65
+#: .\templates\base.html.py:79
 msgid "transactions"
 msgstr "Transaction Takibi"
 
-#: .\templates\base.html.py:85
+#: .\templates\base.html.py:87 .\templates\base.html.py:107
 msgid "document_management_system"
 msgstr "Dosya Takip Sistemi"
 
-#: .\templates\base.html.py:95
+#: .\templates\base.html.py:116
 msgid "cross_order_tracking_system"
 msgstr "Cross Order Takip Sistemi"
 
-#: .\templates\base.html.py:108
+#: .\templates\base.html.py:129
 msgid "footer"
 msgstr "Rocket Internet TR & MENA | zTools | İletişim:"
 
@@ -175,6 +195,7 @@ msgstr "Attribute Set"
 #: .\templates\cross_order\list_supplier.html.py:36
 #: .\templates\cross_order\list_transaction.html.py:20
 #: .\templates\cross_order\list_transaction_details.html.py:35
+#: .\templates\rts\home_order_management.html.py:22
 msgid "all"
 msgstr "Hepsi"
 
@@ -214,7 +235,9 @@ msgstr "Beden/Boy"
 #: .\templates\cross_order\list_order.html.py:77
 #: .\templates\cross_order\list_transaction_details.html.py:63
 #: .\templates\cross_order\order_search.html.py:104
-#: .\templates\rts\list_order_items.html.py:49
+#: .\templates\cross_order\boxes\refunded_item_box.html.py:34
+#: .\templates\cross_order\boxes\returned_item_box.html.py:34
+#: .\templates\rts\home_warehouse.html.py:46
 msgid "sku"
 msgstr "SKU"
 
@@ -239,9 +262,9 @@ msgstr "Barkod"
 #: .\templates\cross_order\list_order.html.py:81
 #: .\templates\cross_order\list_transaction_details.html.py:67
 #: .\templates\cross_order\order_search.html.py:109
-#: .\templates\rts\list_order_items.html.py:52
+#: .\templates\rts\home_warehouse.html.py:49
 msgid "name"
-msgstr "Ad"
+msgstr "Ürün Adı"
 
 #: .\templates\cross_order\list_order.html.py:84
 #: .\templates\cross_order\list_transaction_details.html.py:70
@@ -258,7 +281,7 @@ msgstr "Maliyet"
 #: .\templates\cross_order\list_order.html.py:86
 #: .\templates\cross_order\list_transaction_details.html.py:72
 #: .\templates\cross_order\order_search.html.py:112
-#: .\templates\rts\list_order_items.html.py:50
+#: .\templates\rts\home_warehouse.html.py:47
 msgid "order_date"
 msgstr "Sipariş Tarihi"
 
@@ -278,8 +301,8 @@ msgstr "Tedarikçi Sipariş Numarası"
 #: .\templates\cross_order\list_transaction_details.html.py:75
 #: .\templates\cross_order\order_search.html.py:115
 #: .\templates\cross_order\boxes\comment_box.html.py:7
-#: .\templates\cross_order\boxes\returned_item_box.html.py:28
-#: .\templates\rts\list_order_items.html.py:59
+#: .\templates\cross_order\boxes\returned_item_box.html.py:86
+#: .\templates\rts\home_warehouse.html.py:56
 msgid "comment"
 msgstr "Not"
 
@@ -291,14 +314,14 @@ msgstr "Tedarikçi Sipariş Tarihi"
 
 #: .\templates\cross_order\list_order.html.py:91
 #: .\templates\cross_order\list_transaction_details.html.py:77
-#: .\templates\cross_order\order_search.html.py:117
+#: .\templates\cross_order\order_search.html.py:118
 msgid "last_update"
 msgstr "Son Güncelleme"
 
 #: .\templates\cross_order\list_order.html.py:133
 #: .\templates\cross_order\list_transaction.html.py:111
 #: .\templates\cross_order\list_transaction_details.html.py:119
-#: .\templates\dms\list_documents.html.py:63
+#: .\templates\dms\list_documents.html.py:64
 msgid "please_select"
 msgstr "Lütfen Seçiniz"
 
@@ -382,7 +405,8 @@ msgid "hide_show_columns"
 msgstr "Kolon Gizle/Göster"
 
 #: .\templates\cross_order\order_search.html.py:103
-#: .\templates\rts\list_order_items.html.py:53
+#: .\templates\cross_order\boxes\returned_item_box.html.py:14
+#: .\templates\rts\home_warehouse.html.py:50
 msgid "suborder_number"
 msgstr "Suborder Number"
 
@@ -393,7 +417,8 @@ msgstr "Gösterilecek kolonları seçiniz"
 #: .\templates\cross_order\boxes\column_box.html.py:112
 #: .\templates\cross_order\boxes\comment_box.html.py:13
 #: .\templates\cross_order\boxes\history_box.html.py:7
-#: .\templates\cross_order\boxes\returned_item_box.html.py:36
+#: .\templates\cross_order\boxes\refunded_item_box.html.py:94
+#: .\templates\cross_order\boxes\returned_item_box.html.py:100
 msgid "close"
 msgstr "Kapat"
 
@@ -408,6 +433,80 @@ msgstr "Gönder"
 #: .\templates\cross_order\boxes\confirm_box.html.py:4
 msgid "supplier_informed_alert_message"
 msgstr "Yeni bir transaction yaratılacaktır. Emin misiniz?"
+
+#: .\templates\cross_order\boxes\refunded_item_box.html.py:6
+msgid "refund_orderitem_header"
+msgstr "İade Edilecek Ürün"
+
+#: .\templates\cross_order\boxes\refunded_item_box.html.py:14
+#: .\templates\cross_order\boxes\returned_item_box.html.py:24
+#: .\templates\rts\home_warehouse.html.py:45
+msgid "order_nr"
+msgstr "Sipariş Numarası"
+
+#: .\templates\cross_order\boxes\refunded_item_box.html.py:24
+#: .\templates\rts\home_warehouse.html.py:44
+msgid "id_sales"
+msgstr "id_sales_order_item"
+
+#: .\templates\cross_order\boxes\refunded_item_box.html.py:46
+msgid "refund_reference_number"
+msgstr "Refund Reference Number"
+
+#: .\templates\cross_order\boxes\refunded_item_box.html.py:56
+msgid "customer_contacted"
+msgstr "Müşteriyle İletişim"
+
+#: .\templates\cross_order\boxes\refunded_item_box.html.py:60
+msgid "no"
+msgstr "Hayır"
+
+#: .\templates\cross_order\boxes\refunded_item_box.html.py:61
+msgid "via_phone"
+msgstr "Telefon"
+
+#: .\templates\cross_order\boxes\refunded_item_box.html.py:62
+msgid "via_email"
+msgstr "E-posta"
+
+#: .\templates\cross_order\boxes\refunded_item_box.html.py:70
+msgid "is_coupon_needed"
+msgstr "Yeni kupon gerekli mi?"
+
+#: .\templates\cross_order\boxes\refunded_item_box.html.py:80
+msgid "new_coupon_code"
+msgstr "Yeni Kupon Kodu"
+
+#: .\templates\cross_order\boxes\refunded_item_box.html.py:100
+#: .\templates\cross_order\boxes\returned_item_box.html.py:106
+msgid "update_returned_item"
+msgstr "Güncelle"
+
+#: .\templates\cross_order\boxes\returned_item_box.html.py:6
+msgid "returned_orderitem_header"
+msgstr "Returned Orderitem "
+
+#: .\templates\cross_order\boxes\returned_item_box.html.py:46
+msgid "select_action"
+msgstr "Lütfen seçiniz"
+
+#: .\templates\cross_order\boxes\returned_item_box.html.py:50
+msgid "please_select_action"
+msgstr "Lütfen Seçiniz"
+
+#: .\templates\cross_order\boxes\returned_item_box.html.py:61
+#: .\templates\rts\home_warehouse.html.py:54
+msgid "return_reason"
+msgstr "İade Sebebi"
+
+#: .\templates\cross_order\boxes\returned_item_box.html.py:65
+msgid "please_select_return_reason"
+msgstr "Lütfen Seçiniz"
+
+#: .\templates\cross_order\boxes\returned_item_box.html.py:76
+#: .\templates\rts\home_warehouse.html.py:57
+msgid "is_with_invoice"
+msgstr "Faturası var mı?"
 
 #: .\templates\dms\list_documents.html.py:14
 #: .\templates\dms\upload_document.html.py:13
@@ -426,74 +525,68 @@ msgstr "Satır Sayısı"
 msgid "short_description"
 msgstr "Açıklama"
 
-#: .\templates\dms\list_documents.html.py:26
+#: .\templates\dms\list_documents.html.py:27
 msgid "upload_date"
 msgstr "Yüklenme Tarihi"
 
-#: .\templates\dms\list_documents.html.py:27
+#: .\templates\dms\list_documents.html.py:28
 msgid "upload_user"
 msgstr "Yükleyen"
 
-#: .\templates\dms\list_documents.html.py:28
+#: .\templates\dms\list_documents.html.py:30
 msgid "last_updaate_date"
 msgstr "Son İncelenme Tarihi"
 
-#: .\templates\dms\list_documents.html.py:29
+#: .\templates\dms\list_documents.html.py:31
 msgid "last_update_user"
 msgstr "Son İnceleyen"
 
-#: .\templates\dms\list_documents.html.py:69
+#: .\templates\dms\list_documents.html.py:70
 msgid "update_selected"
 msgstr "Seçilenler İncelendi"
 
-#: .\templates\dms\list_documents.html.py:74
+#: .\templates\dms\list_documents.html.py:75
 msgid "delete_selected"
 msgstr "Seçilenleri Sil"
 
-#: .\templates\rts\list_order_items.html.py:28
-#, fuzzy
+#: .\templates\rts\home_order_management.html.py:27
+#: .\templates\rts\home_warehouse.html.py:23
 msgid "Search"
-msgstr "Hepsi"
+msgstr "Ara"
 
-#: .\templates\rts\list_order_items.html.py:47
-msgid "id_sales"
-msgstr ""
+#: .\templates\rts\home_order_management.html.py:46
+#: .\templates\rts\home_warehouse.html.py:42
+msgid "Select Item"
+msgstr "Seçiniz"
 
-#: .\templates\rts\list_order_items.html.py:48
-#, fuzzy
-msgid "order_nr"
-msgstr "Suborder Number"
+#: .\templates\rts\home_order_management.html.py:47
+#: .\templates\rts\home_warehouse.html.py:43
+msgid "return_status"
+msgstr "İade Durumu"
 
-#: .\templates\rts\list_order_items.html.py:51
+#: .\templates\rts\home_warehouse.html.py:48
 msgid "barcode_ean"
 msgstr "Barkod"
 
-#: .\templates\rts\list_order_items.html.py:54
-#, fuzzy
+#: .\templates\rts\home_warehouse.html.py:51
 msgid "shipping_name"
-msgstr "Tedarikçi"
+msgstr "Müşteri Adı (Gönderi Adresi)"
 
-#: .\templates\rts\list_order_items.html.py:55
-#, fuzzy
+#: .\templates\rts\home_warehouse.html.py:52
 msgid "billing_name"
-msgstr "Satır Sayısı"
+msgstr "Müşteri Adı (Fatura Adresi)"
 
-#: .\templates\rts\list_order_items.html.py:56
-#, fuzzy
+#: .\templates\rts\home_warehouse.html.py:53
 msgid "bob_status"
-msgstr "Durum"
+msgstr "BOB Status"
 
-#: .\templates\rts\list_order_items.html.py:57
-msgid "return_reason"
-msgstr ""
-
-#: .\templates\rts\list_order_items.html.py:58
+#: .\templates\rts\home_warehouse.html.py:55
 msgid "action_type"
-msgstr ""
+msgstr "Aksiyon"
 
-#: .\templates\rts\list_order_items.html.py:60
-msgid "time_stamp"
-msgstr ""
+#: .\templates\rts\home_warehouse.html.py:58
+msgid "return_date"
+msgstr "Depoya Geliş Tarihi"
 
 #: .\templates\userprofile\login_or_register.html.py:24
 msgid "register_header"
@@ -544,3 +637,6 @@ msgstr "Şifre en az 5 karakterden oluşmalıdır"
 #: .\userprofile\forms.py:52
 msgid "AlreadyRegisteredEmail"
 msgstr "Bu e-posta adresi sistemde önceden kayıtlıdır"
+
+#~ msgid "search_comment"
+#~ msgstr "Not"

@@ -25,7 +25,7 @@ def home_order_management(request):
         try:
             dict.update({'oibfr_list': OrderItemBaseForReturns.objects.filter(returneditemdetails__status=int(status))})
         except:
-            dict.update({'oibfr_list': OrderItemBaseForReturns.objects.all()})
+            dict.update({'oibfr_list': OrderItemBaseForReturns.objects.exclude(returneditemdetails=None)})
 
     return render_response(request, 'rts/home_order_management.html',dict)
 
@@ -78,8 +78,12 @@ def update_returned_order(request):
             returnReason = ReturnReason.objects.get(pk = int(request.POST['reasonList']))
         actionType = None
         if ActionType.objects.filter(pk = int(request.POST['actionList'])).count() > 0:
-            returnReason = ReturnReason.objects.get(pk = int(request.POST['reasonList']))
+            actionType = ActionType.objects.get(pk = int(request.POST['actionList']))
         comment = request.POST['comment']
+
+        isWithInvoice = False
+        if request.POST.get("isWithInvoice",False):
+            isWithInvoice = True
 
         rid = ReturnedItemDetails()
         if ReturnedItemDetails.objects.filter(order_item=oib).count() > 0:
@@ -87,7 +91,8 @@ def update_returned_order(request):
         else:
             rid.create_user = request.user
             rid.create_date = datetime.now()
-            
+
+        rid.is_with_invoice = isWithInvoice
         rid.return_reason = returnReason
         rid.action_type = actionType
         rid.comment = comment

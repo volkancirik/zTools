@@ -68,7 +68,7 @@ function viewCommentBox(){
     $('.commentBox').show();
     return false;
 }
-function viewReturnBox(suborderNumber,orderNumber,sku,returnedOrderID,action,reason,comment){
+function viewReturnBox(suborderNumber,orderNumber,sku,returnedOrderID,action,reason,comment,isWithInvoice){
     $('#id_returnedSuborder').text(suborderNumber);
     $('#id_returnedOrder').text(orderNumber);
     $('#id_returnedSku').text(sku);
@@ -76,6 +76,8 @@ function viewReturnBox(suborderNumber,orderNumber,sku,returnedOrderID,action,rea
     $('#id_actionList').val(action);
     $('#id_reasonList').val(reason);
     $('#id_returnedComment').val(comment);
+    if(isWithInvoice == "True")
+        $('#id_isWithInvoice').attr('checked','checked');
     $('.returnBox').show();
     return false;
 }
@@ -106,8 +108,19 @@ function submitComment(){
                 $('#orderUpdateForm').submit();
 }
 function submitReturnForm(){
-    $('#returnedOrderForm').submit();
-    closeReturnBox();
+    if( $('#id_actionList').val() == "" || $('#id_actionList').val() == "0")
+    {
+        $('#id_actionList').css("border-color","red");
+    }
+    else if($('#id_reasonList').val() == "" || $('#id_reasonList').val() == "0"){
+        $('#id_reasonList').css("border-color","red");
+    }
+    else
+    {
+        $('#returnedOrderForm').submit();
+        closeReturnBox();
+    }
+
 }
 function submitRefundedForm(){
     $('#refundedOrderForm').submit();

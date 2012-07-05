@@ -5,4 +5,4 @@ from dms.models import Document
 class DocumentUploadForm(ModelForm):
     class Meta:
         model = Document
-        fields = ('file', 'title','ekol_doc_number')
+        fields = ('file', 'title','type')

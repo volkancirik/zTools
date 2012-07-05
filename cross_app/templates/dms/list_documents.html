@@ -31,6 +31,7 @@
                         <th>{% trans "last_update_user" %}</th>
                         <th>Ekol_Doc_Num</th>
                         <th>Ekol Link</th>
+                        <th>Document_Type</th>
                         <th>Status</th>
                     </tr>
                 </thead>
@@ -52,6 +53,7 @@
                                 </a>
                                 {% endif %}
                             </td>
+                        <td>{{ d.type }}</td>
                         <td>{{ d.get_status_display }}</td>
                         </tr>
                     {% endfor %}
@@ -81,7 +83,8 @@
 </form>
 		</div>
 	</div>
-</div>
+</div>{% include "cross_order/boxes/confirm_box_for_delete.html" %}
+    
 <script type="text/javascript">
     $(document).ready(function(){
         var oTable = $('#docList').dataTable(
@@ -94,6 +97,7 @@
                       { 'bSortable': false, 'aTargets': [ 0,8 ] }
                    ],
                     "aoColumns" : [
+                        null,
                         null,
                         null,
                         null,
@@ -133,6 +137,7 @@
                             null,
                             null,
                             null,
+                            { type:"select", values: [{% for c in typeList %} '{{ c.name }}', {% endfor %} ]},
                             { type:"select", values: [{% for c in statusList %} '{{ c|getEnumName }}', {% endfor %} ]},
                     ]
         });
@@ -150,8 +155,22 @@
         $('#docListAction').submit();
     }
     function deleteFile(){
-        $('#id_buttonSource').val("delete");
-        $('#docListAction').submit();
+        $( "#dialog-confirm" ).dialog({
+                resizable: false,
+                height:140,
+                modal: true,
+                buttons: {
+                    "Evet": function() {
+                        $( this ).dialog( "close" );
+                        $('#id_buttonSource').val("delete");
+                        $('#docListAction').submit();
+                    },
+                    Hayir: function() {
+                        $( this ).dialog( "close" );
+                    }
+                }
+            });
+
     }
 
 </script>

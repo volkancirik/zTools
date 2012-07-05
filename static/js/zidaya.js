@@ -81,7 +81,7 @@ function viewReturnBox(suborderNumber,orderNumber,sku,returnedOrderID,action,rea
     $('.returnBox').show();
     return false;
 }
-function viewRefundBox(orderNumber,idSalesOrder,sku,returnedOrderID,refundReferenceNumber,customerContactedList,refundedIsCouponNeeded,newCoupon){
+function viewRefundBox(orderNumber,idSalesOrder,sku,returnedOrderID,refundReferenceNumber,customerContactedList,refundedIsCouponNeeded,newCoupon,payment_method){
     $('#id_refundedOrderNumber').text(orderNumber);
     $('#id_refundedIdSalesOrderItem').text(idSalesOrder);
     $('#id_refundedSku').text(sku);
@@ -92,6 +92,15 @@ function viewRefundBox(orderNumber,idSalesOrder,sku,returnedOrderID,refundRefere
     if(refundedIsCouponNeeded == "True")
         $('#id_refundedIsCouponNeeded').attr('checked','checked');
     $('#id_newCoupon').val(newCoupon);
+
+    if(payment_method == "CodPayment"){
+        $('.refundRefNumberWrapper').hide();
+        $('#id_paymentType').html(payment_method);
+        $('.paymentTypeWrapper').show();
+    }else{
+        $('.refundRefNumberWrapper').show();
+        $('.paymentTypeWrapper').hide();
+    }
 
     $('.refundBox').show();
     return false;

@@ -31,7 +31,7 @@ class Document(models.Model):
     file = models.FileField(storage=FileSystemStorage(location=settings.MEDIA_ROOT), upload_to='uploads')
     title = models.CharField(max_length=1000,null=True,blank=True)
     comment = models.TextField(null=True,blank=True)
-    type = models.ForeignKey(DocumentType,null=True)
+    type = models.ForeignKey(DocumentType,null=True,blank=True)
 
     upload_date = models.DateTimeField(blank=False)
     upload_user = models.ForeignKey(User,unique=False,null=True, related_name='%(class)s_user_upload')

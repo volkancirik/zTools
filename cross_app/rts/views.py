@@ -66,6 +66,8 @@ def update_refunded_order(request):
         oib.returneditemdetails.refund_reference_number = refundReferenceNumber
         oib.returneditemdetails.isCouponNeeded = isCouponNeeded
         oib.returneditemdetails.new_coupon = newCoupon
+        if oib.payment_method.lower() == "codpayment":
+            oib.returneditemdetails.isEmailSent = True
         oib.returneditemdetails.save()
 
         return redirect('/rts/home_order_management/?returnedItemID='+str(oib.pk))

@@ -38,9 +38,20 @@
                         </div>
                     </div>
                 </li>
+
+                    <li class="FormLineWrapper ReturnedItemFormLine paymentTypeWrapper">
+                        <div class="FormObjectSearch">
+                            <div class="FormLabel">
+                                {% trans "payment_type" %}
+                            </div>
+                            <div>
+                                <span id="id_paymentType" style="color:red;"></span>
+                            </div>
+                        </div>
+                    </li>
                 <form id ="refundedOrderForm" action="/rts/update_refunded_order/" method='post'>
                     {% csrf_token %}
-                    <li class="FormLineWrapper ReturnedItemFormLine">
+                    <li class="FormLineWrapper ReturnedItemFormLine refundRefNumberWrapper">
                         <div class="FormObjectSearch">
                             <div class="FormLabel">
                                 {% trans "refund_reference_number" %}

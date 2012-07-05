@@ -52,6 +52,7 @@
                         <th> Customer Phone </th>
                         <th> Customer e-mail </th>
                         <th> Paid Price </th>
+                        <th> BOB Status </th>
                         <th> Coupon Code  </th>
                         <th> Coupon Money Value</th>
                         <th> Coupon Percent </th>
@@ -77,7 +78,8 @@
                                         '{{ r.returneditemdetails.refund_reference_number|None2Empty }}',
                                         '{{ r.returneditemdetails.customer_contacted|None2Empty }}',
                                         '{{ r.returneditemdetails.isCouponNeeded|None2Empty }}',
-                                        '{{ r.returneditemdetails.new_coupon|None2Empty }}')">
+                                        '{{ r.returneditemdetails.new_coupon|None2Empty }}',
+                                        '{{ r.payment_method }}')">
                                     Select {# translation needed #}
                                 </span>
                             </td>
@@ -91,6 +93,7 @@
                             <td>{{ r.billing_phone|None2Empty }}</td>
                             <td>{{ r.customer_email|None2Empty }}</td>
                             <td>{{ r.paid_price|None2Empty }}</td>
+                            <td>{{ r.bob_status }}</td>
                             <td>{{ r.coupon_code|None2Empty }}</td>
                             <td>{{ r.coupon_money_value|None2Empty }}</td>
                             <td>{{ r.coupon_percent|None2Empty }}</td>

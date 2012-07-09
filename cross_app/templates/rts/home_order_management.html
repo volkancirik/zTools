@@ -9,7 +9,7 @@
 {% block content %}
     <br/>
      <div style="border-bottom: 1px solid #333333;font-size: 14px;color:#000000;">
-        Returned Orderitem Tracking System <b>For Order Management</b>
+       {% trans "returned_orderitem_tracking_system" %}  <b> {% trans "for_order_management" %}</b>
      </div>
      <form id="searchReturnedItemsForm" action="/rts/home_order_management/" method="post">
         {% csrf_token %}
@@ -17,7 +17,7 @@
 
                         <tr>
                             <td style="background-color: none;">
-                                Return Status
+                                {% trans "return_status" %}
                                 <select name='statusFilter' id='id_statusFilter'>
                                     <option value='all'>{% trans "all" %}</option>
                                     {% enum2option statusList %}
@@ -42,29 +42,27 @@
     <table id="orderList">
                 <thead>
                     <tr>
-                        {# translation needed #}
-                        <th>{% trans "Select Item" %}</th>
-                        <th>{% trans "return_status" %}</th>
-                        <th> Order Number </th>
-                        <th> SKU </th>
-                        <th> ID Sales Order Item</th>
-                        <th> Customer Billing Name </th>
-                        <th> Customer Phone </th>
-                        <th> Customer e-mail </th>
-                        <th> Paid Price </th>
-                        <th> BOB Status </th>
-                        <th> Coupon Code  </th>
-                        <th> Coupon Money Value</th>
-                        <th> Coupon Percent </th>
-                        <th> Bank Name </th>
-                        <th> Return Reason</th>
-                        <th> Customer Contacted</th>
-                        <th> Refund Reference Number</th>
-                        <th> New Coupon Need</th>
-                        <th> New Coupon Code</th>
-                        <th> Return Date</th>
-                        <th> Refund Date</th>
-                        {# translation needed #}
+                        <th> {% trans "Select Item" %}</th>
+                        <th> {% trans "return_status" %}</th>
+                        <th> {% trans "zidaya_order_number" %} </th>
+                        <th> {% trans "sku" %} </th>
+                        <th> {% trans "id_sales" %}</th>
+                        <th> {% trans "customer_billing_name" %} </th>
+                        <th> {% trans "customer_phone" %} </th>
+                        <th> {% trans "customer_email" %} </th>
+                        <th> {% trans "paid_price" %} </th>paid_price
+                        <th> {% trans "bob_status" %} </th>
+                        <th> {% trans "coupon_code" %}  </th>
+                        <th> {% trans "coupon_money_value" %}</th>
+                        <th> {% trans "coupon_percent" %} </th>
+                        <th> {% trans "bank_name" %} </th>
+                        <th> {% trans "return_reason" %}</th>
+                        <th> {% trans "customer_contacted" %}</th>
+                        <th> {% trans "refund_reference_number" %} </th>
+                        <th> {% trans "new_coupon_need" %}</th>
+                        <th> {% trans "new_coupon_code" %}</th>
+                        <th> {% trans "return_date" %}</th>
+                        <th> {% trans "refund_date" %}</th>
                     </tr>
                 </thead>
                 <tbody >

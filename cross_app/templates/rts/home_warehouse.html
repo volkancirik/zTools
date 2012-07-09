@@ -8,7 +8,7 @@
 {% block content %}
     <br/>
      <div style="border-bottom: 1px solid #333333;font-size: 14px;color:#000000;">
-        Returned Orderitem Tracking System <b>For Warehouse</b>
+         {% trans "returned_orderitem_tracking_system" %}  <b> {% trans "for_warehouse" %}</b>
      </div>
      <form id="searchReturnedItemsForm" action="/rts/home_warehouse/" method="GET">
         {% csrf_token %}
@@ -16,7 +16,7 @@
 
                         <tr>
                             <td style="background-color: none;">
-                                Order/Suborder Number
+                                {% trans "order_or_suborder_number" %}
                                 <input id="rts_snr_search" type="textbox" name="suborder_nr" value=""/>
 
                                 <a class="submitButton" onclick="return rts_search();">

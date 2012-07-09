@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-07-03 21:54+0300\n"
+"POT-Creation-Date: 2012-07-09 16:04+0300\n"
 "PO-Revision-Date: 2012-07-03 22:49\n"
 "Last-Translator: Can Kaya <can.kaya@rocket-internet.com.tr>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -105,19 +105,19 @@ msgstr ""
 msgid "FLOAT"
 msgstr ""
 
-#: .\dms\models.py:15
+#: .\dms\models.py:24
 msgid "dms_status_new"
 msgstr "New"
 
-#: .\dms\models.py:16
+#: .\dms\models.py:25
 msgid "dms_status_uploaded_to_ekol"
 msgstr "Uploaded_To_Ekol"
 
-#: .\dms\models.py:17
+#: .\dms\models.py:26
 msgid "dms_status_processed"
 msgstr "Processed"
 
-#: .\dms\models.py:18
+#: .\dms\models.py:27
 msgid "dms_status_closed"
 msgstr "Closed"
 
@@ -222,6 +222,7 @@ msgstr "Order Item ID"
 #: .\templates\cross_order\list_order.html.py:75
 #: .\templates\cross_order\list_transaction_details.html.py:61
 #: .\templates\cross_order\order_search.html.py:102
+#: .\templates\rts\home_order_management.html.py:47
 msgid "zidaya_order_number"
 msgstr "Zidaya Order Number"
 
@@ -236,6 +237,7 @@ msgstr "Size"
 #: .\templates\cross_order\order_search.html.py:104
 #: .\templates\cross_order\boxes\refunded_item_box.html.py:34
 #: .\templates\cross_order\boxes\returned_item_box.html.py:34
+#: .\templates\rts\home_order_management.html.py:48
 #: .\templates\rts\home_warehouse.html.py:46
 msgid "sku"
 msgstr "SKU"
@@ -268,6 +270,7 @@ msgstr "Name"
 #: .\templates\cross_order\list_order.html.py:84
 #: .\templates\cross_order\list_transaction_details.html.py:70
 #: .\templates\cross_order\order_search.html.py:110
+#: .\templates\rts\home_order_management.html.py:53
 msgid "paid_price"
 msgstr "Paid Price"
 
@@ -320,7 +323,7 @@ msgstr "Last Update"
 #: .\templates\cross_order\list_order.html.py:133
 #: .\templates\cross_order\list_transaction.html.py:111
 #: .\templates\cross_order\list_transaction_details.html.py:119
-#: .\templates\dms\list_documents.html.py:64
+#: .\templates\dms\list_documents.html.py:66
 msgid "please_select"
 msgstr "Please Select"
 
@@ -416,7 +419,7 @@ msgstr "Choose columns to display"
 #: .\templates\cross_order\boxes\column_box.html.py:112
 #: .\templates\cross_order\boxes\comment_box.html.py:13
 #: .\templates\cross_order\boxes\history_box.html.py:7
-#: .\templates\cross_order\boxes\refunded_item_box.html.py:94
+#: .\templates\cross_order\boxes\refunded_item_box.html.py:105
 #: .\templates\cross_order\boxes\returned_item_box.html.py:100
 msgid "close"
 msgstr "Close"
@@ -444,39 +447,48 @@ msgid "order_nr"
 msgstr "Order Number"
 
 #: .\templates\cross_order\boxes\refunded_item_box.html.py:24
+#: .\templates\rts\home_order_management.html.py:49
 #: .\templates\rts\home_warehouse.html.py:44
 msgid "id_sales"
 msgstr "id_sales_order_item"
 
-#: .\templates\cross_order\boxes\refunded_item_box.html.py:46
+#: .\templates\cross_order\boxes\refunded_item_box.html.py:45
+#, fuzzy
+msgid "payment_type"
+msgstr "Action Type"
+
+#: .\templates\cross_order\boxes\refunded_item_box.html.py:57
+#: .\templates\rts\home_order_management.html.py:61
 msgid "refund_reference_number"
 msgstr "Refund Reference Number"
 
-#: .\templates\cross_order\boxes\refunded_item_box.html.py:56
+#: .\templates\cross_order\boxes\refunded_item_box.html.py:67
+#: .\templates\rts\home_order_management.html.py:60
 msgid "customer_contacted"
 msgstr "Is Customer Contacted"
 
-#: .\templates\cross_order\boxes\refunded_item_box.html.py:60
+#: .\templates\cross_order\boxes\refunded_item_box.html.py:71
 msgid "no"
 msgstr "No"
 
-#: .\templates\cross_order\boxes\refunded_item_box.html.py:61
+#: .\templates\cross_order\boxes\refunded_item_box.html.py:72
 msgid "via_phone"
 msgstr "Phone"
 
-#: .\templates\cross_order\boxes\refunded_item_box.html.py:62
+#: .\templates\cross_order\boxes\refunded_item_box.html.py:73
 msgid "via_email"
 msgstr "E-mail"
 
-#: .\templates\cross_order\boxes\refunded_item_box.html.py:70
+#: .\templates\cross_order\boxes\refunded_item_box.html.py:81
 msgid "is_coupon_needed"
 msgstr "Is new coupon needed?"
 
-#: .\templates\cross_order\boxes\refunded_item_box.html.py:80
+#: .\templates\cross_order\boxes\refunded_item_box.html.py:91
+#: .\templates\rts\home_order_management.html.py:63
 msgid "new_coupon_code"
 msgstr "New Coupon Code"
 
-#: .\templates\cross_order\boxes\refunded_item_box.html.py:100
+#: .\templates\cross_order\boxes\refunded_item_box.html.py:111
 #: .\templates\cross_order\boxes\returned_item_box.html.py:106
 msgid "update_returned_item"
 msgstr "Update Returned Item"
@@ -486,20 +498,21 @@ msgid "returned_orderitem_header"
 msgstr "Returned Orderitem"
 
 #: .\templates\cross_order\boxes\returned_item_box.html.py:46
-msgid "select_action"
-msgstr "Select Action"
-
-#: .\templates\cross_order\boxes\returned_item_box.html.py:50
-msgid "please_select_action"
-msgstr "Please Select"
-
-#: .\templates\cross_order\boxes\returned_item_box.html.py:61
+#: .\templates\rts\home_order_management.html.py:59
 #: .\templates\rts\home_warehouse.html.py:54
 msgid "return_reason"
 msgstr "Return Reason"
 
-#: .\templates\cross_order\boxes\returned_item_box.html.py:65
+#: .\templates\cross_order\boxes\returned_item_box.html.py:50
 msgid "please_select_return_reason"
+msgstr "Please Select"
+
+#: .\templates\cross_order\boxes\returned_item_box.html.py:61
+msgid "select_action"
+msgstr "Select Action"
+
+#: .\templates\cross_order\boxes\returned_item_box.html.py:65
+msgid "please_select_action"
 msgstr "Please Select"
 
 #: .\templates\cross_order\boxes\returned_item_box.html.py:76
@@ -540,28 +553,102 @@ msgstr "Last Update Date"
 msgid "last_update_user"
 msgstr "Last Updated by"
 
-#: .\templates\dms\list_documents.html.py:70
+#: .\templates\dms\list_documents.html.py:72
 msgid "update_selected"
 msgstr "Update Selected"
 
-#: .\templates\dms\list_documents.html.py:75
+#: .\templates\dms\list_documents.html.py:77
 msgid "delete_selected"
 msgstr "Delete"
+
+#: .\templates\rts\home_order_management.html.py:12
+#: .\templates\rts\home_warehouse.html.py:11
+#, fuzzy
+msgid "returned_orderitem_tracking_system"
+msgstr "zTools"
+
+#: .\templates\rts\home_order_management.html.py:12
+msgid "for_order_management"
+msgstr ""
+
+#: .\templates\rts\home_order_management.html.py:20
+#: .\templates\rts\home_order_management.html.py:46
+#: .\templates\rts\home_warehouse.html.py:43
+msgid "return_status"
+msgstr "RTS Status"
 
 #: .\templates\rts\home_order_management.html.py:27
 #: .\templates\rts\home_warehouse.html.py:23
 msgid "Search"
 msgstr "Search"
 
-#: .\templates\rts\home_order_management.html.py:46
+#: .\templates\rts\home_order_management.html.py:45
 #: .\templates\rts\home_warehouse.html.py:42
 msgid "Select Item"
 msgstr "Select Item"
 
-#: .\templates\rts\home_order_management.html.py:47
-#: .\templates\rts\home_warehouse.html.py:43
-msgid "return_status"
-msgstr "RTS Status"
+#: .\templates\rts\home_order_management.html.py:50
+#, fuzzy
+msgid "customer_billing_name"
+msgstr "Customer Name (Billing)"
+
+#: .\templates\rts\home_order_management.html.py:51
+#, fuzzy
+msgid "customer_phone"
+msgstr "Is Customer Contacted"
+
+#: .\templates\rts\home_order_management.html.py:52
+#, fuzzy
+msgid "customer_email"
+msgstr "Is Customer Contacted"
+
+#: .\templates\rts\home_order_management.html.py:54
+#: .\templates\rts\home_warehouse.html.py:53
+msgid "bob_status"
+msgstr "BOB Status"
+
+#: .\templates\rts\home_order_management.html.py:55
+#, fuzzy
+msgid "coupon_code"
+msgstr "New Coupon Code"
+
+#: .\templates\rts\home_order_management.html.py:56
+msgid "coupon_money_value"
+msgstr ""
+
+#: .\templates\rts\home_order_management.html.py:57
+#, fuzzy
+msgid "coupon_percent"
+msgstr "New Coupon Code"
+
+#: .\templates\rts\home_order_management.html.py:58
+#, fuzzy
+msgid "bank_name"
+msgstr "Customer Name (Billing)"
+
+#: .\templates\rts\home_order_management.html.py:62
+#, fuzzy
+msgid "new_coupon_need"
+msgstr "New Coupon Code"
+
+#: .\templates\rts\home_order_management.html.py:64
+#: .\templates\rts\home_warehouse.html.py:58
+msgid "return_date"
+msgstr "Return Date"
+
+#: .\templates\rts\home_order_management.html.py:65
+#, fuzzy
+msgid "refund_date"
+msgstr "End Date"
+
+#: .\templates\rts\home_warehouse.html.py:11
+msgid "for_warehouse"
+msgstr ""
+
+#: .\templates\rts\home_warehouse.html.py:19
+#, fuzzy
+msgid "order_or_suborder_number"
+msgstr "Suborder Number"
 
 #: .\templates\rts\home_warehouse.html.py:48
 msgid "barcode_ean"
@@ -575,17 +662,9 @@ msgstr "Customer Name (Shipping)"
 msgid "billing_name"
 msgstr "Customer Name (Billing)"
 
-#: .\templates\rts\home_warehouse.html.py:53
-msgid "bob_status"
-msgstr "BOB Status"
-
 #: .\templates\rts\home_warehouse.html.py:55
 msgid "action_type"
 msgstr "Action Type"
-
-#: .\templates\rts\home_warehouse.html.py:58
-msgid "return_date"
-msgstr "Return Date"
 
 #: .\templates\userprofile\login_or_register.html.py:24
 msgid "register_header"

@@ -1,0 +1,44 @@
+{% extends "base_home.html" %}
+{% load i18n %}
+{% block content %}
+    <div class="largeButtonContainer">
+        <div id="garagedoor" class="garagedoor">
+            <div class="item">
+                <div class="underlay">
+                    Cross Order Tracking System
+                </div>
+                <img class="overlay" alt="" src="{{ STATIC_URL }}images/cross_order_logo.jpg" style="margin-top: 0px;">
+
+                <div class="mouse"><img alt="" src="{{ STATIC_URL }}images/nothing.gif"> &nbsp;</div>
+            </div>
+            <div class="item">
+                <div class="underlay">
+                    Returned Item Tracking System
+                </div>
+                <img class="overlay" alt="" src="{{ STATIC_URL }}images/rts_logo.jpg" style="margin-top: 0px;">
+
+                <div class="mouse"><img alt="" src="{{ STATIC_URL }}images/nothing.gif"> &nbsp;</div>
+            </div>
+
+            <div class="item">
+                <div class="underlay">
+                    Document Management System
+                </div>
+                <img class="overlay" alt="" src="{{ STATIC_URL }}images/dms_logo.jpg" style="margin-top: 0px;">
+
+                <div class="mouse"><img alt="" src="{{ STATIC_URL }}images/nothing.gif"> &nbsp;</div>
+            </div>
+
+            <script type="text/javascript">
+                GarageDoor.scrollY = -55;
+                GarageDoor.setBindings('garagedoor');
+            </script>
+        </div>
+
+    </div>
+    <div class="homeErrorMessage">
+        Errorrr
+    </div>
+
+
+{% endblock %}

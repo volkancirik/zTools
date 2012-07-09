@@ -1,0 +1,32 @@
+{% load i18n %}
+{% load helper %}
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Zidaya {% block title %}{% endblock %}  </title>
+    <script type="text/javascript" src="{{ STATIC_URL }}js/jquery-1.5.2.js"></script>
+    <script type="text/javascript" src="{{ STATIC_URL }}js/jquery-ui-1.8.18.custom.min.js"></script>
+    <script type="text/javascript" src="{{ STATIC_URL }}js/garagedoorjQuery.js"></script>
+
+    <link rel="stylesheet" href="{{ STATIC_URL }}css/jquery-ui-1.8.4.custom.css" type="text/css">
+    <link rel="stylesheet" href="{{ STATIC_URL }}css/garagedoor.css" type="text/css">
+    <link rel="stylesheet" href="{{ STATIC_URL }}css/zidaya.css" type="text/css">
+</head>
+<body>
+<div id="content">
+
+    <div id="homeHeader">
+        zTools
+    </div>
+    {% block content %}{% endblock %}
+</div>
+<div id="footer">
+    <div class="pagewrap">
+        <div class="mark">
+            {% trans "footer" %}
+            <a href="mailto:ops-dev@zidaya.com">ops-dev@zidaya.com</a>
+        </div>
+    </div>
+</div>
+</body>
+</html>

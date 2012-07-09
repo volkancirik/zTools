@@ -47,7 +47,8 @@ def user_login(request):
             if user is not None:
                 if user.is_active:
                     login(request,user)
-                    return redirect('/cross_order/list_supplier/')
+                    #return redirect('/cross_order/list_supplier/')
+                    return redirect('/main/home/')
                 else:
                     return render_response(request, 'userprofile/login_or_register.html', {'user_inactive': True,'register_form': RegisterForm(), 'login_form':LoginForm()})
         else:

@@ -5,7 +5,13 @@
     <bookmark url="file://$PROJECT_DIR$/cross_app/cross_order/views.py" line="79" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="cdaf22e8-a513-4f8e-bc84-b762ed1517a7" name="Default" comment="Refunded item details is removed. (Merged to returneditemdetails)">
+    <list default="true" id="cdaf22e8-a513-4f8e-bc84-b762ed1517a7" name="Default" comment="It is needed to create a nw branch">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/cross_app/main/__init__.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/cross_app/main/admin.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/cross_app/main/models.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/cross_app/main/urls.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/cross_app/main/views.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/cross_app/templates/home.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="zTools.iws" />
@@ -30,9 +36,9 @@
   <component name="FileEditorManager">
     <leaf>
       <file leaf-file-name="views.py" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/cross_app/rts/views.py">
+        <entry file="file://$PROJECT_DIR$/cross_app/main/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="67" column="54" selection-start="3034" selection-end="3144" vertical-scroll-proportion="0.41842106">
+            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -52,7 +58,6 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/script/return_mail_sender.py" />
         <option value="$PROJECT_DIR$/settings.py" />
         <option value="$PROJECT_DIR$/cross_app/templates/rts/home_warehouse.html" />
         <option value="$PROJECT_DIR$/cross_app/templates/zidaya_return_email_template_1.html" />
@@ -68,6 +73,7 @@
         <option value="$PROJECT_DIR$/cross_app/dms/models.py" />
         <option value="$PROJECT_DIR$/cross_app/templates/dms/list_documents.html" />
         <option value="$PROJECT_DIR$/cross_app/templates/rts/home_order_management.html" />
+        <option value="$PROJECT_DIR$/cross_app/main/views.py" />
       </list>
     </option>
   </component>
@@ -145,7 +151,25 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="rts" />
+              <option name="myItemId" value="templates" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="zTools" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="zTools" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="cross_app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -389,11 +413,12 @@
     <frame x="-8" y="-8" width="1554" height="916" extended-state="6" />
     <editor active="false" />
     <layout>
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32909784" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32909784" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32909784" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.17414248" sideWeight="0.18424396" order="1" side_tool="true" content_ui="tabs" />
       <window_info id="Dependency Viewer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.23350923" sideWeight="0.6721728" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.23350923" sideWeight="0.67090213" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.31257942" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.28462517" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3278272" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
@@ -401,7 +426,6 @@
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3278272" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32909784" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
@@ -432,7 +456,7 @@
     <option name="CHECK_COMMIT_MESSAGE_SPELLING" value="true" />
     <option name="DEFAULT_PATCH_EXTENSION" value="patch" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
-    <option name="LAST_COMMIT_MESSAGE" value="RTS improved" />
+    <option name="LAST_COMMIT_MESSAGE" value="It is needed to create a nw branch" />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="true" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_FILES_UP_TO_DATE_BEFORE_COMMIT" value="false" />
@@ -463,6 +487,7 @@
     <MESSAGE value="DMS type is added. DB has changed!" />
     <MESSAGE value="DMS and RTS error fix and improvements" />
     <MESSAGE value="RTS improved" />
+    <MESSAGE value="It is needed to create a nw branch" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -499,26 +524,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/cross_app/templates/cross_order/boxes/confirm_box.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="2" column="91" selection-start="165" selection-end="281" vertical-scroll-proportion="0.06692913" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/cross_app/templates/cross_order/list_order.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="184" column="0" selection-start="8343" selection-end="8393" vertical-scroll-proportion="0.34343433" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/cross_app/templates/cross_order/boxes/confirm_box_for_delete.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="2" column="91" selection-start="165" selection-end="165" vertical-scroll-proportion="0.06692913" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/cross_app/rts/admin.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/cross_app/dms/admin.py">
       <provider selected="true" editor-type-id="text-editor">
         <state line="4" column="0" selection-start="104" selection-end="104" vertical-scroll-proportion="0.12734082" />
@@ -592,9 +597,37 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/cross_app/templates/home.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/cross_app/rts/views.py">
       <provider selected="true" editor-type-id="text-editor">
         <state line="67" column="54" selection-start="3034" selection-end="3144" vertical-scroll-proportion="0.41842106">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cross_app/main/models.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="3" column="0" selection-start="57" selection-end="57" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cross_app/main/admin.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cross_app/main/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>

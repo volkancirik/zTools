@@ -194,3 +194,16 @@ function viewOrderHistory(pk){
 			    }
             });
 }
+
+function displayModuleMenus(menuClass,menuItem){
+    $('.dynamicMenuItem').hide();
+    $('.dynamicMenuItem').removeClass("activeItem");
+    $('.'+menuClass).show();
+
+    if(menuItem.length > 0)
+        $('#'+menuItem).addClass("activeItem");
+}
+
+function redirectTo(url){
+    window.location = url;
+}

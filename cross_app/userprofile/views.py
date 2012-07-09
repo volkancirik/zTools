@@ -34,7 +34,7 @@ def register(request):
 
 def user_login(request):
     if request.user.is_authenticated():
-        return redirect('/cross_order/list_supplier/')
+        return redirect('/main/home/')
     
     if request.method == 'POST':
         form = LoginForm(request.POST)

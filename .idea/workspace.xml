@@ -1,13 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="BookmarkManager">
-    <bookmark url="file://$PROJECT_DIR$/cross_app/cross_order/views.py" line="381" />
+    <bookmark url="file://$PROJECT_DIR$/cross_app/cross_order/views.py" line="333" />
+    <bookmark url="file://$PROJECT_DIR$/cross_app/cross_order/views.py" line="79" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="cdaf22e8-a513-4f8e-bc84-b762ed1517a7" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/script/mass_ticket_list.xls" afterPath="$PROJECT_DIR$/script/mass_ticket_list.xls" />
+    <list default="true" id="cdaf22e8-a513-4f8e-bc84-b762ed1517a7" name="Default" comment="Refunded item details is removed. (Merged to returneditemdetails)">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/script/kayako_mass_ticket.py" afterPath="$PROJECT_DIR$/script/kayako_mass_ticket.py" />
     </list>
     <ignored path="zTools.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -30,46 +29,73 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="settings.py" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/cross_app/settings.py">
+      <file leaf-file-name="models.py" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/cross_app/rts/models.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="19" column="1" selection-start="724" selection-end="724" vertical-scroll-proportion="0.0">
+            <state line="77" column="17" selection-start="3364" selection-end="3377" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="kayako_mass_ticket.py" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/script/kayako_mass_ticket.py">
+      <file leaf-file-name="home_order_management.html" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/cross_app/templates/rts/home_order_management.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="172" column="0" selection-start="6748" selection-end="6748" vertical-scroll-proportion="1.1437125">
+            <state line="140" column="60" selection-start="7203" selection-end="7203" vertical-scroll-proportion="-4.3846154">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="smtplib.py" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://C:/Python27/Lib/smtplib.py">
+      <file leaf-file-name="__init__.py" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/cross_app/cross_order/__init__.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="566" column="0" selection-start="19653" selection-end="19653" vertical-scroll-proportion="0.0">
+            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="api.py" pinned="false" current="false" current-in-tab="false">
-        <entry file="jar://C:/Python27/Lib/site-packages/kayako-1.1.5-py2.7.egg!/kayako/api.py">
+      <file leaf-file-name="list_documents.html" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/cross_app/templates/dms/list_documents.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="450" column="37" selection-start="20146" selection-end="20146" vertical-scroll-proportion="0.0">
+            <state line="40" column="31" selection-start="1549" selection-end="1549" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ticket.py" pinned="false" current="false" current-in-tab="false">
-        <entry file="jar://C:/Python27/Lib/site-packages/kayako-1.1.5-py2.7.egg!/kayako/objects/ticket/ticket.py">
+      <file leaf-file-name="models.py" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/cross_app/dms/models.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="200" column="33" selection-start="9632" selection-end="9635" vertical-scroll-proportion="0.0">
+            <state line="40" column="10" selection-start="1454" selection-end="1460" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="refunded_item_box.html" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/cross_app/templates/cross_order/boxes/refunded_item_box.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="47" column="56" selection-start="2054" selection-end="2068" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="zidaya.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/static/js/zidaya.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="98" column="40" selection-start="3764" selection-end="3764" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="views.py" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/cross_app/rts/views.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="95" column="0" selection-start="4293" selection-end="4293" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -89,22 +115,22 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/cross_app/urls.py" />
-        <option value="$PROJECT_DIR$/cross_app/templates/cross_order/list_supplier.html" />
-        <option value="$PROJECT_DIR$/cross_app/templates/base.html" />
-        <option value="$PROJECT_DIR$/static/css/zidaya.css" />
+        <option value="$PROJECT_DIR$/script/return_mail_sender.py" />
+        <option value="$PROJECT_DIR$/settings.py" />
+        <option value="$PROJECT_DIR$/cross_app/templates/rts/home_warehouse.html" />
+        <option value="$PROJECT_DIR$/cross_app/templates/zidaya_return_email_template_1.html" />
+        <option value="$PROJECT_DIR$/cross_app/rts/models.py" />
+        <option value="$PROJECT_DIR$/cross_app/templates/cross_order/boxes/returned_item_box.html" />
+        <option value="$PROJECT_DIR$/cross_app/dms/forms.py" />
+        <option value="$PROJECT_DIR$/cross_app/dms/views.py" />
+        <option value="$PROJECT_DIR$/cross_app/templates/cross_order/boxes/confirm_box_for_delete.html" />
+        <option value="$PROJECT_DIR$/cross_app/dms/admin.py" />
+        <option value="$PROJECT_DIR$/cross_app/templates/cross_order/boxes/refunded_item_box.html" />
         <option value="$PROJECT_DIR$/static/js/zidaya.js" />
-        <option value="$PROJECT_DIR$/cross_app/templates/cross_order/boxes/comment_box.html" />
-        <option value="$PROJECT_DIR$/cross_app/templates/cross_order/list_order.html" />
-        <option value="$PROJECT_DIR$/script/delete_invalid_orders.py" />
-        <option value="$PROJECT_DIR$/script/update_cross_status.py" />
-        <option value="$PROJECT_DIR$/script/init_cross_order.py" />
-        <option value="$PROJECT_DIR$/cross_app/cross_order/models.py" />
-        <option value="$PROJECT_DIR$/cross_app/cross_order/views.py" />
-        <option value="$PROJECT_DIR$/script/kayako_mass_ticket_v2.py" />
-        <option value="$PROJECT_DIR$/script/py2exe_setup.py" />
-        <option value="$PROJECT_DIR$/script/Makespec.py" />
-        <option value="$PROJECT_DIR$/script/kayako_mass_ticket.py" />
+        <option value="$PROJECT_DIR$/cross_app/rts/views.py" />
+        <option value="$PROJECT_DIR$/cross_app/dms/models.py" />
+        <option value="$PROJECT_DIR$/cross_app/templates/dms/list_documents.html" />
+        <option value="$PROJECT_DIR$/cross_app/templates/rts/home_order_management.html" />
       </list>
     </option>
   </component>
@@ -134,8 +160,6 @@
       <sortByType />
     </navigator>
     <panes>
-      <pane id="Favorites" />
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -164,20 +188,6 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="script" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="zTools" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="zTools" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
               <option name="myItemId" value="cross_app" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -196,12 +206,112 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="userprofile" />
+              <option name="myItemId" value="templates" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="zTools" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="zTools" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="cross_app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="templates" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="rts" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="zTools" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="zTools" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="cross_app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="templates" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="dms" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="zTools" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="zTools" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="cross_app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="rts" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="zTools" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="zTools" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="cross_app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="dms" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="zTools" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="zTools" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="cross_app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="cross_order" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
         </subPane>
       </pane>
+      <pane id="Favorites" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -214,10 +324,14 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Projects\DjangoProjects\zTools\cross_app\templates\cross_order\boxes" />
       <recent name="C:\Projects\DjangoProjects\zTools\script" />
+      <recent name="C:\Projects\DjangoProjects\zTools\cross_app\main" />
+      <recent name="C:\Projects\DjangoProjects\zTools\cross_app\rts" />
+      <recent name="C:\Projects\DjangoProjects\zTools\cross_app\templates\rts" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.kayako_mass_ticket">
+  <component name="RunManager" selected="Django server.zTools">
     <configuration default="false" name="kayako_mass_ticket" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -250,6 +364,40 @@
       <option name="PARAMETERS" value="" />
       <RunnerSettings RunnerId="PyDebugRunner" />
       <ConfigurationWrapper RunnerId="PyDebugRunner" />
+      <method />
+    </configuration>
+    <configuration default="false" name="duplicate_fixer" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/script" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <module name="zTools" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/script/duplicate_fixer.py" />
+      <option name="PARAMETERS" value="" />
+      <RunnerSettings RunnerId="PythonRunner" />
+      <ConfigurationWrapper RunnerId="PythonRunner" />
+      <method />
+    </configuration>
+    <configuration default="false" name="return_mail_sender" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/script" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <module name="zTools" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/script/return_mail_sender.py" />
+      <option name="PARAMETERS" value="" />
+      <RunnerSettings RunnerId="PyDebugRunner" />
+      <RunnerSettings RunnerId="PythonRunner" />
+      <ConfigurationWrapper RunnerId="PyDebugRunner" />
+      <ConfigurationWrapper RunnerId="PythonRunner" />
       <method />
     </configuration>
     <configuration default="true" type="PythonUnitTestConfigurationType" factoryName="Python's unittest">
@@ -343,10 +491,12 @@
       <ConfigurationWrapper RunnerId="PythonRunner" />
       <method />
     </configuration>
-    <list size="3">
-      <item index="0" class="java.lang.String" itemvalue="Django server.zTools" />
-      <item index="1" class="java.lang.String" itemvalue="Python.kayako_mass_ticket" />
-      <item index="2" class="java.lang.String" itemvalue="Python.kayako_mass_ticket_v2" />
+    <list size="5">
+      <item index="0" class="java.lang.String" itemvalue="Python.kayako_mass_ticket" />
+      <item index="1" class="java.lang.String" itemvalue="Python.kayako_mass_ticket_v2" />
+      <item index="2" class="java.lang.String" itemvalue="Python.duplicate_fixer" />
+      <item index="3" class="java.lang.String" itemvalue="Python.return_mail_sender" />
+      <item index="4" class="java.lang.String" itemvalue="Django server.zTools" />
     </list>
   </component>
   <component name="ShelveChangesManager" show_recycled="false" />
@@ -400,19 +550,19 @@
     <frame x="-8" y="-8" width="1554" height="916" extended-state="6" />
     <editor active="false" />
     <layout>
-      <window_info id="Messages" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32909784" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32909784" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32909784" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.22493404" sideWeight="0.3151207" order="1" side_tool="true" content_ui="tabs" />
-      <window_info id="Dependency Viewer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.22493404" sideWeight="0.67090213" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.17414248" sideWeight="0.18424396" order="1" side_tool="true" content_ui="tabs" />
+      <window_info id="Dependency Viewer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.17414248" sideWeight="0.6721728" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.31257942" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.28716645" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3278272" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.28462517" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3278272" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3278272" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3278272" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32909784" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
@@ -443,7 +593,7 @@
     <option name="CHECK_COMMIT_MESSAGE_SPELLING" value="true" />
     <option name="DEFAULT_PATCH_EXTENSION" value="patch" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
-    <option name="LAST_COMMIT_MESSAGE" value="Kayako script autoresponder disabled.&#10;" />
+    <option name="LAST_COMMIT_MESSAGE" value="RTS improved" />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="true" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_FILES_UP_TO_DATE_BEFORE_COMMIT" value="false" />
@@ -464,17 +614,27 @@
     <MESSAGE value="Kayako script first draft" />
     <MESSAGE value="Refactoring problems are resloved" />
     <MESSAGE value="Kayako script autoresponder disabled.&#10;" />
+    <MESSAGE value="Returned order management system infrasturcture is improved.&#10;UI design is implemented&#10;" />
+    <MESSAGE value="RTS error fix and improvements&#10;" />
+    <MESSAGE value="Refunded item details is removed. (Merged to returneditemdetails)" />
+    <MESSAGE value="timestamp added to reports.&#10;RTS improvements" />
+    <MESSAGE value="error fix" />
+    <MESSAGE value="RTS issue slving" />
+    <MESSAGE value="RTS finalized for warehouse" />
+    <MESSAGE value="DMS type is added. DB has changed!" />
+    <MESSAGE value="DMS and RTS error fix and improvements" />
+    <MESSAGE value="RTS improved" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="python-line">
           <url>file://$PROJECT_DIR$/cross_app/cross_order/views.py</url>
-          <line>339</line>
+          <line>291</line>
         </line-breakpoint>
         <line-breakpoint enabled="true" type="python-line">
           <url>file://$PROJECT_DIR$/cross_app/cross_order/views.py</url>
-          <line>385</line>
+          <line>337</line>
         </line-breakpoint>
         <line-breakpoint enabled="true" type="python-line">
           <url>file://$PROJECT_DIR$/script/kayako_mass_ticket_v2.py</url>
@@ -488,93 +648,100 @@
           <url>jar://C:/Python27/Lib/site-packages/kayako-1.1.5-py2.7.egg!/kayako/objects/ticket/ticket.py</url>
           <line>248</line>
         </line-breakpoint>
+        <line-breakpoint enabled="true" type="python-line">
+          <url>file://$PROJECT_DIR$/cross_app/cross_order/views.py</url>
+          <line>252</line>
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="python-line">
+          <url>file://$PROJECT_DIR$/cross_app/cross_order/views.py</url>
+          <line>76</line>
+        </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/script/init_cross_order.py">
+    <entry file="file://$PROJECT_DIR$/cross_app/templates/zidaya_return_email_template_1.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="137" column="64" selection-start="4997" selection-end="4997" vertical-scroll-proportion="2.6861413" />
+        <state line="67" column="14" selection-start="7942" selection-end="7942" vertical-scroll-proportion="0.034343433" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/script/size_fixer.py">
+    <entry file="file://$PROJECT_DIR$/cross_app/dms/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
+        <state line="54" column="39" selection-start="2082" selection-end="2082" vertical-scroll-proportion="0.031835206" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/cross_app/cross_order/models.py">
+    <entry file="file://$PROJECT_DIR$/cross_app/dms/forms.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="52" column="76" selection-start="2750" selection-end="2750" vertical-scroll-proportion="0.03307393" />
+        <state line="7" column="39" selection-start="234" selection-end="234" vertical-scroll-proportion="0.22284645" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cross_app/templates/cross_order/boxes/confirm_box.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="2" column="91" selection-start="165" selection-end="281" vertical-scroll-proportion="0.06692913" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/cross_app/templates/cross_order/list_order.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="100" column="49" selection-start="3928" selection-end="3928" vertical-scroll-proportion="0.37586686" />
+        <state line="184" column="0" selection-start="8343" selection-end="8393" vertical-scroll-proportion="0.34343433" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/cross_app/cross_order/views.py">
+    <entry file="file://$PROJECT_DIR$/cross_app/templates/cross_order/boxes/confirm_box_for_delete.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="459" column="49" selection-start="18586" selection-end="18586" vertical-scroll-proportion="0.0">
+        <state line="2" column="91" selection-start="165" selection-end="165" vertical-scroll-proportion="0.06692913" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cross_app/rts/admin.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cross_app/dms/admin.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="4" column="0" selection-start="104" selection-end="104" vertical-scroll-proportion="0.12734082" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cross_app/rts/models.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="77" column="17" selection-start="3364" selection-end="3377" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cross_app/templates/dms/list_documents.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="40" column="31" selection-start="1549" selection-end="1549" vertical-scroll-proportion="0.0">
           <folding />
         </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cross_app/dms/models.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="40" column="10" selection-start="1454" selection-end="1460" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cross_app/templates/cross_order/boxes/refunded_item_box.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="47" column="56" selection-start="2054" selection-end="2068" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/static/js/zidaya.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="52" column="40" selection-start="1884" selection-end="1884" vertical-scroll-proportion="0.0" />
+        <state line="98" column="40" selection-start="3764" selection-end="3764" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
-    <entry file="jar://C:/Python27/Lib/site-packages/kayako-1.1.5-py2.7.egg!/kayako/objects/user.py">
+    <entry file="file://$PROJECT_DIR$/cross_app/rts/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="22" column="6" selection-start="484" selection-end="484" vertical-scroll-proportion="0.0" />
+        <state line="95" column="0" selection-start="4293" selection-end="4293" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
-    <entry file="jar://C:/Python27/Lib/site-packages/kayako-1.1.5-py2.7.egg!/kayako/exception.py">
+    <entry file="file://$PROJECT_DIR$/cross_app/templates/rts/home_order_management.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="29" column="6" selection-start="788" selection-end="788" vertical-scroll-proportion="0.33289474" />
-      </provider>
-    </entry>
-    <entry file="jar://C:/Python27/Lib/site-packages/kayako-1.1.5-py2.7.egg!/kayako/core/object.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="67" column="4" selection-start="2892" selection-end="2892" vertical-scroll-proportion="-1.2757697" />
-      </provider>
-    </entry>
-    <entry file="file://C:/Python27/Lib/site-packages/xlrd/__init__.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="429" column="4" selection-start="20574" selection-end="20574" vertical-scroll-proportion="-2.2171052" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/cross_app/settings.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="19" column="1" selection-start="724" selection-end="724" vertical-scroll-proportion="0.0">
+        <state line="140" column="60" selection-start="7203" selection-end="7203" vertical-scroll-proportion="-4.3846154">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="jar://C:/Python27/Lib/site-packages/kayako-1.1.5-py2.7.egg!/kayako/api.py">
+    <entry file="file://$PROJECT_DIR$/cross_app/cross_order/__init__.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="450" column="37" selection-start="20146" selection-end="20146" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://C:/Python27/Lib/site-packages/kayako-1.1.5-py2.7.egg!/kayako/objects/ticket/ticket.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="200" column="33" selection-start="9632" selection-end="9635" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://C:/Python27/Lib/smtplib.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="566" column="0" selection-start="19653" selection-end="19653" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/script/kayako_mass_ticket.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="172" column="0" selection-start="6748" selection-end="6748" vertical-scroll-proportion="1.1437125">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>

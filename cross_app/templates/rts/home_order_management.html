@@ -87,7 +87,7 @@
                             <td>
                                 {{ r.returneditemdetails.get_status_display }}
                             </td>
-                            <td><a href="https://bob.zidaya.com/orderprocessing/order/index/id/{{ r.id_sales_order }})" target="_blank">{{ r.order_nr }}</a></td>
+                            <td><a href="https://bob.zidaya.com/orderprocessing/order/index/id/{{ r.id_sales_order }}" target="_blank">{{ r.order_nr }}</a></td>
                             <td><a href="http://static.zidaya.com/p/-{{ r.id_catalog_config|reverse }}-1-zoom.jpg" target="_blank">{{ r.sku }}</a></td>
                             <td>{{ r.id_sales_order_item}}</td>
                             <td>{{ r.billing_name|None2Empty }}</td>

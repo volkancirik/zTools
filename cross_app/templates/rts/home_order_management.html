@@ -57,11 +57,11 @@
                         <th> Coupon Money Value</th>
                         <th> Coupon Percent </th>
                         <th> Bank Name </th>
+                        <th> Return Reason</th>
                         <th> Customer Contacted</th>
                         <th> Refund Reference Number</th>
                         <th> New Coupon Need</th>
                         <th> New Coupon Code</th>
-                        <th> Return Reason</th>
                         <th> Return Date</th>
                         <th> Refund Date</th>
                         {# translation needed #}
@@ -100,6 +100,9 @@
                             <td>{{ r.coupon_percent|None2Empty }}</td>
                             <td>{{ r.payment_method|None2Empty }}</td>
                             <td>
+                                    {{ r.returneditemdetails.return_reason.name }}
+                            </td>
+                            <td>
                                 {% if r.returneditemdetails.status > 0 %}
                                     {{ r.returneditemdetails.customer_contacted|None2Empty }}
                                 {% endif %}
@@ -117,11 +120,6 @@
                             <td>
                                 {% if r.returneditemdetails.status > 0 and r.returneditemdetails.isCouponNeeded %}
                                     {{ r.returneditemdetails.new_coupon|None2Empty }}
-                                {% endif %}
-                            </td>
-                            <td>
-                                {% if r.returneditemdetails.status > 0 %}
-                                    {{ r.returneditemdetails.return_reason.name }}
                                 {% endif %}
                             </td>
                             <td>

@@ -61,6 +61,7 @@
                         <th> Refund Reference Number</th>
                         <th> New Coupon Need</th>
                         <th> New Coupon Code</th>
+                        <th> Return Reason</th>
                         <th> Return Date</th>
                         <th> Refund Date</th>
                         {# translation needed #}
@@ -119,6 +120,11 @@
                                 {% endif %}
                             </td>
                             <td>
+                                {% if r.returneditemdetails.status > 0 %}
+                                    {{ r.returneditemdetails.return_reason.name }}
+                                {% endif %}
+                            </td>
+                            <td>
                                     {{ r.returneditemdetails.create_date|date:"d/M/Y H:i:s" }}
                             </td>
                             <td>
@@ -160,7 +166,7 @@
                 $('.checkboxClass').attr("checked", "");
         });
 
-        $('#id_statusFilter').val({{ status }});
+        $('#id_statusFilter').val('{{ status }}');
     });
 </script>
 

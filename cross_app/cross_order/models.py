@@ -121,6 +121,7 @@ class Supplier(models.Model):
 class CrossStatus(models.Model):
     name = models.CharField(max_length=250,null=False)
     isTransactionGenerate = models.BooleanField(null=False,default=False)
+    isFinal = models.BooleanField(null=False,default=False)
     isInvalid = models.BooleanField(null=False,default=False)
     order = models.IntegerField(default=9999)
 

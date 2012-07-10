@@ -91,3 +91,9 @@ def None2Empty(value):
 @register.filter
 def reverse(value):
     return str(value)[::-1]
+
+@register.filter
+def checkPermission(user, arg=u's'):
+    for group_name in arg.split(','):
+        return user.groups.filter(name=group_name).count() > 0
+    return False

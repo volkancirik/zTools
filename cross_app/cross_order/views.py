@@ -15,7 +15,7 @@ from cross_order.helper_functions import render_response, generateTransactionStr
 from cross_order.models import Supplier, CrossStatus, Order, LastUpdate, Transactions, OrderTransaction, OrderCrossDetails, OrderAttributeSet, TransactionStatus, ReportConfirmedSkuBase, ReportConfirmedSupplierBase, ReportOutOfStockCrossDock, ReportUnprocessedCrossDock, OverdueCrossDock, ReportSql2Excel, ColumnType
 from django.core.serializers.json import Serializer, DjangoJSONEncoder
 from django.db import transaction, connection
-from cross_order.utils import get_datatables_records
+from cross_order.utils import get_datatables_records, check_permission
 
 @login_required
 def order_search_ajax(request):
@@ -122,6 +122,7 @@ def get_excel_report(request):
 
 
 @login_required
+@check_permission('Cross')
 def list_supplier(request):
 
     start_date = datetime.datetime.now()
@@ -170,6 +171,7 @@ def list_supplier(request):
             })
 
 @login_required
+@check_permission('Cross')
 def list_order(request):
 
     if "sid" not in request.GET or Supplier.objects.filter(pk=request.GET["sid"]).count() == 0 :
@@ -237,6 +239,7 @@ def update_transaction_status(request):
 
 
 @login_required
+@check_permission('Cross')
 def update_order_list(request):
     order_id_list = request.POST.getlist('orderChecked')
     if not len(order_id_list) or "buttonSource" not in request.POST:
@@ -297,6 +300,7 @@ def update_order_list(request):
     return redirect('/cross_order/list_order/?sid='+sid+"&dateStart="+dateStart+"&dateEnd="+dateEnd+"&oattributeid="+request.GET['oattributeid'])
 
 @login_required
+@check_permission('Cross')
 def transaction_list(request):
 
     status = None
@@ -320,6 +324,7 @@ def transaction_list(request):
             })
 
 @login_required
+@check_permission('Cross')
 def transaction_details(request,code):
     cs = None
     try:
@@ -341,6 +346,7 @@ def transaction_details(request,code):
             })
 
 @login_required
+@check_permission('Cross')
 def update_trans_order_list(request):
     order_id_list = request.POST.getlist('orderChecked')
     if not len(order_id_list) or "buttonSource" not in request.POST:
@@ -413,6 +419,7 @@ def order_history(request):
 
 
 @login_required
+@check_permission('Cross')
 def exportExcelOrders(request):
     supplier=None
     start_date = ""
@@ -482,6 +489,7 @@ def exportExcelOrders(request):
     return response
 
 @login_required
+@check_permission('Cross')
 def exportExcelTransactions(request):
     code= ""
     cs = None
@@ -545,6 +553,7 @@ def exportExcelTransactions(request):
     return response
 
 @login_required
+@check_permission('Cross')
 def exportExcelForSupplier(request):
     code= ""
     cs = None

@@ -70,6 +70,46 @@ body{
     white-space: nowrap;
 }
 
+#leftNavContainer {
+    position: absolute;
+    top: 0;
+    z-index: 2;
+}
+
+#leftNavContainer .item {
+    background-color: black;
+    border-right: 1px solid white;
+    cursor: pointer;
+    float: left;
+    overflow: visible;
+    padding: 10px;
+    position: relative;
+    white-space: nowrap;
+    color:white;
+    font-weight: bold;
+    display: none;
+}
+
+#leftNavContainer .item:hover {
+    background-color: white;
+    color:black;
+    border: 1px solid black;
+}
+
+#leftNavContainer .header{
+    border-right: 1px solid white;
+    cursor: pointer;
+    display: block;
+    float: left;
+    overflow: visible;
+    padding: 10px;
+    position: relative;
+    white-space: nowrap;
+    border-bottom: 1px solid black;
+    color:#333333;
+    padding-bottom: 9px;
+}
+
 
 #header #navigation .item .label{
     line-height: 22px;

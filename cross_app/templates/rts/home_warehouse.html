@@ -7,9 +7,6 @@
 
 {% block content %}
     <br/>
-     <div style="border-bottom: 1px solid #333333;font-size: 14px;color:#000000;">
-        Returned Orderitem Tracking System <b>For Warehouse</b>
-     </div>
      <form id="searchReturnedItemsForm" action="/rts/home_warehouse/" method="GET">
         {% csrf_token %}
             <table class="actionPanel searchPanel" cellpadding="0" cellspacing="0" width="100%">
@@ -116,6 +113,7 @@
 <script type="text/javascript">
     $(document).ready(function(){
         displayModuleMenus("rts","rtsWarehouse");
+        setMenuName("Returned Item Tracking System - Warehouse");
 
         var oTable = $('#orderList').dataTable(
                 {

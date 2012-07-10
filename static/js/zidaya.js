@@ -207,3 +207,7 @@ function displayModuleMenus(menuClass,menuItem){
 function redirectTo(url){
     window.location = url;
 }
+
+function setMenuName(moduleName){
+    $('#moduleName').html(" - "+moduleName);
+}

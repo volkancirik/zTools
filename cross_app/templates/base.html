@@ -1,6 +1,7 @@
 {% load i18n %}
 {% load helper %}
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <title>Zidaya {% block title %}{% endblock %}  </title>
@@ -18,25 +19,66 @@
     <link rel="stylesheet" href="{{ STATIC_URL }}css/TableTools_JUI.css" type="text/css">
     <link rel="stylesheet" href="{{ STATIC_URL }}css/jquery-ui-1.8.4.custom.css" type="text/css">
     <link rel="stylesheet" href="{{ STATIC_URL }}css/zidaya.css" type="text/css">
-{#    <script type="text/javascript">#}
-{#      var uvOptions = {};#}
-{#      (function() {#}
-{#        var uv = document.createElement('script'); uv.type = 'text/javascript'; uv.async = true;#}
-{#        uv.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'widget.uservoice.com/usMncu79ZDeEJP1EVJe0bQ.js';#}
-{#        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(uv, s);#}
-{#      })();#}
-{#    </script>#}
+    {#    <script type="text/javascript">#}
+    {#      var uvOptions = {};#}
+    {#      (function() {#}
+    {#        var uv = document.createElement('script'); uv.type = 'text/javascript'; uv.async = true;#}
+    {#        uv.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'widget.uservoice.com/usMncu79ZDeEJP1EVJe0bQ.js';#}
+    {#        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(uv, s);#}
+    {#      })();#}
+    {#    </script>#}
     {% block extra_head %}{% endblock %}
 </head>
 <body>
 <div id="header">
-    <span id="logo" href="/">
-        zTools
-    </span>
+    <div id="leftNavContainer">
+        <a href="/mainin/home/">
+        <span class=" header">
+                    zTools <span id="moduleName"></span>
+        </span>
+        </a>
+        {% if user|checkPermission:"RtsCustomer" %}
+            <a href="/rts/home_order_management/">
+        <span class="item dynamicMenuItem rts" id="rtsOrderManagement">
+                                Returns For Order Management
+            </span>
+            </a>
+        {% endif %}
+
+        {% if user|checkPermission:"RtsWarehouse" %}
+            <a href="/rts/home_warehouse/">
+        <span class="item dynamicMenuItem rts" id="rtsWarehouse">
+                                Returns For Warehouse
+            </span>
+            </a>
+        {% endif %}
+        {% if user|checkPermission:"Cross" %}
+            <a href="/cross_order/transaction_list/">
+            <span class="item dynamicMenuItem cross" id="crossTransactions">
+                            {% trans "transactions" %}
+            </span>
+            </a>
+        {% endif %}
+        {% if user|checkPermission:"Cross" %}
+                    <a href="/cross_order/list_supplier/">
+            <span class="item dynamicMenuItem cross" id="crossListSupplier">
+                        Supplier List
+            </span>
+                    </a>
+        {% endif %}
+        {% if user|checkPermission:"Dms" %}
+            <a href="/dms/list_documents/">
+            <span class="item dynamicMenuItem dms" id="dmsListDocuments">
+                                {% trans "document_management_system" %}
+            </span>
+            </a>
+
+        {% endif %}
+    </div>
     <div id="navContainer">
         {% if user.is_authenticated %}
-        <div id="navigation">
-            <span class="item">
+            <div id="navigation">
+                <span class="item">
                 <span class="label">
                     <a href="/">
                         <span class="label">
@@ -45,88 +87,43 @@
                     </a>
                 </span>
             </span>
-
-        {% if user|checkPermission:"RtsCustomer" %}
-        <span class="item dynamicMenuItem rts" id="rtsOrderManagement">
-                    <a href="/rts/home_order_management/">
-                            <span class="label">
-                                Returns For Order Management
-                            </span>
-                        </a>
-            </span>
-        {% endif %}
-
-        {% if user|checkPermission:"RtsWarehouse" %}
-        <span class="item dynamicMenuItem rts" id="rtsWarehouse">
-                    <a href="/rts/home_warehouse/">
-                            <span class="label">
-                                Returns For Warehouse
-                            </span>
-                        </a>
-            </span>
-         {% endif %}
-        <!--
             <span class="item">
-                    <a href="/cross_order/report_list/">
+                             {% if LANGUAGE_CODE == "tr" %}
+                                <a href="/user/change_language/?lang=en">
+                                    <span class="label">
+                                        English
+                                    </span>
+                                </a>
+                            {% else %}
+                                <a href="/user/change_language/?lang=tr">
+                                    <span class="label">
+                                        Türkçe
+                                    </span>
+                                </a>
+                            {% endif %}
+                </span>
+                <span class="item">
+                <span class="label">
+                    <a href="/">
                         <span class="label">
-                            {% trans "reports" %}
+                            {{ user.username }}
                         </span>
                     </a>
-            </span>
-            <span class="item">
-                    <a href="/cross_order/order_search/">
-                        <span class="label">
-                            {% trans "advanced_search" %}
-                        </span>
-                    </a>
-            </span>
-            -->
-        {% if user|checkPermission:"Cross" %}
-            <span class="item dynamicMenuItem cross" id="crossTransactions">
-                    <a href="/cross_order/transaction_list/">
-                        <span class="label">
-                            {% trans "transactions" %}
-                        </span>
-                    </a>
-            </span>
-        {% endif %}
-        {% if user|checkPermission:"Cross" %}
-            <span class="item dynamicMenuItem cross" id="crossListSupplier">
-                    <a href="/cross_order/list_supplier/">
-                        <span class="label">
-                            Supplier List
-                        </span>
-                    </a>
-            </span>
-        {% endif %}
-        {% if user|checkPermission:"Dms" %}
-            <span class="item dynamicMenuItem dms" id="dmsListDocuments">
-                    <a href="/dms/list_documents/">
-                            <span class="label">
-                                {% trans "document_management_system" %}
-                            </span>
-                        </a>
+                </span>
             </span>
 
-        {% endif %}
-            <a class="item ico icoLogout" href="/user/logout/"></a>
 
-            <div style="text-align: right;margin-top:40px;margin-right: 10px;">
-                {% if LANGUAGE_CODE == "tr" %}
-                    <a href="/user/change_language/?lang=en">English</a>
-                {% else %}
-                    <a href="/user/change_language/?lang=tr">Türkçe</a>
-                {% endif %}
+                <a class="item ico icoLogout" href="/user/logout/"></a>
+
             </div>
-        </div>
         {% else %}
-        <div id="navigation">
+            <div id="navigation">
             <span class="item">
                         <span class="label">
                             {% trans "cross_order_tracking_system" %}
                         </span>
             </span>
-        </div>  
+            </div>
         {% endif %}
     </div>
 </div>

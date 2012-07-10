@@ -394,24 +394,28 @@ select,textarea{
 
 
 .actionPanel{
-    margin-top: 10px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    padding-top: 5px;
+    padding-bottom: 5px;
 }
 
 .actionPanel tr{
-    height: 40px;
+    height: 20px;
 }
 
 .actionPanel .left {
     width: 150px;
-    padding-left: 10px;
+    padding-left: 5px;
 }
 
 .actionPanel .right {
-    padding-right: 10px;
+    padding-right: 5px;
+
 }
 
 .actionPanel td{
-    background-color: #CCCCCC;
+    /*background-color: #CCCCCC;*/
 }
 
 .actionPanel input{
@@ -560,8 +564,10 @@ div.clear {
 .searchPanel td{
     background-color: #CCCCCC;
     border: 1px solid #999999;
-    border-radius: 5px 5px 5px 5px;
-    padding-left: 10px;
+    /*border-radius: 5px 5px 5px 5px;*/
+    padding-left: 5px;
+    padding-bottom: 5px;
+    padding-top: 5px;
 }
 
 #pup {

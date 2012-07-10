@@ -5,12 +5,13 @@ from django.contrib.auth.decorators import login_required, user_passes_test
 from django.shortcuts import redirect
 from cross_order.helper_functions import render_response
 #from dms.forms import DocumentUploadForm
+from cross_order.utils import check_permission
 from rts.helper import not_in_rts_warehouse_group, not_in_rts_customer_group
 from rts.models import OrderItemBaseForReturns, ReturnedItemDetails,ReturnReason,ActionType,rts_status
 from settings import MEDIA_ROOT, LOGIN_URL
 
 @login_required
-@user_passes_test(not_in_rts_customer_group, login_url=LOGIN_URL)
+@check_permission('RtsCustomer')
 def home_order_management(request):
     dict = {
         'statusList':rts_status.TYPE,
@@ -44,7 +45,7 @@ def home_order_management(request):
     return render_response(request, 'rts/home_order_management.html',dict)
 
 @login_required
-@user_passes_test(not_in_rts_warehouse_group, login_url=LOGIN_URL)
+@check_permission('RtsWarehouse')
 def home_warehouse(request):
     suborder_nr = request.GET.get('suborder_nr','')
 

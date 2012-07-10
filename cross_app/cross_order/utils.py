@@ -1,10 +1,11 @@
 from django.db.models import Q
 from django.template.loader import render_to_string
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponseRedirect
 from django.utils.cache import add_never_cache_headers
 from django.utils import simplejson
 from django.utils.safestring import mark_safe
 from cross_order.models import Order
+from functools import wraps
 
 def get_datatables_records(request, querySet, columnIndexNameMap, jsonTemplatePath=None, *args):
     """
@@ -106,3 +107,15 @@ def get_datatables_records(request, querySet, columnIndexNameMap, jsonTemplatePa
     #prevent from caching datatables result
     add_never_cache_headers(response)
     return response
+
+
+def check_permission(module_name):
+    def decorator(view_func):
+        @wraps(view_func)
+        def _wrapped_view(request, *args, **kwargs):
+            if not request.user.groups.filter(name=module_name).count():
+                return HttpResponseRedirect('/main/home/?err_module='+module_name)
+            else:
+                return view_func(request, *args, **kwargs)
+        return _wrapped_view
+    return decorator

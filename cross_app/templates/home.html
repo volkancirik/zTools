@@ -1,0 +1,116 @@
+{% extends "base_home.html" %}
+{% load i18n %}
+{% block content %}
+    <div class="largeButtonContainer">
+        <div id="garagedoor" class="garagedoor">
+            <div class="item">
+                <div class="underlay">
+                    Cross Order Tracking System
+                </div>
+                <img class="overlay" alt="" src="{{ STATIC_URL }}images/cross_order_logo.jpg" style="margin-top: 0px;">
+
+                <div class="mouse">
+                    <a href="/cross_order/list_supplier/">
+                        <img alt="" src="{{ STATIC_URL }}images/nothing.gif"> &nbsp;
+                    </a>
+                </div>
+            </div>
+            <div class="item">
+                <div class="underlay">
+                    Returned Item Tracking System
+                </div>
+                <img class="overlay" alt="" src="{{ STATIC_URL }}images/rts_logo.jpg" style="margin-top: 0px;">
+
+                <div class="mouse" onclick="mainToSub();">
+                    <img alt="" src="{{ STATIC_URL }}images/nothing.gif"> &nbsp;
+                </div>
+            </div>
+
+            <div class="item">
+                <div class="underlay">
+                    Document Management System
+                </div>
+                <img class="overlay" alt="" src="{{ STATIC_URL }}images/dms_logo.jpg" style="margin-top: 0px;">
+
+                <div class="mouse">
+                    <a href="/dms/list_documents/">
+                        <img alt="" src="{{ STATIC_URL }}images/nothing.gif"> &nbsp;
+                    </a>
+                </div>
+            </div>
+            
+            <div class="item">
+                <div class="underlay">
+                    Detailed Crossorder Item Search
+                </div>
+                <img class="overlay" alt="" src="{{ STATIC_URL }}images/detailed_search_logo.jpg" style="margin-top: 0px;">
+
+                <div class="mouse">
+                    <a href="/cross_order/order_search/">
+                        <img alt="" src="{{ STATIC_URL }}images/nothing.gif"> &nbsp;
+                    </a>
+                </div>
+            </div>
+            <div class="item">
+                <div class="underlay">
+                    Custom Reports
+                </div>
+                <img class="overlay" alt="" src="{{ STATIC_URL }}images/reports_logo.jpg" style="margin-top: 0px;">
+
+                <div class="mouse">
+                    <a href="/cross_order/report_list/">
+                        <img alt="" src="{{ STATIC_URL }}images/nothing.gif"> &nbsp;
+                    </a>
+                </div>
+            </div>
+
+            <script type="text/javascript">
+                GarageDoor.scrollY = -55;
+                GarageDoor.setBindings('garagedoor');
+            </script>
+        </div>
+
+        <div class="subBigMenu" style="display: none;">
+            <div class="bigButton">
+                <div onclick="redirectTo('/rts/home_warehouse/');">
+                     For Warehouse
+                </div>
+            </div>
+            <div  class="bigButton">
+                <div onclick="redirectTo('/rts/home_order_management/');">
+                    For Order Management
+                </div>
+            </div>
+            <div class="clear"></div>
+
+            <div class="back" onclick="subToMain();">
+                Back
+            </div>
+        </div>
+
+    </div>
+    {% if err_message|length > 0 %}
+    <div class="homeErrorMessage">
+        {{ err_message }}
+    </div>
+    {% endif %}
+
+<script type="text/javascript">
+    function mainToSub(){
+        $('.garagedoor').fadeOut("fast",function(){
+            $('.subBigMenu').fadeIn("slow");
+            $('.homeErrorMessage').hide();
+        });
+    }
+    function subToMain(){
+        $('.subBigMenu').fadeOut("fast",function(){
+            $('.garagedoor').fadeIn("slow");
+            $('.homeErrorMessage').hide();
+        });
+    }
+    $().ready(function(){
+
+    });
+</script>
+
+{% endblock %}

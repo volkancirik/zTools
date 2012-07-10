@@ -5,27 +5,8 @@
     <bookmark url="file://$PROJECT_DIR$/cross_app/cross_order/views.py" line="79" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="cdaf22e8-a513-4f8e-bc84-b762ed1517a7" name="Default" comment="Modularzation basics are done">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/script/user_group.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cross_app/locale/en/LC_MESSAGES/django.mo" afterPath="$PROJECT_DIR$/cross_app/locale/en/LC_MESSAGES/django.mo" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cross_app/locale/tr/LC_MESSAGES/django.mo" afterPath="$PROJECT_DIR$/cross_app/locale/tr/LC_MESSAGES/django.mo" />
+    <list default="true" id="cdaf22e8-a513-4f8e-bc84-b762ed1517a7" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cross_app/locale/en/LC_MESSAGES/django.po" afterPath="$PROJECT_DIR$/cross_app/locale/en/LC_MESSAGES/django.po" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cross_app/locale/tr/LC_MESSAGES/django.po" afterPath="$PROJECT_DIR$/cross_app/locale/tr/LC_MESSAGES/django.po" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cross_app/templates/base.html" afterPath="$PROJECT_DIR$/cross_app/templates/base.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cross_app/templates/base_home.html" afterPath="$PROJECT_DIR$/cross_app/templates/base_home.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cross_app/templates/cross_order/list_order.html" afterPath="$PROJECT_DIR$/cross_app/templates/cross_order/list_order.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cross_app/templates/cross_order/list_supplier.html" afterPath="$PROJECT_DIR$/cross_app/templates/cross_order/list_supplier.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cross_app/templates/cross_order/list_transaction.html" afterPath="$PROJECT_DIR$/cross_app/templates/cross_order/list_transaction.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cross_app/templates/cross_order/list_transaction_details.html" afterPath="$PROJECT_DIR$/cross_app/templates/cross_order/list_transaction_details.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cross_app/templates/cross_order/order_search.html" afterPath="$PROJECT_DIR$/cross_app/templates/cross_order/order_search.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cross_app/templates/cross_order/report_list.html" afterPath="$PROJECT_DIR$/cross_app/templates/cross_order/report_list.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cross_app/templates/dms/list_documents.html" afterPath="$PROJECT_DIR$/cross_app/templates/dms/list_documents.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cross_app/templates/dms/upload_document.html" afterPath="$PROJECT_DIR$/cross_app/templates/dms/upload_document.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cross_app/templates/home.html" afterPath="$PROJECT_DIR$/cross_app/templates/home.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cross_app/templates/rts/home_order_management.html" afterPath="$PROJECT_DIR$/cross_app/templates/rts/home_order_management.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cross_app/templates/rts/home_warehouse.html" afterPath="$PROJECT_DIR$/cross_app/templates/rts/home_warehouse.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cross_app/templates/userprofile/login_or_register.html" afterPath="$PROJECT_DIR$/cross_app/templates/userprofile/login_or_register.html" />
     </list>
     <ignored path="zTools.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -87,7 +68,7 @@
       <file leaf-file-name="user_group.py" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/script/user_group.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="24" column="0" selection-start="520" selection-end="520" vertical-scroll-proportion="0.812749">
+            <state line="24" column="0" selection-start="520" selection-end="520" vertical-scroll-proportion="0.5368421">
               <folding />
             </state>
           </provider>
@@ -430,6 +411,7 @@
     <frame x="-8" y="-8" width="1554" height="916" extended-state="6" />
     <editor active="false" />
     <layout>
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32909784" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32909784" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32909784" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.17414248" sideWeight="0.18424396" order="1" side_tool="true" content_ui="tabs" />
@@ -437,12 +419,11 @@
       <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.23350923" sideWeight="0.6721728" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.31257942" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.28462517" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3278272" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3278272" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3278272" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32909784" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
@@ -473,7 +454,7 @@
     <option name="CHECK_COMMIT_MESSAGE_SPELLING" value="true" />
     <option name="DEFAULT_PATCH_EXTENSION" value="patch" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
-    <option name="LAST_COMMIT_MESSAGE" value="Modularzation is applied on UI and rules/permissions are defined in backend.&#10;Group named &quot;Cross&quot; has to be defined in order to reach cross-order system" />
+    <option name="LAST_COMMIT_MESSAGE" value="Merging" />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="true" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_FILES_UP_TO_DATE_BEFORE_COMMIT" value="false" />
@@ -486,7 +467,6 @@
     <option name="UPDATE_GROUP_BY_CHANGELIST" value="false" />
     <option name="SHOW_FILE_HISTORY_AS_TREE" value="false" />
     <option name="FILE_HISTORY_SPLITTER_PROPORTION" value="0.6" />
-    <MESSAGE value="Insert script changed to last_update_change date.&#10;New column &quot;last_status_change&quot; is added to the models" />
     <MESSAGE value="Float point numbers are written to excel in a well format" />
     <MESSAGE value="Excel problems resolved" />
     <MESSAGE value="Kayako create ticket script" />
@@ -511,6 +491,7 @@
     <MESSAGE value="Modular user interface" />
     <MESSAGE value="Modularzation is applied to te user interface and rules are defined in backend.&#10;Group named &quot;Cross&quot; has to be created." />
     <MESSAGE value="Modularzation is applied on UI and rules/permissions are defined in backend.&#10;Group named &quot;Cross&quot; has to be defined in order to reach cross-order system" />
+    <MESSAGE value="Merging" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -632,7 +613,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/script/user_group.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="24" column="0" selection-start="520" selection-end="520" vertical-scroll-proportion="0.812749">
+        <state line="24" column="0" selection-start="520" selection-end="520" vertical-scroll-proportion="0.5368421">
           <folding />
         </state>
       </provider>

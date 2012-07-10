@@ -95,7 +95,7 @@
                     {% for o in orderList %}
                         <tr>
                             <td>
-                                {% if o.ordercrossdetails.cross_status.pk != 6 and o.ordercrossdetails.cross_status.pk != 7 %}
+                                {% if not o.ordercrossdetails.cross_status.isFinal and not o.ordercrossdetails.cross_status.isFinal %}
                                     <input type=checkbox class="checkboxClass" name='orderChecked' value="{{ o.pk }}">
                                 {% endif %}
                             </td>
@@ -143,7 +143,7 @@
                                         <option value='{{ cs.pk }}'>{{ cs.name }}</option>
                                     {% endif %}
                                 {% else %}
-                                    {% if cs.pk != 6 and cs.pk != 7 %}
+                                    {% if not cs.isFinal %}
                                         {% if cs.isTransactionGenerate %}
                                             <option class="confirmRequired" value='{{ cs.pk }}'>{{ cs.name }}</option>
                                         {% else %}

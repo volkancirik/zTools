@@ -34,13 +34,13 @@
     <div id="leftNavContainer">
         <a href="/mainin/home/">
         <span class=" header">
-                    {% trans ztools %} <span id="moduleName"></span>
+                    zTools <span id="moduleName"></span>
         </span>
         </a>
         {% if user|checkPermission:"RtsCustomer" %}
             <a href="/rts/home_order_management/">
         <span class="item dynamicMenuItem rts" id="rtsOrderManagement">
-                {% trans rts_submenu_order_management %}
+                RTS Order Management
             </span>
             </a>
         {% endif %}
@@ -48,28 +48,28 @@
         {% if user|checkPermission:"RtsWarehouse" %}
             <a href="/rts/home_warehouse/">
         <span class="item dynamicMenuItem rts" id="rtsWarehouse">
-            {% trans rts_submenu_warehouse %}
+            RTS Warehouse
             </span>
             </a>
         {% endif %}
         {% if user|checkPermission:"Cross" %}
             <a href="/cross_order/transaction_list/">
             <span class="item dynamicMenuItem cross" id="crossTransactions">
-                            {% trans "transactions" %}
+                            Transactions
             </span>
             </a>
         {% endif %}
         {% if user|checkPermission:"Cross" %}
                     <a href="/cross_order/list_supplier/">
             <span class="item dynamicMenuItem cross" id="crossListSupplier">
-                {% trans cross_submenu_supplier_list %}
+                Supplier List
             </span>
                     </a>
         {% endif %}
         {% if user|checkPermission:"Dms" %}
             <a href="/dms/list_documents/">
             <span class="item dynamicMenuItem dms" id="dmsListDocuments">
-                                {% trans "document_management_system" %}
+                                DMS
             </span>
             </a>
 
@@ -82,7 +82,7 @@
                 <span class="label">
                     <a href="/">
                         <span class="label">
-                            {% trans main_menu %}
+                            Maın Menu
                         </span>
                     </a>
                 </span>
@@ -120,7 +120,7 @@
             <div id="navigation">
             <span class="item">
                         <span class="label">
-                            {% trans "cross_order_tracking_system" %}
+                            Cross Order Tracking System
                         </span>
             </span>
             </div>

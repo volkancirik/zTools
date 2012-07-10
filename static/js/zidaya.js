@@ -81,13 +81,14 @@ function viewReturnBox(suborderNumber,orderNumber,sku,returnedOrderID,action,rea
     $('.returnBox').show();
     return false;
 }
-function viewRefundBox(orderNumber,idSalesOrder,sku,returnedOrderID,refundReferenceNumber,customerContactedList,refundedIsCouponNeeded,newCoupon,payment_method){
+function viewRefundBox(orderNumber,idSalesOrder,sku,returnedOrderID,refundReferenceNumber,customerContactedList,refundedIsCouponNeeded,newCoupon,payment_method,comment){
     $('#id_refundedOrderNumber').text(orderNumber);
     $('#id_refundedIdSalesOrderItem').text(idSalesOrder);
     $('#id_refundedSku').text(sku);
     $('#id_returnedItemID').val(returnedOrderID);
     $('#id_refundReferenceNumber').val(refundReferenceNumber);
     $('#id_customerContactedList').val(customerContactedList);
+    $('#id_comment').val(comment);
 
     if(refundedIsCouponNeeded == "True")
         $('#id_refundedIsCouponNeeded').attr('checked','checked');

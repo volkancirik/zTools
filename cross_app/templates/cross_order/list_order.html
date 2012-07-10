@@ -94,7 +94,11 @@
                 <tbody>
                     {% for o in orderList %}
                         <tr>
-                            <td><input type=checkbox class="checkboxClass" name='orderChecked' value="{{ o.pk }}"></td>
+                            <td>
+                                {% if not o.ordercrossdetails.cross_status.isFinal and not o.ordercrossdetails.cross_status.isFinal %}
+                                    <input type=checkbox class="checkboxClass" name='orderChecked' value="{{ o.pk }}">
+                                {% endif %}
+                            </td>
                             <td>{{ o.ordercrossdetails.cross_status.name }}</td>
                             <td>{{ o.id_sales_order_item }}</td>
                             <td>
@@ -132,10 +136,20 @@
                          <select name='statusUpdate' id='id_statusUpdate'>
                             <option value='0'>{% trans "please_select" %}</option>
                             {% for cs in crossStatusList %}
-                                {% if cs.isTransactionGenerate %}
-                                    <option class="confirmRequired" value='{{ cs.pk }}'>{{ cs.name }}</option>
+                                {% if user.is_superuser  %}
+                                    {% if cs.isTransactionGenerate %}
+                                        <option class="confirmRequired" value='{{ cs.pk }}'>{{ cs.name }}</option>
+                                    {% else %}
+                                        <option value='{{ cs.pk }}'>{{ cs.name }}</option>
+                                    {% endif %}
                                 {% else %}
-                                    <option value='{{ cs.pk }}'>{{ cs.name }}</option>
+                                    {% if not cs.isFinal %}
+                                        {% if cs.isTransactionGenerate %}
+                                            <option class="confirmRequired" value='{{ cs.pk }}'>{{ cs.name }}</option>
+                                        {% else %}
+                                            <option value='{{ cs.pk }}'>{{ cs.name }}</option>
+                                        {% endif %}
+                                    {% endif %}
                                 {% endif %}
                             {% endfor %}
                          </select>
@@ -227,7 +241,7 @@
 
     $(document).ready(function(){
         displayModuleMenus("cross","");
-        setMenuName("{% trans module_cross_order_tracking_system %}");
+        setMenuName("Crossorder Management System");
         
         var oTable = $('#orderList').dataTable(
                 {

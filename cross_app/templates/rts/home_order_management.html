@@ -13,21 +13,40 @@
      </div>
      <form id="searchReturnedItemsForm" action="/rts/home_order_management/" method="post">
         {% csrf_token %}
-            <table class="actionPanel searchPanel" cellpadding="0" cellspacing="0" width="100%">
+            <table class="actionPanel searchPanel dateFilter" cellpadding="0" cellspacing="0" width="30%">
+                <tr>
+                    <td>
+                        {% trans "start_date" %}
+                    </td>
+                    <td>
+                        <input id="id_dateStart" type="textbox" name="dateStart" value="{{ start_date|date:"m/j/Y" }}"/>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        {% trans "end_date" %}
+                    </td>
+                    <td>
+                        <input id="id_dateEnd" type="textbox" name="dateEnd" value="{{ end_date|date:"m/j/Y" }}"/>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="background-color: none;">
+                        {% trans "return_status" %}
 
-                        <tr>
-                            <td style="background-color: none;">
-                                {% trans "return_status" %}
-                                <select name='statusFilter' id='id_statusFilter'>
-                                    <option value='all'>{% trans "all" %}</option>
-                                    {% enum2option statusList %}
-                                </select>
+                    </td>
+                    <td>
+                        <select name='statusFilter' id='id_statusFilter'>
+                            <option value='all'>{% trans "all" %}</option>
+                            {% enum2option statusList %}
+                        </select>
 
-                                <a class="submitButton" onclick="return rts_search();">
-                                    <span> {% trans "Search" %} </span>
-                                </a>
-                            </td>
-                        </tr>
+                        <a class="submitButton" onclick="return rts_search();">
+                            <span> {% trans "Search" %} </span>
+                        </a>
+                    </td>
+                </tr>
+
                 </table>
                 <script type="text/javascript">
                     function rts_search(){
@@ -39,6 +58,16 @@
 <div class="tabbed">
 	<div class="tab-content" style="display:block;">
 		<div class="items">
+            <form id="DateForm" method="POST" action="/cross_order/list_supplier/">
+                {% csrf_token %}
+                <table class="dateFilter" cellspacing="0" cellpadding="0">
+
+
+                </table>
+            </form>
+            <div class="dateRangeInfo">
+                {{ start_date|date }} - {{ end_date|date }}
+            </div>
     <table id="orderList">
                 <thead>
                     <tr>
@@ -54,9 +83,9 @@
                         <th> {% trans "bob_status" %} </th>
                         <th> {% trans "coupon_code" %}  </th>
                         <th> {% trans "coupon_money_value" %}</th>
-                        <th> {% trans "coupon_percent" %} </th>
                         <th> {% trans "bank_name" %} </th>
                         <th> {% trans "return_reason" %}</th>
+                        <th> {% trans "comment" %}</th>
                         <th> {% trans "customer_contacted" %}</th>
                         <th> {% trans "refund_reference_number" %} </th>
                         <th> {% trans "new_coupon_need" %}</th>
@@ -68,7 +97,7 @@
                 <tbody >
                     {% for r in oibfr_list %}
 
-                        <tr style="height:30px;">
+                        <tr style="height:30px;" id="{{ r.returneditemdetails.pk }}">
                             <td>
                                 <span class="actionLabel" onclick="viewRefundBox('{{ r.order_nr  }}',
                                         '{{ r.id_sales_order_item }}',
@@ -78,7 +107,8 @@
                                         '{{ r.returneditemdetails.customer_contacted|None2Empty }}',
                                         '{{ r.returneditemdetails.isCouponNeeded|None2Empty }}',
                                         '{{ r.returneditemdetails.new_coupon|None2Empty }}',
-                                        '{{ r.payment_method }}')">
+                                        '{{ r.payment_method }}',
+                                        '{{ r.returneditemdetails.comment }}')">
                                     Select {# translation needed #}
                                 </span>
                             </td>
@@ -95,36 +125,38 @@
                             <td>{{ r.bob_status }}</td>
                             <td>{{ r.coupon_code|None2Empty }}</td>
                             <td>{{ r.coupon_money_value|None2Empty }}</td>
-                            <td>{{ r.coupon_percent|None2Empty }}</td>
                             <td>{{ r.payment_method|None2Empty }}</td>
                             <td>
                                     {{ r.returneditemdetails.return_reason.name }}
                             </td>
                             <td>
-                                {% if r.returneditemdetails.status > 0 %}
+                                    {{ r.returneditemdetails.comment }}
+                            </td>
+                            <td>
+
                                     {{ r.returneditemdetails.customer_contacted|None2Empty }}
-                                {% endif %}
+
                             </td>
                             <td>
-                                {% if r.returneditemdetails.status > 0 %}
+
                                     {{ r.returneditemdetails.refund_reference_number|None2Empty }}
-                                {% endif %}
+
                             </td>
                             <td>
-                                {% if r.returneditemdetails.status > 0 %}
+
                                     {{ r.returneditemdetails.isCouponNeeded|None2Empty }}
-                                {% endif %}
+
                             </td>
                             <td>
-                                {% if r.returneditemdetails.status > 0 and r.returneditemdetails.isCouponNeeded %}
+
                                     {{ r.returneditemdetails.new_coupon|None2Empty }}
-                                {% endif %}
+
                             </td>
                             <td>
                                     {{ r.returneditemdetails.create_date|date:"d/M/Y H:i:s" }}
                             </td>
                             <td>
-                                {% if r.returneditemdetails.status > 0 %}
+                                {% if r.returneditemdetails.status == 1 %}
                                     {{ r.returneditemdetails.update_date|date:"d/M/Y H:i:s" }}
                                 {% endif %}
                             </td>
@@ -163,6 +195,8 @@
         });
 
         $('#id_statusFilter').val('{{ status }}');
+        $( "#id_dateStart" ).datepicker({ altFormat: 'yy-mm-dd' });
+        $( "#id_dateEnd" ).datepicker({  altFormat: 'yy-mm-dd' });
     });
 </script>
 

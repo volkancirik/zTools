@@ -1,6 +1,6 @@
 # Create your views here.
 
-from datetime import  datetime
+from datetime import  datetime,time,timedelta
 from django.contrib.auth.decorators import login_required, user_passes_test
 from django.shortcuts import redirect
 from cross_order.helper_functions import render_response
@@ -17,15 +17,29 @@ def home_order_management(request):
         'reasonList':ReturnReason.objects.all().order_by("order"),
         'status':request.POST.get('statusFilter',rts_status.RETURNED)
     }
-    oibfr_list = OrderItemBaseForReturns.objects.filter(returneditemdetails__status=rts_status.RETURNED)
+
+    start_date = datetime.now() - timedelta(days = 3)
+    start_date = datetime.combine(start_date, time.min)
+
+    end_date = datetime.now()
+    if "dateStart" in request.POST:
+        start_date = datetime.strptime(request.POST['dateStart'], "%m/%d/%Y")
+    if "dateEnd" in request.POST:
+        end_date = datetime.strptime(request.POST['dateEnd'], "%m/%d/%Y")
+        end_date = datetime.combine(end_date, time.max)
+
+    dict.update({ 'start_date':start_date})
+    dict.update({ 'end_date':end_date,})
+
+    oibfr_list = OrderItemBaseForReturns.objects.filter(returneditemdetails__status=rts_status.RETURNED,returneditemdetails__create_date__range = [start_date, end_date])
     dict.update({'oibfr_list':oibfr_list})
 
     if request.method == 'POST':
         status = request.POST.get('statusFilter','')
         try:
-            dict.update({'oibfr_list': OrderItemBaseForReturns.objects.filter(returneditemdetails__status=int(status))})
+            dict.update({'oibfr_list': OrderItemBaseForReturns.objects.filter(returneditemdetails__status=int(status),returneditemdetails__create_date__range = [start_date, end_date])})
         except:
-            dict.update({'oibfr_list': OrderItemBaseForReturns.objects.exclude(returneditemdetails=None)})
+            dict.update({'oibfr_list': OrderItemBaseForReturns.objects.filter(returneditemdetails__create_date__range = [start_date, end_date])})
 
     return render_response(request, 'rts/home_order_management.html',dict)
 
@@ -45,6 +59,7 @@ def home_warehouse(request):
         
     return render_response(request, 'rts/home_warehouse.html',dict)
 
+
 def update_refunded_order(request):
     if request.method == 'POST':
         oib = OrderItemBaseForReturns.objects.get(pk = int(request.POST['returnedItemID']))
@@ -52,6 +67,7 @@ def update_refunded_order(request):
         refundReferenceNumber = request.POST['refundReferenceNumber']
         newCoupon = ""
         isCouponNeeded = request.POST.get('isCouponNeeded',False)
+        comment = request.POST['comment']
 
         oib.returneditemdetails.status = rts_status.REFUNDED
         if isCouponNeeded:
@@ -66,6 +82,7 @@ def update_refunded_order(request):
         oib.returneditemdetails.refund_reference_number = refundReferenceNumber
         oib.returneditemdetails.isCouponNeeded = isCouponNeeded
         oib.returneditemdetails.new_coupon = newCoupon
+        oib.returneditemdetails.comment = comment
         if oib.payment_method.lower() == "codpayment":
             oib.returneditemdetails.isEmailSent = True
         oib.returneditemdetails.save()
@@ -107,3 +124,4 @@ def update_returned_order(request):
         return redirect('/rts/home_warehouse/?suborder_nr='+oib.suborder_number)
     else:
         return redirect('/rts/home_warehouse/')
+

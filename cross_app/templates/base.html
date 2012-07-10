@@ -34,13 +34,13 @@
     <div id="leftNavContainer">
         <a href="/mainin/home/">
         <span class=" header">
-                    zTools <span id="moduleName"></span>
+                    {% trans ztools %} <span id="moduleName"></span>
         </span>
         </a>
         {% if user|checkPermission:"RtsCustomer" %}
             <a href="/rts/home_order_management/">
         <span class="item dynamicMenuItem rts" id="rtsOrderManagement">
-                                Returns For Order Management
+                {% trans rts_submenu_order_management %}
             </span>
             </a>
         {% endif %}
@@ -48,7 +48,7 @@
         {% if user|checkPermission:"RtsWarehouse" %}
             <a href="/rts/home_warehouse/">
         <span class="item dynamicMenuItem rts" id="rtsWarehouse">
-                                Returns For Warehouse
+            {% trans rts_submenu_warehouse %}
             </span>
             </a>
         {% endif %}
@@ -62,7 +62,7 @@
         {% if user|checkPermission:"Cross" %}
                     <a href="/cross_order/list_supplier/">
             <span class="item dynamicMenuItem cross" id="crossListSupplier">
-                        Supplier List
+                {% trans cross_submenu_supplier_list %}
             </span>
                     </a>
         {% endif %}
@@ -82,7 +82,7 @@
                 <span class="label">
                     <a href="/">
                         <span class="label">
-                            MAIN MENU
+                            {% trans main_menu %}
                         </span>
                     </a>
                 </span>

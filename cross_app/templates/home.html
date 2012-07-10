@@ -5,7 +5,7 @@
         <div id="garagedoor" class="garagedoor">
             <div class="item">
                 <div class="underlay">
-                    Cross Order Tracking System
+                    {% trans module_cross_order_tracking_system %}
                 </div>
                 <img class="overlay" alt="" src="{{ STATIC_URL }}images/cross_order_logo.jpg" style="margin-top: 0px;">
 
@@ -17,7 +17,7 @@
             </div>
             <div class="item">
                 <div class="underlay">
-                    Returned Item Tracking System
+                    {% trans module_returned_item_tracking_system %}
                 </div>
                 <img class="overlay" alt="" src="{{ STATIC_URL }}images/rts_logo.jpg" style="margin-top: 0px;">
 
@@ -28,7 +28,7 @@
 
             <div class="item">
                 <div class="underlay">
-                    Document Management System
+                    {% trans module_document_management_system %}
                 </div>
                 <img class="overlay" alt="" src="{{ STATIC_URL }}images/dms_logo.jpg" style="margin-top: 0px;">
 
@@ -41,7 +41,7 @@
             
             <div class="item">
                 <div class="underlay">
-                    Detailed Crossorder Item Search
+                    {% trans module_detailed_crossorder_item_search %}
                 </div>
                 <img class="overlay" alt="" src="{{ STATIC_URL }}images/detailed_search_logo.jpg" style="margin-top: 0px;">
 
@@ -53,7 +53,7 @@
             </div>
             <div class="item">
                 <div class="underlay">
-                    Custom Reports
+                    {% trans module_custom_reports %}
                 </div>
                 <img class="overlay" alt="" src="{{ STATIC_URL }}images/reports_logo.jpg" style="margin-top: 0px;">
 
@@ -73,18 +73,18 @@
         <div class="subBigMenu" style="display: none;">
             <div class="bigButton">
                 <div onclick="redirectTo('/rts/home_warehouse/');">
-                     For Warehouse
+                    {% trans module_rts_for_warehouse %}
                 </div>
             </div>
             <div  class="bigButton">
                 <div onclick="redirectTo('/rts/home_order_management/');">
-                    For Order Management
+                    {% trans module_rts_for_order_management %}
                 </div>
             </div>
             <div class="clear"></div>
 
             <div class="back" onclick="subToMain();">
-                Back
+                {% trans back %}
             </div>
         </div>
 

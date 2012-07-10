@@ -93,7 +93,7 @@
 <script type="text/javascript">
     $(document).ready(function(){
         displayModuleMenus("cross","crossListSupplier");
-        setMenuName("Crossorder Management System");
+        setMenuName("{% trans module_cross_order_tracking_system %}");
 
         $('#id_attributeFilter').val({{ oattribute.pk }});
         $('#supplierList').dataTable(

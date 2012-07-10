@@ -564,7 +564,7 @@ div.clear {
 .searchPanel td{
     background-color: #CCCCCC;
     border: 1px solid #999999;
-    /*border-radius: 5px 5px 5px 5px;*/
+    border-radius: 5px 5px 5px 5px;
     padding-left: 5px;
     padding-bottom: 5px;
     padding-top: 5px;

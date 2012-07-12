@@ -95,7 +95,7 @@
                     {% for o in orderList %}
                         <tr>
                             <td>
-                                {% if not o.ordercrossdetails.cross_status.isFinal and not o.ordercrossdetails.cross_status.isFinal %}
+                                {% if not o.ordercrossdetails.cross_status.isFinal%}
                                     <input type=checkbox class="checkboxClass" name='orderChecked' value="{{ o.pk }}">
                                 {% endif %}
                             </td>

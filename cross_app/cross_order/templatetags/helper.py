@@ -49,6 +49,16 @@ def totalConfirmed(t):
     return OrderTransaction.objects.filter(trans=t,order__ordercrossdetails__cross_status=cs).count()
 
 @register.filter
+def totalShipped(t):
+    cs = CrossStatus.objects.all().order_by("order")[5]
+    return OrderTransaction.objects.filter(trans=t,order__ordercrossdetails__cross_status=cs).count()
+
+@register.filter
+def totalCancelled(t):
+    cs = CrossStatus.objects.all().order_by("order")[4]
+    return OrderTransaction.objects.filter(trans=t,order__ordercrossdetails__cross_status=cs).count()
+
+@register.filter
 def getSupplierName(t):
     try:
         return OrderTransaction.objects.filter(trans=t)[0].order.supplier.name

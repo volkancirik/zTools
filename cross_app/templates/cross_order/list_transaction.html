@@ -59,6 +59,12 @@
                             {% trans "number_of_items_confirmed" %}
                         </th>
                         <th>
+                            {% trans "number_of_items_cancelled" %}
+                        </th>
+                        <th>
+                            {% trans "number_of_items_shipped" %}
+                        </th>
+                        <th>
                             {% trans "total_number_of_items" %}
                         </th>
                         <th>
@@ -89,6 +95,12 @@
                             </td>
                             <td>
                                 {{ t|totalConfirmed}}
+                            </td>
+                            <td>
+                                {{ t|totalCancelled}}
+                            </td>
+                            <td>
+                                {{ t|totalShipped}}
                             </td>
                             <td>
                                 {{ t|totalOrderCount }}

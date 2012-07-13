@@ -153,7 +153,7 @@ def list_supplier(request):
                s.totalCount = s.order_set.filter(order_date__range=[start_date, end_date]).count()
                supList.append(s)
 
-#   below is the older version of filterin suppliers
+#   below is the older version of filtering suppliers
 #    for s in Supplier.objects.all().order_by("name"):
 #        if s.order_set.filter(order_date__range=[start_date, end_date]).count() >0:
 #            s.unprocessedCount = s.order_set.filter(ordercrossdetails__cross_status=cs,order_date__range=[start_date, end_date]).count()
@@ -303,24 +303,44 @@ def update_order_list(request):
 @check_permission('Cross')
 def transaction_list(request):
 
-    status = None
-    try:
-        status = TransactionStatus.objects.get(pk = int(request.GET['status']))
-    except:
-        if request.GET.get('status','') == "":
-            status = TransactionStatus.objects.all().order_by("order")[0]
+#    status = None
+#    try:
+#        status = TransactionStatus.objects.get(pk = int(request.GET['status']))
+#    except:
+#        if request.GET.get('status','') == "":
+#            status = TransactionStatus.objects.all().order_by("order")[0]
 
-    current_url = '/cross_order/transaction_list/?status='
+    start_date = datetime.datetime.now() - datetime.timedelta(days = 7)
+    start_date = datetime.datetime.combine(start_date, datetime.time.min)
+
+    end_date = datetime.datetime.now()
+    if "dateStart" in request.POST:
+        start_date = datetime.datetime.strptime(request.POST['dateStart'], "%m/%d/%Y")
+    if "dateEnd" in request.POST:
+        end_date = datetime.datetime.strptime(request.POST['dateEnd'], "%m/%d/%Y")
+        end_date = datetime.datetime.combine(end_date, datetime.time.max)
+    if "statusFilter" in request.POST:
+        status_id = request.POST.get('statusFilter','')
+        if status_id != 'all':
+            status = TransactionStatus.objects.get(pk = status_id)
+        else:
+            status = None
+    else:
+        status = TransactionStatus.objects.all().order_by("order")[0]
+
     tList = Transactions.objects.order_by('-create_date')
     if status is not None:
-        tList = tList.filter(status = status)
+        tList = tList.filter(status = status,create_date__range = [start_date, end_date])
+    else:
+        tList = tList.filter(create_date__range = [start_date, end_date])
 
     return render_response(request, 'cross_order/list_transaction.html',
             {
                 'transList':tList,
                 'statusList':TransactionStatus.objects.all().order_by("order"),
-                'current_url':current_url,
-                'status':request.GET.get('status','1')
+                'status':request.GET.get('status','1'),
+                'start_date':start_date,
+                'end_date':end_date,
             })
 
 @login_required

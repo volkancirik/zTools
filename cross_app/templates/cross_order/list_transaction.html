@@ -9,33 +9,72 @@
 	<div class="tab-content" style="display:block;">
 		<div class="items">
 
-        <table class="filterPanel">
-
-                <tr>
-                    <td class="left">
-                        {% trans "status" %}
-                    </td>
-                    <td class="right">
-                        <select name='statusFilter' id='id_statusFilter' style="width:175px;">
-                            <option value='all'>{% trans "all" %}</option>
-                            {% for s in statusList %}
+            <form id="DateForm" method="POST" action="/cross_order/transaction_list/">
+                {% csrf_token %}
+                <table class="dateFilter" cellspacing="0" cellpadding="0">
+                    <tr>
+                        <td>
+                            {% trans "start_date" %}
+                        </td>
+                        <td>
+                            <input id="id_dateStart" type="textbox" name="dateStart" value="{{ start_date|date:"m/j/Y" }}"/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            {% trans "end_date" %}
+                        </td>
+                        <td>
+                            <input id="id_dateEnd" type="textbox" name="dateEnd" value="{{ end_date|date:"m/j/Y" }}"/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="left">
+                            {% trans "status" %}
+                        </td>
+                        <td class="right">
+                            <select name='statusFilter' id='id_statusFilter' style="width:175px;">
+                                <option value='all'>{% trans "all" %}</option>
+                                {% for s in statusList %}
                                     <option value='{{ s.pk }}'>{{ s.name }}</option>
-                            {% endfor %}
-                        </select>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="left">
-                        &nbsp;
-                    </td>
-                    <td style="text-align: right;">
-                        <a class="submitButton" href="javascript:filterByStatus();" >
-                            <span>{% trans "filter" %} </span>
-                        </a>
-                    </td>
-                </tr>
-            </table>
-        <br>
+                                {% endfor %}
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+
+                        </td>
+                        <td style="text-align: right;">
+                            <input id="id_submit" type="submit" name="submit" value="Sorgula" class="button"/>
+                        </td>
+                    </tr>
+
+                </table>
+            </form>
+            <div class="dateRangeInfo">
+                {{ start_date|date }} - {{ end_date|date }}
+            </div>
+{#        #}
+{#        #}
+{#        #}
+{#        #}
+{#        #}
+{#        <table class="filterPanel">#}
+{##}
+{##}
+{#                <tr>#}
+{#                    <td class="left">#}
+{#                        &nbsp;#}
+{#                    </td>#}
+{#                    <td style="text-align: right;">#}
+{#                        <a class="submitButton" href="javascript:filterByStatus();" >#}
+{#                            <span>{% trans "filter" %} </span>#}
+{#                        </a>#}
+{#                    </td>#}
+{#                </tr>#}
+{#            </table>#}
+{#            <br>#}
 
 <form id ="transUpdateForm" action="/cross_order/update_transaction_status/?status={{ status }}" method='post'>
     {% csrf_token %}
@@ -140,6 +179,10 @@
 </div>
 <script type="text/javascript">
     $(document).ready(function(){
+        $( "#id_dateStart" ).datepicker({ altFormat: 'yy-mm-dd' });
+        $( "#id_dateEnd" ).datepicker({  altFormat: 'yy-mm-dd' });
+
+
         displayModuleMenus("cross","crossTransactions");
         setMenuName("{% trans module_cross_order_tracking_system %}");
 
@@ -165,7 +208,7 @@
             }
             else
                 $('.checkboxClass').attr("checked", "");
-        });
+        })
     });
 
     function filterByStatus(){
@@ -181,5 +224,7 @@
         $('#id_buttonSource').val("status");
         $('#transUpdateForm').submit();
     }
+
+
 </script>
 {% endblock %}

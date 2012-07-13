@@ -16,4 +16,6 @@ urlpatterns = patterns('',
     (r'^get_excel_report/$', 'cross_app.cross_order.views.get_excel_report'),
     (r'^order_search/$', 'cross_app.cross_order.views.order_search'),
     (r'^order_search_ajax/$', 'cross_app.cross_order.views.order_search_ajax'),
+    (r'^add_invoice/$', 'cross_app.cross_order.views.add_invoice'),
+    (r'^list_invoice/$', 'cross_app.cross_order.views.list_invoice'),
 )

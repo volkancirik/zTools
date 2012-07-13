@@ -215,6 +215,17 @@ class Transactions(models.Model):
     create_date = models.DateTimeField(blank=False)
     create_user = models.ForeignKey(User)
     status   = models.ForeignKey(TransactionStatus,unique=False,null=False)
+    def __unicode__(self):
+        return str(self.code)
+
+class InvoiceInfoForTransactions(models.Model):
+    trans = models.ForeignKey(Transactions)
+    create_date = models.DateTimeField(blank=False)
+    create_user = models.ForeignKey(User)
+    invoice_number =  models.CharField(max_length=255,null=True)
+    invoice_amount = models.FloatField(max_length=255,null=True)
+    quantity_in_invoice = models.IntegerField(max_length=11,null=True)
+    return_invoice_number = models.CharField(max_length=255,null=True)
 
 class OrderTransaction(models.Model):
     trans = models.ForeignKey(Transactions)

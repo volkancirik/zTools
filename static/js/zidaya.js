@@ -106,6 +106,20 @@ function viewRefundBox(orderNumber,idSalesOrder,sku,returnedOrderID,refundRefere
     $('.refundBox').show();
     return false;
 }
+function viewInvoiceBox(transactionCode,supplierName,transactionID){
+    $('#id_transactionCode').text(transactionCode);
+    $('#id_transactionSupplierName').text(supplierName);
+    $('#id_transactionID').val(transactionID);
+    $('.invoiceBox').show();
+    return false;
+}
+
+function closeInvoiceBox(){
+    $('#id_transactionCode').val('');
+    $('#id_transactionSupplierName').val('');
+    $('.invoiceBox').hide();
+    return false;
+}
 
 
 function viewColumnBox(){
@@ -135,6 +149,10 @@ function submitReturnForm(){
 function submitRefundedForm(){
     $('#refundedOrderForm').submit();
     closeRefundBox();
+}
+function submitInvoiceForm(){
+    $('#id_invoiceForm').submit();
+    closeInvoiceBox();
 }
 function fnShowHide( iCol, status )
 {

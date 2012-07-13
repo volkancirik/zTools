@@ -1,0 +1,135 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% load helper %}
+{% block extrahead %}
+    <script type="text/javascript" src="{{ STATIC_URL }}js/popup-plugin.js"></script>
+{% endblock %}
+
+{% block content %}
+    <div class="tabbed">
+        <div class="tab-content" style="display:block;">
+            <div class="items">
+
+                <form id="DateForm" method="POST" action="/cross_order/list_invoice/">
+                    {% csrf_token %}
+                    <table class="dateFilter" cellspacing="0" cellpadding="0">
+                        <tr>
+                            <td>
+                                {% trans "start_date" %}
+                            </td>
+                            <td>
+                                <input id="id_dateStart" type="textbox" name="dateStart" value="{{ start_date|date:"m/j/Y" }}"/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                {% trans "end_date" %}
+                            </td>
+                            <td>
+                                <input id="id_dateEnd" type="textbox" name="dateEnd" value="{{ end_date|date:"m/j/Y" }}"/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+
+                            </td>
+                            <td style="text-align: right;">
+                                <input id="id_submit" type="submit" name="submit" value="Sorgula" class="button"/>
+                            </td>
+                        </tr>
+
+                    </table>
+                </form>
+                <div class="dateRangeInfo">
+                    {{ start_date|date }} - {{ end_date|date }}
+                </div>
+
+                    <table id="invoiceList">
+                        <thead>
+                        <tr>
+                            <th><input type=checkbox name='allSelect' class="allSelect"></th>
+                            <th>
+                                {% trans "transaction_code" %}
+                            </th>
+                            <th>
+                                {% trans "create_date" %}
+                            </th>
+                            <th>
+                                {% trans "invoice_number" %}
+                            </th>
+                            <th>
+                                {% trans "invoice_amount" %}
+                            </th>
+                            <th>
+                                {% trans "quantity_in_invoice" %}
+                            </th>
+                            <th>
+                                {% trans "#return_invoice_number" %}
+                            </th>
+                            <th>
+                                {% trans "#create_user" %}
+                            </th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for t in invoiceList %}
+                            <tr>
+                                <td><input type=checkbox class="checkboxClass" name='transChecked' value="{{ t.pk }}"></td>
+                                <td>
+                                    <a href="/cross_order/transaction_details/{{ t.trans.code }}/">
+                                        {{ t.trans.code }}
+                                    </a>
+                                </td>
+                                <td>
+                                    {{ t.create_date|date:"d/M/Y H:i:s" }}
+                                </td>
+                                <td>
+                                    {{ t.invoice_number }}
+                                </td>
+                                <td>
+                                    {{ t.invoice_amount }}
+                                </td>
+                                <td>
+                                    {{ t.quantity_in_invoice }}
+                                </td>
+                                <td>
+                                    {{ t.return_invoice_number }}
+                                </td>
+                                <td>
+                                    {{ t.create_user.username }}
+                                </td>
+
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript">
+        $(document).ready(function(){
+            $( "#id_dateStart" ).datepicker({ altFormat: 'yy-mm-dd' });
+            $( "#id_dateEnd" ).datepicker({  altFormat: 'yy-mm-dd' });
+
+
+            displayModuleMenus("cross","crossInvoice");
+            setMenuName("{% trans module_cross_order_tracking_system %}");
+
+            $('#invoiceList').dataTable(
+                    {
+                        "bJQueryUI": true,
+                        "bPaginate":true,
+                        "sPaginationType": "full_numbers",
+                        "iDisplayLength": 25,
+                        "aoColumnDefs":
+                                [
+                                    { "bSortable": false, "aTargets": [ 0 ] }
+
+                        ]
+
+                    }
+            );
+        });
+    </script>
+{% endblock %}

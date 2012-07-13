@@ -2,6 +2,7 @@
 {% load i18n %}
 {% load helper %}
 {% block extrahead %}
+        <script type="text/javascript" src="{{ STATIC_URL }}js/popup-plugin.js"></script>
 {% endblock %}
 
 {% block content %}
@@ -83,6 +84,9 @@
                     <tr>
                         <th><input type=checkbox name='allSelect' class="allSelect"></th>
                         <th>
+                            {% trans "Add_Invoice" %}
+                        </th>
+                        <th>
                             {% trans "create_date" %}
                         </th>
                         <th>
@@ -98,10 +102,10 @@
                             {% trans "number_of_items_confirmed" %}
                         </th>
                         <th>
-                            {% trans "number_of_items_cancelled" %}
+                            {% trans "#ofItemsCancelled" %}
                         </th>
                         <th>
-                            {% trans "number_of_items_shipped" %}
+                            {% trans "#ofItemsShipped" %}
                         </th>
                         <th>
                             {% trans "total_number_of_items" %}
@@ -118,6 +122,13 @@
                     {% for t in transList %}
                         <tr>
                             <td><input type=checkbox class="checkboxClass" name='transChecked' value="{{ t.pk }}"></td>
+                            <td>
+                                <span class="actionLabel" onclick="viewInvoiceBox('{{ t.code }}',
+                                        '{{ t|getSupplierName }}',
+                                        '{{ t.pk }}')">
+                                   Add Invoice  {# translation needed #}
+                                </span>
+                            </td>
                             <td>
                                 {{ t.create_date|date:"d/M/Y H:i:s" }}
                             </td>
@@ -174,7 +185,8 @@
             </table>
 <input type="hidden" value="" id="id_buttonSource" name="buttonSource" />
 </form>
-		</div>
+        </div>
+        {% include "cross_order/boxes/add_invoice_box.html" %}
 	</div>
 </div>
 <script type="text/javascript">

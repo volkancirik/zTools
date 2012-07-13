@@ -1,0 +1,93 @@
+{% load i18n %}
+<div class="invoiceBox" style="display:none;" title="Add Invoice">
+    <div class="black_overlay" id="fade"></div>
+    <div class="white_content">
+        <div style="border-bottom: 1px solid #333333;margin-bottom: 10px;text-align: left;">
+            {% trans "Add Invoice" %}
+        </div>
+
+        <div class="FormWrapper">
+            <ul class="FormPosition">
+                <li class="FormLineWrapper ReturnedItemFormLine">
+                    <div class="FormObjectSearch">
+                        <div class="FormLabel">
+                            {% trans "transaction_code" %}
+                        </div>
+                        <div>
+                            <span id="id_transactionCode"></span>
+                        </div>
+                    </div>
+                </li>
+                <li class="FormLineWrapper ReturnedItemFormLine">
+                    <div class="FormObjectSearch">
+                        <div class="FormLabel">
+                            {% trans "Supplier" %}
+                        </div>
+                        <div>
+                            <span id="id_transactionSupplierName"></span>
+                        </div>
+                    </div>
+                </li>
+                <form id ="id_invoiceForm" action="/cross_order/add_invoice/" method='post'>
+                    {% csrf_token %}
+                <li class="FormLineWrapper ReturnedItemFormLine">
+                    <div class="FormObjectSearch">
+                        <div  type="hidden" class="FormLabel">
+                            {% trans "Invoice Number" %}
+                        </div>
+                        <div>
+                            <input style="height: 12px;" id="id_transactionInvoiceNumber" name="transactionInvoiceNumber" />
+                        </div>
+                    </div>
+                </li>
+                <li class="FormLineWrapper ReturnedItemFormLine">
+                    <div class="FormObjectSearch">
+                        <div  type="hidden" class="FormLabel">
+                            {% trans "Invoice Amount" %}
+                        </div>
+                        <div>
+                            <input id="id_transactionInvoiceAmount" name="transactionInvoiceAmount" />
+                        </div>
+                    </div>
+                </li>
+                <li class="FormLineWrapper ReturnedItemFormLine">
+                    <div class="FormObjectSearch">
+                        <div  type="hidden" class="FormLabel">
+                            {% trans "Quantity in Invoice" %}
+                        </div>
+                        <div>
+                            <input id="id_transactionInvoiceQuantity" name="transactionInvoiceQuantity" />
+                        </div>
+                    </div>
+                </li>
+                <li class="FormLineWrapper ReturnedItemFormLine">
+                    <div class="FormObjectSearch">
+                        <div  type="hidden" class="FormLabel">
+                            {% trans "Return Invoice Number" %}
+                        </div>
+                        <div>
+                            <input id="id_transactionReturnInvoiceNumber" name="transactionReturnInvoiceNumber" />
+                        </div>
+                    </div>
+                </li>
+                    <input type="hidden" value="" id="id_transactionID" name="transactionID" />
+                </form>
+
+            </ul>
+        </div>
+
+        <div  style="float:right;margin-left: 10px;">
+            <a href="#" onclick="return closeInvoiceBox();">
+                {% trans "close" %}
+            </a>
+        </div>
+        <div class="closeButton">
+            <div style="float:right;">
+                <a href="#" onclick="return submitInvoiceForm();" class="submitButton">
+                    <span> {% trans "save" %} </span> {# translation needed #}
+                </a>
+            </div>
+        </div>
+
+    </div>
+</div>

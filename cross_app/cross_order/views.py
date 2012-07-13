@@ -12,7 +12,7 @@ from django.views.decorators.csrf import csrf_exempt
 import xlwt
 from cross_order.forms import OrderSearchForm
 from cross_order.helper_functions import render_response, generateTransactionString, modelToExcel, getOrderSearchQuery, getTodayAsString
-from cross_order.models import Supplier, CrossStatus, Order, LastUpdate, Transactions, OrderTransaction, OrderCrossDetails, OrderAttributeSet, TransactionStatus, ReportConfirmedSkuBase, ReportConfirmedSupplierBase, ReportOutOfStockCrossDock, ReportUnprocessedCrossDock, OverdueCrossDock, ReportSql2Excel, ColumnType
+from cross_order.models import Supplier, CrossStatus, Order, LastUpdate, Transactions, OrderTransaction, OrderCrossDetails, OrderAttributeSet, TransactionStatus, ReportConfirmedSkuBase, ReportConfirmedSupplierBase, ReportOutOfStockCrossDock, ReportUnprocessedCrossDock, OverdueCrossDock, ReportSql2Excel, ColumnType, InvoiceInfoForTransactions
 from django.core.serializers.json import Serializer, DjangoJSONEncoder
 from django.db import transaction, connection
 from cross_order.utils import get_datatables_records, check_permission
@@ -235,8 +235,7 @@ def update_transaction_status(request):
             t.status = ts
             t.save()
 
-    return redirect('/cross_order/transaction_list/?status='+request.GET['status'])
-
+    return redirect('/cross_order/transaction_list/?status='+str(ts.id))
 
 @login_required
 @check_permission('Cross')
@@ -303,12 +302,12 @@ def update_order_list(request):
 @check_permission('Cross')
 def transaction_list(request):
 
-#    status = None
-#    try:
-#        status = TransactionStatus.objects.get(pk = int(request.GET['status']))
-#    except:
-#        if request.GET.get('status','') == "":
-#            status = TransactionStatus.objects.all().order_by("order")[0]
+    status = None
+    try:
+        status = TransactionStatus.objects.get(pk = int(request.GET['status']))
+    except:
+        if request.GET.get('status','') == "":
+            status = TransactionStatus.objects.all().order_by("order")[0]
 
     start_date = datetime.datetime.now() - datetime.timedelta(days = 7)
     start_date = datetime.datetime.combine(start_date, datetime.time.min)
@@ -325,8 +324,6 @@ def transaction_list(request):
             status = TransactionStatus.objects.get(pk = status_id)
         else:
             status = None
-    else:
-        status = TransactionStatus.objects.all().order_by("order")[0]
 
     tList = Transactions.objects.order_by('-create_date')
     if status is not None:
@@ -652,3 +649,34 @@ def exportExcelForSupplier(request):
     book.save(response)
     return response
 
+@login_required
+@check_permission('Cross')
+def add_invoice(request):
+    if request.method == 'POST':
+        transaction = Transactions.objects.get(pk = int(request.POST['transactionID']))
+        InvoiceInfoForTransactions.objects.create(trans = transaction,invoice_number = request.POST['transactionInvoiceNumber'],invoice_amount = request.POST['transactionInvoiceAmount'] , quantity_in_invoice = request.POST['transactionInvoiceQuantity'], return_invoice_number = request.POST['transactionReturnInvoiceNumber'], create_date = datetime.datetime.now(), create_user = request.user)
+        return redirect('/cross_order/transaction_list/')
+
+@login_required
+@check_permission('Cross')
+def list_invoice(request):
+
+    start_date = datetime.datetime.now() - datetime.timedelta(days = 7)
+    start_date = datetime.datetime.combine(start_date, datetime.time.min)
+
+    end_date = datetime.datetime.now()
+    if "dateStart" in request.POST:
+        start_date = datetime.datetime.strptime(request.POST['dateStart'], "%m/%d/%Y")
+    if "dateEnd" in request.POST:
+        end_date = datetime.datetime.strptime(request.POST['dateEnd'], "%m/%d/%Y")
+        end_date = datetime.datetime.combine(end_date, datetime.time.max)
+
+    invoiceList = InvoiceInfoForTransactions.objects.order_by('-create_date')
+    invoiceList = invoiceList.filter(create_date__range = [start_date, end_date])
+
+    return render_response(request, 'cross_order/list_invoice.html',
+            {
+            'invoiceList':invoiceList,
+            'start_date':start_date,
+            'end_date':end_date,
+            })

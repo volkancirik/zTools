@@ -18,4 +18,6 @@ urlpatterns = patterns('',
     (r'^order_search_ajax/$', 'cross_app.cross_order.views.order_search_ajax'),
     (r'^add_invoice/$', 'cross_app.cross_order.views.add_invoice'),
     (r'^list_invoice/$', 'cross_app.cross_order.views.list_invoice'),
+    (r'^update_invoice_status/$', 'cross_app.cross_order.views.update_invoice_status'),
+
 )

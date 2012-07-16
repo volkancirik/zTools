@@ -56,26 +56,6 @@
             <div class="dateRangeInfo">
                 {{ start_date|date }} - {{ end_date|date }}
             </div>
-{#        #}
-{#        #}
-{#        #}
-{#        #}
-{#        #}
-{#        <table class="filterPanel">#}
-{##}
-{##}
-{#                <tr>#}
-{#                    <td class="left">#}
-{#                        &nbsp;#}
-{#                    </td>#}
-{#                    <td style="text-align: right;">#}
-{#                        <a class="submitButton" href="javascript:filterByStatus();" >#}
-{#                            <span>{% trans "filter" %} </span>#}
-{#                        </a>#}
-{#                    </td>#}
-{#                </tr>#}
-{#            </table>#}
-{#            <br>#}
 
 <form id ="transUpdateForm" action="/cross_order/update_transaction_status/?status={{ status }}" method='post'>
     {% csrf_token %}
@@ -123,9 +103,9 @@
                         <tr>
                             <td><input type=checkbox class="checkboxClass" name='transChecked' value="{{ t.pk }}"></td>
                             <td>
-                                <span class="actionLabel" onclick="viewInvoiceBox('{{ t.code }}',
+                                <span class="actionLabel" onclick="viewInvoiceBox(null,'{{ t.code }}',
                                         '{{ t|getSupplierName }}',
-                                        '{{ t.pk }}')">
+                                        '{{ t.pk }}',null,null,null,null)">
                                    Add Invoice  {# translation needed #}
                                 </span>
                             </td>

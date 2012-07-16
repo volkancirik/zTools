@@ -653,8 +653,20 @@ def exportExcelForSupplier(request):
 @check_permission('Cross')
 def add_invoice(request):
     if request.method == 'POST':
-        transaction = Transactions.objects.get(pk = int(request.POST['transactionID']))
-        InvoiceInfoForTransactions.objects.create(trans = transaction,invoice_number = request.POST['transactionInvoiceNumber'],invoice_amount = request.POST['transactionInvoiceAmount'] , quantity_in_invoice = request.POST['transactionInvoiceQuantity'], return_invoice_number = request.POST['transactionReturnInvoiceNumber'], create_date = datetime.datetime.now(), create_user = request.user)
+        try:
+            invoice = InvoiceInfoForTransactions.objects.get(pk = int(request.POST['invoiceID']) )
+            invoice.invoice_number = request.POST['transactionInvoiceNumber']
+            invoice.invoice_amount = request.POST['transactionInvoiceAmount']
+            invoice.quantity_in_invoice = request.POST['transactionInvoiceQuantity']
+            invoice.return_invoice_number = request.POST['transactionReturnInvoiceNumber']
+            invoice.create_date = datetime.datetime.now()
+            invoice.create_user = request.user
+            invoice.save()
+            return redirect('/cross_order/list_invoice/')
+        except:
+            transaction = Transactions.objects.get(pk = int(request.POST['transactionID']))
+            InvoiceInfoForTransactions.objects.create(trans = transaction,invoice_number = request.POST['transactionInvoiceNumber'],invoice_amount = request.POST['transactionInvoiceAmount'] , quantity_in_invoice = request.POST['transactionInvoiceQuantity'], return_invoice_number = request.POST['transactionReturnInvoiceNumber'], create_date = datetime.datetime.now(), create_user = request.user)
+
         return redirect('/cross_order/transaction_list/')
 
 @login_required
@@ -680,3 +692,20 @@ def list_invoice(request):
             'start_date':start_date,
             'end_date':end_date,
             })
+
+
+@login_required
+def update_invoice_status(request):
+    invoice_id_list = request.POST.getlist('invoiceChecked')
+    if not len(invoice_id_list):
+        return redirect('/cross_order/list_invoice/')
+
+    for invoiceId in invoice_id_list:
+        i = InvoiceInfoForTransactions(pk = invoiceId)
+        i.delete()
+
+    return redirect('/cross_order/list_invoice/')
+
+
+
+

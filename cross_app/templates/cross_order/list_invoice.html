@@ -2,10 +2,11 @@
 {% load i18n %}
 {% load helper %}
 {% block extrahead %}
-    <script type="text/javascript" src="{{ STATIC_URL }}js/popup-plugin.js"></script>
+{#    <script type="text/javascript" src="{{ STATIC_URL }}js/popup-plugin.js"></script>#}
 {% endblock %}
 
 {% block content %}
+
     <div class="tabbed">
         <div class="tab-content" style="display:block;">
             <div class="items">
@@ -43,13 +44,20 @@
                 <div class="dateRangeInfo">
                     {{ start_date|date }} - {{ end_date|date }}
                 </div>
-
+                <form id ="invoiceUpdateForm" action="/cross_order/update_invoice_status/" method='post'>
+                    {% csrf_token %}
                     <table id="invoiceList">
                         <thead>
                         <tr>
                             <th><input type=checkbox name='allSelect' class="allSelect"></th>
                             <th>
+                                {% trans "Edit_Invoice" %}
+                            </th>
+                            <th>
                                 {% trans "transaction_code" %}
+                            </th>
+                            <th>
+                                {% trans "supplier_name" %}
                             </th>
                             <th>
                                 {% trans "create_date" %}
@@ -74,12 +82,29 @@
                         <tbody>
                         {% for t in invoiceList %}
                             <tr>
-                                <td><input type=checkbox class="checkboxClass" name='transChecked' value="{{ t.pk }}"></td>
+                                <td><input type=checkbox class="checkboxClass" name='invoiceChecked' value="{{ t.pk }}"></td>
+                                <td>
+                                <span class="actionLabel" onclick="viewInvoiceBox(
+                                        '{{ t.pk }}',
+                                        '{{ t.trans.code }}',
+                                        '{{ t.trans|getSupplierName }}',
+                                        '{{ t.trans.pk }}',
+                                        '{{ t.invoice_number }}',
+                                        '{{ t.invoice_amount }}',
+                                        '{{ t.quantity_in_invoice }}',
+                                        '{{ t.return_invoice_number }}')">
+                                   Edit Invoice
+                                </span>
+                                </td>
                                 <td>
                                     <a href="/cross_order/transaction_details/{{ t.trans.code }}/">
                                         {{ t.trans.code }}
                                     </a>
                                 </td>
+                                <td>
+                                    {{ t.trans|getSupplierName }}
+                                </td>
+
                                 <td>
                                     {{ t.create_date|date:"d/M/Y H:i:s" }}
                                 </td>
@@ -103,8 +128,25 @@
                         {% endfor %}
                         </tbody>
                     </table>
+                    <table class="actionPanel" cellpadding="0" cellspacing="0" width="100%">
+                        <tr>
+                            <td class="left">
+                                <span class="actionLabel" onclick="deleteInvoices()">
+                                   Delete Selected Invoice
+                                </span>
+                            </td>
+                            <td  class="right">
 
+                            </td>
+                        </tr>
+                    </table>
+
+
+                </form>
+                {% include "cross_order/boxes/add_invoice_box.html" %}
+                {% include "cross_order/boxes/confirm_deletion_of_invoices.html" %}
             </div>
+
         </div>
     </div>
     <script type="text/javascript">
@@ -130,6 +172,31 @@
 
                     }
             );
+            $('.allSelect').click(function(){
+                if($(this).is(':checked')){
+                    $('.checkboxClass').attr("checked", 'checked');
+                }
+                else
+                    $('.checkboxClass').attr("checked", "");
+            })
         });
+        function deleteInvoices(){
+            $( "#dialog:ui-dialog" ).dialog( "destroy" );
+            $( "#dialog-confirm" ).dialog({
+                resizable: false,
+                height:140,
+                modal: true,
+                buttons: {
+                    "Evet": function() {
+//                        $('#id_buttonSource').val("status");
+                        $( this ).dialog( "close" );
+                        $('#invoiceUpdateForm').submit();
+                    },
+                    Hayir: function() {
+                        $( this ).dialog( "close" );
+                    }
+                }
+            });
+        }
     </script>
 {% endblock %}

@@ -1,5 +1,5 @@
 from django.contrib import admin
-from cross_order.models import Supplier, CrossStatus, Order, OrderCrossDetails, LastUpdate, Transactions, OrderTransaction, OrderAttributeSet, TransactionStatus, Sql2ExcelColumn, ReportSql2Excel, InvoiceInfoForTransactions
+from cross_order.models import Supplier, CrossStatus, Order, OrderCrossDetails, LastUpdate, Transactions, OrderTransaction, OrderAttributeSet, TransactionStatus, Sql2ExcelColumn, ReportSql2Excel, InvoiceInfoForTransactions, InvoiceType, InvoiceCurrency
 
 class Sql2ExcelColumnInline(admin.TabularInline):
     model = Sql2ExcelColumn
@@ -19,3 +19,5 @@ admin.site.register(TransactionStatus)
 admin.site.register(OrderTransaction)
 admin.site.register(OrderAttributeSet)
 admin.site.register(InvoiceInfoForTransactions)
+admin.site.register(InvoiceType)
+admin.site.register(InvoiceCurrency)

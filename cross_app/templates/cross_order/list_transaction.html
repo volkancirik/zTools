@@ -105,7 +105,7 @@
                             <td>
                                 <span class="actionLabel" onclick="viewInvoiceBox(null,'{{ t.code }}',
                                         '{{ t|getSupplierName }}',
-                                        '{{ t.pk }}',null,null,null,null)">
+                                        '{{ t.pk }}',null,null,null,null,null,null)">
                                    Add Invoice  {# translation needed #}
                                 </span>
                             </td>
@@ -173,7 +173,7 @@
     $(document).ready(function(){
         $( "#id_dateStart" ).datepicker({ altFormat: 'yy-mm-dd' });
         $( "#id_dateEnd" ).datepicker({  altFormat: 'yy-mm-dd' });
-
+        $( "#id_invoiceDate" ).datepicker({ altFormat: 'yy-mm-dd' });
 
         displayModuleMenus("cross","crossTransactions");
         setMenuName("{% trans module_cross_order_tracking_system %}");

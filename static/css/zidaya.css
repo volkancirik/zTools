@@ -544,6 +544,10 @@ div.clear {
     padding-left: 0;
     text-align: left;
 }
+.FormWrapper .invoiceItemFormLine{
+    padding-left: 40;
+    text-align: left;
+}
 
 .FormWrapper .ReturnedItemFormLine .FormLabel{
     width:160px;

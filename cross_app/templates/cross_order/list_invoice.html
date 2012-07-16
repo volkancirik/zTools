@@ -6,7 +6,7 @@
 {% endblock %}
 
 {% block content %}
-
+    {% include "cross_order/boxes/add_invoice_box.html" %}
     <div class="tabbed">
         <div class="tab-content" style="display:block;">
             <div class="items">
@@ -89,10 +89,16 @@
                                         '{{ t.trans.code }}',
                                         '{{ t.trans|getSupplierName }}',
                                         '{{ t.trans.pk }}',
+
+                                        '{{ t.create_date }}',
+                                        '{{ t.invoice_type.pk }}',
+
                                         '{{ t.invoice_number }}',
                                         '{{ t.invoice_amount }}',
                                         '{{ t.quantity_in_invoice }}',
-                                        '{{ t.return_invoice_number }}')">
+                                        '{{ t.invoice_currency.pk }}'
+
+                                        )">
                                    Edit Invoice
                                 </span>
                                 </td>
@@ -143,7 +149,7 @@
 
 
                 </form>
-                {% include "cross_order/boxes/add_invoice_box.html" %}
+
                 {% include "cross_order/boxes/confirm_deletion_of_invoices.html" %}
             </div>
 
@@ -153,7 +159,7 @@
         $(document).ready(function(){
             $( "#id_dateStart" ).datepicker({ altFormat: 'yy-mm-dd' });
             $( "#id_dateEnd" ).datepicker({  altFormat: 'yy-mm-dd' });
-
+            $( "#id_invoiceDate" ).datepicker({ altFormat: 'yy-mm-dd' });
 
             displayModuleMenus("cross","crossInvoice");
             setMenuName("{% trans module_cross_order_tracking_system %}");
@@ -169,7 +175,6 @@
                                     { "bSortable": false, "aTargets": [ 0 ] }
 
                         ]
-
                     }
             );
             $('.allSelect').click(function(){

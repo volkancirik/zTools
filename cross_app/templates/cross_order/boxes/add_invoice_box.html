@@ -8,7 +8,7 @@
 
         <div class="FormWrapper">
             <ul class="FormPosition">
-                <li class="FormLineWrapper ReturnedItemFormLine">
+                <li class="FormLineWrapper invoiceItemFormLine">
                     <div class="FormObjectSearch">
                         <div class="FormLabel">
                             {% trans "transaction_code" %}
@@ -18,7 +18,7 @@
                         </div>
                     </div>
                 </li>
-                <li class="FormLineWrapper ReturnedItemFormLine">
+                <li class="FormLineWrapper invoiceItemFormLine">
                     <div class="FormObjectSearch">
                         <div class="FormLabel">
                             {% trans "Supplier" %}
@@ -28,45 +28,76 @@
                         </div>
                     </div>
                 </li>
+
                 <form id ="id_invoiceForm" action="/cross_order/add_invoice/" method='post'>
                     {% csrf_token %}
-                <li class="FormLineWrapper ReturnedItemFormLine">
+                <li class="FormLineWrapper invoiceItemFormLine">
                     <div class="FormObjectSearch">
                         <div  type="hidden" class="FormLabel">
-                            {% trans "Invoice Number" %}
+                            Invoice Date
+                        </div>
+                        <div>
+                            <input id="id_invoiceDate" type="textbox" name="invoiceDate" value="{{ invoice_date|date:"m/j/Y" }}"/>
+                        </div>
+                    </div>
+                </li>
+
+                <li class="FormLineWrapper invoiceItemFormLine">
+                    <div class="FormObjectSearch">
+                        <div  type="hidden" class="FormLabel">
+                            {% trans "Invoice_Type" %}
+                        </div>
+                        <div>
+                            <select name='invoiceType' id='id_invoiceType'>
+                                {% for it in invoiceTypeList %}
+                                    <option value='{{ it.pk }}'>{{ it.type }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                    </div>
+                </li>
+
+                <li class="FormLineWrapper invoiceItemFormLine">
+                    <div class="FormObjectSearch">
+                        <div  type="hidden" class="FormLabel">
+                            {% trans "Invoice_Number" %}
                         </div>
                         <div>
                             <input style="height: 12px;" id="id_transactionInvoiceNumber" name="transactionInvoiceNumber" />
                         </div>
                     </div>
                 </li>
-                <li class="FormLineWrapper ReturnedItemFormLine">
+                <li class="FormLineWrapper invoiceItemFormLine">
                     <div class="FormObjectSearch">
                         <div  type="hidden" class="FormLabel">
-                            {% trans "Invoice Amount" %}
+                            {% trans "Invoice_Amount" %}
                         </div>
                         <div>
                             <input id="id_transactionInvoiceAmount" name="transactionInvoiceAmount" />
                         </div>
                     </div>
                 </li>
-                <li class="FormLineWrapper ReturnedItemFormLine">
+                <li class="FormLineWrapper invoiceItemFormLine">
+                    <div class="FormObjectSearch">
+                        <div  type="hidden" class="FormLabel">
+                            {% trans "Invoice_Currency" %}
+                        </div>
+                        <div>
+                            <select name='invoiceCurrency' id='id_invoiceCurrency'>
+                                {% for ic in invoiceCurrencyList %}
+                                    <option value='{{ ic.pk }}'>{{ ic.currency }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                    </div>
+                </li>
+                <li class="FormLineWrapper invoiceItemFormLine">
                     <div class="FormObjectSearch">
                         <div  type="hidden" class="FormLabel">
                             {% trans "Quantity in Invoice" %}
                         </div>
                         <div>
                             <input id="id_transactionInvoiceQuantity" name="transactionInvoiceQuantity" />
-                        </div>
-                    </div>
-                </li>
-                <li class="FormLineWrapper ReturnedItemFormLine">
-                    <div class="FormObjectSearch">
-                        <div  type="hidden" class="FormLabel">
-                            {% trans "Return Invoice Number" %}
-                        </div>
-                        <div>
-                            <input id="id_transactionReturnInvoiceNumber" name="transactionReturnInvoiceNumber" />
                         </div>
                     </div>
                 </li>

@@ -60,7 +60,10 @@
                                 {% trans "supplier_name" %}
                             </th>
                             <th>
-                                {% trans "create_date" %}
+                                {% trans "invoice_date" %}
+                            </th>
+                            <th>
+                                {% trans "invoice_type" %}
                             </th>
                             <th>
                                 {% trans "invoice_number" %}
@@ -69,10 +72,10 @@
                                 {% trans "invoice_amount" %}
                             </th>
                             <th>
-                                {% trans "quantity_in_invoice" %}
+                                {% trans "invoice_currency" %}
                             </th>
                             <th>
-                                {% trans "#return_invoice_number" %}
+                                {% trans "quantity_in_invoice" %}
                             </th>
                             <th>
                                 {% trans "#create_user" %}
@@ -115,16 +118,19 @@
                                     {{ t.create_date|date:"d/M/Y H:i:s" }}
                                 </td>
                                 <td>
+                                    {{ t.invoice_type.type }}
+                                </td>
+                                <td>
                                     {{ t.invoice_number }}
                                 </td>
                                 <td>
                                     {{ t.invoice_amount }}
                                 </td>
                                 <td>
-                                    {{ t.quantity_in_invoice }}
+                                    {{ t.invoice_currency.currency }}
                                 </td>
                                 <td>
-                                    {{ t.return_invoice_number }}
+                                    {{ t.quantity_in_invoice }}
                                 </td>
                                 <td>
                                     {{ t.create_user.username }}
@@ -186,22 +192,25 @@
             })
         });
         function deleteInvoices(){
-            $( "#dialog:ui-dialog" ).dialog( "destroy" );
-            $( "#dialog-confirm" ).dialog({
-                resizable: false,
-                height:140,
-                modal: true,
-                buttons: {
-                    "Evet": function() {
-//                        $('#id_buttonSource').val("status");
-                        $( this ).dialog( "close" );
-                        $('#invoiceUpdateForm').submit();
-                    },
-                    Hayir: function() {
-                        $( this ).dialog( "close" );
+            if($("input:checked").length > 0)
+            {
+                $( "#dialog:ui-dialog" ).dialog( "destroy" );
+                $( "#dialog-confirm" ).dialog({
+                    resizable: false,
+                    height:140,
+                    modal: true,
+                    buttons: {
+                        "Evet": function() {
+    //                        $('#id_buttonSource').val("status");
+                            $( this ).dialog( "close" );
+                            $('#invoiceUpdateForm').submit();
+                        },
+                        Hayir: function() {
+                            $( this ).dialog( "close" );
+                        }
                     }
-                }
-            });
+                });
+            }
         }
     </script>
 {% endblock %}

@@ -303,13 +303,8 @@ def update_order_list(request):
 def transaction_list(request):
 
     status = None
-    try:
-        status = TransactionStatus.objects.get(pk = int(request.GET['status']))
-    except:
-        if request.GET.get('status','') == "":
-            status = TransactionStatus.objects.all().order_by("order")[0]
-
-    start_date = datetime.datetime.now() - datetime.timedelta(days = 7)
+    status_id = 0
+    start_date = datetime.datetime.now() - datetime.timedelta(days = 14)
     start_date = datetime.datetime.combine(start_date, datetime.time.min)
 
     end_date = datetime.datetime.now()
@@ -323,6 +318,7 @@ def transaction_list(request):
         if status_id != 'all':
             status = TransactionStatus.objects.get(pk = status_id)
         else:
+            status_id = 0
             status = None
 
     tList = Transactions.objects.order_by('-create_date')
@@ -335,12 +331,11 @@ def transaction_list(request):
             {
                 'transList':tList,
                 'statusList':TransactionStatus.objects.all().order_by("order"),
-                'status':request.GET.get('status','1'),
+                'status':status_id,
                 'start_date':start_date,
                 'end_date':end_date,
                 'invoiceTypeList':InvoiceType.objects.all().order_by("order"),
                 'invoiceCurrencyList':InvoiceCurrency.objects.all().order_by("order"),
-
             })
 
 @login_required

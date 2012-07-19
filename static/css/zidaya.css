@@ -640,3 +640,8 @@ div.clear {
     text-decoration: underline;
     cursor: pointer;
 }
+.error_message{
+    font-weight: bold;
+    color:Red;
+    font-size: 14px;
+}

@@ -106,6 +106,44 @@ function viewRefundBox(orderNumber,idSalesOrder,sku,returnedOrderID,refundRefere
     $('.refundBox').show();
     return false;
 }
+function viewInvoiceBox(invoiceID,transactionCode,supplierName,transactionID,invoiceDate,invoiceType,invoiceNumber,invoiceAmount,quantityInvoice,invoiceCurrency){
+    $('#id_invoiceID').val(invoiceID);
+
+    $('#id_transactionCode').text(transactionCode);
+    $('#id_transactionSupplierName').text(supplierName);
+    $('#id_transactionID').val(transactionID);
+
+    $('#id_invoiceDate').val(invoiceDate);
+    $('#id_invoiceType').val(invoiceType);
+
+    $('#id_transactionInvoiceNumber').val(invoiceNumber);
+    $('#id_transactionInvoiceAmount').val(invoiceAmount);
+    $('#id_transactionInvoiceQuantity').val(quantityInvoice);
+
+    $('#id_invoiceCurrency').val(invoiceCurrency);
+
+    $('.invoiceBox').show();
+    return false;
+}
+
+function closeInvoiceBox(){
+    $('#id_invoiceID').val('');
+
+    $('#id_transactionCode').val('');
+    $('#id_transactionSupplierName').val('');
+
+    $('#id_invoiceDate').val('');
+    $('#id_invoiceType').val('');
+
+    $('#id_transactionInvoiceNumber').val('');
+    $('#id_transactionInvoiceAmount').val('');
+    $('#id_transactionInvoiceQuantity').val('');
+
+    $('#id_invoiceCurrency').val('');
+
+    $('.invoiceBox').hide();
+    return false;
+}
 
 
 function viewColumnBox(){
@@ -136,6 +174,45 @@ function submitRefundedForm(){
     $('#refundedOrderForm').submit();
     closeRefundBox();
 }
+function submitInvoiceForm(){
+
+    amount = $('#id_transactionInvoiceAmount').val();
+    quantity = $('#id_transactionInvoiceQuantity').val();
+
+    error1 = 0;
+    error2 = 0;
+    if(/^[0-9]+$/.test(quantity) == false)
+    {
+        $('#id_transactionInvoiceQuantity').val('');
+        $('#id_error_quantity').show();
+        error1 = 1;
+    }
+    else{
+        $('#id_error_quantity').hide();
+        error1 = 0;
+    }
+    if(/^[0-9]+\.?[0-9]*$/.test(amount) == false)
+    {
+        $('#id_transactionInvoiceAmount').val('');
+        $('#id_error_amount').show();
+        error2 = 1;
+    }
+    else
+    {
+        $('#id_error_amount').hide();
+        error2 = 0;
+    }
+    if(error1 + error2 == 0)
+    {
+        error1 = 0;
+        error2 = 0;
+        $('#id_error_quantity').hide();
+        $('#id_error_amount').hide();
+        $('#id_invoiceForm').submit();
+        closeInvoiceBox();
+    }
+
+}
 function fnShowHide( iCol, status )
 {
 	/* Get the DataTables object again - this is not a recreation, just a get of the object */
@@ -152,7 +229,6 @@ function submitColumn(){
      });
 
 }
-
 
 function viewOrderHistory(pk){
         url1 = "/cross_order/order_history/?pk="+pk;

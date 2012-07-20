@@ -60,11 +60,18 @@
             </a>
         {% endif %}
         {% if user|checkPermission:"Cross" %}
-                    <a href="/cross_order/list_supplier/">
-            <span class="item dynamicMenuItem cross" id="crossListSupplier">
-                Supplier List
-            </span>
-                    </a>
+            <a href="/cross_order/list_supplier/">
+                <span class="item dynamicMenuItem cross" id="crossListSupplier">
+                    Supplier List
+                </span>
+            </a>
+        {% endif %}
+        {% if user|checkPermission:"Cross" %}
+            <a href="/cross_order/list_invoice/">
+                <span class="item dynamicMenuItem cross" id="crossListInvoices">
+                    Invoice List
+                </span>
+            </a>
         {% endif %}
         {% if user|checkPermission:"Dms" %}
             <a href="/dms/list_documents/">

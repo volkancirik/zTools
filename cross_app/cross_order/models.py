@@ -215,6 +215,34 @@ class Transactions(models.Model):
     create_date = models.DateTimeField(blank=False)
     create_user = models.ForeignKey(User)
     status   = models.ForeignKey(TransactionStatus,unique=False,null=False)
+    def __unicode__(self):
+        return str(self.code)
+
+class InvoiceType(models.Model):
+    type = models.CharField(max_length=255,null=False)
+    isInvalid = models.BooleanField(null=False,default=False)
+    order = models.IntegerField(default=9999)
+    def __unicode__(self):
+        return str(self.type)
+class InvoiceCurrency(models.Model):
+    currency = models.CharField(max_length=255,null=False)
+    isInvalid = models.BooleanField(null=False,default=False)
+    order = models.IntegerField(default=9999)
+    def __unicode__(self):
+        return str(self.currency)
+
+class InvoiceInfoForTransactions(models.Model):
+    trans = models.ForeignKey(Transactions)
+    create_date = models.DateTimeField(blank=False)
+    create_user = models.ForeignKey(User)
+    invoice_number =  models.CharField(max_length=255,null=True)
+    invoice_amount = models.FloatField(max_length=255,null=True)
+    quantity_in_invoice = models.IntegerField(max_length=11,null=True)
+    invoice_type = models.ForeignKey(InvoiceType)
+    invoice_currency = models.ForeignKey(InvoiceCurrency)
+
+    def __unicode__(self):
+        return str(self.invoice_number)+' '+str(self.trans.code) +' '+ str(self.create_date)
 
 class OrderTransaction(models.Model):
     trans = models.ForeignKey(Transactions)

@@ -2,6 +2,7 @@
 {% load i18n %}
 {% load helper %}
 {% block extrahead %}
+        <script type="text/javascript" src="{{ STATIC_URL }}js/popup-plugin.js"></script>
 {% endblock %}
 
 {% block content %}
@@ -9,33 +10,52 @@
 	<div class="tab-content" style="display:block;">
 		<div class="items">
 
-        <table class="filterPanel">
-
-                <tr>
-                    <td class="left">
-                        {% trans "status" %}
-                    </td>
-                    <td class="right">
-                        <select name='statusFilter' id='id_statusFilter' style="width:175px;">
-                            <option value='all'>{% trans "all" %}</option>
-                            {% for s in statusList %}
+            <form id="DateForm" method="POST" action="/cross_order/transaction_list/">
+                {% csrf_token %}
+                <table class="dateFilter" cellspacing="0" cellpadding="0">
+                    <tr>
+                        <td>
+                            {% trans "start_date" %}
+                        </td>
+                        <td>
+                            <input id="id_dateStart" type="textbox" name="dateStart" value="{{ start_date|date:"m/j/Y" }}"/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            {% trans "end_date" %}
+                        </td>
+                        <td>
+                            <input id="id_dateEnd" type="textbox" name="dateEnd" value="{{ end_date|date:"m/j/Y" }}"/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="left">
+                            {% trans "status" %}
+                        </td>
+                        <td class="right">
+                            <select name='statusFilter' id='id_statusFilter' style="width:175px;">
+                                <option value='all'>{% trans "all" %}</option>
+                                {% for s in statusList %}
                                     <option value='{{ s.pk }}'>{{ s.name }}</option>
-                            {% endfor %}
-                        </select>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="left">
-                        &nbsp;
-                    </td>
-                    <td style="text-align: right;">
-                        <a class="submitButton" href="javascript:filterByStatus();" >
-                            <span>{% trans "filter" %} </span>
-                        </a>
-                    </td>
-                </tr>
-            </table>
-        <br>
+                                {% endfor %}
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+
+                        </td>
+                        <td style="text-align: right;">
+                            <input id="id_submit" type="submit" name="submit" value="Sorgula" class="button"/>
+                        </td>
+                    </tr>
+
+                </table>
+            </form>
+            <div class="dateRangeInfo">
+                {{ start_date|date }} - {{ end_date|date }}
+            </div>
 
 <form id ="transUpdateForm" action="/cross_order/update_transaction_status/?status={{ status }}" method='post'>
     {% csrf_token %}
@@ -43,6 +63,12 @@
                 <thead>
                     <tr>
                         <th><input type=checkbox name='allSelect' class="allSelect"></th>
+                        <th>
+                            {% trans "Add_Invoice" %}
+                        </th>
+                        <th>
+                            {% trans "Invoice_list" %}
+                        </th>
                         <th>
                             {% trans "create_date" %}
                         </th>
@@ -57,6 +83,12 @@
                         </th>
                         <th>
                             {% trans "number_of_items_confirmed" %}
+                        </th>
+                        <th>
+                            {% trans "#ofItemsCancelled" %}
+                        </th>
+                        <th>
+                            {% trans "#ofItemsShipped" %}
                         </th>
                         <th>
                             {% trans "total_number_of_items" %}
@@ -74,6 +106,18 @@
                         <tr>
                             <td><input type=checkbox class="checkboxClass" name='transChecked' value="{{ t.pk }}"></td>
                             <td>
+                                <span class="actionLabel" onclick="viewInvoiceBox(null,'{{ t.code }}',
+                                        '{{ t|getSupplierName }}',
+                                        '{{ t.pk }}',null,null,null,null,null,null)">
+                                   Add Invoice  {# translation needed #}
+                                </span>
+                            </td>
+                            <td>
+                                <a href="/cross_order/list_invoice?transaction={{ t.pk}}">
+                                    <span class="actionLabel"> Invoices </span>
+                                </a>
+                            </td>
+                            <td>
                                 {{ t.create_date|date:"d/M/Y H:i:s" }}
                             </td>
                             <td>
@@ -89,6 +133,12 @@
                             </td>
                             <td>
                                 {{ t|totalConfirmed}}
+                            </td>
+                            <td>
+                                {{ t|totalCancelled}}
+                            </td>
+                            <td>
+                                {{ t|totalShipped}}
                             </td>
                             <td>
                                 {{ t|totalOrderCount }}
@@ -123,11 +173,16 @@
             </table>
 <input type="hidden" value="" id="id_buttonSource" name="buttonSource" />
 </form>
-		</div>
+        </div>
+        {% include "cross_order/boxes/add_invoice_box.html" %}
 	</div>
 </div>
 <script type="text/javascript">
     $(document).ready(function(){
+        $( "#id_dateStart" ).datepicker({ altFormat: 'yy-mm-dd' });
+        $( "#id_dateEnd" ).datepicker({  altFormat: 'yy-mm-dd' });
+        $( "#id_invoiceDate" ).datepicker({ altFormat: 'yy-mm-dd' });
+
         displayModuleMenus("cross","crossTransactions");
         setMenuName("{% trans module_cross_order_tracking_system %}");
 
@@ -153,7 +208,7 @@
             }
             else
                 $('.checkboxClass').attr("checked", "");
-        });
+        })
     });
 
     function filterByStatus(){
@@ -169,5 +224,7 @@
         $('#id_buttonSource').val("status");
         $('#transUpdateForm').submit();
     }
+
+
 </script>
 {% endblock %}

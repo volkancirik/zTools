@@ -20,6 +20,14 @@
                 </tr>
                 <tr>
                     <td class="left">
+                        {% trans "supplier_name" %}
+                    </td>
+                    <td  class="right">
+                        {{ trans|getSupplierName }}
+                    </td>
+                </tr>
+                <tr>
+                    <td class="left">
                         {% trans "status" %}
                     </td>
                     <td  class="right">
@@ -80,7 +88,11 @@
                 <tbody>
                     {% for o in orderTransactionList %}
                         <tr>
-                            <td><input type=checkbox class="checkboxClass" name='orderChecked' value="{{ o.order.pk }}"></td>
+                            <td>
+                                {% if not o.order.ordercrossdetails.cross_status.isFinal%}
+                                    <input type=checkbox class="checkboxClass" name='orderChecked' value="{{ o.order.pk }}">
+                                {% endif  %}
+                            </td>
                             <td>{{ o.order.ordercrossdetails.cross_status.name }}</td>
                             <td>{{ o.order.id_sales_order_item }}</td>
                             <td>
@@ -118,7 +130,13 @@
                          <select name='statusUpdate' id='id_statusUpdate'>
                             <option value='0'>{% trans "please_select" %}</option>
                             {% for cs in crossStatusList %}
-                                <option value='{{ cs.pk }}'>{{ cs.name }}</option>
+                                {% if user.is_superuser  %}
+                                    <option value='{{ cs.pk }}'>{{ cs.name }}</option>
+                                {% else %}
+                                    {% if not cs.isFinal %}
+                                        <option value='{{ cs.pk }}'>{{ cs.name }}</option>
+                                    {% endif %}
+                                {% endif %}
                             {% endfor %}
                          </select>
                     </td>

@@ -12,7 +12,7 @@ from django.views.decorators.csrf import csrf_exempt
 import xlwt
 from cross_order.forms import OrderSearchForm
 from cross_order.helper_functions import render_response, generateTransactionString, modelToExcel, getOrderSearchQuery, getTodayAsString
-from cross_order.models import Supplier, CrossStatus, Order, LastUpdate, Transactions, OrderTransaction, OrderCrossDetails, OrderAttributeSet, TransactionStatus, ReportConfirmedSkuBase, ReportConfirmedSupplierBase, ReportOutOfStockCrossDock, ReportUnprocessedCrossDock, OverdueCrossDock, ReportSql2Excel, ColumnType
+from cross_order.models import Supplier, CrossStatus, Order, LastUpdate, Transactions, OrderTransaction, OrderCrossDetails, OrderAttributeSet, TransactionStatus, ReportConfirmedSkuBase, ReportConfirmedSupplierBase, ReportOutOfStockCrossDock, ReportUnprocessedCrossDock, OverdueCrossDock, ReportSql2Excel, ColumnType, InvoiceInfoForTransactions,InvoiceType, InvoiceCurrency
 from django.core.serializers.json import Serializer, DjangoJSONEncoder
 from django.db import transaction, connection
 from cross_order.utils import get_datatables_records, check_permission
@@ -153,7 +153,7 @@ def list_supplier(request):
                s.totalCount = s.order_set.filter(order_date__range=[start_date, end_date]).count()
                supList.append(s)
 
-#   below is the older version of filterin suppliers
+#   below is the older version of filtering suppliers
 #    for s in Supplier.objects.all().order_by("name"):
 #        if s.order_set.filter(order_date__range=[start_date, end_date]).count() >0:
 #            s.unprocessedCount = s.order_set.filter(ordercrossdetails__cross_status=cs,order_date__range=[start_date, end_date]).count()
@@ -235,8 +235,7 @@ def update_transaction_status(request):
             t.status = ts
             t.save()
 
-    return redirect('/cross_order/transaction_list/?status='+request.GET['status'])
-
+    return redirect('/cross_order/transaction_list/?status='+str(ts.id))
 
 @login_required
 @check_permission('Cross')
@@ -310,17 +309,38 @@ def transaction_list(request):
         if request.GET.get('status','') == "":
             status = TransactionStatus.objects.all().order_by("order")[0]
 
-    current_url = '/cross_order/transaction_list/?status='
+    start_date = datetime.datetime.now() - datetime.timedelta(days = 7)
+    start_date = datetime.datetime.combine(start_date, datetime.time.min)
+
+    end_date = datetime.datetime.now()
+    if "dateStart" in request.POST:
+        start_date = datetime.datetime.strptime(request.POST['dateStart'], "%m/%d/%Y")
+    if "dateEnd" in request.POST:
+        end_date = datetime.datetime.strptime(request.POST['dateEnd'], "%m/%d/%Y")
+        end_date = datetime.datetime.combine(end_date, datetime.time.max)
+    if "statusFilter" in request.POST:
+        status_id = request.POST.get('statusFilter','')
+        if status_id != 'all':
+            status = TransactionStatus.objects.get(pk = status_id)
+        else:
+            status = None
+
     tList = Transactions.objects.order_by('-create_date')
     if status is not None:
-        tList = tList.filter(status = status)
+        tList = tList.filter(status = status,create_date__range = [start_date, end_date])
+    else:
+        tList = tList.filter(create_date__range = [start_date, end_date])
 
     return render_response(request, 'cross_order/list_transaction.html',
             {
                 'transList':tList,
                 'statusList':TransactionStatus.objects.all().order_by("order"),
-                'current_url':current_url,
-                'status':request.GET.get('status','1')
+                'status':request.GET.get('status','1'),
+                'start_date':start_date,
+                'end_date':end_date,
+                'invoiceTypeList':InvoiceType.objects.all().order_by("order"),
+                'invoiceCurrencyList':InvoiceCurrency.objects.all().order_by("order"),
+
             })
 
 @login_required
@@ -587,7 +607,7 @@ def exportExcelForSupplier(request):
     x = 5
     book = xlwt.Workbook(encoding='utf8')
     sheet = book.add_sheet('untitled')
-    field_names = ['name','sku','sku_supplier_config','sku_supplier_simple','barcode_ean','size','tax_percent','tax_amount','cost']
+    field_names = ['name','sku','sku_supplier_config','sku_supplier_simple','barcode_ean','size','tax_percent','cost']
 
     index_counter = 1
     sheet.write(0,0,[unicode("Urun Adi").encode('utf-8') ])
@@ -598,15 +618,10 @@ def exportExcelForSupplier(request):
     sheet.write(0,5,[unicode("Beden/Boyut").encode('utf-8') ])
 
     sheet.write(0,6,[unicode("KDV Orani").encode('utf-8') ])
-    sheet.write(0,7,[unicode("KDV Tutari").encode('utf-8') ])
 
-    sheet.write(0,8,[unicode("Tutar").encode('utf-8') ])
-    sheet.write(0,9,[unicode("Miktar").encode('utf-8') ])
-    sheet.write(0,10,[unicode("Toplam Tutar").encode('utf-8') ])
-
-#    sheet.write(0,6,[unicode("Tutar").encode('utf-8') ])
-#    sheet.write(0,7,[unicode("Miktar").encode('utf-8') ])
-#    sheet.write(0,8,[unicode("Toplam Tutar").encode('utf-8') ])
+    sheet.write(0,7,[unicode("Tutar").encode('utf-8') ])
+    sheet.write(0,8,[unicode("Miktar").encode('utf-8') ])
+    sheet.write(0,9,[unicode("Toplam Tutar").encode('utf-8') ])
 
     count_j = 0
     row_fixer = 0
@@ -627,8 +642,8 @@ def exportExcelForSupplier(request):
         else:
             row_fixer = row_fixer + 1
 
-    sheet.write(num_of_item_listed+2,9,[unicode('Genel Toplam').encode('utf-8') ])
-    sheet.write(num_of_item_listed+2,10,total_cost)
+    sheet.write(num_of_item_listed+2,8,[unicode('Genel Toplam').encode('utf-8') ])
+    sheet.write(num_of_item_listed+2,9,total_cost)
     response = HttpResponse(mimetype='application/vnd.ms-excel')
 
     file_string = 'attachment; filename='+code+'.xls'
@@ -636,4 +651,88 @@ def exportExcelForSupplier(request):
 
     book.save(response)
     return response
+
+@login_required
+@check_permission('Cross')
+def add_invoice(request):
+    if request.method == 'POST':
+        try:
+            date =  datetime.datetime.strptime(request.POST['invoiceDate'], "%m/%d/%Y")
+        except:
+            date = datetime.datetime.now()
+        type = InvoiceType.objects.get( pk = int(request.POST['invoiceType']))
+
+        number =  request.POST['transactionInvoiceNumber']
+        if len(number) < 1:
+            number = "n/a"
+        amount = request.POST['transactionInvoiceAmount']
+        if len(amount) < 1:
+            amount = 0
+        quantity = request.POST['transactionInvoiceQuantity']
+        if len(quantity) < 1:
+            quantity = 0
+        currency = InvoiceCurrency.objects.get(pk = int(request.POST['invoiceCurrency']))
+
+        try:
+            invoice = InvoiceInfoForTransactions.objects.get(pk = int(request.POST['invoiceID']) )
+            invoice.create_date = date
+            invoice.invoice_type = type
+            invoice.invoice_number = number
+            invoice.invoice_amount = amount
+            invoice.invoice_currency = currency
+            invoice.quantity_in_invoice = quantity
+            invoice.create_user = request.user
+            invoice.save()
+            return redirect('/cross_order/list_invoice/')
+        except:
+            transaction = Transactions.objects.get(pk = int(request.POST['transactionID']))
+            InvoiceInfoForTransactions.objects.create(trans = transaction,create_date = date, invoice_type = type, invoice_number = number,invoice_amount = amount , quantity_in_invoice = quantity, invoice_currency = currency, create_user = request.user)
+
+        return redirect('/cross_order/transaction_list/')
+
+@login_required
+@check_permission('Cross')
+def list_invoice(request):
+
+    start_date = datetime.datetime.now() - datetime.timedelta(days = 7)
+    start_date = datetime.datetime.combine(start_date, datetime.time.min)
+
+    end_date = datetime.datetime.now()
+
+    try:
+        transactionID = request.GET["transaction"]
+        transaction = Transactions.objects.get(pk = int(transactionID))
+        invoiceList = InvoiceInfoForTransactions.objects.all().filter(trans = transaction)
+    except:
+        if "dateStart" in request.POST:
+            start_date = datetime.datetime.strptime(request.POST['dateStart'], "%m/%d/%Y")
+        if "dateEnd" in request.POST:
+            end_date = datetime.datetime.strptime(request.POST['dateEnd'], "%m/%d/%Y")
+            end_date = datetime.datetime.combine(end_date, datetime.time.max)
+
+        invoiceList = InvoiceInfoForTransactions.objects.order_by('-create_date')
+        invoiceList = invoiceList.filter(create_date__range = [start_date, end_date])
+
+    return render_response(request, 'cross_order/list_invoice.html',
+            {
+            'invoiceList':invoiceList,
+            'start_date':start_date,
+            'end_date':end_date,
+            'invoiceTypeList':InvoiceType.objects.all().order_by("order"),
+            'invoiceCurrencyList':InvoiceCurrency.objects.all().order_by("order"),
+            })
+@login_required
+def update_invoice_status(request):
+    invoice_id_list = request.POST.getlist('invoiceChecked')
+    if not len(invoice_id_list):
+        return redirect('/cross_order/list_invoice/')
+
+    for invoiceId in invoice_id_list:
+        i = InvoiceInfoForTransactions(pk = invoiceId)
+        i.delete()
+
+    return redirect('/cross_order/list_invoice/')
+
+
+
 

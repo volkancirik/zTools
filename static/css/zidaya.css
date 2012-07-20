@@ -544,6 +544,10 @@ div.clear {
     padding-left: 0;
     text-align: left;
 }
+.FormWrapper .invoiceItemFormLine{
+    padding-left: 40;
+    text-align: left;
+}
 
 .FormWrapper .ReturnedItemFormLine .FormLabel{
     width:160px;
@@ -635,4 +639,9 @@ div.clear {
     margin-top: 20px;
     text-decoration: underline;
     cursor: pointer;
+}
+.error_message{
+    font-weight: bold;
+    color:Red;
+    font-size: 14px;
 }

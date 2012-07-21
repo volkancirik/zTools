@@ -1,0 +1,176 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% load helper %}
+{% block extrahead %}
+{% endblock %}
+
+{% block content %}
+<div class="tabbed">
+	<div class="tab-content" style="display:block;">
+		<div class="items">
+            <form id="FilterForm" method="POST" action="/sms/list_catalog_simple/">
+                {% csrf_token %}
+                <table class="dateFilter" cellspacing="0" cellpadding="0">
+                    <tr>
+                        <td class="left">
+                            {% trans "supplier" %}
+                        </td>
+                        <td class="right">
+                            <select name='sid' id='id_sid'>
+                                <option value='0'>{% trans "please_select" %}</option>
+                                {% for sup in supList %}
+                                        <option value='{{ sup.pk }}'>{{ sup.name }}</option>
+                                {% endfor %}
+                            </select>
+                        </td>
+                    </tr>
+                <tr>
+                        <td class="left">
+                            {% trans "brand" %}
+                        </td>
+                        <td class="right">
+                            <select name='bid' id='id_bid'>
+                                <option value='0'>{% trans "please_select" %}</option>
+                                {% for brand in brandList %}
+                                        <option value='{{ brand.pk }}'>{{ brand.name }}</option>
+                                {% endfor %}
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+
+                        </td>
+                        <td style="text-align: right;">
+                            <input id="id_submit" type="submit" name="submit" value="Ara" class="button"/>
+                        </td>
+                    </tr>
+
+                </table>
+            </form> 
+            <table id="catalogConfigList">
+                <thead>
+                    <tr>
+                        <th>
+                            {% trans "action_button_" %}
+                        </th>
+                        <th>
+                            {% trans "item_count" %}
+                        </th>
+                        <th>
+                            {% trans "supplier_name" %}
+                        </th>
+                        <th>
+                            {% trans "sku" %}
+                        </th>
+                        <th>
+                            {% trans "sku_config" %}
+                        </th>
+                        <th>
+                            {% trans "cost" %}
+                        </th>
+                        <th>
+                            {% trans "tax_percent" %}
+                        </th>
+                        <th>
+                            {% trans "barcode_ean" %}
+                        </th>
+                        <th>
+                            {% trans "brand" %}
+                        </th>
+                        <th>
+                            {% trans "sku_supplier_config" %}
+                        </th>
+                        <th>
+                            {% trans "sku_supplier_simple" %}
+                        </th>
+                        <th>
+                            {% trans "zidaya_name" %}
+                        </th>
+                        <th>
+                            {% trans "supplier_color" %}
+                        </th>
+                        <th>
+                            {% trans "supplier_material" %}
+                        </th>
+                        <th>
+                            {% trans "supplier_product_name" %}
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for cs in csList %}
+                        <tr>
+                        <td>
+                            <span class="actionLabel" onclick="updateBasket({{ cs.pk }})">
+                                   Add To Basket
+                                </span>
+                        </td>
+                        <td>
+                            <input type="text" value="1" maxlength="4" style="width: 30px;" id="txt_item_count_{{ cs.pk }}">
+                        </td>
+                        <td>
+                                {{ cs.supplier.name }}
+                            </td>
+                            <td>
+                                {{ cs.sku }}
+                            </td>
+                            <td>
+                                {{ cs.sku_config }}
+                            </td>
+                        <td>
+                                {{ cs.cost }}
+                            </td>
+                        <td>
+                                {{ cs.tax_percent }}
+                            </td>
+                        <td>
+                                {{ cs.barcode_ean }}
+                            </td>
+                        <td>
+                                {{ cs.brand.name }}
+                            </td>
+                        <td>
+                                {{ cs.sku_supplier_config }}
+                            </td>
+                        <td>
+                                {{ cs.sku_supplier_simple }}
+                            </td>
+                        <td>
+                                {{ cs.zidaya_name }}
+                            </td>
+                        <td>
+                                {{ cs.supplier_color }}
+                            </td>
+                        <td>
+                                {{ cs.supplier_material }}
+                            </td>
+                        <td>
+                                {{ cs.supplier_product_name }}
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+		</div>
+	</div>
+</div>
+<script type="text/javascript">
+    $(document).ready(function(){
+        displayModuleMenus("sms","list_catalog_simple");
+        setMenuName("Catalog Simple Search");
+
+        $('#id_sid').val({{ supplier.pk }});
+        $('#id_bid').val({{ brand.pk }});
+        $('#catalogConfigList').dataTable(
+                {
+                    "bJQueryUI": true,
+                    "sPaginationType": "full_numbers",
+                    "sScrollY": "350px",
+                    "sScrollX": "100%"
+                }
+        );
+        
+    });
+</script>
+{% endblock %}

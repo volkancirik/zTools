@@ -1,0 +1,202 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% load helper %}
+{% block extrahead %}
+{% endblock %}
+
+{% block content %}
+<div class="tabbed">
+	<div class="tab-content" style="display:block;">
+		<div class="items">
+            <table class="filterPanel">
+                <tr>
+                    <td class="left">
+                        Shipment Number
+                    </td>
+                    <td  class="right">
+                        {{ shipment.number }}
+                    </td>
+
+                    <td class="left">
+                        Create Date
+                    </td>
+                    <td  class="right">
+                        {{ shipment.create_date|date:"d/M/Y H:i:s" }}
+                    </td>
+                    <td class="left">
+                        Create User
+                    </td>
+                    <td  class="right">
+                        {{ shipment.create_user.email }}
+                    </td>
+                </tr>
+                <tr>
+                    <td class="left">
+                        Supplier
+                    </td>
+                    <td  class="right">
+                        {{ shipment.supplier.name }}
+                    </td>
+                    <td class="left">
+                        proposed_shipment_date
+                    </td>
+                    <td  class="right">
+                        {{ shipment.proposed_shipment_date|date:"d/M/Y H:i:s" }}
+                    </td>
+                    <td class="left">
+                        totalShipmentItemCount
+                    </td>
+                    <td  class="right">
+                        {{ shipment.totalShipmentItemCount }}
+                    </td>
+                </tr>
+                <tr>
+                    <td class="left">
+                        {% trans "status" %}
+                    </td>
+                    <td  class="right">
+                        {{ shipment.get_status_display }}
+                    </td>
+                    <td class="left">
+                        confirmed_shipment_date
+                    </td>
+                    <td  class="right">
+                        {{ shipment.confirmed_shipment_date|date:"d/M/Y H:i:s" }}
+                    </td>
+                    <td class="left">
+                        date_received
+                    </td>
+                    <td  class="right">
+                        {{ shipment.date_received|date:"d/M/Y H:i:s" }}
+                    </td>
+                </tr>
+            </table>
+            <table id="catalogConfigList">
+                <thead>
+                    <tr>
+                        <th>
+                            {% trans "item_count" %}
+                        </th>
+                        <th>
+                            {% trans "sku" %}
+                        </th>
+                        <th>
+                            {% trans "sku_config" %}
+                        </th>
+                        <th>
+                            {% trans "cost" %}
+                        </th>
+                        <th>
+                            {% trans "tax_percent" %}
+                        </th>
+                        <th>
+                            {% trans "barcode_ean" %}
+                        </th>
+                        <th>
+                            {% trans "brand" %}
+                        </th>
+                        <th>
+                            {% trans "sku_supplier_config" %}
+                        </th>
+                        <th>
+                            {% trans "sku_supplier_simple" %}
+                        </th>
+                        <th>
+                            {% trans "zidaya_name" %}
+                        </th>
+                        <th>
+                            {% trans "supplier_color" %}
+                        </th>
+                        <th>
+                            {% trans "supplier_material" %}
+                        </th>
+                        <th>
+                            {% trans "supplier_product_name" %}
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for si in siList %}
+                        <tr>
+                        <td>
+                            {{ si.quantity_ordered }}
+                        </td>
+                            <td>
+                                {{ si.catalog_simple.sku }}
+                            </td>
+                            <td>
+                                {{ si.catalog_simple.sku_config }}
+                            </td>
+                        <td>
+                                {{ si.catalog_simple.cost }}
+                            </td>
+                        <td>
+                                {{ si.catalog_simple.tax_percent }}
+                            </td>
+                        <td>
+                                {{ si.catalog_simple.barcode_ean }}
+                            </td>
+                        <td>
+                                {{ si.catalog_simple.brand.name }}
+                            </td>
+                        <td>
+                                {{ si.catalog_simple.sku_supplier_config }}
+                            </td>
+                        <td>
+                                {{ si.catalog_simple.sku_supplier_simple }}
+                            </td>
+                        <td>
+                                {{ si.catalog_simple.zidaya_name }}
+                            </td>
+                        <td>
+                                {{ si.catalog_simple.supplier_color }}
+                            </td>
+                        <td>
+                                {{ si.catalog_simple.supplier_material }}
+                            </td>
+                        <td>
+                                {{ si.catalog_simple.supplier_product_name }}
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+
+        <table class="actionPanel" cellpadding="0" cellspacing="0" width="100%">
+                <tr>
+                    <td>
+                        <a class="submitButton" href="/sms/confirm_shipment/?sid={{ shipment.pk }}">
+                            <span> Confirm Shipment </span>
+                        </a>
+                    </td>
+                    <td  class="right" style="text-align:right;">
+                        <a class="submitButton" href="/sms/cancel_shipment/?sid={{ shipment.pk }}">
+                            <span class="red">Cancel Shipment</span>
+                        </a>
+                    </td>
+                </tr>
+            </table>
+
+        </div>
+	</div>
+
+{% include "cross_order/boxes/new_shipment_box.html" %}
+</div>
+<script type="text/javascript">
+
+    $(document).ready(function(){
+        displayModuleMenus("sms","smsViewShipment");
+        setMenuName("View Shipment");
+
+        $('#catalogConfigList').dataTable(
+                {
+                    "bJQueryUI": true,
+                    "sPaginationType": "full_numbers",
+                    "sScrollY": "350px",
+                    "sScrollX": "100%"
+                }
+        );
+
+    });
+</script>
+{% endblock %}

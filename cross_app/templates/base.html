@@ -79,7 +79,27 @@
                                 DMS
             </span>
             </a>
-
+        {% endif %}
+        {% if user|checkPermission:"Sms" %}
+            <a href="/sms/list_catalog_simple/">
+            <span class="item dynamicMenuItem sms" id="smsListCatalogSimple">
+                                Search Catalog Simple
+            </span>
+            </a>
+        {% endif %}
+        {% if user|checkPermission:"Sms" %}
+            <a href="/sms/list_shipment/">
+            <span class="item dynamicMenuItem sms" id="smsListShipment">
+                                Shipments
+            </span>
+            </a>
+        {% endif %}
+        {% if user|checkPermission:"Sms" %}
+            <a href="/sms/view_basket/">
+            <span class="item dynamicMenuItem sms" id="smsViewBasket">
+                                View Basket - <span id="totalShipmentItemCount">{{ totalShipmentItemCount }}</span>
+            </span>
+            </a>
         {% endif %}
     </div>
     <div id="navContainer">

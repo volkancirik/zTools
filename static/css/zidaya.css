@@ -391,6 +391,9 @@ select,textarea{
     font-size: 12px;
     font-weight: bold;
 }
+.filterPanel .right {
+    padding-right: 20px;
+}
 
 
 .actionPanel{

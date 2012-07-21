@@ -64,6 +64,11 @@ function closeColumnBox(){
     return false;
 }
 
+function closeNewShipmentBox(){
+    $('.newShipmentBox').hide();
+    return false;
+}
+
 function viewCommentBox(){
     $('.commentBox').show();
     return false;
@@ -287,4 +292,41 @@ function redirectTo(url){
 
 function setMenuName(moduleName){
     $('#moduleName').html(" - "+moduleName);
+}
+
+
+function updateBasket(id_catalog_simple){
+		url = "/sms/update_basket/";
+        count = $('#txt_item_count_'+id_catalog_simple).val();
+		data =  {
+            'id_catalog_simple':id_catalog_simple,
+            'count':count
+        };
+		jQuery.ajax(
+			{
+				'type': 'POST',
+        		'url': url,
+        		'data': data,
+        		'fail': function(){
+        		},
+        		'success': function(data){
+                    $('#totalShipmentItemCount').html(data);
+                    $('#totalShipmentItemCount').parent().animate(
+                        {
+                            backgroundColor: '#CCCCCC'
+                        }
+                    );
+                    $('#totalShipmentItemCount').parent().animate(
+                        {
+                            backgroundColor: '#000000'
+                        }
+                    );
+                }
+			}
+		);
+	}
+
+function submitNewShipmentForm(){
+    $('#createNewShipment').submit();
+    closeNewShipmentBox();
 }

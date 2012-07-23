@@ -194,3 +194,14 @@ def cancel_shipment(request):
     shipment.save()
 
     return redirect('/sms/list_shipment/')
+
+@login_required
+@check_permission('SmsWarehouse')
+def receive_shipment(request):
+    shipment = Shipment.objects.get(pk=request.GET['sid'])
+    shipment.status = ShipmentStatus.RECEIVED
+    shipment.update_user = request.user
+    shipment.update_date = datetime.datetime.now()
+    shipment.save()
+
+    return redirect('/sms/list_shipment/')

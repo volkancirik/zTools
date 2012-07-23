@@ -169,6 +169,13 @@
                             <span> Confirm Shipment </span>
                         </a>
                     </td>
+                    {% if user|checkPermission:"SmsWarehouse" %}
+                        <td>
+                            <a class="submitButton" href="/sms/receive_shipment/?sid={{ shipment.pk }}">
+                                <span> Shipment Received </span>
+                            </a>
+                        </td>
+                    {% endif  %}
                     <td  class="right" style="text-align:right;">
                         <a class="submitButton" href="/sms/cancel_shipment/?sid={{ shipment.pk }}">
                             <span class="red">Cancel Shipment</span>

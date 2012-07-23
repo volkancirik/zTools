@@ -8,7 +8,7 @@ from django.shortcuts import redirect
 from django.utils import simplejson
 from cross_order.helper_functions import render_response
 from cross_order.utils import check_permission
-from sms.helper import getTotalShipmentItemCount
+from sms.helper import getTotalShipmentItemCount, generateShipmentString
 from sms.models import Supplier, CatalogSimple, CatalogSupplier, CatalogBrand, ShipmentItem, Shipment, ShipmentType, ShipmentStatus, SimpleStatus,SimpleShipmentTypeID
 
 @login_required
@@ -123,7 +123,7 @@ def create_shipment(request):
         shipment.create_user = request.user
         shipment.update_user = request.user
         shipment.proposed_shipment_date = date
-        shipment.number = "00001"
+        shipment.number = generateShipmentString()
         shipment.supplier = request.session.get("siList")[0].catalog_simple.supplier
         shipment.save()
 

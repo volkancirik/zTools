@@ -27,3 +27,4 @@ class OrderSearchForm(forms.Form):
     #comment = forms.CharField(required = False,label=_("search_comment"))
     cross_status = forms.ModelChoiceField(label=_("search_cross_status"),queryset = CrossStatus.objects.all(),required=False,empty_label=_("search_all"))
     attribute_set = forms.ModelChoiceField(label=_("search_attribute_set"),queryset = OrderAttributeSet.objects.all(),required=False,empty_label=_("search_all"))
+

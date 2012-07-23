@@ -657,36 +657,36 @@ def exportExcelForSupplier(request):
 def add_invoice(request):
     if request.method == 'POST':
         try:
+            date =  datetime.datetime.strptime(request.POST['invoiceDate'], "%m/%d/%Y")
+        except:
+            date = datetime.datetime.now()
+        type = InvoiceType.objects.get( pk = int(request.POST['invoiceType']))
+
+        number =  request.POST['transactionInvoiceNumber']
+        if len(number) < 1:
+            number = "n/a"
+        amount = request.POST['transactionInvoiceAmount']
+        if len(amount) < 1:
+            amount = 0
+        quantity = request.POST['transactionInvoiceQuantity']
+        if len(quantity) < 1:
+            quantity = 0
+        currency = InvoiceCurrency.objects.get(pk = int(request.POST['invoiceCurrency']))
+
+        try:
             invoice = InvoiceInfoForTransactions.objects.get(pk = int(request.POST['invoiceID']) )
-
-            try:
-                invoice.create_date =  datetime.datetime.strptime(request.POST['invoiceDate'], "%m/%d/%Y")
-            except:
-                invoice.create_date = datetime.datetime.now()
-
-            type = InvoiceType.objects.get( pk = int(request.POST['invoiceType']))
+            invoice.create_date = date
             invoice.invoice_type = type
-
-            invoice.invoice_number = request.POST['transactionInvoiceNumber']
-            invoice.invoice_amount = request.POST['transactionInvoiceAmount']
-            invoice.quantity_in_invoice = request.POST['transactionInvoiceQuantity']
-
-            currency = InvoiceCurrency.objects.get(pk = int(request.POST['invoiceCurrency']))
+            invoice.invoice_number = number
+            invoice.invoice_amount = amount
             invoice.invoice_currency = currency
-
+            invoice.quantity_in_invoice = quantity
             invoice.create_user = request.user
             invoice.save()
             return redirect('/cross_order/list_invoice/')
         except:
             transaction = Transactions.objects.get(pk = int(request.POST['transactionID']))
-            try:
-                invoice_date = datetime.datetime.strptime(request.POST['invoiceDate'], "%m/%d/%Y")
-            except:
-                invoice_date = datetime.datetime.now()
-            type = InvoiceType.objects.get( pk = int(request.POST['invoiceType']))
-            currency = InvoiceCurrency.objects.get(pk = int(request.POST['invoiceCurrency']))
-
-            InvoiceInfoForTransactions.objects.create(trans = transaction,create_date = invoice_date, invoice_type = type, invoice_number = request.POST['transactionInvoiceNumber'],invoice_amount = request.POST['transactionInvoiceAmount'] , quantity_in_invoice = request.POST['transactionInvoiceQuantity'], invoice_currency = currency, create_user = request.user)
+            InvoiceInfoForTransactions.objects.create(trans = transaction,create_date = date, invoice_type = type, invoice_number = number,invoice_amount = amount , quantity_in_invoice = quantity, invoice_currency = currency, create_user = request.user)
 
         return redirect('/cross_order/transaction_list/')
 
@@ -698,14 +698,20 @@ def list_invoice(request):
     start_date = datetime.datetime.combine(start_date, datetime.time.min)
 
     end_date = datetime.datetime.now()
-    if "dateStart" in request.POST:
-        start_date = datetime.datetime.strptime(request.POST['dateStart'], "%m/%d/%Y")
-    if "dateEnd" in request.POST:
-        end_date = datetime.datetime.strptime(request.POST['dateEnd'], "%m/%d/%Y")
-        end_date = datetime.datetime.combine(end_date, datetime.time.max)
 
-    invoiceList = InvoiceInfoForTransactions.objects.order_by('-create_date')
-    invoiceList = invoiceList.filter(create_date__range = [start_date, end_date])
+    try:
+        transactionID = request.GET["transaction"]
+        transaction = Transactions.objects.get(pk = int(transactionID))
+        invoiceList = InvoiceInfoForTransactions.objects.all().filter(trans = transaction)
+    except:
+        if "dateStart" in request.POST:
+            start_date = datetime.datetime.strptime(request.POST['dateStart'], "%m/%d/%Y")
+        if "dateEnd" in request.POST:
+            end_date = datetime.datetime.strptime(request.POST['dateEnd'], "%m/%d/%Y")
+            end_date = datetime.datetime.combine(end_date, datetime.time.max)
+
+        invoiceList = InvoiceInfoForTransactions.objects.order_by('-create_date')
+        invoiceList = invoiceList.filter(create_date__range = [start_date, end_date])
 
     return render_response(request, 'cross_order/list_invoice.html',
             {
@@ -715,9 +721,7 @@ def list_invoice(request):
             'invoiceTypeList':InvoiceType.objects.all().order_by("order"),
             'invoiceCurrencyList':InvoiceCurrency.objects.all().order_by("order"),
             })
-
 @login_required
-@check_permission('Cross')
 def update_invoice_status(request):
     invoice_id_list = request.POST.getlist('invoiceChecked')
     if not len(invoice_id_list):

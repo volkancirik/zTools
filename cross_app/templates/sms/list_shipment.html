@@ -1,0 +1,130 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% load helper %}
+{% block extrahead %}
+{% endblock %}
+
+{% block content %}
+<div class="tabbed">
+	<div class="tab-content" style="display:block;">
+		<div class="items">
+            <div class="dateRangeInfo">
+                Shipment List
+            </div>
+            <table id="catalogConfigList">
+                <thead>
+                    <tr>
+                        <th>
+                            {% trans "status" %}
+                        </th>
+                        <th>
+                            {% trans "shipment_number" %}
+                        </th>
+                        <th>
+                            {% trans "supplier" %}
+                        </th>
+                        <th>
+                            {% trans "shipment_type" %}
+                        </th>
+                        <th>
+                            {% trans "is_consignment" %}
+                        </th>
+                        <th>
+                            {% trans "total_item_count" %}
+                        </th>
+                        <th>
+                            {% trans "create_date" %}
+                        </th>
+                        <th>
+                            {% trans "proposed_shipment_date" %}
+                        </th>
+                        <th>
+                            {% trans "confirmed_shipment_date" %}
+                        </th>
+                        <th>
+                            {% trans "date_received" %}
+                        </th>
+                        <th>
+                            {% trans "create_user" %}
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for s in shipmentList %}
+                        <tr>
+                        <td>
+                            {{ s.get_status_display }}
+                        </td>
+                        <td>
+                          <a href="/sms/view_shipment/?sid={{ s.pk }}">{{ s.number }}</a>
+                        </td>
+                        <td>
+                            {{ s.supplier.name }}
+                            </td>
+                            <td>
+                                {{ s.shipmentType.name }}
+                            </td>
+                            <td>
+                                {{ s.is_consignment }}
+                            </td>
+                        <td>
+                                {{ s.totalShipmentItemCount }}
+                            </td>
+                        <td>
+                                {{ s.create_date|date:"d/M/Y H:i:s" }}
+                            </td>
+                        <td>
+                                {{ s.proposed_shipment_date|date:"d/M/Y H:i:s" }}
+                            </td>
+                        <td>
+                                {{ s.confirmed_shipment_date|date:"d/M/Y H:i:s" }}
+                            </td>
+                        <td>
+                                 {{ s.date_received|date:"d/M/Y H:i:s" }}
+                            </td>
+                        <td>
+                                {{ s.create_user.email }}
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+		</div>
+	</div>
+</div>
+<script type="text/javascript">
+    $(document).ready(function(){
+        displayModuleMenus("sms","list_shipment");
+        setMenuName("Shipment List");
+        
+        oTable = $('#catalogConfigList').dataTable(
+                {
+                    "bJQueryUI": true,
+                    "sPaginationType": "full_numbers",
+                    "sScrollY": "350px",
+                    "sScrollX": "100%",
+                    "aoColumnDefs": [
+                      { 'bSortable': false, 'aTargets': [ 0,9 ] }
+                   ]
+                }
+        );
+
+        oTable.columnFilter({sPlaceHolder: "head:before",
+                    aoColumns:[
+                            { type:"select"},
+                            null,
+                            null,
+                            null,
+                            null,
+                            null,
+                            null,
+                            null,
+                            null,
+                            null,
+                            null
+                    ]
+        });
+
+    });
+</script>
+{% endblock %}

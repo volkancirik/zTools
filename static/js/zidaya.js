@@ -64,6 +64,11 @@ function closeColumnBox(){
     return false;
 }
 
+function closeNewShipmentBox(){
+    $('.newShipmentBox').hide();
+    return false;
+}
+
 function viewCommentBox(){
     $('.commentBox').show();
     return false;
@@ -175,8 +180,43 @@ function submitRefundedForm(){
     closeRefundBox();
 }
 function submitInvoiceForm(){
-    $('#id_invoiceForm').submit();
-    closeInvoiceBox();
+
+    amount = $('#id_transactionInvoiceAmount').val();
+    quantity = $('#id_transactionInvoiceQuantity').val();
+
+    error1 = 0;
+    error2 = 0;
+    if(/^[0-9]+$/.test(quantity) == false)
+    {
+        $('#id_transactionInvoiceQuantity').val('');
+        $('#id_error_quantity').show();
+        error1 = 1;
+    }
+    else{
+        $('#id_error_quantity').hide();
+        error1 = 0;
+    }
+    if(/^[0-9]+\.?[0-9]*$/.test(amount) == false)
+    {
+        $('#id_transactionInvoiceAmount').val('');
+        $('#id_error_amount').show();
+        error2 = 1;
+    }
+    else
+    {
+        $('#id_error_amount').hide();
+        error2 = 0;
+    }
+    if(error1 + error2 == 0)
+    {
+        error1 = 0;
+        error2 = 0;
+        $('#id_error_quantity').hide();
+        $('#id_error_amount').hide();
+        $('#id_invoiceForm').submit();
+        closeInvoiceBox();
+    }
+
 }
 function fnShowHide( iCol, status )
 {
@@ -252,4 +292,41 @@ function redirectTo(url){
 
 function setMenuName(moduleName){
     $('#moduleName').html(" - "+moduleName);
+}
+
+
+function updateBasket(id_catalog_simple){
+		url = "/sms/update_basket/";
+        count = $('#txt_item_count_'+id_catalog_simple).val();
+		data =  {
+            'id_catalog_simple':id_catalog_simple,
+            'count':count
+        };
+		jQuery.ajax(
+			{
+				'type': 'POST',
+        		'url': url,
+        		'data': data,
+        		'fail': function(){
+        		},
+        		'success': function(data){
+                    $('#totalShipmentItemCount').html(data);
+                    $('#totalShipmentItemCount').parent().animate(
+                        {
+                            backgroundColor: '#CCCCCC'
+                        }
+                    );
+                    $('#totalShipmentItemCount').parent().animate(
+                        {
+                            backgroundColor: '#000000'
+                        }
+                    );
+                }
+			}
+		);
+	}
+
+function submitNewShipmentForm(){
+    $('#createNewShipment').submit();
+    closeNewShipmentBox();
 }

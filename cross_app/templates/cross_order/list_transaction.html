@@ -67,6 +67,9 @@
                             {% trans "Add_Invoice" %}
                         </th>
                         <th>
+                            {% trans "Invoice_list" %}
+                        </th>
+                        <th>
                             {% trans "create_date" %}
                         </th>
                         <th>
@@ -108,6 +111,11 @@
                                         '{{ t.pk }}',null,null,null,null,null,null)">
                                    Add Invoice  {# translation needed #}
                                 </span>
+                            </td>
+                            <td>
+                                <a href="/cross_order/list_invoice?transaction={{ t.pk}}">
+                                    <span class="actionLabel"> Invoices </span>
+                                </a>
                             </td>
                             <td>
                                 {{ t.create_date|date:"d/M/Y H:i:s" }}

@@ -120,6 +120,7 @@ INSTALLED_APPS = (
     'dms',
     'rosetta',
     'rts',
+    'sms',
     'main'
 )
 

@@ -391,6 +391,9 @@ select,textarea{
     font-size: 12px;
     font-weight: bold;
 }
+.filterPanel .right {
+    padding-right: 20px;
+}
 
 
 .actionPanel{
@@ -639,4 +642,9 @@ div.clear {
     margin-top: 20px;
     text-decoration: underline;
     cursor: pointer;
+}
+.error_message{
+    font-weight: bold;
+    color:Red;
+    font-size: 14px;
 }

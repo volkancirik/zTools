@@ -24,6 +24,16 @@ class SimpleStatus():
     INACTIVE = 'inactive'
     DELETED = 'deleted'
 
+class BrandStatus():
+    ACTIVE = 'active'
+    INACTIVE = 'inactive'
+    DELETED = 'deleted'
+
+class SupplierStatus():
+    ACTIVE = 'active'
+    INACTIVE = 'inactive'
+    DELETED = 'deleted'
+
 class SimpleShipmentTypeID():
     ON_WAREHOUSE = 1
     CROSS_DOCKING = 3

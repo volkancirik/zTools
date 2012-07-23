@@ -9,7 +9,7 @@ from django.utils import simplejson
 from cross_order.helper_functions import render_response
 from cross_order.utils import check_permission
 from sms.helper import getTotalShipmentItemCount, generateShipmentString
-from sms.models import Supplier, CatalogSimple, CatalogSupplier, CatalogBrand, ShipmentItem, Shipment, ShipmentType, ShipmentStatus, SimpleStatus,SimpleShipmentTypeID
+from sms.models import Supplier, CatalogSimple, CatalogSupplier, CatalogBrand, ShipmentItem, Shipment, ShipmentType, ShipmentStatus, SimpleStatus,SimpleShipmentTypeID, BrandStatus, SupplierStatus
 
 @login_required
 @check_permission('Sms')
@@ -19,19 +19,19 @@ def list_catalog_simple(request):
         csList = CatalogSimple.objects.all()
         if "sid" in request.POST and CatalogSupplier.objects.filter(pk=request.POST["sid"]).count():
             sup = CatalogSupplier.objects.get(pk=request.POST["sid"])
-            csList = CatalogSimple.objects.filter(supplier=sup,status_simple = SimpleStatus.ACTIVE, status_config = SimpleStatus.ACTIVE, id_shipment_type = SimpleShipmentTypeID.ON_WAREHOUSE)
+            csList = CatalogSimple.objects.filter(supplier=sup,status_simple = SimpleStatus.ACTIVE, status_config = SimpleStatus.ACTIVE, id_shipment_type = SimpleShipmentTypeID.ON_WAREHOUSE, brand__status = BrandStatus.ACTIVE)
 
         return render_response(request, 'sms/list_catalog_simple.html',
                 {
                     'supplier':sup,
                     'csList':csList,
-                    'supList':CatalogSupplier.objects.all().order_by('name'),
+                    'supList':CatalogSupplier.objects.filter( status = SupplierStatus.ACTIVE).order_by('name'),
                     'totalShipmentItemCount':getTotalShipmentItemCount(request)
                 })
     else:
         return render_response(request, 'sms/list_catalog_simple.html',
                 {
-                    'supList':CatalogSupplier.objects.all().order_by('name'),
+                    'supList':CatalogSupplier.objects.filter( status = SupplierStatus.ACTIVE).order_by('name'),
                     'totalShipmentItemCount':getTotalShipmentItemCount(request)
                 })
 

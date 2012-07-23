@@ -14,7 +14,7 @@ from sms.models import Supplier, CatalogSimple, CatalogSupplier, CatalogBrand, S
 @login_required
 @check_permission('Sms')
 def list_catalog_simple(request):
-    if request.method == 'POST':
+    if request.method == 'POST' and request.POST["sid"]!= '-1':
         sup = None
         csList = CatalogSimple.objects.all()
         if "sid" in request.POST and CatalogSupplier.objects.filter(pk=request.POST["sid"]).count():
@@ -25,13 +25,13 @@ def list_catalog_simple(request):
                 {
                     'supplier':sup,
                     'csList':csList,
-                    'supList':CatalogSupplier.objects.all(),
+                    'supList':CatalogSupplier.objects.all().order_by('name'),
                     'totalShipmentItemCount':getTotalShipmentItemCount(request)
                 })
     else:
         return render_response(request, 'sms/list_catalog_simple.html',
                 {
-                    'supList':CatalogSupplier.objects.all(),
+                    'supList':CatalogSupplier.objects.all().order_by('name'),
                     'totalShipmentItemCount':getTotalShipmentItemCount(request)
                 })
 

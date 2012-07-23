@@ -1,0 +1,75 @@
+{% load i18n %}
+<div class="newShipmentBox" style="display:none;" title="">
+    <div class="black_overlay" id="fade"></div>
+    <div class="white_content">
+        <div style="border-bottom: 1px solid #333333;margin-bottom: 10px;text-align: left;">
+            {% trans "newshipment_header" %}
+         </div>
+
+        <div class="FormWrapper">
+            <ul class="FormPosition">
+                <form id ="createNewShipment" action="/sms/create_new_shipment/" method='post'>
+                    {% csrf_token %}
+                    <li class="FormLineWrapper ReturnedItemFormLine">
+                        <div class="FormObjectSearch">
+                            <div class="FormLabel">
+                                {% trans "ShipmentType" %}
+                            </div>
+                            <div>
+                                <select name='stList' id='id_stList'>
+                                    <option value='0'>{% trans "please_select_action" %}</option> {# translation needed #}
+                                    {% for st in shipmentTypeList %}
+                                        <option value='{{ st.pk }}'>{{ st.name }}</option>
+                                    {% endfor %}
+                                </select>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="FormLineWrapper ReturnedItemFormLine">
+                        <div class="FormObjectSearch">
+                            <div class="FormLabel">
+                                {% trans "is_consignment" %}
+                            </div>
+                            <div style="text-align: left;">
+                                <input type=checkbox name='isConsignment' id= 'id_isConsignment'>
+                            </div>
+                        </div>
+                    </li>
+                <li class="FormLineWrapper ReturnedItemFormLine">
+                    <div class="FormObjectSearch">
+                        <div  type="hidden" class="FormLabel">
+                            Proposed Shipment Date
+                        </div>
+                        <div>
+                            <input id="id_proposedShipmentDate" type="textbox" name="proposedShipmentDate"/>
+                        </div>
+                    </div>
+                </li>
+                    <li class="FormLineWrapper ReturnedItemFormLine">
+                        <div class="FormObjectSearch">
+                            <div class="FormLabel">
+                                {% trans "comment" %}
+                            </div>
+                            <div>
+                                <textarea id="id_returnedComment" name="comment" cols="94" rows="10"></textarea><br>
+                            </div>
+                        </div>
+                    </li>
+                </form>
+            </ul>
+        </div>
+
+        <div style="float:right;margin-left: 10px;">
+            <a href="#" onclick="return closeNewShipmentBox();">
+                {% trans "close" %}
+            </a>
+        </div>
+        <div class="closeButton">
+            <div style="float:right;">
+                <a href="#" onclick="return submitNewShipmentForm();" class="submitButton">
+                    <span> Confirm </span> {# translation needed #}
+                </a>
+            </div>
+        </div>
+    </div>
+</div>

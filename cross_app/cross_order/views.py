@@ -715,7 +715,9 @@ def list_invoice(request):
             'invoiceTypeList':InvoiceType.objects.all().order_by("order"),
             'invoiceCurrencyList':InvoiceCurrency.objects.all().order_by("order"),
             })
+
 @login_required
+@check_permission('Cross')
 def update_invoice_status(request):
     invoice_id_list = request.POST.getlist('invoiceChecked')
     if not len(invoice_id_list):

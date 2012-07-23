@@ -296,7 +296,17 @@ function setMenuName(moduleName){
 
 
 function updateBasket(id_catalog_simple){
-		url = "/sms/update_basket/";
+
+    quantity = $('#txt_item_count_'+id_catalog_simple).val();
+
+    if(/^[1-9]+[0-9]?$/.test(quantity) == false)
+    {
+        $('#txt_item_count_'+id_catalog_simple).val('');
+    }
+    else
+    {
+        url = "/sms/update_basket/";
+
         count = $('#txt_item_count_'+id_catalog_simple).val();
 		data =  {
             'id_catalog_simple':id_catalog_simple,
@@ -324,7 +334,8 @@ function updateBasket(id_catalog_simple){
                 }
 			}
 		);
-	}
+    }
+}
 
 function submitNewShipmentForm(){
     $('#createNewShipment').submit();

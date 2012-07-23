@@ -19,7 +19,15 @@ class ShipmentStatus():
             (DENIED_BY_WH,_("shipment_status_denied_by_hw")),
             (RECEIVED,_("shipment_status_recieved")),
             )
+class SimpleStatus():
+    ACTIVE = 'active'
+    INACTIVE = 'inactive'
+    DELETED = 'deleted'
 
+class SimpleShipmentTypeID():
+    ON_WAREHOUSE = 1
+    CROSS_DOCKING = 3
+    CROSS_DOCKING_JW = 4
 
 class CatalogSupplier(models.Model):
     id_catalog_supplier = models.PositiveIntegerField(max_length=10,unique=True,primary_key=True)

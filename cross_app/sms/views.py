@@ -9,7 +9,7 @@ from django.utils import simplejson
 from cross_order.helper_functions import render_response
 from cross_order.utils import check_permission
 from sms.helper import getTotalShipmentItemCount
-from sms.models import Supplier, CatalogSimple, CatalogSupplier, CatalogBrand, ShipmentItem, Shipment, ShipmentType, ShipmentStatus
+from sms.models import Supplier, CatalogSimple, CatalogSupplier, CatalogBrand, ShipmentItem, Shipment, ShipmentType, ShipmentStatus, SimpleStatus,SimpleShipmentTypeID
 
 @login_required
 @check_permission('Sms')
@@ -19,27 +19,19 @@ def list_catalog_simple(request):
         csList = CatalogSimple.objects.all()
         if "sid" in request.POST and CatalogSupplier.objects.filter(pk=request.POST["sid"]).count():
             sup = CatalogSupplier.objects.get(pk=request.POST["sid"])
-            csList = CatalogSimple.objects.filter(supplier=sup)
-
-        brand=None
-        if "bid" in request.POST and CatalogBrand.objects.filter(pk=request.POST["bid"]).count():
-            brand = CatalogBrand.objects.get(pk=request.POST["bid"])
-            csList = csList.filter(brand=brand)
+            csList = CatalogSimple.objects.filter(supplier=sup,status_simple = SimpleStatus.ACTIVE, status_config = SimpleStatus.ACTIVE, id_shipment_type = SimpleShipmentTypeID.ON_WAREHOUSE)
 
         return render_response(request, 'sms/list_catalog_simple.html',
                 {
                     'supplier':sup,
-                    'brand':brand,
                     'csList':csList,
                     'supList':CatalogSupplier.objects.all(),
-                    'brandList':CatalogBrand.objects.all(),
                     'totalShipmentItemCount':getTotalShipmentItemCount(request)
                 })
     else:
         return render_response(request, 'sms/list_catalog_simple.html',
                 {
                     'supList':CatalogSupplier.objects.all(),
-                    'brandList':CatalogBrand.objects.all(),
                     'totalShipmentItemCount':getTotalShipmentItemCount(request)
                 })
 

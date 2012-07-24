@@ -232,7 +232,6 @@ function submitColumn(){
      $('input:checkbox[name=columnChecked]').each(function() {
        fnShowHide($(this).val(),$(this).attr("checked"));
      });
-
 }
 
 function viewOrderHistory(pk){
@@ -299,7 +298,7 @@ function updateBasket(id_catalog_simple){
 
     quantity = $('#txt_item_count_'+id_catalog_simple).val();
 
-    if(/^[1-9]+[0-9]?$/.test(quantity) == false)
+    if(/^[1-9]+[0-9]*$/.test(quantity) == false)
     {
         $('#txt_item_count_'+id_catalog_simple).val('');
     }
@@ -340,4 +339,20 @@ function updateBasket(id_catalog_simple){
 function submitNewShipmentForm(){
     $('#createNewShipment').submit();
     closeNewShipmentBox();
+}
+function showShipmentCommentBox(comment,sid)
+{
+    $('#id_shipmentID').val(sid);
+    $('#id_newComment').val(comment);
+    $('.shipmentCommentBox').show();
+}
+function closeShipmentCommentBox()
+{
+    $('#id_shipmentID').val('');
+    $('#id_newComment').val('');
+    $('.shipmentCommentBox').hide();
+}
+function submitShipmentCommentForm(){
+    $('#shipmentCommentForm').submit();
+    closeShipmentCommentBox();
 }

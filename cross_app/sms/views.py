@@ -124,7 +124,10 @@ def create_shipment(request):
         shipment.update_user = request.user
         shipment.proposed_shipment_date = date
         shipment.number = generateShipmentString()
+
         shipment.supplier = request.session.get("siList")[0].catalog_simple.supplier
+
+        shipment.comment = request.POST['comment']
         shipment.save()
 
         totalCount = 0
@@ -181,6 +184,15 @@ def confirm_shipment(request):
     shipment.save()
     
     return redirect('/sms/list_shipment/')
+
+@login_required
+@check_permission('Sms')
+def comment_on_shipment(request):
+    shipment = Shipment.objects.get(pk=request.POST['sid'])
+    shipment.comment = request.POST['comment']
+    shipment.save()
+    return redirect('/sms/list_shipment/')
+
 
 @login_required
 @check_permission('Sms')

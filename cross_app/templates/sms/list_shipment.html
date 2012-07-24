@@ -45,6 +45,9 @@
                             {% trans "date_received" %}
                         </th>
                         <th>
+                            {% trans "comment" %}
+                        </th>
+                        <th>
                             {% trans "create_user" %}
                         </th>
                     </tr>
@@ -83,6 +86,12 @@
                                  {{ s.date_received|date:"d/M/Y H:i:s" }}
                             </td>
                         <td>
+                            <a href="#" onclick="return showShipmentCommentBox('{{ s.comment }}','{{ s.pk }}');">
+                                {{ s.comment }}
+                            </a>
+
+                        </td>
+                        <td>
                                 {{ s.create_user.email }}
                             </td>
                         </tr>
@@ -91,7 +100,9 @@
             </table>
 		</div>
 	</div>
+    {% include "cross_order/boxes/shipment_comment_box.html" %}
 </div>
+
 <script type="text/javascript">
     $(document).ready(function(){
         displayModuleMenus("sms","list_shipment");

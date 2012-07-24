@@ -16,7 +16,7 @@ class ShipmentStatus():
             (REQUESTED,_("shipment_status_requested")),
             (CONFIRMED,_("shipment_status_confirmed")),
             (DENIED_BY_OPS,_("shipment_status_denied_by_ops")),
-            (DENIED_BY_WH,_("shipment_status_denied_by_hw")),
+            (DENIED_BY_WH,_("shipment_status_denied_by_wh")),
             (RECEIVED,_("shipment_status_recieved")),
             )
 class SimpleStatus():
@@ -126,6 +126,8 @@ class Shipment(models.Model):
     date_received = models.DateTimeField(null=True)
     totalShipmentItemCount = models.IntegerField(default=0)
     items = models.ManyToManyField(CatalogSimple,through="ShipmentItem",related_name='items')
+
+    comment = models.TextField(null=True)
     def __unicode__(self):
         return self.number
 

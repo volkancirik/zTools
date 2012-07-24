@@ -48,6 +48,9 @@
                             {% trans "comment" %}
                         </th>
                         <th>
+                            {% trans "cancel_reason" %}
+                        </th>
+                        <th>
                             {% trans "create_user" %}
                         </th>
                     </tr>
@@ -89,11 +92,13 @@
                             <a href="#" onclick="return showShipmentCommentBox('{{ s.comment }}','{{ s.pk }}');">
                                 {{ s.comment }}
                             </a>
-
+                        </td>
+                        <td>
+                            {{ s.cancel_reason.name }}
                         </td>
                         <td>
                                 {{ s.create_user.email }}
-                            </td>
+                        </td>
                         </tr>
                     {% endfor %}
                 </tbody>
@@ -101,6 +106,7 @@
 		</div>
 	</div>
     {% include "cross_order/boxes/shipment_comment_box.html" %}
+
 </div>
 
 <script type="text/javascript">

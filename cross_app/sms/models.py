@@ -109,10 +109,19 @@ class ShipmentType(models.Model):
     def __unicode__(self):
         return self.name
 
+class CancellationReason(models.Model):
+    name = models.CharField(max_length=250,null=False)
+    isInvalid = models.BooleanField(null=False,default=False)
+    order = models.IntegerField(default=9999)
+    def __unicode__(self):
+        return self.name
+
 class Shipment(models.Model):
     number = models.CharField(max_length=1000,null=False)
     supplier = models.ForeignKey(CatalogSupplier,unique=False,null=False)
-    
+
+    cancel_reason = models.ForeignKey(CancellationReason)
+
     is_consignment = models.BooleanField(null=False,default=False)
     create_date = models.DateTimeField(default= datetime.now())
     create_user = models.ForeignKey(User, related_name='%(class)s_user_create')

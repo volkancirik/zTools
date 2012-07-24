@@ -9,7 +9,7 @@ from django.utils import simplejson
 from cross_order.helper_functions import render_response
 from cross_order.utils import check_permission
 from sms.helper import getTotalShipmentItemCount, generateShipmentString
-from sms.models import Supplier, CatalogSimple, CatalogSupplier, CatalogBrand, ShipmentItem, Shipment, ShipmentType, ShipmentStatus, SimpleStatus,SimpleShipmentTypeID, BrandStatus, SupplierStatus
+from sms.models import Supplier, CatalogSimple, CatalogSupplier, CatalogBrand, ShipmentItem, Shipment, ShipmentType, ShipmentStatus, SimpleStatus,SimpleShipmentTypeID, BrandStatus, SupplierStatus, CancellationReason
 
 @login_required
 @check_permission('Sms')
@@ -153,7 +153,7 @@ def list_shipment(request):
     return render_response(request, 'sms/list_shipment.html',
                 {
                     'shipmentList':shipmentList,
-                    'totalShipmentItemCount':getTotalShipmentItemCount(request)
+                    'totalShipmentItemCount':getTotalShipmentItemCount(request),
                 })
 
 @login_required
@@ -170,7 +170,8 @@ def view_shipment(request):
                 {
                     'shipment':shipment,
                     'siList':siList,
-                    'totalShipmentItemCount':getTotalShipmentItemCount(request)
+                    'totalShipmentItemCount':getTotalShipmentItemCount(request),
+                    'cancelTypeList' :CancellationReason.objects.all().order_by("order"),
                 })
 
 @login_required
@@ -197,12 +198,17 @@ def comment_on_shipment(request):
 @login_required
 @check_permission('Sms')
 def cancel_shipment(request):
-    shipment = Shipment.objects.get(pk=request.GET['sid'])
+    shipment = Shipment.objects.get(pk=request.POST['sid'])
     shipment.status = ShipmentStatus.DENIED_BY_OPS
     if request.user.groups.filter(name='SmsWarehouse').count() > 0:
         shipment.status = ShipmentStatus.DENIED_BY_WH
     shipment.update_user = request.user
     shipment.update_date = datetime.datetime.now()
+
+    cancel = CancellationReason.objects.get(pk = request.POST['cancelList'])
+    shipment.cancel_reason = cancel
+    shipment.comment = request.POST['comment']
+
     shipment.save()
 
     return redirect('/sms/list_shipment/')

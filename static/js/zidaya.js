@@ -356,3 +356,20 @@ function submitShipmentCommentForm(){
     $('#shipmentCommentForm').submit();
     closeShipmentCommentBox();
 }
+
+function viewShipmentCancelBox(comment,sid)
+{
+    $('#id_shipmentCancelID').val(sid);
+    $('#id_cancelComment').val(comment);
+    $('.shipmentCancelBox').show();
+}
+function closeShipmentCancelBox()
+{
+    $('#id_shipmentCancelID').val('');
+    $('#id_cancelComment').val('');
+    $('.shipmentCancelBox').hide();
+}
+function submitShipmentCancelForm(){
+    $('#shipmentCancelForm').submit();
+    closeShipmentCancelBox();
+}

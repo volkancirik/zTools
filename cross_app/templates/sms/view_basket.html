@@ -116,7 +116,7 @@
         <table class="actionPanel" cellpadding="0" cellspacing="0" width="100%">
                 <tr>
                     <td>
-                        <a class="submitButton" onclick="return viewInvoiceBox();">
+                        <a class="submitButton" onclick="return viewShipmentBox();">
                             <span> Create New Shipment </span>
                         </a>
                     </td>
@@ -135,7 +135,7 @@
 {% include "cross_order/boxes/new_shipment_box.html" %}
 </div>
 <script type="text/javascript">
-    function viewInvoiceBox(){
+    function viewShipmentBox(){
         $('.newShipmentBox').show();
     }
 

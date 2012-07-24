@@ -69,6 +69,12 @@
                     <td  class="right">
                         {{ shipment.date_received|date:"d/M/Y H:i:s" }}
                     </td>
+                    <td class="left">
+                        Cancellation Reason
+                    </td>
+                    <td  class="right">
+                        {{ shipment.cancel_reason.name }}
+                    </td>
                 </tr>
             </table>
             <table id="catalogConfigList">
@@ -177,8 +183,8 @@
                         </td>
                     {% endif  %}
                     <td  class="right" style="text-align:right;">
-                        <a class="submitButton" href="/sms/cancel_shipment/?sid={{ shipment.pk }}">
-                            <span class="red">Cancel Shipment</span>
+                        <a class="submitButton" onclick="return viewShipmentCancelBox('{{ shipment.comment }}','{{ shipment.pk }}');">
+                            <span> Cancel Shipment </span>
                         </a>
                     </td>
                 </tr>
@@ -186,8 +192,8 @@
 
         </div>
 	</div>
-
-{% include "cross_order/boxes/new_shipment_box.html" %}
+    {% include "cross_order/boxes/shipment_cancel_box.html" %}
+    {% include "cross_order/boxes/new_shipment_box.html" %}
 </div>
 <script type="text/javascript">
 

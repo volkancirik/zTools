@@ -232,7 +232,6 @@ function submitColumn(){
      $('input:checkbox[name=columnChecked]').each(function() {
        fnShowHide($(this).val(),$(this).attr("checked"));
      });
-
 }
 
 function viewOrderHistory(pk){
@@ -296,7 +295,17 @@ function setMenuName(moduleName){
 
 
 function updateBasket(id_catalog_simple){
-		url = "/sms/update_basket/";
+
+    quantity = $('#txt_item_count_'+id_catalog_simple).val();
+
+    if(/^[1-9]+[0-9]*$/.test(quantity) == false)
+    {
+        $('#txt_item_count_'+id_catalog_simple).val('');
+    }
+    else
+    {
+        url = "/sms/update_basket/";
+
         count = $('#txt_item_count_'+id_catalog_simple).val();
 		data =  {
             'id_catalog_simple':id_catalog_simple,
@@ -310,23 +319,64 @@ function updateBasket(id_catalog_simple){
         		'fail': function(){
         		},
         		'success': function(data){
-                    $('#totalShipmentItemCount').html(data);
-                    $('#totalShipmentItemCount').parent().animate(
-                        {
-                            backgroundColor: '#CCCCCC'
-                        }
-                    );
-                    $('#totalShipmentItemCount').parent().animate(
-                        {
-                            backgroundColor: '#000000'
-                        }
-                    );
+                    if(data != -1){
+                        $('#totalShipmentItemCount').html(data);
+                        $('#totalShipmentItemCount').parent().animate(
+                            {
+                                backgroundColor: '#CCCCCC'
+                            }
+                        );
+                        $('#totalShipmentItemCount').parent().animate(
+                            {
+                                backgroundColor: '#000000'
+                            }
+                        );
+                    }else{
+                        alert("Sepetinizde sadece bir tedarikcinin urunleri bulunabilir. Bu tedarikcinin urunleriyle ilgili islem yapmadan once lutfen sepetinizi bosaltin.");
+                    }
+
+
+
                 }
 			}
 		);
-	}
+    }
+}
 
 function submitNewShipmentForm(){
     $('#createNewShipment').submit();
     closeNewShipmentBox();
+}
+function showShipmentCommentBox(comment,sid)
+{
+    $('#id_shipmentID').val(sid);
+    $('#id_newComment').val(comment);
+    $('.shipmentCommentBox').show();
+}
+function closeShipmentCommentBox()
+{
+    $('#id_shipmentID').val('');
+    $('#id_newComment').val('');
+    $('.shipmentCommentBox').hide();
+}
+function submitShipmentCommentForm(){
+    $('#shipmentCommentForm').submit();
+    closeShipmentCommentBox();
+}
+
+function viewShipmentCancelBox(comment,sid)
+{
+    $('#id_shipmentCancelID').val(sid);
+    $('#id_cancelComment').val(comment);
+    $('.shipmentCancelBox').show();
+}
+function closeShipmentCancelBox()
+{
+    $('#id_shipmentCancelID').val('');
+    $('#id_cancelComment').val('');
+    $('.shipmentCancelBox').hide();
+}
+function submitShipmentCancelForm(){
+    $('#shipmentCancelForm').submit();
+    closeShipmentCancelBox();
 }

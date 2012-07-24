@@ -13,6 +13,8 @@ urlpatterns = patterns('',
     (r'^sms/', include('cross_app.sms.urls')),
     (r'^rts/', include('cross_app.rts.urls')),
     (r'^rosetta/', include('rosetta.urls')),
+    (r'^sms/', include('cross_app.sms.urls')),
     (r'^main/', include('main.urls')),
+
     (r'^static/(.*)$', 'django.views.static.serve', {'document_root': '%s' % DOCUMENT_ROOT, 'show_indexes': True}),
 )

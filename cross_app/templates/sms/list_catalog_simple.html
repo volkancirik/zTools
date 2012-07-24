@@ -2,6 +2,8 @@
 {% load i18n %}
 {% load helper %}
 {% block extrahead %}
+
+
 {% endblock %}
 
 {% block content %}
@@ -16,23 +18,10 @@
                             {% trans "supplier" %}
                         </td>
                         <td class="right">
-                            <select name='sid' id='id_sid'>
-                                <option value='0'>{% trans "please_select" %}</option>
+                            <select name='sid' id='id_sid' class="supplier" style="width:150px; vertical-align: middle;" tabindex="1">
+{#                                <option value='-1'>{% trans "please_select" %}</option>#}
                                 {% for sup in supList %}
-                                        <option value='{{ sup.pk }}'>{{ sup.name }}</option>
-                                {% endfor %}
-                            </select>
-                        </td>
-                    </tr>
-                <tr>
-                        <td class="left">
-                            {% trans "brand" %}
-                        </td>
-                        <td class="right">
-                            <select name='bid' id='id_bid'>
-                                <option value='0'>{% trans "please_select" %}</option>
-                                {% for brand in brandList %}
-                                        <option value='{{ brand.pk }}'>{{ brand.name }}</option>
+                                        <option value='{{ sup.pk }}'>{{ sup.name }}</option><br>
                                 {% endfor %}
                             </select>
                         </td>
@@ -51,6 +40,9 @@
             <table id="catalogConfigList">
                 <thead>
                     <tr>
+                        <th>
+                            {% trans "Select_Brand" %}
+                        </th>
                         <th>
                             {% trans "action_button_" %}
                         </th>
@@ -76,9 +68,6 @@
                             {% trans "barcode_ean" %}
                         </th>
                         <th>
-                            {% trans "brand" %}
-                        </th>
-                        <th>
                             {% trans "sku_supplier_config" %}
                         </th>
                         <th>
@@ -101,6 +90,9 @@
                 <tbody>
                     {% for cs in csList %}
                         <tr>
+                        <td>
+                            {{ cs.brand.name }}
+                        </td>
                         <td>
                             <span class="actionLabel" onclick="updateBasket({{ cs.pk }})">
                                    Add To Basket
@@ -126,9 +118,6 @@
                             </td>
                         <td>
                                 {{ cs.barcode_ean }}
-                            </td>
-                        <td>
-                                {{ cs.brand.name }}
                             </td>
                         <td>
                                 {{ cs.sku_supplier_config }}
@@ -157,12 +146,13 @@
 </div>
 <script type="text/javascript">
     $(document).ready(function(){
+        $(".supplier").chosen({allow_single_deselect:true});
         displayModuleMenus("sms","list_catalog_simple");
         setMenuName("Catalog Simple Search");
 
         $('#id_sid').val({{ supplier.pk }});
-        $('#id_bid').val({{ brand.pk }});
-        $('#catalogConfigList').dataTable(
+
+        var oTable = $('#catalogConfigList').dataTable(
                 {
                     "bJQueryUI": true,
                     "sPaginationType": "full_numbers",
@@ -170,7 +160,28 @@
                     "sScrollX": "100%"
                 }
         );
-        
+
+        oTable.columnFilter({sPlaceHolder: "head:before",
+            aoColumns:[
+                { type: "select"},
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+            ]
+        });
+
     });
-</script>
+
+   </script>
 {% endblock %}

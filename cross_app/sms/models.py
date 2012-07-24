@@ -16,10 +16,28 @@ class ShipmentStatus():
             (REQUESTED,_("shipment_status_requested")),
             (CONFIRMED,_("shipment_status_confirmed")),
             (DENIED_BY_OPS,_("shipment_status_denied_by_ops")),
-            (DENIED_BY_WH,_("shipment_status_denied_by_hw")),
+            (DENIED_BY_WH,_("shipment_status_denied_by_wh")),
             (RECEIVED,_("shipment_status_recieved")),
             )
+class SimpleStatus():
+    ACTIVE = 'active'
+    INACTIVE = 'inactive'
+    DELETED = 'deleted'
 
+class BrandStatus():
+    ACTIVE = 'active'
+    INACTIVE = 'inactive'
+    DELETED = 'deleted'
+
+class SupplierStatus():
+    ACTIVE = 'active'
+    INACTIVE = 'inactive'
+    DELETED = 'deleted'
+
+class SimpleShipmentTypeID():
+    ON_WAREHOUSE = 1
+    CROSS_DOCKING = 3
+    CROSS_DOCKING_JW = 4
 
 class CatalogSupplier(models.Model):
     id_catalog_supplier = models.PositiveIntegerField(max_length=10,unique=True,primary_key=True)
@@ -91,10 +109,19 @@ class ShipmentType(models.Model):
     def __unicode__(self):
         return self.name
 
+class CancellationReason(models.Model):
+    name = models.CharField(max_length=250,null=False)
+    isInvalid = models.BooleanField(null=False,default=False)
+    order = models.IntegerField(default=9999)
+    def __unicode__(self):
+        return self.name
+
 class Shipment(models.Model):
     number = models.CharField(max_length=1000,null=False)
     supplier = models.ForeignKey(CatalogSupplier,unique=False,null=False)
-    
+
+    cancel_reason = models.ForeignKey(CancellationReason)
+
     is_consignment = models.BooleanField(null=False,default=False)
     create_date = models.DateTimeField(default= datetime.now())
     create_user = models.ForeignKey(User, related_name='%(class)s_user_create')
@@ -108,6 +135,8 @@ class Shipment(models.Model):
     date_received = models.DateTimeField(null=True)
     totalShipmentItemCount = models.IntegerField(default=0)
     items = models.ManyToManyField(CatalogSimple,through="ShipmentItem",related_name='items')
+
+    comment = models.TextField(null=True)
     def __unicode__(self):
         return self.number
 

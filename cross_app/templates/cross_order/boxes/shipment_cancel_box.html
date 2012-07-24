@@ -1,0 +1,55 @@
+{% load i18n %}
+<div class="shipmentCancelBox" style="display:none;" title="">
+    <div class="black_overlay" id="fade"></div>
+    <div class="white_content">
+        <div style="border-bottom: 1px solid #333333;margin-bottom: 10px;text-align: left;">
+            {% trans "Comment" %}
+        </div>
+
+        <div class="FormWrapper">
+            <ul class="FormPosition">
+                <form id ="shipmentCancelForm" action="/sms/cancel_shipment/" method='post'>
+                    {% csrf_token %}
+                    <li class="FormLineWrapper ReturnedItemFormLine">
+                        <div class="FormObjectSearch">
+                            <div class="FormLabel">
+                                {% trans "ShipmentType" %}
+                            </div>
+                            <div>
+                                <select name='cancelList' id='id_cancelList'>
+                                    {% for c in cancelTypeList %}
+                                        <option value='{{ c.pk }}'>{{ c.name }}</option>
+                                    {% endfor %}
+                                </select>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="FormLineWrapper ReturnedItemFormLine">
+                        <div class="FormObjectSearch">
+                            <div class="FormLabel">
+                                {% trans "comment" %}
+                            </div>
+                            <div>
+                                <textarea id="id_cancelComment" name="comment" cols="94" rows="10"></textarea><br>
+                            </div>
+                        </div>
+                    </li>
+                    <input type="hidden" value="" id="id_shipmentCancelID" name="sid" />
+                </form>
+            </ul>
+        </div>
+
+        <div style="float:right;margin-left: 10px;">
+            <a href="#" onclick="return closeShipmentCancelBox();">
+                {% trans "close" %}
+            </a>
+        </div>
+        <div class="closeButton">
+            <div style="float:right;">
+                <a href="#" onclick="return submitShipmentCancelForm();" class="submitButton">
+                    <span> Confirm </span> {# translation needed #}
+                </a>
+            </div>
+        </div>
+    </div>
+</div>

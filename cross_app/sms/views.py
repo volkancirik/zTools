@@ -1,6 +1,3 @@
-
-#@login_required
-#@check_permission('Sms')
 import datetime
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponse
@@ -8,38 +5,30 @@ from django.shortcuts import redirect
 from django.utils import simplejson
 from cross_order.helper_functions import render_response
 from cross_order.utils import check_permission
-from sms.helper import getTotalShipmentItemCount
-from sms.models import Supplier, CatalogSimple, CatalogSupplier, CatalogBrand, ShipmentItem, Shipment, ShipmentType, ShipmentStatus
+from sms.helper import getTotalShipmentItemCount, generateShipmentString
+from sms.models import Supplier, CatalogSimple, CatalogSupplier, CatalogBrand, ShipmentItem, Shipment, ShipmentType, ShipmentStatus, SimpleStatus,SimpleShipmentTypeID, BrandStatus, SupplierStatus, CancellationReason
 
 @login_required
 @check_permission('Sms')
 def list_catalog_simple(request):
-    if request.method == 'POST':
+    if request.method == 'POST' and request.POST["sid"]!= '-1':
         sup = None
         csList = CatalogSimple.objects.all()
         if "sid" in request.POST and CatalogSupplier.objects.filter(pk=request.POST["sid"]).count():
             sup = CatalogSupplier.objects.get(pk=request.POST["sid"])
-            csList = CatalogSimple.objects.filter(supplier=sup)
-
-        brand=None
-        if "bid" in request.POST and CatalogBrand.objects.filter(pk=request.POST["bid"]).count():
-            brand = CatalogBrand.objects.get(pk=request.POST["bid"])
-            csList = csList.filter(brand=brand)
+            csList = CatalogSimple.objects.filter(supplier=sup,status_simple = SimpleStatus.ACTIVE, status_config = SimpleStatus.ACTIVE, id_shipment_type = SimpleShipmentTypeID.ON_WAREHOUSE, brand__status = BrandStatus.ACTIVE)
 
         return render_response(request, 'sms/list_catalog_simple.html',
                 {
                     'supplier':sup,
-                    'brand':brand,
                     'csList':csList,
-                    'supList':CatalogSupplier.objects.all(),
-                    'brandList':CatalogBrand.objects.all(),
+                    'supList':CatalogSupplier.objects.filter( status = SupplierStatus.ACTIVE).order_by('name'),
                     'totalShipmentItemCount':getTotalShipmentItemCount(request)
                 })
     else:
         return render_response(request, 'sms/list_catalog_simple.html',
                 {
-                    'supList':CatalogSupplier.objects.all(),
-                    'brandList':CatalogBrand.objects.all(),
+                    'supList':CatalogSupplier.objects.filter( status = SupplierStatus.ACTIVE).order_by('name'),
                     'totalShipmentItemCount':getTotalShipmentItemCount(request)
                 })
 
@@ -50,30 +39,40 @@ def update_basket(request):
     count = request.POST.get("count",0)
 
     totalCount = 0
+    currentBasketSize = getTotalShipmentItemCount(request)
+
     shipment = request.session.get("shipment",Shipment())
     siList = request.session.get("siList",[])
 
     cs = CatalogSimple.objects.get(pk=ics)
-    si= ShipmentItem()
-    si.catalog_simple = cs
-    si.quantity_ordered = int(count)
-    si.shipment = shipment
-    si.catalog_simple = cs
+    supplier = cs.supplier.pk
 
-    index = -1
-    for item in siList:
-        if item.catalog_simple == cs:
-            item.quantity_ordered += int(count)
-            index = siList.index(item)
-            break
+    if not currentBasketSize>0:
+        request.session["supplier"] = supplier
 
-    if index < 0:
-        siList.append(si)
+    if supplier == request.session["supplier"]:
+        si= ShipmentItem()
+        si.catalog_simple = cs
+        si.quantity_ordered = int(count)
+        si.shipment = shipment
+        si.catalog_simple = cs
 
-    request.session["shipment"] = shipment
-    request.session["siList"] = siList
+        index = -1
+        for item in siList:
+            if item.catalog_simple == cs:
+                item.quantity_ordered += int(count)
+                index = siList.index(item)
+                break
 
-    totalCount = getTotalShipmentItemCount(request)
+        if index < 0:
+            siList.append(si)
+
+        request.session["shipment"] = shipment
+        request.session["siList"] = siList
+
+        totalCount = getTotalShipmentItemCount(request)
+    else:
+        totalCount = -1
 
     json_models = simplejson.dumps(totalCount)
     return HttpResponse(json_models, mimetype='application/json; charset=utf8')
@@ -131,8 +130,11 @@ def create_shipment(request):
         shipment.create_user = request.user
         shipment.update_user = request.user
         shipment.proposed_shipment_date = date
-        shipment.number = "00001"
+        shipment.number = generateShipmentString()
+
         shipment.supplier = request.session.get("siList")[0].catalog_simple.supplier
+
+        shipment.comment = request.POST['comment']
         shipment.save()
 
         totalCount = 0
@@ -158,7 +160,7 @@ def list_shipment(request):
     return render_response(request, 'sms/list_shipment.html',
                 {
                     'shipmentList':shipmentList,
-                    'totalShipmentItemCount':getTotalShipmentItemCount(request)
+                    'totalShipmentItemCount':getTotalShipmentItemCount(request),
                 })
 
 @login_required
@@ -175,7 +177,8 @@ def view_shipment(request):
                 {
                     'shipment':shipment,
                     'siList':siList,
-                    'totalShipmentItemCount':getTotalShipmentItemCount(request)
+                    'totalShipmentItemCount':getTotalShipmentItemCount(request),
+                    'cancelTypeList' :CancellationReason.objects.all().order_by("order"),
                 })
 
 @login_required
@@ -192,11 +195,36 @@ def confirm_shipment(request):
 
 @login_required
 @check_permission('Sms')
+def comment_on_shipment(request):
+    shipment = Shipment.objects.get(pk=request.POST['sid'])
+    shipment.comment = request.POST['comment']
+    shipment.save()
+    return redirect('/sms/list_shipment/')
+
+
+@login_required
+@check_permission('Sms')
 def cancel_shipment(request):
-    shipment = Shipment.objects.get(pk=request.GET['sid'])
+    shipment = Shipment.objects.get(pk=request.POST['sid'])
     shipment.status = ShipmentStatus.DENIED_BY_OPS
     if request.user.groups.filter(name='SmsWarehouse').count() > 0:
         shipment.status = ShipmentStatus.DENIED_BY_WH
+    shipment.update_user = request.user
+    shipment.update_date = datetime.datetime.now()
+
+    cancel = CancellationReason.objects.get(pk = request.POST['cancelList'])
+    shipment.cancel_reason = cancel
+    shipment.comment = request.POST['comment']
+
+    shipment.save()
+
+    return redirect('/sms/list_shipment/')
+
+@login_required
+@check_permission('SmsWarehouse')
+def receive_shipment(request):
+    shipment = Shipment.objects.get(pk=request.GET['sid'])
+    shipment.status = ShipmentStatus.RECEIVED
     shipment.update_user = request.user
     shipment.update_date = datetime.datetime.now()
     shipment.save()

@@ -310,17 +310,24 @@ function updateBasket(id_catalog_simple){
         		'fail': function(){
         		},
         		'success': function(data){
-                    $('#totalShipmentItemCount').html(data);
-                    $('#totalShipmentItemCount').parent().animate(
-                        {
-                            backgroundColor: '#CCCCCC'
-                        }
-                    );
-                    $('#totalShipmentItemCount').parent().animate(
-                        {
-                            backgroundColor: '#000000'
-                        }
-                    );
+                    if(data != -1){
+                        $('#totalShipmentItemCount').html(data);
+                        $('#totalShipmentItemCount').parent().animate(
+                            {
+                                backgroundColor: '#CCCCCC'
+                            }
+                        );
+                        $('#totalShipmentItemCount').parent().animate(
+                            {
+                                backgroundColor: '#000000'
+                            }
+                        );
+                    }else{
+                        alert("Sepetinizde sadece bir tedarikcinin urunleri bulunabilir. Bu tedarikcinin urunleriyle ilgili islem yapmadan once lutfen sepetinizi bosaltin.");
+                    }
+
+
+
                 }
 			}
 		);

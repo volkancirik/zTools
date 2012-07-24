@@ -1,6 +1,3 @@
-
-#@login_required
-#@check_permission('Sms')
 import datetime
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponse
@@ -42,30 +39,40 @@ def update_basket(request):
     count = request.POST.get("count",0)
 
     totalCount = 0
+    currentBasketSize = getTotalShipmentItemCount(request)
+
     shipment = request.session.get("shipment",Shipment())
     siList = request.session.get("siList",[])
 
     cs = CatalogSimple.objects.get(pk=ics)
-    si= ShipmentItem()
-    si.catalog_simple = cs
-    si.quantity_ordered = int(count)
-    si.shipment = shipment
-    si.catalog_simple = cs
+    supplier = cs.supplier.pk
 
-    index = -1
-    for item in siList:
-        if item.catalog_simple == cs:
-            item.quantity_ordered += int(count)
-            index = siList.index(item)
-            break
+    if not currentBasketSize>0:
+        request.session["supplier"] = supplier
 
-    if index < 0:
-        siList.append(si)
+    if supplier == request.session["supplier"]:
+        si= ShipmentItem()
+        si.catalog_simple = cs
+        si.quantity_ordered = int(count)
+        si.shipment = shipment
+        si.catalog_simple = cs
 
-    request.session["shipment"] = shipment
-    request.session["siList"] = siList
+        index = -1
+        for item in siList:
+            if item.catalog_simple == cs:
+                item.quantity_ordered += int(count)
+                index = siList.index(item)
+                break
 
-    totalCount = getTotalShipmentItemCount(request)
+        if index < 0:
+            siList.append(si)
+
+        request.session["shipment"] = shipment
+        request.session["siList"] = siList
+
+        totalCount = getTotalShipmentItemCount(request)
+    else:
+        totalCount = -1
 
     json_models = simplejson.dumps(totalCount)
     return HttpResponse(json_models, mimetype='application/json; charset=utf8')

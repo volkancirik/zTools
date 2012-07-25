@@ -48,6 +48,9 @@
                             {% trans "comment" %}
                         </th>
                         <th>
+                            {% trans "return_rate" %}
+                        </th>
+                        <th>
                             {% trans "cancel_reason" %}
                         </th>
                         <th>
@@ -80,10 +83,10 @@
                                 {{ s.create_date|date:"d/M/Y H:i:s" }}
                             </td>
                         <td>
-                                {{ s.proposed_shipment_date|date:"d/M/Y H:i:s" }}
+                                {{ s.proposed_shipment_date|date:"d/M/Y" }}
                             </td>
                         <td>
-                                {{ s.confirmed_shipment_date|date:"d/M/Y H:i:s" }}
+                                {{ s.confirmed_shipment_date|date:"d/M/Y" }}
                             </td>
                         <td>
                                  {{ s.date_received|date:"d/M/Y H:i:s" }}
@@ -92,6 +95,9 @@
                             <a href="#" onclick="return showShipmentCommentBox('{{ s.comment }}','{{ s.pk }}');">
                                 {{ s.comment }}
                             </a>
+                        </td>
+                        <td>
+                            {{ s.damaged_return_rate }}
                         </td>
                         <td>
                             {{ s.cancel_reason.name }}

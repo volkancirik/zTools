@@ -27,6 +27,7 @@ def list_catalog_simple(request):
                     'totalShipmentItemCount':getTotalShipmentItemCount(request)
                 })
     else:
+
         return render_response(request, 'sms/list_catalog_simple.html',
                 {
                     'supList':CatalogSupplier.objects.filter( status = SupplierStatus.ACTIVE).order_by('name'),
@@ -136,6 +137,7 @@ def create_shipment(request):
         shipment.supplier = request.session.get("siList")[0].catalog_simple.supplier
 
         shipment.comment = request.POST['comment']
+        shipment.damaged_return_rate = request.POST['damagedReturnRate']
         shipment.save()
 
         totalCount = 0
@@ -185,11 +187,14 @@ def view_shipment(request):
 @login_required
 @check_permission('Sms')
 def confirm_shipment(request):
-    shipment = Shipment.objects.get(pk=request.GET['sid'])
+    shipment = Shipment.objects.get(pk=request.POST['sid'])
+
     shipment.status = ShipmentStatus.CONFIRMED
     shipment.update_user = request.user
     shipment.update_date = datetime.datetime.now()
-    shipment.confirmed_shipment_date = datetime.datetime.now()
+
+    shipment.confirmed_shipment_date = datetime.datetime.strptime(request.POST['confirmedShipmentDate'], "%m/%d/%Y")
+    shipment.comment = request.POST['comment']
     shipment.save()
     
     return redirect('/sms/list_shipment/')

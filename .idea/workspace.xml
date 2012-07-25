@@ -7,18 +7,13 @@
   <component name="ChangeListManager">
     <list id="cdaf22e8-a513-4f8e-bc84-b762ed1517a7" name="Default" comment="Modularzation basics are done" />
     <list default="true" id="18da05b0-3aba-46ee-95e6-c3fd95c099a9" name="do not change" comment="solving issue #102">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cross_app/sms/views.py" afterPath="$PROJECT_DIR$/cross_app/sms/views.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cross_app/templates/sms/list_catalog_simple.html" afterPath="$PROJECT_DIR$/cross_app/templates/sms/list_catalog_simple.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/js/zidaya.js" afterPath="$PROJECT_DIR$/static/js/zidaya.js" />
-    </list>
-    <list id="09f82009-8064-49b1-8d20-0a273fdb4129" name="do no change" comment="do no change">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cross_app/settings.py" afterPath="$PROJECT_DIR$/cross_app/settings.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cross_app/sms/models.py" afterPath="$PROJECT_DIR$/cross_app/sms/models.py" />
     </list>
+    <list id="09f82009-8064-49b1-8d20-0a273fdb4129" name="do no change" comment="do no change" />
     <ignored path="zTools.iws" />
     <ignored path=".idea/workspace.xml" />
-    <file path="$PROJECT_DIR$/cross_app/settings.py" changelist="18da05b0-3aba-46ee-95e6-c3fd95c099a9" time="1343028943832" ignored="true" />
-    <file path="$PROJECT_DIR$/.idea/workspace.xml" changelist="18da05b0-3aba-46ee-95e6-c3fd95c099a9" time="1343138898242" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -28,6 +23,7 @@
   <component name="ChangesViewManager" flattened_view="true" show_ignored="false" />
   <component name="CreatePatchCommitExecutor">
     <option name="PATCH_PATH" value="" />
+    <option name="REVERSE_PATCH" value="false" />
   </component>
   <component name="DaemonCodeAnalyzer">
     <disable_hints />
@@ -40,94 +36,26 @@
     <favorites_list name="zTools" />
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.58325404">
-      <split-first>
-        <leaf>
-          <file leaf-file-name="views.py" pinned="false" current="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/cross_app/sms/views.py">
-              <provider selected="true" editor-type-id="text-editor">
-                <state line="28" column="0" selection-start="1565" selection-end="1565" vertical-scroll-proportion="0.0">
-                  <folding>
-                    <element signature="e#0#15#0" expanded="true" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="zidaya.js" pinned="false" current="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/static/js/zidaya.js">
-              <provider selected="true" editor-type-id="text-editor">
-                <state line="378" column="33" selection-start="11385" selection-end="11385" vertical-scroll-proportion="0.0">
-                  <folding>
-                    <marker date="1343138860844" expanded="true" signature="10139:10229" placeholder="{&quot;backgroundColor&quot;: '#CCCCCC'...}" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="list_catalog_simple.html" pinned="false" current="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/cross_app/templates/sms/list_catalog_simple.html">
-              <provider selected="true" editor-type-id="text-editor">
-                <state line="138" column="29" selection-start="5347" selection-end="5347" vertical-scroll-proportion="-9.153846">
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="list_invoice.html" pinned="false" current="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/cross_app/templates/cross_order/list_invoice.html">
-              <provider selected="true" editor-type-id="text-editor">
-                <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-0.0">
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="list_shipment.html" pinned="false" current="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/cross_app/templates/sms/list_shipment.html">
-              <provider selected="true" editor-type-id="text-editor">
-                <state line="108" column="0" selection-start="4028" selection-end="4028" vertical-scroll-proportion="-29.73077">
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="view_basket.html" pinned="false" current="true" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/cross_app/templates/sms/view_basket.html">
-              <provider selected="true" editor-type-id="text-editor">
-                <state line="108" column="54" selection-start="4145" selection-end="4145" vertical-scroll-proportion="0.51746726">
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="view_shipment.html" pinned="false" current="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/cross_app/templates/sms/view_shipment.html">
-              <provider selected="true" editor-type-id="text-editor">
-                <state line="116" column="42" selection-start="4157" selection-end="4157" vertical-scroll-proportion="2.3076923">
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-        </leaf>
-      </split-first>
-      <split-second>
-        <leaf>
-          <file leaf-file-name="models.py" pinned="false" current="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/cross_app/cross_order/models.py">
-              <provider selected="true" editor-type-id="text-editor">
-                <state line="132" column="31" selection-start="4920" selection-end="4932" vertical-scroll-proportion="-1.3075397">
-                  <folding>
-                    <element signature="e#0#28#0" expanded="true" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-        </leaf>
-      </split-second>
-    </splitter>
+    <leaf>
+      <file leaf-file-name="settings.py" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/cross_app/settings.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="17" column="41" selection-start="655" selection-end="655" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="models.py" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/cross_app/sms/models.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="116" column="24" selection-start="4408" selection-end="4408" vertical-scroll-proportion="0.68136275">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="FindManager">
     <FindUsagesManager>
@@ -135,13 +63,13 @@
     </FindUsagesManager>
   </component>
   <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="CHECKOUT_INCLUDE_TAGS" value="false" />
+    <option name="UPDATE_CHANGES_POLICY" value="STASH" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
         <option value="$PROJECT_DIR$/cross_app/templates/cross_order/list_transaction_details.html" />
-        <option value="$PROJECT_DIR$/cross_app/settings.py" />
         <option value="$PROJECT_DIR$/cross_app/urls.py" />
         <option value="$PROJECT_DIR$/cross_app/templates/base.html" />
         <option value="$PROJECT_DIR$/cross_app/sms/urls.py" />
@@ -151,11 +79,12 @@
         <option value="$PROJECT_DIR$/static/js/zidaya.js" />
         <option value="$PROJECT_DIR$/cross_app/templates/sms/list_shipment.html" />
         <option value="$PROJECT_DIR$/cross_app/templates/cross_order/boxes/shipment_cancel_box.html" />
-        <option value="$PROJECT_DIR$/cross_app/sms/models.py" />
         <option value="$PROJECT_DIR$/cross_app/sms/views.py" />
         <option value="$PROJECT_DIR$/cross_app/templates/sms/list_catalog_simple.html" />
         <option value="$PROJECT_DIR$/cross_app/templates/sms/view_shipment.html" />
         <option value="$PROJECT_DIR$/cross_app/templates/sms/view_basket.html" />
+        <option value="$PROJECT_DIR$/cross_app/settings.py" />
+        <option value="$PROJECT_DIR$/cross_app/sms/models.py" />
       </list>
     </option>
   </component>
@@ -191,12 +120,55 @@
       <sortByType />
     </navigator>
     <panes>
+      <pane id="Favorites" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
             <PATH_ELEMENT>
               <option name="myItemId" value="zTools" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="zTools" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="zTools" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="zTools" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="zTools" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="cross_app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="zTools" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="zTools" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="cross_app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="sms" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
         </subPane>
@@ -211,7 +183,6 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="Favorites" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -267,10 +238,8 @@
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/script" />
       <option name="IS_MODULE_SDK" value="true" />
       <module name="zTools" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/script/kayako_mass_ticket.py" />
       <option name="PARAMETERS" value="" />
-      <option name="MULTIPROCESS" value="false" />
       <RunnerSettings RunnerId="PyDebugRunner" />
       <RunnerSettings RunnerId="PythonRunner" />
       <ConfigurationWrapper RunnerId="PyDebugRunner" />
@@ -287,10 +256,8 @@
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/script" />
       <option name="IS_MODULE_SDK" value="true" />
       <module name="zTools" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/script/kayako_mass_ticket_v2.py" />
       <option name="PARAMETERS" value="" />
-      <option name="MULTIPROCESS" value="false" />
       <RunnerSettings RunnerId="PyDebugRunner" />
       <ConfigurationWrapper RunnerId="PyDebugRunner" />
       <method />
@@ -305,10 +272,8 @@
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/script" />
       <option name="IS_MODULE_SDK" value="true" />
       <module name="zTools" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/script/duplicate_fixer.py" />
       <option name="PARAMETERS" value="" />
-      <option name="MULTIPROCESS" value="false" />
       <RunnerSettings RunnerId="PythonRunner" />
       <ConfigurationWrapper RunnerId="PythonRunner" />
       <method />
@@ -323,10 +288,8 @@
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/script" />
       <option name="IS_MODULE_SDK" value="true" />
       <module name="zTools" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/script/return_mail_sender.py" />
       <option name="PARAMETERS" value="" />
-      <option name="MULTIPROCESS" value="false" />
       <RunnerSettings RunnerId="PyDebugRunner" />
       <RunnerSettings RunnerId="PythonRunner" />
       <ConfigurationWrapper RunnerId="PyDebugRunner" />
@@ -343,10 +306,25 @@
       <option name="WORKING_DIRECTORY" value="" />
       <option name="IS_MODULE_SDK" value="false" />
       <module name="zTools" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
       <option name="TARGET" value="" />
       <option name="SETTINGS_FILE" value="" />
-      <option name="CUSTOM_SETTINGS" value="false" />
+      <method />
+    </configuration>
+    <configuration default="true" type="PythonUnitTestConfigurationType" factoryName="Python's unittest">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <module name="zTools" />
+      <option name="SCRIPT_NAME" value="" />
+      <option name="CLASS_NAME" value="" />
+      <option name="METHOD_NAME" value="" />
+      <option name="FOLDER_NAME" value="" />
+      <option name="TEST_TYPE" value="TEST_SCRIPT" />
+      <option name="PATTERN" value="" />
+      <option name="PUREUNITTEST" value="true" />
       <method />
     </configuration>
     <configuration default="true" type="Python.AppEngineServer" factoryName="App Engine server">
@@ -357,8 +335,6 @@
       <option name="WORKING_DIRECTORY" value="" />
       <option name="IS_MODULE_SDK" value="false" />
       <module name="zTools" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
-      <option name="launchJavascriptDebuger" value="false" />
       <option name="browserUrl" value="" />
       <option name="additionalOptions" value="" />
       <method />
@@ -373,29 +349,8 @@
       <option name="WORKING_DIRECTORY" value="" />
       <option name="IS_MODULE_SDK" value="false" />
       <module name="zTools" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
       <option name="SCRIPT_NAME" value="" />
       <option name="PARAMETERS" value="" />
-      <option name="MULTIPROCESS" value="false" />
-      <method />
-    </configuration>
-    <configuration default="true" type="tests" factoryName="Unittests">
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs />
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="" />
-      <option name="IS_MODULE_SDK" value="false" />
-      <module name="zTools" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="" />
-      <option name="CLASS_NAME" value="" />
-      <option name="METHOD_NAME" value="" />
-      <option name="FOLDER_NAME" value="" />
-      <option name="TEST_TYPE" value="TEST_SCRIPT" />
-      <option name="PATTERN" value="" />
-      <option name="USE_PATTERN" value="false" />
-      <option name="PUREUNITTEST" value="true" />
       <method />
     </configuration>
     <configuration default="true" type="Python.DjangoServer" factoryName="Django server">
@@ -408,7 +363,6 @@
       <option name="WORKING_DIRECTORY" value="" />
       <option name="IS_MODULE_SDK" value="false" />
       <module name="zTools" />
-      <option name="launchJavascriptDebuger" value="false" />
       <option name="port" value="8000" />
       <option name="host" value="" />
       <option name="additionalOptions" value="" />
@@ -419,7 +373,7 @@
       <option name="customRunCommand" value="" />
       <method />
     </configuration>
-    <configuration default="true" type="tests" factoryName="Doctests">
+    <configuration default="true" type="PythonDocTestRunConfigurationType" factoryName="Python's doctests">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <envs />
@@ -427,21 +381,12 @@
       <option name="WORKING_DIRECTORY" value="" />
       <option name="IS_MODULE_SDK" value="false" />
       <module name="zTools" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
       <option name="SCRIPT_NAME" value="" />
       <option name="CLASS_NAME" value="" />
       <option name="METHOD_NAME" value="" />
       <option name="FOLDER_NAME" value="" />
       <option name="TEST_TYPE" value="TEST_SCRIPT" />
       <option name="PATTERN" value="" />
-      <option name="USE_PATTERN" value="false" />
-      <method />
-    </configuration>
-    <configuration default="true" type="JavascriptDebugSession" factoryName="Local">
-      <JSDebuggerConfigurationSettings>
-        <option name="engineId" value="embedded" />
-        <option name="fileUrl" />
-      </JSDebuggerConfigurationSettings>
       <method />
     </configuration>
     <configuration default="false" name="zTools" type="Python.DjangoServer" factoryName="Django server">
@@ -454,7 +399,6 @@
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/cross_app" />
       <option name="IS_MODULE_SDK" value="false" />
       <module name="zTools" />
-      <option name="launchJavascriptDebuger" value="false" />
       <option name="port" value="8000" />
       <option name="host" value="" />
       <option name="additionalOptions" value="" />
@@ -480,7 +424,7 @@
     </list>
   </component>
   <component name="ShelveChangesManager" show_recycled="false" />
-  <component name="SvnConfiguration" maxAnnotateRevisions="500" myUseAcceleration="nothing" myAutoUpdateAfterCommit="false" cleanupOnStartRun="false">
+  <component name="SvnConfiguration" maxAnnotateRevisions="500">
     <option name="USER" value="" />
     <option name="PASSWORD" value="" />
     <option name="mySSHConnectionTimeout" value="30000" />
@@ -495,7 +439,6 @@
     <option name="IGNORE_SPACES_IN_ANNOTATE" value="true" />
     <option name="SHOW_MERGE_SOURCES_IN_ANNOTATE" value="true" />
     <option name="FORCE_UPDATE" value="false" />
-    <option name="IGNORE_EXTERNALS" value="false" />
     <configuration useDefault="true">C:\Users\Baris\AppData\Roaming\Subversion</configuration>
     <myIsUseDefaultProxy>false</myIsUseDefaultProxy>
   </component>
@@ -607,26 +550,26 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1320" height="784" extended-state="6" />
+    <frame x="-8" y="-8" width="1554" height="916" extended-state="6" />
     <editor active="false" />
     <layout>
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32884902" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Data Sources" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3298887" sideWeight="0.76080245" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32884902" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3287037" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.23211446" sideWeight="0.36882716" order="1" side_tool="true" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.1399046" sideWeight="0.83641976" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.27932099" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.23211446" sideWeight="0.2175926" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3287037" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.16358025" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Dependency Viewer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.18733509" sideWeight="0.6683609" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.2782719" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.33163914" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3271605" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Data Sources" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3298887" sideWeight="0.76080245" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3271605" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.23211446" sideWeight="0.2175926" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3287037" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32884902" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Dependency Viewer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
     </layout>
@@ -658,16 +601,7 @@
     <option name="SHOW_ONLY_CHANGED_IN_SELECTION_DIFF" value="true" />
     <option name="CHECK_COMMIT_MESSAGE_SPELLING" value="true" />
     <option name="DEFAULT_PATCH_EXTENSION" value="patch" />
-    <option name="SHORT_DIFF_HORISONTALLY" value="true" />
-    <option name="SHORT_DIFF_EXTRA_LINES" value="2" />
-    <option name="SOFT_WRAPS_IN_SHORT_DIFF" value="true" />
-    <option name="INCLUDE_TEXT_INTO_PATCH" value="false" />
-    <option name="INCLUDE_TEXT_INTO_SHELF" value="false" />
-    <option name="CREATE_PATCH_EXPAND_DETAILS_DEFAULT" value="true" />
-    <option name="SHOW_FILE_HISTORY_DETAILS" value="true" />
-    <option name="SHOW_VCS_ERROR_NOTIFICATIONS" value="true" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
-    <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="false" />
     <option name="LAST_COMMIT_MESSAGE" value="solving issue #102" />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="false" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="false" />
@@ -726,120 +660,86 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/cross_app/templates/cross_order/boxes/shipment_cancel_box.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="15" column="61" selection-start="742" selection-end="742" vertical-scroll-proportion="0.5334728">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/cross_app/rts/models.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="4" column="39" selection-start="193" selection-end="193" vertical-scroll-proportion="0.02881356">
-          <folding />
-        </state>
+        <state line="4" column="39" selection-start="193" selection-end="193" vertical-scroll-proportion="0.02881356" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/cross_app/templates/cross_order/boxes/shipment_comment_box.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="6" column="14" selection-start="301" selection-end="301" vertical-scroll-proportion="0.21338913">
-          <folding />
-        </state>
+        <state line="6" column="14" selection-start="301" selection-end="301" vertical-scroll-proportion="0.21338913" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/cross_app/templates/cross_order/list_order.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-4.8995633">
-          <folding />
-        </state>
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-4.8995633" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/cross_app/templates/cross_order/list_supplier.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-0.40393013">
-          <folding />
-        </state>
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-0.40393013" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/cross_app/templates/cross_order/list_transaction.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-5.2973523">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/cross_app/cross_order/models.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="132" column="31" selection-start="4920" selection-end="4932" vertical-scroll-proportion="-1.3075397">
-          <folding>
-            <element signature="e#0#28#0" expanded="true" />
-          </folding>
-        </state>
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-5.2973523" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/cross_app/templates/cross_order/list_transaction_details.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="106" column="57" selection-start="4799" selection-end="4799" vertical-scroll-proportion="0.66312057">
-          <folding />
-        </state>
+        <state line="106" column="57" selection-start="4799" selection-end="4799" vertical-scroll-proportion="0.66312057" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cross_app/cross_order/models.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="132" column="31" selection-start="4920" selection-end="4932" vertical-scroll-proportion="0.022757698" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cross_app/sms/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="28" column="0" selection-start="1565" selection-end="1565" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/static/js/zidaya.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="378" column="33" selection-start="11385" selection-end="11385" vertical-scroll-proportion="0.0">
-          <folding>
-            <marker date="1343138860844" expanded="true" signature="10139:10229" placeholder="{&quot;backgroundColor&quot;: '#CCCCCC'...}" />
-          </folding>
+        <state line="378" column="33" selection-start="11385" selection-end="11385" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cross_app/templates/sms/list_catalog_simple.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="138" column="29" selection-start="5347" selection-end="5347" vertical-scroll-proportion="-0.65384614" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cross_app/templates/cross_order/list_invoice.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cross_app/templates/sms/list_shipment.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="108" column="0" selection-start="4028" selection-end="4028" vertical-scroll-proportion="-0.65384614" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cross_app/templates/sms/view_shipment.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="116" column="42" selection-start="4157" selection-end="4157" vertical-scroll-proportion="0.023160763" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cross_app/templates/sms/view_basket.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="108" column="54" selection-start="4145" selection-end="4145" vertical-scroll-proportion="-0.65384614" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cross_app/settings.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="17" column="41" selection-start="655" selection-end="655" vertical-scroll-proportion="0.0">
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/cross_app/sms/models.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="109" column="12" selection-start="4124" selection-end="4124" vertical-scroll-proportion="-0.375">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/cross_app/sms/views.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="28" column="0" selection-start="1565" selection-end="1565" vertical-scroll-proportion="0.0">
-          <folding>
-            <element signature="e#0#15#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/cross_app/templates/sms/list_catalog_simple.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="138" column="29" selection-start="5347" selection-end="5347" vertical-scroll-proportion="-9.153846">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/cross_app/templates/cross_order/list_invoice.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/cross_app/templates/sms/list_shipment.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="108" column="0" selection-start="4028" selection-end="4028" vertical-scroll-proportion="-29.73077">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/cross_app/templates/sms/view_shipment.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="116" column="42" selection-start="4157" selection-end="4157" vertical-scroll-proportion="2.3076923">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/cross_app/templates/sms/view_basket.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="108" column="54" selection-start="4145" selection-end="4145" vertical-scroll-proportion="0.51746726">
+        <state line="116" column="24" selection-start="4408" selection-end="4408" vertical-scroll-proportion="0.68136275">
           <folding />
         </state>
       </provider>

@@ -136,6 +136,8 @@ def create_shipment(request):
         shipment.supplier = request.session.get("siList")[0].catalog_simple.supplier
 
         shipment.comment = request.POST['comment']
+        shipment.create_date = datetime.datetime.now()
+        shipment.create_user = request.user
         shipment.save()
 
         totalCount = 0

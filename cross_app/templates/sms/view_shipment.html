@@ -182,6 +182,13 @@
                             </a>
                         </td>
                     {% endif  %}
+                    {% if user|checkPermission:"SmsWarehouse" %}
+                        <td>
+                            <a class="submitButton" href="/sms/export_shipment_csv/?sid={{ shipment.pk }}">
+                                <span> Export to CSV </span>
+                            </a>
+                        </td>
+                    {% endif  %}
                     <td  class="right" style="text-align:right;">
                         <a class="submitButton" onclick="return viewShipmentCancelBox('{{ shipment.comment }}','{{ shipment.pk }}');">
                             <span> Cancel Shipment </span>

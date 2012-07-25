@@ -7,6 +7,7 @@ from cross_order.helper_functions import render_response
 from cross_order.utils import check_permission
 from sms.helper import getTotalShipmentItemCount, generateShipmentString
 from sms.models import Supplier, CatalogSimple, CatalogSupplier, CatalogBrand, ShipmentItem, Shipment, ShipmentType, ShipmentStatus, SimpleStatus,SimpleShipmentTypeID, BrandStatus, SupplierStatus, CancellationReason
+import csv
 
 @login_required
 @check_permission('Sms')
@@ -230,3 +231,45 @@ def receive_shipment(request):
     shipment.save()
 
     return redirect('/sms/list_shipment/')
+
+@login_required
+@check_permission('SmsWarehouse')
+def export_shipment_csv(request):
+    sid = request.GET.get("sid",None)
+    if sid is  None or Shipment.objects.filter(pk=sid).count() == 0:
+        return redirect("/sms/list_shipment/")
+
+    shipment = Shipment.objects.get(pk=sid)
+    filename = shipment.number
+    siList = ShipmentItem.objects.filter(shipment=shipment)
+
+    response = HttpResponse(mimetype='text/csv')
+    response['Content-Disposition'] = 'attachment; filename='+filename+'.csv'
+
+    writer = csv.writer(response)
+    writer.writerow(['shipment_number\tbarcode\tsku\tquantity\timage_url'])
+
+    for si in siList:
+        #create image url for product
+        icc = si.catalog_simple.id_catalog_config
+        reverse_icc = str(icc)[::-1]
+        image_url = 'http://static.zidaya.com/p/-'+reverse_icc+'-1-product.jpg'
+
+        #check for which field to be used
+        if si.catalog_simple.id_barcode_to_export == 1:
+            barcode = si.catalog_simple.barcode_ean
+        elif si.catalog_simple.id_barcode_to_export == 2:
+            skuSplitter = si.catalog_simple.sku.split('-')
+            barcode = skuSplitter[0]
+        elif si.catalog_simple.id_barcode_to_export == 3:
+            if not si.catalog_simple.barcode_ean == None:
+                barcode = si.catalog_simple.barcode_ean
+            else:
+                skuSplitter = si.catalog_simple.sku.split('-')
+                barcode = skuSplitter[0]
+        else:
+            pass
+
+        writer.writerow([filename+'\t'+barcode+'\t'+si.catalog_simple.sku+'\t'+str(si.quantity_ordered)+'\t'+image_url])
+
+    return response

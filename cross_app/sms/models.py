@@ -114,7 +114,7 @@ class SimplesSizes(models.Model):
         return str(self.fk_catalog_simple) + ' ' + str(self.size)
 
     class Meta:
-        db_table = 'simples_sizes'
+        db_table = 'sms_simples_sizes'
 
 class ShipmentType(models.Model):
     name = models.CharField(max_length=250,null=False)

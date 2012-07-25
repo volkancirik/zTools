@@ -136,6 +136,7 @@ def create_shipment(request):
         shipment.supplier = request.session.get("siList")[0].catalog_simple.supplier
 
         shipment.comment = request.POST['comment']
+        shipment.damaged_return_rate = request.POST['damagedReturnRate']
         shipment.save()
 
         totalCount = 0

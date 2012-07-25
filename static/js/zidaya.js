@@ -344,8 +344,21 @@ function updateBasket(id_catalog_simple){
 }
 
 function submitNewShipmentForm(){
-    $('#createNewShipment').submit();
-    closeNewShipmentBox();
+
+    amount = $('#id_damagedReturnRate').val();
+
+    if(/^[0-9]+\.?[0-9]*$/.test(amount) == false)
+    {
+        $('#id_damagedReturnRate').val('');
+        $('#id_error_rate').show();
+    }
+    else
+    {
+        $('#id_error_rate').hide();
+        $('#createNewShipment').submit();
+        closeNewShipmentBox();
+    }
+
 }
 function showShipmentCommentBox(comment,sid)
 {

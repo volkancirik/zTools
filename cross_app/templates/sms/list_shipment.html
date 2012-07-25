@@ -48,6 +48,9 @@
                             {% trans "comment" %}
                         </th>
                         <th>
+                            {% trans "return_rate" %}
+                        </th>
+                        <th>
                             {% trans "cancel_reason" %}
                         </th>
                         <th>
@@ -92,6 +95,9 @@
                             <a href="#" onclick="return showShipmentCommentBox('{{ s.comment }}','{{ s.pk }}');">
                                 {{ s.comment }}
                             </a>
+                        </td>
+                        <td>
+                            {{ s.damaged_return_rate }}
                         </td>
                         <td>
                             {{ s.cancel_reason.name }}

@@ -29,6 +29,12 @@
                     <td  class="right">
                         {{ shipment.create_user.email }}
                     </td>
+                    <td class="left">
+                        Cancellation Reason
+                    </td>
+                    <td  class="right">
+                        {{ shipment.cancel_reason.name }}
+                    </td>
                 </tr>
                 <tr>
                     <td class="left">
@@ -49,6 +55,12 @@
                     <td  class="right">
                         {{ shipment.totalShipmentItemCount }}
                     </td>
+                    <td class="left">
+                        Damaged Goods Return Rate
+                    </td>
+                    <td  class="right">
+                        {{ shipment.damaged_return_rate }}
+                    </td>
                 </tr>
                 <tr>
                     <td class="left">
@@ -68,12 +80,6 @@
                     </td>
                     <td  class="right">
                         {{ shipment.date_received|date:"d/M/Y H:i:s" }}
-                    </td>
-                    <td class="left">
-                        Cancellation Reason
-                    </td>
-                    <td  class="right">
-                        {{ shipment.cancel_reason.name }}
                     </td>
                 </tr>
             </table>

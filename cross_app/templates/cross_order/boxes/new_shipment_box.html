@@ -45,16 +45,29 @@
                         </div>
                     </div>
                 </li>
-                    <li class="FormLineWrapper ReturnedItemFormLine">
-                        <div class="FormObjectSearch">
-                            <div class="FormLabel">
-                                {% trans "comment" %}
-                            </div>
-                            <div>
-                                <textarea id="id_Comment" name="comment" cols="94" rows="10"></textarea><br>
-                            </div>
+                <li class="FormLineWrapper ReturnedItemFormLine">
+                    <div class="FormObjectSearch">
+                        <div  class="FormLabel">
+                            {% trans "return_rate" %}
                         </div>
-                    </li>
+                        <div>
+                            <input id="id_damagedReturnRate" name="damagedReturnRate" />
+                        <span id="id_error_rate" class="error_message"  style="display:none;">
+                            Girilen Oran Yanlis. '.' ile ayiriniz.
+                        </span>
+                        </div>
+                    </div>
+                </li>
+                <li class="FormLineWrapper ReturnedItemFormLine">
+                    <div class="FormObjectSearch">
+                        <div class="FormLabel">
+                            {% trans "comment" %}
+                        </div>
+                        <div>
+                            <textarea id="id_Comment" name="comment" cols="94" rows="10"></textarea><br>
+                        </div>
+                    </div>
+                </li>
                 </form>
             </ul>
         </div>

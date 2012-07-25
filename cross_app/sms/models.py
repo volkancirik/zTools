@@ -141,6 +141,7 @@ class Shipment(models.Model):
     update_date = models.DateTimeField(default= datetime.now())
     update_user = models.ForeignKey(User, related_name='%(class)s_user_update')
 
+    damaged_return_rate = models.FloatField(max_length=255,null=True)
     shipmentType = models.ForeignKey(ShipmentType,unique=False,null=False)
     status = models.IntegerField(default=ShipmentStatus.REQUESTED,choices=ShipmentStatus.TYPE)
     proposed_shipment_date = models.DateTimeField(default= datetime.now())

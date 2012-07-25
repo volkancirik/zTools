@@ -44,10 +44,10 @@
                         {{ shipment.supplier.name }}
                     </td>
                     <td class="left">
-                        proposed_shipment_date
+                        {% trans "proposed_shipment_date" %}
                     </td>
                     <td  class="right">
-                        {{ shipment.proposed_shipment_date|date:"d/M/Y H:i:s" }}
+                        {{ shipment.proposed_shipment_date|date:"d/M/Y" }}
                     </td>
                     <td class="left">
                         totalShipmentItemCount
@@ -73,7 +73,7 @@
                         confirmed_shipment_date
                     </td>
                     <td  class="right">
-                        {{ shipment.confirmed_shipment_date|date:"d/M/Y H:i:s" }}
+                        {{ shipment.confirmed_shipment_date|date:"d/M/Y" }}
                     </td>
                     <td class="left">
                         date_received
@@ -182,8 +182,8 @@
 
         <table class="actionPanel" cellpadding="0" cellspacing="0" width="100%">
                 <tr>
-                    <td>
-                        <a class="submitButton" href="/sms/confirm_shipment/?sid={{ shipment.pk }}">
+                    <td  class="left" style="text-align:left;">
+                        <a class="submitButton" onclick="return viewConfirmDateShipmentBox('{{ shipment.number }}','{{ shipment.supplier.name }}','{{ shipment.proposed_shipment_date|date:"d/M/Y"}}','{{ shipment.create_user.email }}','{{ shipment.comment }}','{{ shipment.pk }}');">
                             <span> Confirm Shipment </span>
                         </a>
                     </td>
@@ -201,15 +201,15 @@
                     </td>
                 </tr>
             </table>
-
         </div>
 	</div>
     {% include "cross_order/boxes/shipment_cancel_box.html" %}
-    {% include "cross_order/boxes/new_shipment_box.html" %}
+    {% include "cross_order/boxes/shipment_confirm_date.html" %}
 </div>
 <script type="text/javascript">
 
     $(document).ready(function(){
+        $("#id_confirmedShipmentDate" ).datepicker({ altFormat: 'yy-mm-dd' });
         displayModuleMenus("sms","smsViewShipment");
         setMenuName("View Shipment");
 

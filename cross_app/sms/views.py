@@ -186,11 +186,14 @@ def view_shipment(request):
 @login_required
 @check_permission('Sms')
 def confirm_shipment(request):
-    shipment = Shipment.objects.get(pk=request.GET['sid'])
+    shipment = Shipment.objects.get(pk=request.POST['sid'])
+
     shipment.status = ShipmentStatus.CONFIRMED
     shipment.update_user = request.user
     shipment.update_date = datetime.datetime.now()
-    shipment.confirmed_shipment_date = datetime.datetime.now()
+
+    shipment.confirmed_shipment_date = datetime.datetime.strptime(request.POST['confirmedShipmentDate'], "%m/%d/%Y")
+    shipment.comment = request.POST['comment']
     shipment.save()
     
     return redirect('/sms/list_shipment/')

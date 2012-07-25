@@ -393,3 +393,36 @@ function submitShipmentCancelForm(){
     $('#shipmentCancelForm').submit();
     closeShipmentCancelBox();
 }
+
+
+
+
+function viewConfirmDateShipmentBox(shipmentNumber,supplier,proposedDate,createUser,comment,sid)
+{
+    $('#id_shipmentNumber').text(shipmentNumber);
+    $('#id_supplier').text(supplier);
+    $('#id_proposedDate').text(proposedDate);
+    $('#id_createUser').text(createUser);
+
+    $('#id_shipmentID').val(sid);
+    $('#id_Comment').text(comment);
+
+
+    $('.confirmDateShipmentBox').show();
+}
+function closeConfirmDateShipmentBox()
+{
+    $('#id_shipmentNumber').val('');
+    $('#id_supplier').val('');
+    $('#id_proposedDate').val('');
+    $('#id_createUser').val('');
+
+    $('#id_shipmentID').val('');
+    $('#id_Comment').val('');
+
+    $('.confirmDateShipmentBox').hide();
+}
+function submitConfirmDateShipmentForm(){
+    $('#confirmShipmentDate').submit();
+    closeConfirmDateShipmentBox();
+}

@@ -1,0 +1,93 @@
+{% load i18n %}
+<div class="confirmDateShipmentBox" style="display:none;" title="">
+    <div class="black_overlay" id="fade"></div>
+    <div class="white_content">
+        <div style="border-bottom: 1px solid #333333;margin-bottom: 10px;text-align: left;">
+            Confirm Shipment Date{# translation needed #}
+        </div>
+
+        <div class="FormWrapper">
+            <ul class="FormPosition">
+                <li class="FormLineWrapper ReturnedItemFormLine">
+                    <div class="FormObjectSearch">
+                        <div class="FormLabel">
+                            {% trans "shipment_number" %}
+                        </div>
+                        <div>
+                            <span id="id_shipmentNumber"></span>
+                        </div>
+                    </div>
+                </li>
+                <li class="FormLineWrapper ReturnedItemFormLine">
+                    <div class="FormObjectSearch">
+                        <div class="FormLabel">
+                            {% trans "supplier" %}
+                        </div>
+                        <div>
+                            <span id="id_supplier">xxx</span>
+                        </div>
+                    </div>
+                </li>
+                <li class="FormLineWrapper ReturnedItemFormLine">
+                    <div class="FormObjectSearch">
+                        <div class="FormLabel">
+                            {% trans "proposed_shipment_date" %}
+                        </div>
+                        <div>
+                            <span id="id_proposedDate">xxx</span>
+                        </div>
+                    </div>
+                </li>
+                <li class="FormLineWrapper ReturnedItemFormLine">
+                    <div class="FormObjectSearch">
+                        <div class="FormLabel">
+                            {% trans "create_user" %}
+                        </div>
+                        <div>
+                            <span id="id_createUser">xxx</span>
+                        </div>
+                    </div>
+                </li>
+
+                <form id ="confirmShipmentDate" action="/sms/confirm_shipment/" method='post'>
+                    {% csrf_token %}
+
+                    <li class="FormLineWrapper ReturnedItemFormLine">
+                        <div class="FormObjectSearch">
+                            <div  type="hidden" class="FormLabel">
+                                Confirmed Shipment Date
+                            </div>
+                            <div>
+                                <input id="id_confirmedShipmentDate" type="textbox" name="confirmedShipmentDate"/>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="FormLineWrapper ReturnedItemFormLine">
+                        <div class="FormObjectSearch">
+                            <div class="FormLabel">
+                                {% trans "comment" %}
+                            </div>
+                            <div>
+                                <textarea id="id_Comment" name="comment" cols="94" rows="10"></textarea><br>
+                            </div>
+                        </div>
+                    </li>
+                    <input type="hidden" value="" id="id_shipmentID" name="sid" />
+                </form>
+            </ul>
+        </div>
+
+        <div style="float:right;margin-left: 10px;">
+            <a href="#" onclick="return closeConfirmDateShipmentBox();">
+                {% trans "close" %}
+            </a>
+        </div>
+        <div class="closeButton">
+            <div style="float:right;">
+                <a href="#" onclick="return submitConfirmDateShipmentForm();" class="submitButton">
+                    <span> Confirm </span> {# translation needed #}
+                </a>
+            </div>
+        </div>
+    </div>
+</div>

@@ -39,6 +39,8 @@ class SimpleShipmentTypeID():
     CROSS_DOCKING = 3
     CROSS_DOCKING_JW = 4
 
+
+
 class CatalogSupplier(models.Model):
     id_catalog_supplier = models.PositiveIntegerField(max_length=10,unique=True,primary_key=True)
     name = models.CharField(max_length=1000,null=False)
@@ -103,6 +105,17 @@ class CatalogSimple(models.Model):
     class Meta:
         db_table = 'sms_catalog_simple'
 
+class SimplesSizes(models.Model):
+
+    fk_catalog_simple = models.OneToOneField(CatalogSimple,primary_key=True,db_column='fk_catalog_simple')
+    size = models.CharField(max_length=255,null=True)
+
+    def __unicode__(self):
+        return str(self.fk_catalog_simple) + ' ' + str(self.size)
+
+    class Meta:
+        db_table = 'simples_sizes'
+
 class ShipmentType(models.Model):
     name = models.CharField(max_length=250,null=False)
     order = models.IntegerField(default=9999)
@@ -139,6 +152,7 @@ class Shipment(models.Model):
     comment = models.TextField(null=True)
     def __unicode__(self):
         return self.number
+
 
 class ShipmentItem(models.Model):
     shipment = models.ForeignKey(Shipment)

@@ -13,7 +13,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql', # Add 'postgresql_psycopg2', 'postgresql', 'mysql', 'sqlite3' or 'oracle'.
         'NAME': 'rocket_orders_v03',                      # Or path to database file if using sqlite3.
         'USER': 'root',                      # Not used with sqlite3.
-        'PASSWORD': 'root',                  # Not used with sqlite3.
+        'PASSWORD': '123123',                  # Not used with sqlite3.
         'HOST': '',                      # Set to empty string for localhost. Not used with sqlite3.
         'PORT': '3306',                      # Set to empty string for default. Not used with sqlite3.
     }
@@ -38,12 +38,12 @@ USE_I18N = True
 USE_L10N = True
 
 LOCALE_PATHS = (
-    'C:/Projects/zTools/cross_app/locale',
+    'C:/Dropbox/Rocket-Dell/zTools/cross_app/locale',
 )
 
 # Absolute filesystem path to the directory that will hold user-uploaded files.
 # Example: "/home/media/media.lawrence.com/media/"
-MEDIA_ROOT = 'C:/Projects/zTools/static/'
+MEDIA_ROOT = 'C:/Dropbox/Rocket-Dell/zTools/static/'
 
 # URL that handles the media served from MEDIA_ROOT. Make sure to use a
 # trailing slash.
@@ -70,7 +70,7 @@ ADMIN_MEDIA_PREFIX = '/static/admin/'
 # Additional locations of static files
 STATICFILES_DIRS = (
 #    'C:/Projects/DjangoProjects/zTools/static'
-    'C:/Projects/zTools/static'
+    'C:/Dropbox/Rocket-Dell/zTools/static'
 )
 
 # List of finder classes that know how to find static files in
@@ -105,7 +105,7 @@ ROOT_URLCONF = 'cross_app.urls'
 
 TEMPLATE_DIRS = (
 #    'C:/Projects/DjangoProjects/zTools/cross_app/templates',
-    'C:/Projects/zTools/cross_app/templates',
+    'C:/Dropbox/Rocket-Dell/zTools/cross_app/templates',
     )
 
 INSTALLED_APPS = (
@@ -120,8 +120,8 @@ INSTALLED_APPS = (
     'dms',
     'rosetta',
     'rts',
+    'main',
     'sms',
-    'main'
 )
 
 LOGGING = {
@@ -149,4 +149,4 @@ AUTHENTICATION_BACKENDS = (
 
 AUTH_PROFILE_MODULE = 'userprofile.Profile'
 #DOCUMENT_ROOT = 'C:/Projects/DjangoProjects/zTools'
-DOCUMENT_ROOT = 'C:/Projects/zTools'
+DOCUMENT_ROOT = 'C:/Dropbox/Rocket-Dell/zTools'

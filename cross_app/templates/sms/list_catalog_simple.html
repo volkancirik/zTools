@@ -80,6 +80,9 @@
                             {% trans "supplier_color" %}
                         </th>
                         <th>
+                            {% trans "size" %}
+                        </th>
+                        <th>
                             {% trans "supplier_material" %}
                         </th>
                         <th>
@@ -130,7 +133,10 @@
                             </td>
                         <td>
                                 {{ cs.supplier_color }}
-                            </td>
+                        </td>
+                        <td>
+                                {{ cs.simplessizes.size }}
+                        </td>
                         <td>
                                 {{ cs.supplier_material }}
                             </td>

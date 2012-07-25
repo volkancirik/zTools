@@ -26,6 +26,7 @@ def list_catalog_simple(request):
                     'totalShipmentItemCount':getTotalShipmentItemCount(request)
                 })
     else:
+
         return render_response(request, 'sms/list_catalog_simple.html',
                 {
                     'supList':CatalogSupplier.objects.filter( status = SupplierStatus.ACTIVE).order_by('name'),

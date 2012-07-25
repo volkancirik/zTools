@@ -52,6 +52,9 @@
                             {% trans "supplier_color" %}
                         </th>
                         <th>
+                            {% trans "size" %}
+                        </th>
+                        <th>
                             {% trans "supplier_material" %}
                         </th>
                         <th>
@@ -102,6 +105,9 @@
                         <td>
                                 {{ si.catalog_simple.supplier_color }}
                             </td>
+                        <td>
+                                 {{ si.catalog_simple.simplessizes.size }}
+                        </td>
                         <td>
                                 {{ si.catalog_simple.supplier_material }}
                             </td>

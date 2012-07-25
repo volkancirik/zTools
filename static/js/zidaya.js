@@ -344,8 +344,21 @@ function updateBasket(id_catalog_simple){
 }
 
 function submitNewShipmentForm(){
-    $('#createNewShipment').submit();
-    closeNewShipmentBox();
+
+    amount = $('#id_damagedReturnRate').val();
+
+    if(/^[0-9]+\.?[0-9]*$/.test(amount) == false)
+    {
+        $('#id_damagedReturnRate').val('');
+        $('#id_error_rate').show();
+    }
+    else
+    {
+        $('#id_error_rate').hide();
+        $('#createNewShipment').submit();
+        closeNewShipmentBox();
+    }
+
 }
 function showShipmentCommentBox(comment,sid)
 {
@@ -379,4 +392,37 @@ function closeShipmentCancelBox()
 function submitShipmentCancelForm(){
     $('#shipmentCancelForm').submit();
     closeShipmentCancelBox();
+}
+
+
+
+
+function viewConfirmDateShipmentBox(shipmentNumber,supplier,proposedDate,createUser,comment,sid)
+{
+    $('#id_shipmentNumber').text(shipmentNumber);
+    $('#id_supplier').text(supplier);
+    $('#id_proposedDate').text(proposedDate);
+    $('#id_createUser').text(createUser);
+
+    $('#id_shipmentID').val(sid);
+    $('#id_Comment').text(comment);
+
+
+    $('.confirmDateShipmentBox').show();
+}
+function closeConfirmDateShipmentBox()
+{
+    $('#id_shipmentNumber').val('');
+    $('#id_supplier').val('');
+    $('#id_proposedDate').val('');
+    $('#id_createUser').val('');
+
+    $('#id_shipmentID').val('');
+    $('#id_Comment').val('');
+
+    $('.confirmDateShipmentBox').hide();
+}
+function submitConfirmDateShipmentForm(){
+    $('#confirmShipmentDate').submit();
+    closeConfirmDateShipmentBox();
 }

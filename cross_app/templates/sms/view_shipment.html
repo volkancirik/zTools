@@ -29,6 +29,12 @@
                     <td  class="right">
                         {{ shipment.create_user.email }}
                     </td>
+                    <td class="left">
+                        Cancellation Reason
+                    </td>
+                    <td  class="right">
+                        {{ shipment.cancel_reason.name }}
+                    </td>
                 </tr>
                 <tr>
                     <td class="left">
@@ -38,16 +44,22 @@
                         {{ shipment.supplier.name }}
                     </td>
                     <td class="left">
-                        proposed_shipment_date
+                        {% trans "proposed_shipment_date" %}
                     </td>
                     <td  class="right">
-                        {{ shipment.proposed_shipment_date|date:"d/M/Y H:i:s" }}
+                        {{ shipment.proposed_shipment_date|date:"d/M/Y" }}
                     </td>
                     <td class="left">
                         totalShipmentItemCount
                     </td>
                     <td  class="right">
                         {{ shipment.totalShipmentItemCount }}
+                    </td>
+                    <td class="left">
+                        Damaged Goods Return Rate
+                    </td>
+                    <td  class="right">
+                        {{ shipment.damaged_return_rate }}
                     </td>
                 </tr>
                 <tr>
@@ -61,19 +73,13 @@
                         confirmed_shipment_date
                     </td>
                     <td  class="right">
-                        {{ shipment.confirmed_shipment_date|date:"d/M/Y H:i:s" }}
+                        {{ shipment.confirmed_shipment_date|date:"d/M/Y" }}
                     </td>
                     <td class="left">
                         date_received
                     </td>
                     <td  class="right">
                         {{ shipment.date_received|date:"d/M/Y H:i:s" }}
-                    </td>
-                    <td class="left">
-                        Cancellation Reason
-                    </td>
-                    <td  class="right">
-                        {{ shipment.cancel_reason.name }}
                     </td>
                 </tr>
             </table>
@@ -176,8 +182,8 @@
 
         <table class="actionPanel" cellpadding="0" cellspacing="0" width="100%">
                 <tr>
-                    <td>
-                        <a class="submitButton" href="/sms/confirm_shipment/?sid={{ shipment.pk }}">
+                    <td  class="left" style="text-align:left;">
+                        <a class="submitButton" onclick="return viewConfirmDateShipmentBox('{{ shipment.number }}','{{ shipment.supplier.name }}','{{ shipment.proposed_shipment_date|date:"d/M/Y"}}','{{ shipment.create_user.email }}','{{ shipment.comment }}','{{ shipment.pk }}');">
                             <span> Confirm Shipment </span>
                         </a>
                     </td>
@@ -188,6 +194,13 @@
                             </a>
                         </td>
                     {% endif  %}
+                    {% if user|checkPermission:"SmsWarehouse" %}
+                        <td>
+                            <a class="submitButton" href="/sms/export_shipment_csv/?sid={{ shipment.pk }}">
+                                <span> Export to CSV </span>
+                            </a>
+                        </td>
+                    {% endif  %}
                     <td  class="right" style="text-align:right;">
                         <a class="submitButton" onclick="return viewShipmentCancelBox('{{ shipment.comment }}','{{ shipment.pk }}');">
                             <span> Cancel Shipment </span>
@@ -195,15 +208,15 @@
                     </td>
                 </tr>
             </table>
-
         </div>
 	</div>
     {% include "cross_order/boxes/shipment_cancel_box.html" %}
-    {% include "cross_order/boxes/new_shipment_box.html" %}
+    {% include "cross_order/boxes/shipment_confirm_date.html" %}
 </div>
 <script type="text/javascript">
 
     $(document).ready(function(){
+        $("#id_confirmedShipmentDate" ).datepicker({ altFormat: 'yy-mm-dd' });
         displayModuleMenus("sms","smsViewShipment");
         setMenuName("View Shipment");
 

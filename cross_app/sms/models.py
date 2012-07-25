@@ -87,6 +87,8 @@ class CatalogSimple(models.Model):
     tax_percent = models.DecimalField(max_digits=10,decimal_places=2, null=True)
     is_consignment = models.BooleanField(null=False,default=False)
     barcode_ean = models.CharField(max_length=255,null=True)
+    id_barcode_to_export = models.PositiveIntegerField(max_length=10,default=0)
+    barcode_to_export = models.CharField(max_length=255,null=True)
     barcodes_additional = models.CharField(max_length=255,null=True)
     supplier = models.ForeignKey(CatalogSupplier,unique=False,null=False)
     brand = models.ForeignKey(CatalogBrand,unique=False,null=False)
@@ -141,6 +143,7 @@ class Shipment(models.Model):
     update_date = models.DateTimeField(default= datetime.now())
     update_user = models.ForeignKey(User, related_name='%(class)s_user_update')
 
+    damaged_return_rate = models.FloatField(max_length=255,null=True)
     shipmentType = models.ForeignKey(ShipmentType,unique=False,null=False)
     status = models.IntegerField(default=ShipmentStatus.REQUESTED,choices=ShipmentStatus.TYPE)
     proposed_shipment_date = models.DateTimeField(default= datetime.now())

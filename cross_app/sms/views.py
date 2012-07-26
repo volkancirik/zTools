@@ -177,8 +177,6 @@ def create_shipment(request):
         shipment.supplier = request.session.get("siList")[0].catalog_simple.supplier
 
         shipment.comment = request.POST['comment']
-        shipment.create_date = datetime.datetime.now()
-        shipment.create_user = request.user
         shipment.damaged_return_rate = request.POST['damagedReturnRate']
         shipment.save()
 
@@ -312,8 +310,7 @@ def export_shipment_csv(request):
             if not si.catalog_simple.barcode_ean == None:
                 barcode = si.catalog_simple.barcode_ean
             else:
-                skuSplitter = si.catalog_simple.sku.split('-')
-                barcode = skuSplitter[0]
+                barcode = si.catalog_simple.sku.replace('-','')
         else:
             pass
 

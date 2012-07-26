@@ -310,8 +310,7 @@ def export_shipment_csv(request):
             if not si.catalog_simple.barcode_ean == None:
                 barcode = si.catalog_simple.barcode_ean
             else:
-                skuSplitter = si.catalog_simple.sku.split('-')
-                barcode = skuSplitter[0]
+                barcode = si.catalog_simple.sku.replace('-','')
         else:
             pass
 

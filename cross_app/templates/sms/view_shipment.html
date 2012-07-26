@@ -187,14 +187,14 @@
                             <span> Confirm Shipment </span>
                         </a>
                     </td>
-                    {% if user|checkPermission:"SmsWarehouse" %}
+                    {% if user|checkPermission:"SmsWarehouse"  and shipment.status != 4 %}
                         <td>
                             <a class="submitButton" href="/sms/receive_shipment/?sid={{ shipment.pk }}">
                                 <span> Shipment Received </span>
                             </a>
                         </td>
                     {% endif  %}
-                    {% if user|checkPermission:"SmsWarehouse" %}
+                    {% if user|checkPermission:"SmsWarehouse"  and shipment.status == 4 %}
                         <td>
                             <a class="submitButton" href="/sms/export_shipment_csv/?sid={{ shipment.pk }}">
                                 <span> Export to CSV </span>

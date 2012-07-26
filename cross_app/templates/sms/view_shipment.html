@@ -188,6 +188,11 @@
 
         <table class="actionPanel" cellpadding="0" cellspacing="0" width="100%">
                 <tr>
+                    <td  class="left" style="text-align:left;">
+                        <a class="submitButton" onclick="return cloneShipmentDialog('{{ shipment.pk }}');">
+                            <span> Clone Shipment </span>
+                        </a>
+                    </td>
                     {% if user|checkPermission:"SmsOps"  and shipment.status == 0 %}
                     <td  class="left" style="text-align:left;">
                         <a class="submitButton" onclick="return viewConfirmDateShipmentBox('{{ shipment.number }}','{{ shipment.supplier.name }}','{{ shipment.proposed_shipment_date|date:"d/M/Y"}}','{{ shipment.create_user.email }}','{{ shipment.comment }}','{{ shipment.pk }}');">
@@ -228,6 +233,7 @@
 	</div>
     {% include "cross_order/boxes/shipment_cancel_box.html" %}
     {% include "cross_order/boxes/shipment_confirm_date.html" %}
+    {% include "cross_order/boxes/shipment_confirm_clone.html" %}
 </div>
 <script type="text/javascript">
 

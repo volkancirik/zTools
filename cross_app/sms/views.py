@@ -77,6 +77,32 @@ def update_basket(request):
 
     json_models = simplejson.dumps(totalCount)
     return HttpResponse(json_models, mimetype='application/json; charset=utf8')
+
+@login_required
+@check_permission('Sms')
+def clone_shipment(request):
+
+    sid = request.POST.get("sid")
+    shipment = Shipment.objects.get(pk = sid)
+
+
+    request.session.__delitem__("supplier")
+    request.session.__delitem__("siList")
+    request.session.__delitem__("shipment")
+
+    request.session["supplier"] = shipment.supplier.pk
+    siListQuerySet = ShipmentItem.objects.filter( shipment = shipment)
+    siList = list()
+    for si in siListQuerySet:
+        siList.append(si)
+    request.session["siList"] = siList
+    request.session["shipment"] = Shipment()
+
+    totalCount = getTotalShipmentItemCount(request)
+    json_models = simplejson.dumps(totalCount)
+    return HttpResponse(json_models, mimetype='application/json; charset=utf8')
+
+
 @login_required
 @check_permission('Sms')
 def check_basket(request):

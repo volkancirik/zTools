@@ -93,7 +93,11 @@
                             </td>
                         <td>
                             <a href="#" onclick="return showShipmentCommentBox('{{ s.comment }}','{{ s.pk }}');">
-                                {{ s.comment }}
+                                {% if not s.comment %}
+                                    Click to Add Comment
+                                {% else %}
+                                    {{ s.comment }}
+                                {% endif %}
                             </a>
                         </td>
                         <td>

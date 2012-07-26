@@ -143,7 +143,7 @@ class Shipment(models.Model):
     update_date = models.DateTimeField(default= datetime.now())
     update_user = models.ForeignKey(User, related_name='%(class)s_user_update')
 
-    damaged_return_rate = models.FloatField(max_length=255,null=True)
+    damaged_return_rate = models.FloatField(max_length=255,null=True,default=0)
     shipmentType = models.ForeignKey(ShipmentType,unique=False,null=False)
     status = models.IntegerField(default=ShipmentStatus.REQUESTED,choices=ShipmentStatus.TYPE)
     proposed_shipment_date = models.DateTimeField(default= datetime.now())
@@ -151,6 +151,8 @@ class Shipment(models.Model):
     date_received = models.DateTimeField(null=True)
     totalShipmentItemCount = models.IntegerField(default=0)
     items = models.ManyToManyField(CatalogSimple,through="ShipmentItem",related_name='items')
+
+    invoice_url = models.URLField(null=True,default=None)
 
     comment = models.TextField(null=True)
     def __unicode__(self):
@@ -168,3 +170,5 @@ class ShipmentItem(models.Model):
 
     def __unicode__(self):
         return self.catalog_simple.sku
+
+

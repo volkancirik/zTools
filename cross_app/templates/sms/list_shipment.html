@@ -14,8 +14,12 @@
             <table id="catalogConfigList">
                 <thead>
                     <tr>
+
                         <th>
                             {% trans "status" %}
+                        </th>
+                        <th>
+                            {% trans "Add_Invoice" %}
                         </th>
                         <th>
                             {% trans "shipment_number" %}
@@ -56,13 +60,22 @@
                         <th>
                             {% trans "create_user" %}
                         </th>
+                        <th>
+                            {% trans "invoice_url" %}
+                        </th>
                     </tr>
                 </thead>
                 <tbody>
                     {% for s in shipmentList %}
                         <tr>
+
                         <td>
                             {{ s.get_status_display }}
+                        </td>
+                        <td>
+                            <span class="actionLabel" onclick="viewInvoiceBoxForSms('{{ s.number }}')">
+                               Add Invoice  {# translation needed #}
+                            </span>
                         </td>
                         <td>
                           <a href="/sms/view_shipment/?sid={{ s.pk }}">{{ s.number }}</a>
@@ -105,6 +118,10 @@
                         <td>
                                 {{ s.create_user.email }}
                         </td>
+                        <td>
+                            <a href={{ s.invoice_url }}>Invoice of {{ s.number }}</a>
+
+                        </td>
                         </tr>
                     {% endfor %}
                 </tbody>
@@ -112,7 +129,7 @@
 		</div>
 	</div>
     {% include "cross_order/boxes/shipment_comment_box.html" %}
-
+    {% include "cross_order/boxes/shipment_invoice_box.html" %}
 </div>
 
 <script type="text/javascript">

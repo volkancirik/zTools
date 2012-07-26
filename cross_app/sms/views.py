@@ -292,15 +292,12 @@ def export_shipment_csv(request):
     response['Content-Disposition'] = 'attachment; filename='+filename+'.csv'
 
     writer = csv.writer(response)
-    writer.writerow(['shipment_number\tbarcode\tsku\tquantity\timage_url'])
+    writer.writerow(['id_shipment_item\tshipment_id\tbarcode\tsku\tquantity\timage_url'])
 
     for si in siList:
-        #create image url for product
-        icc = si.catalog_simple.id_catalog_config
-        reverse_icc = str(icc)[::-1]
-        image_url = 'http://static.zidaya.com/p/-'+reverse_icc+'-1-product.jpg'
-
-        #check for which field to be used
+        isi = si.pk
+        sid = si.shipment_id
+        #check for which field to be used for barcode
         if si.catalog_simple.id_barcode_to_export == 1:
             barcode = si.catalog_simple.barcode_ean
         elif si.catalog_simple.id_barcode_to_export == 2:
@@ -314,6 +311,27 @@ def export_shipment_csv(request):
         else:
             pass
 
-        writer.writerow([filename+'\t'+barcode+'\t'+si.catalog_simple.sku+'\t'+str(si.quantity_ordered)+'\t'+image_url])
+        #create image url for product
+        icc = si.catalog_simple.id_catalog_config
+        reverse_icc = str(icc)[::-1]
+        image_url = 'http://static.zidaya.com/p/-'+reverse_icc+'-1-product.jpg'
+
+        writer.writerow([str(isi)+'\t'+str(sid)+'\t'+barcode+'\t'+si.catalog_simple.sku+'\t'+str(si.quantity_ordered)+'\t'+image_url])
 
     return response
+
+
+@login_required
+@check_permission('Sms')
+def add_invoice(request):
+    if request.method == 'POST':
+        try:
+            snr = request.POST['shipmentNr']
+            s_url = request.POST['shipmentInvoiceUrl']
+            shipment = Shipment.objects.get(number = snr )
+            shipment.invoice_url = s_url
+            shipment.save()
+        except:
+            pass
+
+    return redirect('/sms/list_shipment/')

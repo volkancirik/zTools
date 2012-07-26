@@ -214,7 +214,7 @@
                         {% endif %}
                     {% endif  %}
                     {% if user|checkPermission:"SmsWarehouse" or  user|checkPermission:"SmsOps" %}
-                     {% if shipment.status == 4 or shipment.status == 1%}
+                     {% if shipment.status == 4 or shipment.status == 1 or shipment.status == 0 %}
                         <td  class="right" style="text-align:right;">
                             <a class="submitButton" onclick="return viewShipmentCancelBox('{{ shipment.comment }}','{{ shipment.pk }}');">
                                 <span> Cancel Shipment </span>

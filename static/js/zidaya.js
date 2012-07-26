@@ -464,3 +464,50 @@ function submitConfirmDateShipmentForm(){
     $('#confirmShipmentDate').submit();
     closeConfirmDateShipmentBox();
 }
+
+function cloneShipmentDialog(sid)
+{
+    $( "#dialog:ui-dialog" ).dialog( "destroy" );
+    $( "#dialog-confirm-clone" ).dialog({
+        resizable: false,
+        height:140,
+        modal: true,
+        buttons: {
+            "Evet": function() {
+                $( this ).dialog( "close" );
+                cloneShipment(sid);
+            },
+            Hayir: function() {
+                $( this ).dialog( "close" );
+            }
+        }
+    });
+}
+function cloneShipment(sid){
+    url = "/sms/clone_shipment/";
+    data =  {
+        'sid':sid
+    };
+    jQuery.ajax(
+        {
+            'type': 'POST',
+            'url': url,
+            'data': data,
+            'fail': function(){
+            },
+            'success': function(data){
+                $('#totalShipmentItemCount').html(data);
+                $('#totalShipmentItemCount').parent().animate(
+                    {
+                        backgroundColor: '#CCCCCC'
+                    }
+                );
+                $('#totalShipmentItemCount').parent().animate(
+                    {
+                        backgroundColor: '#000000'
+                    }
+                );
+            }
+        }
+    );
+}

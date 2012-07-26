@@ -65,7 +65,10 @@
                             {% trans "tax_percent" %}
                         </th>
                         <th>
-                            {% trans "barcode_ean" %}
+                            {% trans "barcode_EAN" %}
+                        </th>
+                        <th>
+                            {% trans "barcode_to_export" %}
                         </th>
                         <th>
                             {% trans "sku_supplier_config" %}
@@ -121,7 +124,10 @@
                             </td>
                         <td>
                                 {{ cs.barcode_ean }}
-                            </td>
+                        </td>
+                        <td>
+                                {{ cs.barcode_to_export }}
+                        </td>
                         <td>
                                 {{ cs.sku_supplier_config }}
                             </td>

@@ -102,7 +102,10 @@
                             {% trans "tax_percent" %}
                         </th>
                         <th>
-                            {% trans "barcode_ean" %}
+                            {% trans "barcode_EAN" %}
+                        </th>
+                        <th>
+                            {% trans "barcode_to_export" %}
                         </th>
                         <th>
                             {% trans "brand" %}
@@ -150,7 +153,10 @@
                             </td>
                         <td>
                                 {{ si.catalog_simple.barcode_ean }}
-                            </td>
+                        </td>
+                        <td>
+                                {{ si.catalog_simple.barcode_to_export }}
+                        </td>
                         <td>
                                 {{ si.catalog_simple.brand.name }}
                             </td>

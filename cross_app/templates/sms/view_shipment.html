@@ -187,7 +187,7 @@
                             <span> Confirm Shipment </span>
                         </a>
                     </td>
-                    {% if user|checkPermission:"SmsWarehouse"  and shipment.status != 4 %}
+                    {% if user|checkPermission:"SmsWarehouse"  and shipment.status != 4 and shipment.status == 1 %}
                         <td>
                             <a class="submitButton" href="/sms/receive_shipment/?sid={{ shipment.pk }}">
                                 <span> Shipment Received </span>

@@ -188,30 +188,40 @@
 
         <table class="actionPanel" cellpadding="0" cellspacing="0" width="100%">
                 <tr>
+                    {% if user|checkPermission:"SmsOps"  and shipment.status != 4 %}
                     <td  class="left" style="text-align:left;">
                         <a class="submitButton" onclick="return viewConfirmDateShipmentBox('{{ shipment.number }}','{{ shipment.supplier.name }}','{{ shipment.proposed_shipment_date|date:"d/M/Y"}}','{{ shipment.create_user.email }}','{{ shipment.comment }}','{{ shipment.pk }}');">
                             <span> Confirm Shipment </span>
                         </a>
                     </td>
-                    {% if user|checkPermission:"SmsWarehouse"  and shipment.status != 4 %}
-                        <td>
-                            <a class="submitButton" href="/sms/receive_shipment/?sid={{ shipment.pk }}">
-                                <span> Shipment Received </span>
-                            </a>
-                        </td>
                     {% endif  %}
-                    {% if user|checkPermission:"SmsWarehouse"  and shipment.status == 4 %}
+                    {% if user|checkPermission:"SmsWarehouse" or  user|checkPermission:"SmsOps"%}
+                        {% if shipment.status == 1 %}
+                            <td>
+                                <a class="submitButton" href="/sms/receive_shipment/?sid={{ shipment.pk }}">
+                                    <span> Shipment Received </span>
+                                </a>
+                            </td>
+                        {% endif  %}
+                    {% endif  %}
+                    {% if user|checkPermission:"SmsWarehouse" or  user|checkPermission:"SmsOps" %}
+                        {% if shipment.status == 4 %}
                         <td>
                             <a class="submitButton" href="/sms/export_shipment_csv/?sid={{ shipment.pk }}">
                                 <span> Export to CSV </span>
                             </a>
                         </td>
+                        {% endif %}
                     {% endif  %}
-                    <td  class="right" style="text-align:right;">
-                        <a class="submitButton" onclick="return viewShipmentCancelBox('{{ shipment.comment }}','{{ shipment.pk }}');">
-                            <span> Cancel Shipment </span>
-                        </a>
-                    </td>
+                    {% if user|checkPermission:"SmsWarehouse" or  user|checkPermission:"SmsOps" %}
+                     {% if shipment.status == 4 or shipment.status == 1%}
+                        <td  class="right" style="text-align:right;">
+                            <a class="submitButton" onclick="return viewShipmentCancelBox('{{ shipment.comment }}','{{ shipment.pk }}');">
+                                <span> Cancel Shipment </span>
+                            </a>
+                        </td>
+                     {% endif %}
+                    {% endif  %}
                 </tr>
             </table>
         </div>

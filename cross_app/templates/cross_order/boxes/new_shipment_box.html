@@ -17,7 +17,6 @@
                             </div>
                             <div>
                                 <select name='stList' id='id_stList'>
-                                    <option value='0'>{% trans "please_select_action" %}</option> {# translation needed #}
                                     {% for st in shipmentTypeList %}
                                         <option value='{{ st.pk }}'>{{ st.name }}</option>
                                     {% endfor %}

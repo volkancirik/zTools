@@ -194,11 +194,11 @@
                         </a>
                     </td>
                     {% if user|checkPermission:"SmsOps"  and shipment.status == 0 %}
-                    <td  class="left" style="text-align:left;">
-                        <a class="submitButton" onclick="return viewConfirmDateShipmentBox('{{ shipment.number }}','{{ shipment.supplier.name }}','{{ shipment.proposed_shipment_date|date:"d/M/Y"}}','{{ shipment.create_user.email }}','{{ shipment.comment }}','{{ shipment.pk }}');">
-                            <span> Confirm Shipment </span>
-                        </a>
-                    </td>
+                        <td  class="left" style="text-align:left;">
+                            <a class="submitButton" onclick="return viewConfirmDateShipmentBox('{{ shipment.number }}','{{ shipment.supplier.name }}','{{ shipment.proposed_shipment_date|date:"d/M/Y"}}','{{ shipment.create_user.email }}','{{ shipment.comment }}','{{ shipment.pk }}');">
+                                <span> Confirm Shipment </span>
+                            </a>
+                        </td>
                     {% endif  %}
                     {% if user|checkPermission:"SmsWarehouse" or  user|checkPermission:"SmsOps"%}
                         {% if shipment.status == 1 %}
@@ -218,15 +218,26 @@
                         </td>
                         {% endif %}
                     {% endif  %}
-                    {% if user|checkPermission:"SmsWarehouse" or  user|checkPermission:"SmsOps" %}
-                     {% if shipment.status == 4 or shipment.status == 1 or shipment.status == 0 %}
-                        <td  class="right" style="text-align:right;">
-                            <a class="submitButton" onclick="return viewShipmentCancelBox('{{ shipment.comment }}','{{ shipment.pk }}');">
-                                <span> Cancel Shipment </span>
-                            </a>
-                        </td>
-                     {% endif %}
+                    {% if user|checkPermission:"SmsOps" %}
+                        {% if shipment.status == 0 or shipment.status == 1 %}
+                            <td  class="right" style="text-align:right;">
+                                <a class="submitButton" onclick="return viewShipmentCancelBox('{{ shipment.comment }}','{{ shipment.pk }}');">
+                                    <span> Cancel Shipment </span>
+                                </a>
+                            </td>
+                        {% endif %}
+
+                    {% elif user|checkPermission:"SmsWarehouse" %}
+                        {% if shipment.status == 1 %}
+                            <td  class="right" style="text-align:right;">
+                                <a class="submitButton" onclick="return viewShipmentCancelBox('{{ shipment.comment }}','{{ shipment.pk }}');">
+                                    <span> Cancel Shipment </span>
+                                </a>
+                            </td>
+                        {% endif %}
+
                     {% endif  %}
+
                 </tr>
             </table>
         </div>

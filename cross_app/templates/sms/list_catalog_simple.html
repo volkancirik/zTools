@@ -94,7 +94,7 @@
                             {{ cs.brand.name }}
                         </td>
                         <td>
-                            <span class="actionLabel" onclick="updateBasket({{ cs.pk }})">
+                            <span class="actionLabel" onclick="checkBasket({{ cs.pk }})">
                                    Add To Basket
                                 </span>
                         </td>
@@ -143,6 +143,7 @@
             </table>
 		</div>
 	</div>
+    {% include "cross_order/boxes/shipment_confirm_add_same_item.html" %}
 </div>
 <script type="text/javascript">
     $(document).ready(function(){

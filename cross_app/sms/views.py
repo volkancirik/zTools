@@ -52,6 +52,49 @@ def update_basket(request):
     if not currentBasketSize>0:
         request.session["supplier"] = supplier
 
+
+    si= ShipmentItem()
+    si.catalog_simple = cs
+    si.quantity_ordered = int(count)
+    si.shipment = shipment
+    si.catalog_simple = cs
+
+    index = -1
+    for item in siList:
+        if item.catalog_simple == cs:
+            item.quantity_ordered += int(count)
+            index = siList.index(item)
+            break
+
+    if index < 0:
+        siList.append(si)
+
+    request.session["shipment"] = shipment
+    request.session["siList"] = siList
+
+    totalCount = getTotalShipmentItemCount(request)
+
+
+    json_models = simplejson.dumps(totalCount)
+    return HttpResponse(json_models, mimetype='application/json; charset=utf8')
+@login_required
+@check_permission('Sms')
+def check_basket(request):
+    ics = request.POST.get("id_catalog_simple",None)
+    count = request.POST.get("count",0)
+
+    result = 0
+    currentBasketSize = getTotalShipmentItemCount(request)
+
+    shipment = request.session.get("shipment",Shipment())
+    siList = request.session.get("siList",[])
+
+    cs = CatalogSimple.objects.get(pk=ics)
+    supplier = cs.supplier.pk
+
+    if not currentBasketSize>0:
+        request.session["supplier"] = supplier
+
     if supplier == request.session["supplier"]:
         si= ShipmentItem()
         si.catalog_simple = cs
@@ -62,22 +105,19 @@ def update_basket(request):
         index = -1
         for item in siList:
             if item.catalog_simple == cs:
-                item.quantity_ordered += int(count)
+                result = item.quantity_ordered
                 index = siList.index(item)
                 break
 
         if index < 0:
-            siList.append(si)
-
-        request.session["shipment"] = shipment
-        request.session["siList"] = siList
-
-        totalCount = getTotalShipmentItemCount(request)
+            result = -2
     else:
-        totalCount = -1
+        result = -1
 
-    json_models = simplejson.dumps(totalCount)
+    json_models = simplejson.dumps(result)
     return HttpResponse(json_models, mimetype='application/json; charset=utf8')
+
+
 
 @login_required
 @check_permission('Sms')

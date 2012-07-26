@@ -85,10 +85,18 @@ def clone_shipment(request):
     sid = request.POST.get("sid")
     shipment = Shipment.objects.get(pk = sid)
 
-
-    request.session.__delitem__("supplier")
-    request.session.__delitem__("siList")
-    request.session.__delitem__("shipment")
+    try:
+        request.session.__delitem__("supplier")
+    except:
+        pass
+    try:
+        request.session.__delitem__("siList")
+    except :
+        pass
+    try:
+        request.session.__delitem__("shipment")
+    except :
+        pass
 
     request.session["supplier"] = shipment.supplier.pk
     siListQuerySet = ShipmentItem.objects.filter( shipment = shipment)

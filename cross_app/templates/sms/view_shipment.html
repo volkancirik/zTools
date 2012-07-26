@@ -188,11 +188,13 @@
 
         <table class="actionPanel" cellpadding="0" cellspacing="0" width="100%">
                 <tr>
-                    <td  class="left" style="text-align:left;">
-                        <a class="submitButton" onclick="return viewConfirmDateShipmentBox('{{ shipment.number }}','{{ shipment.supplier.name }}','{{ shipment.proposed_shipment_date|date:"d/M/Y"}}','{{ shipment.create_user.email }}','{{ shipment.comment }}','{{ shipment.pk }}');">
-                            <span> Confirm Shipment </span>
-                        </a>
-                    </td>
+                    {% if shipment.status == 0 %}
+                        <td  class="left" style="text-align:left;">
+                            <a class="submitButton" onclick="return viewConfirmDateShipmentBox('{{ shipment.number }}','{{ shipment.supplier.name }}','{{ shipment.proposed_shipment_date|date:"d/M/Y"}}','{{ shipment.create_user.email }}','{{ shipment.comment }}','{{ shipment.pk }}');">
+                                <span> Confirm Shipment </span>
+                            </a>
+                        </td>
+                    {% endif  %}
                     {% if user|checkPermission:"SmsWarehouse"  and shipment.status != 4 and shipment.status == 1 %}
                         <td>
                             <a class="submitButton" href="/sms/receive_shipment/?sid={{ shipment.pk }}">

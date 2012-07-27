@@ -648,3 +648,18 @@ div.clear {
     color:Red;
     font-size: 14px;
 }
+
+.orderedErrorList{
+    border-left: 1px solid #333333;
+    float: left;
+    padding-left: 20px;
+}
+
+.orderedErrorList .errorMessage{
+    color: red;
+}
+
+.orderedErrorList ul li{
+    float: none;
+
+}

@@ -107,3 +107,21 @@ def checkPermission(user, arg=u's'):
     for group_name in arg.split(','):
         return user.groups.filter(name=group_name).count() > 0
     return False
+
+@register.filter
+def getSmsQuickAddErrorMessage(type):
+    if type == 1:
+        return "SKU bulunamadi"
+    elif type == 2:
+        return "SKU belirtilen Supplier'a ait degil"
+    elif type == 3:
+        return "Status simple is not active"
+    elif type == 4:
+        return "Status config is not active"
+    elif type == 5:
+        return "Shipment type is not ON_WAREHOUSE"
+    elif type == 6:
+        return "Girilen quantity gecerli degil"
+    elif type == 7:
+        return "Brand is no active"
+

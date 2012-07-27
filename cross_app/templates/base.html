@@ -104,6 +104,13 @@
             </span>
             </a>
         {% endif %}
+        {% if user|checkPermission:"Sms" %}
+            <a href="/sms/import_mass/">
+            <span class="item dynamicMenuItem sms" id="smsQuickAdd">
+                                Quick Add To Basket
+            </span>
+            </a>
+        {% endif %}
     </div>
     <div id="navContainer">
         {% if user.is_authenticated %}

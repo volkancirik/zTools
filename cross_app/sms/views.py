@@ -369,3 +369,83 @@ def add_invoice(request):
             pass
 
     return redirect('/sms/list_shipment/')
+
+@login_required
+@check_permission('Sms')
+def import_mass(request):
+    if request.method == 'POST':
+        sku_simple = request.POST['sku_simple']
+        sku_quantity = request.POST['sku_simple_quantity']
+        sup = None
+        if "sid" in request.POST and CatalogSupplier.objects.filter(pk=request.POST["sid"]).count():
+            sup = CatalogSupplier.objects.get(pk=request.POST["sid"])
+
+        shipment = Shipment()
+        siList = []
+        exceptionList = []
+
+        sku_simple_list = sku_simple.split("\r\n")
+        quantity_list = sku_quantity.split("\r\n")
+        index = 0
+        for sku in sku_simple_list:
+            sku = sku.lstrip().rstrip()
+            if sku == "":
+                continue
+            if not CatalogSimple.objects.filter(sku=sku).count():
+                exception = [sku,1]
+                exceptionList.append(exception)
+            elif not CatalogSimple.objects.filter(sku=sku,supplier = sup).count():
+                exception = [sku,2]
+                exceptionList.append(exception)
+            elif not CatalogSimple.objects.filter(sku=sku,supplier = sup,status_simple = SimpleStatus.ACTIVE).count():
+                exception = [sku,3]
+                exceptionList.append(exception)
+            elif not CatalogSimple.objects.filter(sku=sku,supplier = sup,status_simple = SimpleStatus.ACTIVE,status_config = SimpleStatus.ACTIVE).count():
+                exception = [sku,4]
+                exceptionList.append(exception)
+            elif not CatalogSimple.objects.filter(sku=sku,supplier = sup,status_simple = SimpleStatus.ACTIVE,status_config = SimpleStatus.ACTIVE,id_shipment_type = SimpleShipmentTypeID.ON_WAREHOUSE).count():
+                exception = [sku,5]
+                exceptionList.append(exception)
+            elif not quantity_list[index].isdigit():
+                exception = [sku,6]
+                exceptionList.append(exception)
+            elif not CatalogSimple.objects.filter(sku=sku,
+                                            supplier = sup,
+                                            status_simple = SimpleStatus.ACTIVE,
+                                            status_config = SimpleStatus.ACTIVE,
+                                            id_shipment_type = SimpleShipmentTypeID.ON_WAREHOUSE,
+                                            brand__status = BrandStatus.ACTIVE).count() > 0:
+                exception = [sku,7]
+                exceptionList.append(exception)
+            else:
+                cs = CatalogSimple.objects.get(sku=sku)
+                si= ShipmentItem()
+                si.catalog_simple = cs
+                si.quantity_ordered = int(quantity_list[index])
+                si.shipment = shipment
+                siList.append(si)
+
+            index +=1
+
+        if not exceptionList:
+            request.session["shipment"] = shipment
+            request.session["siList"] = siList
+            return redirect('/sms/view_basket/')
+        else:
+            return render_response(request, 'sms/import_mass.html',
+                {
+                    'supList':CatalogSupplier.objects.filter( status = SupplierStatus.ACTIVE).order_by('name'),
+                    'exceptionList': exceptionList ,
+                    'exceptionListLength':len(exceptionList),
+                    'sku_simple':request.POST['sku_simple'],
+                    'sku_quantity':request.POST['sku_simple_quantity'],
+                    'supplier':sup,
+                    'totalShipmentItemCount':getTotalShipmentItemCount(request)
+                })
+    else:
+        return render_response(request, 'sms/import_mass.html',
+                {
+                    'supList':CatalogSupplier.objects.filter( status = SupplierStatus.ACTIVE).order_by('name'),
+                    'exceptionList' : [],
+                    'totalShipmentItemCount':getTotalShipmentItemCount(request)
+                })

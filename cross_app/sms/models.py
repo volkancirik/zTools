@@ -39,8 +39,6 @@ class SimpleShipmentTypeID():
     CROSS_DOCKING = 3
     CROSS_DOCKING_JW = 4
 
-
-
 class CatalogSupplier(models.Model):
     id_catalog_supplier = models.PositiveIntegerField(max_length=10,unique=True,primary_key=True)
     name = models.CharField(max_length=1000,null=False)

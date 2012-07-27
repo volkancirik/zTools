@@ -1,0 +1,87 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% load helper %}
+{% block extrahead %}
+{% endblock %}
+
+{% block content %}
+<div class="tabbed">
+	<div class="tab-content" style="display:block;">
+		<div class="items">
+                <div style="float: left; width: 500px;">
+                <form id="FilterForm" method="POST" action="/sms/import_mass/">
+                    {% csrf_token %}
+                    <table class="dateFilter" cellspacing="0" cellpadding="0">
+                        <tr>
+                            <td colspan="2">
+                                {% trans "supplier" %}
+                                <select name='sid' id='id_sid' class="supplier" style="width:300px; vertical-align: middle;" tabindex="1">
+                                    {% for sup in supList %}
+                                            <option value='{{ sup.pk }}'>{{ sup.name }}</option><br>
+                                    {% endfor %}
+                                </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="left" style="width:180px;">
+                                <br/>
+                                Sku Simple List<br/>
+                                <textarea rows="20" cols="25" name="sku_simple" id="id_sku_simple">{{ sku_simple }}</textarea>
+                            </td>
+                            <td class="right">
+                                <br/>
+                                Quantity List<br/>
+                                <textarea rows="20" cols="25" name="sku_simple_quantity" id="id_sku_simple_quantity">{{ sku_quantity }}</textarea>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+
+                            </td>
+                            <td style="text-align: right;">
+                                <input id="id_submit" type="submit" name="submit" value="{% trans "add_to_basket" %}" class="button" style="width: 100px;"/>
+                            </td>
+                        </tr>
+
+                    </table>
+                </form>
+
+                </div>
+            {% if exceptionList|length > 0 %}
+                <div class="orderedErrorList">
+                    <div>
+                        <span class="errorMessage"> Some errors occured </span>
+                    </div>
+                        <br/>
+                    <div class="errorPanel">
+                        <ul>
+                            {% for e in exceptionList %}
+                            <li>
+                                {{ e.0 }} - {{ e.1|getSmsQuickAddErrorMessage }}
+                            </li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                </div>
+            {% endif %}
+            </div>
+	</div>
+</div>
+
+
+<script type="text/javascript">
+    $(document).ready(function(){
+        displayModuleMenus("sms","list_shipment");
+        setMenuName("Shipment List");
+
+        {% if exceptionListLength > 0 %}
+            skulist = "Bu ürünleri sepete eklenemiyor\n";
+            {% for e in exceptionList %}
+                skulist += ("{{ e }}" + "\n");
+            {% endfor %}
+        {% endif %}
+
+        $('#id_sid').val({{ supplier.pk }});
+    });
+</script>
+{% endblock %}

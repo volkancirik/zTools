@@ -16,4 +16,5 @@ urlpatterns = patterns('',
     (r'^comment_on_shipment/$', 'cross_app.sms.views.comment_on_shipment'),
     (r'^check_basket/$', 'cross_app.sms.views.check_basket'),
     (r'^clone_shipment/$', 'cross_app.sms.views.clone_shipment'),
+    (r'^import_mass/$', 'cross_app.sms.views.import_mass'),
 )

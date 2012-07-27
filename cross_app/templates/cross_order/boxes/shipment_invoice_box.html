@@ -1,0 +1,55 @@
+{% load i18n %}
+<div class="shipmentInvoiceBox" style="display:none;" title="Add Invoice to Shipment">
+    <div class="black_overlay" id="fade"></div>
+    <div class="white_content">
+        <div style="border-bottom: 1px solid #333333;margin-bottom: 10px;text-align: left;">
+            {% trans "add_invoice" %}
+        </div>
+
+        <div class="FormWrapper">
+            <ul class="FormPosition">
+                <li class="FormLineWrapper invoiceItemFormLine">
+                    <div class="FormObjectSearch">
+                        <div class="FormLabel">
+                            {% trans "shipment_number" %}
+                        </div>
+                        <div>
+                            <span id="id_shipmentNumber" name="shipmentNumber"></span>
+                        </div>
+                    </div>
+                </li>
+
+
+                <form id ="id_invoiceFormSms" action="/sms/add_invoice/" method='post'>
+                    {% csrf_token %}
+                        <li class="FormLineWrapper invoiceItemFormLine">
+                            <div class="FormObjectSearch">
+                                <div  type="hidden" class="FormLabel" style="float:left;">
+                                    {% trans "invoice_url" %}
+                                </div>
+                                <div>
+                                    <input style="height: 12px; width: 200px;" id="id_shipmentInvoiceUrl" name="shipmentInvoiceUrl" />
+                                </div>
+                            </div>
+                        </li>
+                        <input type="hidden" value="" id="id_shipmentNr" name="shipmentNr" />
+                </form>
+
+            </ul>
+        </div>
+
+        <div  style="float:right;margin-left: 10px;">
+            <a href="#" onclick="return closeInvoiceBoxForSms();">
+                {% trans "close" %}
+            </a>
+        </div>
+        <div class="closeButton">
+            <div style="float:right;">
+                <a href="#" onclick="return submitInvoiceFormForSms();" class="submitButton">
+                    <span> {% trans "save" %} </span>
+                </a>
+            </div>
+        </div>
+
+    </div>
+</div>

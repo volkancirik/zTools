@@ -13,7 +13,7 @@
                     <li class="FormLineWrapper ReturnedItemFormLine">
                         <div class="FormObjectSearch">
                             <div class="FormLabel">
-                                {% trans "ShipmentType" %}
+                                {% trans "shipment_type" %}
                             </div>
                             <div>
                                 <select name='stList' id='id_stList'>
@@ -37,7 +37,7 @@
                 <li class="FormLineWrapper ReturnedItemFormLine">
                     <div class="FormObjectSearch">
                         <div  type="hidden" class="FormLabel">
-                            Proposed Shipment Date
+                            {% trans "proposed_shipment_date" %}
                         </div>
                         <div>
                             <input id="id_proposedShipmentDate" type="textbox" name="proposedShipmentDate"/>
@@ -79,7 +79,7 @@
         <div class="closeButton">
             <div style="float:right;">
                 <a href="#" onclick="return submitNewShipmentForm();" class="submitButton">
-                    <span> Confirm </span> {# translation needed #}
+                    <span> {% trans "confirm" %} </span>
                 </a>
             </div>
         </div>

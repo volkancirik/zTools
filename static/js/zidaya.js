@@ -131,6 +131,20 @@ function viewInvoiceBox(invoiceID,transactionCode,supplierName,transactionID,inv
     return false;
 }
 
+function viewInvoiceBoxForSms(shipmentNumber){
+    $('#id_shipmentNumber').text(shipmentNumber);
+    $('#id_shipmentNr').val(shipmentNumber);
+    $('.shipmentInvoiceBox').show();
+    return false;
+}
+
+function closeInvoiceBoxForSms(){
+    $('#id_shipmentNumber').text('');
+    $('#id_shipmentInvoiceUrl').text('');
+    $('.shipmentInvoiceBox').hide();
+    return false;
+}
+
 function closeInvoiceBox(){
     $('#id_invoiceID').val('');
 
@@ -218,6 +232,12 @@ function submitInvoiceForm(){
     }
 
 }
+function submitInvoiceFormForSms(){
+//    url = $('#id_shipmentInvoiceUrl').text();
+//    shipment_number = $('#id_shipmentNumber').text();
+    $('#id_invoiceFormSms').submit();
+    closeInvoiceBoxForSms();
+}
 function fnShowHide( iCol, status )
 {
 	/* Get the DataTables object again - this is not a recreation, just a get of the object */
@@ -292,10 +312,8 @@ function redirectTo(url){
 function setMenuName(moduleName){
     $('#moduleName').html(" - "+moduleName);
 }
-
-
-function updateBasket(id_catalog_simple){
-
+function checkBasket(id_catalog_simple)
+{
     quantity = $('#txt_item_count_'+id_catalog_simple).val();
 
     if(/^[1-9]+[0-9]*$/.test(quantity) == false)
@@ -304,43 +322,83 @@ function updateBasket(id_catalog_simple){
     }
     else
     {
-        url = "/sms/update_basket/";
+        url = "/sms/check_basket/";
 
-        count = $('#txt_item_count_'+id_catalog_simple).val();
-		data =  {
+        data =  {
             'id_catalog_simple':id_catalog_simple,
-            'count':count
+            'count':quantity
         };
-		jQuery.ajax(
-			{
-				'type': 'POST',
-        		'url': url,
-        		'data': data,
-        		'fail': function(){
-        		},
-        		'success': function(data){
-                    if(data != -1){
-                        $('#totalShipmentItemCount').html(data);
-                        $('#totalShipmentItemCount').parent().animate(
-                            {
-                                backgroundColor: '#CCCCCC'
-                            }
-                        );
-                        $('#totalShipmentItemCount').parent().animate(
-                            {
-                                backgroundColor: '#000000'
-                            }
-                        );
-                    }else{
+        jQuery.ajax(
+            {
+                'type': 'POST',
+                'url': url,
+                'data': data,
+                'fail': function(){
+                },
+                'success': function(data){
+                    if(data == -1){
                         alert("Sepetinizde sadece bir tedarikcinin urunleri bulunabilir. Bu tedarikcinin urunleriyle ilgili islem yapmadan once lutfen sepetinizi bosaltin.");
                     }
-
-
-
+                    else if(data>0){
+                        $('#id_shipmentItemCount').text(data);
+                        $('#id_shipmentNewCount').text(quantity);
+                        $( "#dialog:ui-dialog" ).dialog( "destroy" );
+                        $( "#dialog-confirm" ).dialog({
+                            resizable: false,
+                            height:140,
+                            modal: true,
+                            buttons: {
+                                "Evet": function() {
+                                    $( this ).dialog( "close" );
+                                    updateBasket(id_catalog_simple);
+                                },
+                                Hayir: function() {
+                                    $( this ).dialog( "close" );
+                                }
+                            }
+                        });
+                    }
+                    else if(data == -2)
+                    {
+                        updateBasket(id_catalog_simple);
+                    }
                 }
-			}
-		);
+            }
+        );
     }
+}
+
+function updateBasket(id_catalog_simple){
+
+    url = "/sms/update_basket/";
+
+    count = $('#txt_item_count_'+id_catalog_simple).val();
+    data =  {
+        'id_catalog_simple':id_catalog_simple,
+        'count':count
+    };
+    jQuery.ajax(
+        {
+            'type': 'POST',
+            'url': url,
+            'data': data,
+            'fail': function(){
+            },
+            'success': function(data){
+                    $('#totalShipmentItemCount').html(data);
+                    $('#totalShipmentItemCount').parent().animate(
+                        {
+                            backgroundColor: '#CCCCCC'
+                        }
+                    );
+                    $('#totalShipmentItemCount').parent().animate(
+                        {
+                            backgroundColor: '#000000'
+                        }
+                    );
+            }
+        }
+    );
 }
 
 function submitNewShipmentForm(){
@@ -425,4 +483,51 @@ function closeConfirmDateShipmentBox()
 function submitConfirmDateShipmentForm(){
     $('#confirmShipmentDate').submit();
     closeConfirmDateShipmentBox();
+}
+
+function cloneShipmentDialog(sid)
+{
+    $( "#dialog:ui-dialog" ).dialog( "destroy" );
+    $( "#dialog-confirm-clone" ).dialog({
+        resizable: false,
+        height:140,
+        modal: true,
+        buttons: {
+            "Evet": function() {
+                $( this ).dialog( "close" );
+                cloneShipment(sid);
+            },
+            Hayir: function() {
+                $( this ).dialog( "close" );
+            }
+        }
+    });
+}
+function cloneShipment(sid){
+    url = "/sms/clone_shipment/";
+    data =  {
+        'sid':sid
+    };
+    jQuery.ajax(
+        {
+            'type': 'POST',
+            'url': url,
+            'data': data,
+            'fail': function(){
+            },
+            'success': function(data){
+                $('#totalShipmentItemCount').html(data);
+                $('#totalShipmentItemCount').parent().animate(
+                    {
+                        backgroundColor: '#CCCCCC'
+                    }
+                );
+                $('#totalShipmentItemCount').parent().animate(
+                    {
+                        backgroundColor: '#000000'
+                    }
+                );
+            }
+        }
+    );
 }

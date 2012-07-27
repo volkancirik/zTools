@@ -3,7 +3,7 @@
     <div class="black_overlay" id="fade"></div>
     <div class="white_content">
         <div style="border-bottom: 1px solid #333333;margin-bottom: 10px;text-align: left;">
-            Confirm Shipment Date{# translation needed #}
+            {% trans "confirm_shipment_date" %}
         </div>
 
         <div class="FormWrapper">
@@ -24,7 +24,7 @@
                             {% trans "supplier" %}
                         </div>
                         <div>
-                            <span id="id_supplier">xxx</span>
+                            <span id="id_supplier"></span>
                         </div>
                     </div>
                 </li>
@@ -34,7 +34,7 @@
                             {% trans "proposed_shipment_date" %}
                         </div>
                         <div>
-                            <span id="id_proposedDate">xxx</span>
+                            <span id="id_proposedDate"></span>
                         </div>
                     </div>
                 </li>
@@ -44,7 +44,7 @@
                             {% trans "create_user" %}
                         </div>
                         <div>
-                            <span id="id_createUser">xxx</span>
+                            <span id="id_createUser"></span>
                         </div>
                     </div>
                 </li>
@@ -55,7 +55,7 @@
                     <li class="FormLineWrapper ReturnedItemFormLine">
                         <div class="FormObjectSearch">
                             <div  type="hidden" class="FormLabel">
-                                Confirmed Shipment Date
+                                {% trans "confirm_shipment_date" %}
                             </div>
                             <div>
                                 <input id="id_confirmedShipmentDate" type="textbox" name="confirmedShipmentDate"/>

@@ -19,7 +19,6 @@
                         </td>
                         <td class="right">
                             <select name='sid' id='id_sid' class="supplier" style="width:150px; vertical-align: middle;" tabindex="1">
-{#                                <option value='-1'>{% trans "please_select" %}</option>#}
                                 {% for sup in supList %}
                                         <option value='{{ sup.pk }}'>{{ sup.name }}</option><br>
                                 {% endfor %}
@@ -31,7 +30,7 @@
 
                         </td>
                         <td style="text-align: right;">
-                            <input id="id_submit" type="submit" name="submit" value="Ara" class="button"/>
+                            <input id="id_submit" type="submit" name="submit" value="{% trans "search" %}" class="button"/>
                         </td>
                     </tr>
 
@@ -65,7 +64,10 @@
                             {% trans "tax_percent" %}
                         </th>
                         <th>
-                            {% trans "barcode_ean" %}
+                            {% trans "barcode_EAN" %}
+                        </th>
+                        <th>
+                            {% trans "barcode_to_export" %}
                         </th>
                         <th>
                             {% trans "sku_supplier_config" %}
@@ -97,8 +99,8 @@
                             {{ cs.brand.name }}
                         </td>
                         <td>
-                            <span class="actionLabel" onclick="updateBasket({{ cs.pk }})">
-                                   Add To Basket
+                            <span class="actionLabel" onclick="checkBasket({{ cs.pk }})">
+                                   {% trans "add_to_basket" %}
                                 </span>
                         </td>
                         <td>
@@ -121,7 +123,10 @@
                             </td>
                         <td>
                                 {{ cs.barcode_ean }}
-                            </td>
+                        </td>
+                        <td>
+                                {{ cs.barcode_to_export }}
+                        </td>
                         <td>
                                 {{ cs.sku_supplier_config }}
                             </td>
@@ -149,6 +154,7 @@
             </table>
 		</div>
 	</div>
+    {% include "cross_order/boxes/shipment_confirm_add_same_item.html" %}
 </div>
 <script type="text/javascript">
     $(document).ready(function(){

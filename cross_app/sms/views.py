@@ -52,6 +52,83 @@ def update_basket(request):
     if not currentBasketSize>0:
         request.session["supplier"] = supplier
 
+
+    si= ShipmentItem()
+    si.catalog_simple = cs
+    si.quantity_ordered = int(count)
+    si.shipment = shipment
+    si.catalog_simple = cs
+
+    index = -1
+    for item in siList:
+        if item.catalog_simple == cs:
+            item.quantity_ordered += int(count)
+            index = siList.index(item)
+            break
+
+    if index < 0:
+        siList.append(si)
+
+    request.session["shipment"] = shipment
+    request.session["siList"] = siList
+
+    totalCount = getTotalShipmentItemCount(request)
+
+
+    json_models = simplejson.dumps(totalCount)
+    return HttpResponse(json_models, mimetype='application/json; charset=utf8')
+
+@login_required
+@check_permission('Sms')
+def clone_shipment(request):
+
+    sid = request.POST.get("sid")
+    shipment = Shipment.objects.get(pk = sid)
+
+    try:
+        request.session.__delitem__("supplier")
+    except:
+        pass
+    try:
+        request.session.__delitem__("siList")
+    except :
+        pass
+    try:
+        request.session.__delitem__("shipment")
+    except :
+        pass
+
+    request.session["supplier"] = shipment.supplier.pk
+    siListQuerySet = ShipmentItem.objects.filter( shipment = shipment)
+    siList = list()
+    for si in siListQuerySet:
+        siList.append(si)
+    request.session["siList"] = siList
+    request.session["shipment"] = Shipment()
+
+    totalCount = getTotalShipmentItemCount(request)
+    json_models = simplejson.dumps(totalCount)
+    return HttpResponse(json_models, mimetype='application/json; charset=utf8')
+
+
+@login_required
+@check_permission('Sms')
+def check_basket(request):
+    ics = request.POST.get("id_catalog_simple",None)
+    count = request.POST.get("count",0)
+
+    result = 0
+    currentBasketSize = getTotalShipmentItemCount(request)
+
+    shipment = request.session.get("shipment",Shipment())
+    siList = request.session.get("siList",[])
+
+    cs = CatalogSimple.objects.get(pk=ics)
+    supplier = cs.supplier.pk
+
+    if not currentBasketSize>0:
+        request.session["supplier"] = supplier
+
     if supplier == request.session["supplier"]:
         si= ShipmentItem()
         si.catalog_simple = cs
@@ -62,22 +139,19 @@ def update_basket(request):
         index = -1
         for item in siList:
             if item.catalog_simple == cs:
-                item.quantity_ordered += int(count)
+                result = item.quantity_ordered
                 index = siList.index(item)
                 break
 
         if index < 0:
-            siList.append(si)
-
-        request.session["shipment"] = shipment
-        request.session["siList"] = siList
-
-        totalCount = getTotalShipmentItemCount(request)
+            result = -2
     else:
-        totalCount = -1
+        result = -1
 
-    json_models = simplejson.dumps(totalCount)
+    json_models = simplejson.dumps(result)
     return HttpResponse(json_models, mimetype='application/json; charset=utf8')
+
+
 
 @login_required
 @check_permission('Sms')
@@ -137,8 +211,6 @@ def create_shipment(request):
         shipment.supplier = request.session.get("siList")[0].catalog_simple.supplier
 
         shipment.comment = request.POST['comment']
-        shipment.create_date = datetime.datetime.now()
-        shipment.create_user = request.user
         shipment.damaged_return_rate = request.POST['damagedReturnRate']
         shipment.save()
 
@@ -254,15 +326,12 @@ def export_shipment_csv(request):
     response['Content-Disposition'] = 'attachment; filename='+filename+'.csv'
 
     writer = csv.writer(response)
-    writer.writerow(['shipment_number\tbarcode\tsku\tquantity\timage_url'])
+    writer.writerow(['id_shipment_item\tshipment_id\tbarcode\tsku\tquantity\timage_url'])
 
     for si in siList:
-        #create image url for product
-        icc = si.catalog_simple.id_catalog_config
-        reverse_icc = str(icc)[::-1]
-        image_url = 'http://static.zidaya.com/p/-'+reverse_icc+'-1-product.jpg'
-
-        #check for which field to be used
+        isi = si.pk
+        sid = si.shipment_id
+        #check for which field to be used for barcode
         if si.catalog_simple.id_barcode_to_export == 1:
             barcode = si.catalog_simple.barcode_ean
         elif si.catalog_simple.id_barcode_to_export == 2:
@@ -272,11 +341,31 @@ def export_shipment_csv(request):
             if not si.catalog_simple.barcode_ean == None:
                 barcode = si.catalog_simple.barcode_ean
             else:
-                skuSplitter = si.catalog_simple.sku.split('-')
-                barcode = skuSplitter[0]
+                barcode = si.catalog_simple.sku.replace('-','')
         else:
             pass
 
-        writer.writerow([filename+'\t'+barcode+'\t'+si.catalog_simple.sku+'\t'+str(si.quantity_ordered)+'\t'+image_url])
+        #create image url for product
+        icc = si.catalog_simple.id_catalog_config
+        reverse_icc = str(icc)[::-1]
+        image_url = 'http://static.zidaya.com/p/-'+reverse_icc+'-1-product.jpg'
+
+        writer.writerow([str(isi)+'\t'+str(sid)+'\t'+barcode+'\t'+si.catalog_simple.sku+'\t'+str(si.quantity_ordered)+'\t'+image_url])
 
     return response
+
+
+@login_required
+@check_permission('Sms')
+def add_invoice(request):
+    if request.method == 'POST':
+        try:
+            snr = request.POST['shipmentNr']
+            s_url = request.POST['shipmentInvoiceUrl']
+            shipment = Shipment.objects.get(number = snr )
+            shipment.invoice_url = s_url
+            shipment.save()
+        except:
+            pass
+
+    return redirect('/sms/list_shipment/')

@@ -10,7 +10,7 @@
 		<div class="items">
         {% if siList|length > 0 %}
             <div class="dateRangeInfo">
-                My Shipment Item List
+                {% trans "shipment_item_list" %}
             </div>
             <table id="catalogConfigList">
                 <thead>
@@ -71,7 +71,7 @@
                         <td>
                             <a href="/sms/delete_shipment_item/?id_catalog_simple={{ si.catalog_simple.pk }}">
                                 <span class="actionLabel">
-                                   Remove
+                                   {% trans "remove" %}
                                 </span>
                             </a>
                         </td>
@@ -129,7 +129,7 @@
                 <tr>
                     <td>
                         <a class="submitButton" onclick="return viewShipmentBox();">
-                            <span> Create New Shipment </span>
+                            <span> {% trans "create_new_shipment" %} </span>
                         </a>
                     </td>
                 </tr>
@@ -137,7 +137,7 @@
 
         {% else %}
             <div class="dateRangeInfo">
-                Your shipment item list is empty
+                {% trans "your_shipment_item_list_is_empty" %}
             </div>
         {% endif %}
 

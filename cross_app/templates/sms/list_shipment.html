@@ -9,7 +9,7 @@
 	<div class="tab-content" style="display:block;">
 		<div class="items">
             <div class="dateRangeInfo">
-                Shipment List
+                {% trans "shipment_list" %}
             </div>
             <table id="catalogConfigList">
                 <thead>
@@ -74,7 +74,7 @@
                         </td>
                         <td>
                             <span class="actionLabel" onclick="viewInvoiceBoxForSms('{{ s.number }}')">
-                               Add Invoice  {# translation needed #}
+                               {% trans "add_invoice" %}
                             </span>
                         </td>
                         <td>
@@ -107,7 +107,7 @@
                         <td>
                             <a href="#" onclick="return showShipmentCommentBox('{{ s.comment }}','{{ s.pk }}');">
                                 {% if not s.comment %}
-                                    Click to Add Comment
+                                    {% trans "click_to_add_comment" %}
                                 {% else %}
                                     {{ s.comment }}
                                 {% endif %}

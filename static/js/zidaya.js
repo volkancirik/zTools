@@ -131,6 +131,20 @@ function viewInvoiceBox(invoiceID,transactionCode,supplierName,transactionID,inv
     return false;
 }
 
+function viewInvoiceBoxForSms(shipmentNumber){
+    $('#id_shipmentNumber').text(shipmentNumber);
+    $('#id_shipmentNr').val(shipmentNumber);
+    $('.shipmentInvoiceBox').show();
+    return false;
+}
+
+function closeInvoiceBoxForSms(){
+    $('#id_shipmentNumber').text('');
+    $('#id_shipmentInvoiceUrl').text('');
+    $('.shipmentInvoiceBox').hide();
+    return false;
+}
+
 function closeInvoiceBox(){
     $('#id_invoiceID').val('');
 
@@ -217,6 +231,12 @@ function submitInvoiceForm(){
         closeInvoiceBox();
     }
 
+}
+function submitInvoiceFormForSms(){
+//    url = $('#id_shipmentInvoiceUrl').text();
+//    shipment_number = $('#id_shipmentNumber').text();
+    $('#id_invoiceFormSms').submit();
+    closeInvoiceBoxForSms();
 }
 function fnShowHide( iCol, status )
 {

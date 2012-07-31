@@ -6,15 +6,22 @@
   </component>
   <component name="ChangeListManager">
     <list id="cdaf22e8-a513-4f8e-bc84-b762ed1517a7" name="Default" comment="Modularzation basics are done" />
-    <list default="true" id="18da05b0-3aba-46ee-95e6-c3fd95c099a9" name="do not change" comment="After volkan...">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/cross_app/templates/sms/import_mass.html" />
+    <list default="true" id="18da05b0-3aba-46ee-95e6-c3fd95c099a9" name="do not change" comment="Quick add to basket">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/good_acc/__init__.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/good_acc/acceptance/__init__.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/good_acc/acceptance/helper_functions.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/good_acc/acceptance/models.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/good_acc/acceptance/tests.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/good_acc/acceptance/urls.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/good_acc/acceptance/views.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/good_acc/good_acceptance_v01" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/good_acc/manage.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/good_acc/settings.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/good_acc/templates/good_acc/item_view.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/good_acc/templates/good_acc/upload_csv.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/good_acc/urls.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/css/good_acc.css" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cross_app/cross_order/templatetags/helper.py" afterPath="$PROJECT_DIR$/cross_app/cross_order/templatetags/helper.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cross_app/sms/models.py" afterPath="$PROJECT_DIR$/cross_app/sms/models.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cross_app/sms/urls.py" afterPath="$PROJECT_DIR$/cross_app/sms/urls.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cross_app/sms/views.py" afterPath="$PROJECT_DIR$/cross_app/sms/views.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cross_app/templates/base.html" afterPath="$PROJECT_DIR$/cross_app/templates/base.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/css/zidaya.css" afterPath="$PROJECT_DIR$/static/css/zidaya.css" />
     </list>
     <list id="09f82009-8064-49b1-8d20-0a273fdb4129" name="do no change" comment="do no change" />
     <ignored path="zTools.iws" />
@@ -41,53 +48,7 @@
     <favorites_list name="zTools" />
   </component>
   <component name="FileEditorManager">
-    <leaf>
-      <file leaf-file-name="import_mass.html" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/cross_app/templates/sms/import_mass.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="17" column="96" selection-start="689" selection-end="689" vertical-scroll-proportion="-11.115385">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="helper.py" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/cross_app/cross_order/templatetags/helper.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="94" column="22" selection-start="3270" selection-end="3270" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="zidaya.css" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/static/css/zidaya.css">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="657" column="31" selection-start="11747" selection-end="11759" vertical-scroll-proportion="-10.12">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="views.py" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/cross_app/sms/views.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="445" column="46" selection-start="15993" selection-end="15993" vertical-scroll-proportion="-16.4">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="models.py" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/cross_app/sms/models.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="154" column="28" selection-start="6272" selection-end="6272" vertical-scroll-proportion="0.4631579">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+    <leaf />
   </component>
   <component name="FindManager">
     <FindUsagesManager>
@@ -101,22 +62,22 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/cross_app/sms/admin.py" />
-        <option value="$PROJECT_DIR$/cross_app/templates/cross_order/boxes/new_shipment_box.html" />
-        <option value="$PROJECT_DIR$/static/js/zidaya.js" />
-        <option value="$PROJECT_DIR$/cross_app/templates/sms/list_shipment.html" />
-        <option value="$PROJECT_DIR$/cross_app/templates/cross_order/boxes/shipment_cancel_box.html" />
-        <option value="$PROJECT_DIR$/cross_app/templates/sms/list_catalog_simple.html" />
-        <option value="$PROJECT_DIR$/cross_app/templates/sms/view_shipment.html" />
-        <option value="$PROJECT_DIR$/cross_app/templates/sms/view_basket.html" />
-        <option value="$PROJECT_DIR$/cross_app/settings.py" />
-        <option value="$PROJECT_DIR$/cross_app/sms/urls.py" />
-        <option value="$PROJECT_DIR$/cross_app/templates/base.html" />
-        <option value="$PROJECT_DIR$/static/css/zidaya.css" />
-        <option value="$PROJECT_DIR$/cross_app/sms/models.py" />
-        <option value="$PROJECT_DIR$/cross_app/cross_order/templatetags/helper.py" />
-        <option value="$PROJECT_DIR$/cross_app/sms/views.py" />
-        <option value="$PROJECT_DIR$/cross_app/templates/sms/import_mass.html" />
+        <option value="$PROJECT_DIR$/cross_app/good_acc/views.py" />
+        <option value="$PROJECT_DIR$/good_acc/good_acc/helper_functions.py" />
+        <option value="$PROJECT_DIR$/good_acc/good_acc/views.py" />
+        <option value="$PROJECT_DIR$/good_acc/manage.py" />
+        <option value="$PROJECT_DIR$/good_acc/__init__.py" />
+        <option value="$PROJECT_DIR$/good_acc/settings.py" />
+        <option value="$PROJECT_DIR$/good_acc/urls.py" />
+        <option value="$PROJECT_DIR$/good_acc/acceptance/urls.py" />
+        <option value="$PROJECT_DIR$/good_acc/templates/good_acc/upload_csv.html" />
+        <option value="$PROJECT_DIR$/static/css/good_acc.css" />
+        <option value="$PROJECT_DIR$/good_acc/acceptance/models.py" />
+        <option value="$PROJECT_DIR$/good_acc/acceptance/views.py" />
+        <option value="$PROJECT_DIR$/good_acc/templates/good_acc/item_view.html" />
+        <option value="$PROJECT_DIR$/cross_app/templates/dms/list_documents.html" />
+        <option value="$PROJECT_DIR$/cross_app/templates/cross_order/list_invoice.html" />
+        <option value="$PROJECT_DIR$/cross_app/dms/models.py" />
       </list>
     </option>
   </component>
@@ -152,7 +113,6 @@
       <sortByType />
     </navigator>
     <panes>
-      <pane id="Favorites" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -170,16 +130,6 @@
               <option name="myItemId" value="zTools" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="zTools" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="zTools" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="static" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
@@ -194,12 +144,18 @@
               <option name="myItemId" value="zTools" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
+          </PATH>
+          <PATH>
             <PATH_ELEMENT>
-              <option name="myItemId" value="static" />
+              <option name="myItemId" value="zTools" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="zTools" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="css" />
+              <option name="myItemId" value="good_acc" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -213,39 +169,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="cross_app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="zTools" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="zTools" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="cross_app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="templates" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="zTools" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="zTools" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="cross_app" />
+              <option name="myItemId" value="good_acc" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
@@ -253,7 +177,25 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="sms" />
+              <option name="myItemId" value="good_acc" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="zTools" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="zTools" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="good_acc" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="acceptance" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -268,50 +210,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="cross_app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="sms" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="zTools" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="zTools" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="cross_app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="cross_order" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="zTools" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="zTools" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="cross_app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="cross_order" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="templatetags" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -327,6 +225,7 @@
           </PATH>
         </subPane>
       </pane>
+      <pane id="Favorites" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -364,11 +263,11 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Projects\DjangoProjects\zTools\static\css" />
+      <recent name="C:\Projects\DjangoProjects\zTools\good_acc\good_acc" />
+      <recent name="C:\Projects\DjangoProjects\zTools\good_acc" />
+      <recent name="C:\Projects\DjangoProjects\zTools\cross_app\good_acc" />
       <recent name="C:\Projects\DjangoProjects\zTools\cross_app\templates\cross_order\boxes" />
-      <recent name="C:\Projects\DjangoProjects\zTools\script" />
-      <recent name="C:\Projects\DjangoProjects\zTools\cross_app\main" />
-      <recent name="C:\Projects\DjangoProjects\zTools\cross_app\rts" />
-      <recent name="C:\Projects\DjangoProjects\zTools\cross_app\templates\rts" />
     </key>
   </component>
   <component name="RunManager" selected="Django server.zTools">
@@ -503,8 +402,8 @@
       <envs>
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="" />
+      <option name="SDK_HOME" value="C:/Python27/python.exe" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/good_acc" />
       <option name="IS_MODULE_SDK" value="false" />
       <module name="zTools" />
       <option name="port" value="8000" />
@@ -559,12 +458,37 @@
       <ConfigurationWrapper RunnerId="PythonRunner" />
       <method />
     </configuration>
-    <list size="5">
+    <configuration default="false" name="Good_acc" type="Python.DjangoServer" factoryName="Django server">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="C:/Python27/python.exe" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/good_acc" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <module name="zTools" />
+      <option name="port" value="8000" />
+      <option name="host" value="" />
+      <option name="additionalOptions" value="" />
+      <option name="browserUrl" value="" />
+      <option name="runTestServer" value="false" />
+      <option name="runNoReload" value="false" />
+      <option name="useCustomRunCommand" value="false" />
+      <option name="customRunCommand" value="" />
+      <RunnerSettings RunnerId="PyDebugRunner" />
+      <RunnerSettings RunnerId="PythonRunner" />
+      <ConfigurationWrapper RunnerId="PyDebugRunner" />
+      <ConfigurationWrapper RunnerId="PythonRunner" />
+      <method />
+    </configuration>
+    <list size="6">
       <item index="0" class="java.lang.String" itemvalue="Python.kayako_mass_ticket" />
       <item index="1" class="java.lang.String" itemvalue="Python.kayako_mass_ticket_v2" />
       <item index="2" class="java.lang.String" itemvalue="Python.duplicate_fixer" />
       <item index="3" class="java.lang.String" itemvalue="Python.return_mail_sender" />
       <item index="4" class="java.lang.String" itemvalue="Django server.zTools" />
+      <item index="5" class="java.lang.String" itemvalue="Django server.Good_acc" />
     </list>
   </component>
   <component name="ShelveChangesManager" show_recycled="false" />
@@ -697,11 +621,11 @@
     <frame x="-8" y="-8" width="1554" height="916" extended-state="6" />
     <editor active="false" />
     <layout>
-      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3278272" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Changes" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3278272" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3287037" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.23211446" sideWeight="0.36882716" order="1" side_tool="true" content_ui="tabs" />
       <window_info id="Dependency Viewer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.15105541" sideWeight="0.682338" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.19920844" sideWeight="0.6721728" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.2782719" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33163914" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.317662" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
@@ -709,7 +633,7 @@
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3271605" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32655653" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.23211446" sideWeight="0.2175926" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3287037" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32884902" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
@@ -746,7 +670,7 @@
     <option name="CHECK_COMMIT_MESSAGE_SPELLING" value="true" />
     <option name="DEFAULT_PATCH_EXTENSION" value="patch" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
-    <option name="LAST_COMMIT_MESSAGE" value="After volkan..." />
+    <option name="LAST_COMMIT_MESSAGE" value="Quick add to basket" />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="false" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_FILES_UP_TO_DATE_BEFORE_COMMIT" value="false" />
@@ -759,7 +683,6 @@
     <option name="UPDATE_GROUP_BY_CHANGELIST" value="false" />
     <option name="SHOW_FILE_HISTORY_AS_TREE" value="false" />
     <option name="FILE_HISTORY_SPLITTER_PROPORTION" value="0.6" />
-    <MESSAGE value="Modular user interface" />
     <MESSAGE value="Modularzation is applied to te user interface and rules are defined in backend.&#10;Group named &quot;Cross&quot; has to be created." />
     <MESSAGE value="frontend changes in RTS OM" />
     <MESSAGE value="frontend change for RTS OM" />
@@ -784,6 +707,7 @@
     <MESSAGE value="Create datae fix" />
     <MESSAGE value="before checkout" />
     <MESSAGE value="After volkan..." />
+    <MESSAGE value="Quick add to basket" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -804,102 +728,106 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/cross_app/templates/sms/view_basket.html">
+    <entry file="file://$PROJECT_DIR$/good_acc/templates/good_acc/upload_csv.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="108" column="54" selection-start="4145" selection-end="4145" vertical-scroll-proportion="-0.65384614" />
+        <state line="11" column="61" selection-start="682" selection-end="682" vertical-scroll-proportion="0.2547684" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../zerd_sms_size_table.sh">
+    <entry file="file://$PROJECT_DIR$/static/css/good_acc.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="10" column="0" selection-start="244" selection-end="352" vertical-scroll-proportion="0.2236842" />
+        <state line="200" column="18" selection-start="3116" selection-end="3116" vertical-scroll-proportion="0.81496596" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/cross_app/cross_order/views.py">
+    <entry file="file://$PROJECT_DIR$/cross_app/sms/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="149" column="9" selection-start="6423" selection-end="6423" vertical-scroll-proportion="0.022757698" />
+        <state line="196" column="50" selection-start="6319" selection-end="6319" vertical-scroll-proportion="-9.6" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/good_acc/templates/good_acc/item_view.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="110" column="23" selection-start="4503" selection-end="4503" vertical-scroll-proportion="0.23272215" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/cross_app/settings.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="129" column="24" selection-start="3899" selection-end="3899" vertical-scroll-proportion="0.3736842" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/cross_app/templates/sms/list_shipment.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="129" column="30" selection-start="0" selection-end="6283" vertical-scroll-proportion="0.5095368" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/cross_app/sms/urls.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="18" column="56" selection-start="1150" selection-end="1150" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/cross_app/cross_order/utils.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="118" column="0" selection-start="5785" selection-end="5785" vertical-scroll-proportion="0.0">
+        <state line="18" column="5" selection-start="0" selection-end="4442" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/cross_app/templates/home.html">
+    <entry file="file://$PROJECT_DIR$/good_acc/settings.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-1.4016913">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/cross_app/templates/base_home.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-0.0">
+        <state line="117" column="19" selection-start="0" selection-end="4051" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/cross_app/templates/base.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="109" column="51" selection-start="5039" selection-end="5039" vertical-scroll-proportion="0.820296">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/cross_app/templates/sms/list_catalog_simple.html">
+    <entry file="file://$PROJECT_DIR$/cross_app/templates/cross_order/list_supplier.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="37" column="20" selection-start="1391" selection-end="1391" vertical-scroll-proportion="0.67410713">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/static/css/zidaya.css">
+    <entry file="file://$PROJECT_DIR$/cross_app/dms/models.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="657" column="31" selection-start="11747" selection-end="11759" vertical-scroll-proportion="-10.12">
+        <state line="20" column="14" selection-start="580" selection-end="580" vertical-scroll-proportion="0.2618421">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/cross_app/cross_order/templatetags/helper.py">
+    <entry file="file://$PROJECT_DIR$/cross_app/templates/dms/upload_document.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="94" column="22" selection-start="3270" selection-end="3270" vertical-scroll-proportion="0.0">
+        <state line="11" column="0" selection-start="290" selection-end="290" vertical-scroll-proportion="0.2547684">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/cross_app/sms/views.py">
+    <entry file="file://$PROJECT_DIR$/cross_app/templates/cross_order/list_invoice.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="445" column="46" selection-start="15993" selection-end="15993" vertical-scroll-proportion="-16.4">
+        <state line="158" column="59" selection-start="6874" selection-end="6874" vertical-scroll-proportion="0.5980926">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/cross_app/templates/sms/import_mass.html">
+    <entry file="file://$PROJECT_DIR$/cross_app/templates/dms/list_documents.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="17" column="96" selection-start="689" selection-end="689" vertical-scroll-proportion="-11.115385">
+        <state line="34" column="53" selection-start="1410" selection-end="1410" vertical-scroll-proportion="0.14850137">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/cross_app/sms/models.py">
+    <entry file="file://$PROJECT_DIR$/good_acc/acceptance/urls.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="154" column="28" selection-start="6272" selection-end="6272" vertical-scroll-proportion="0.4631579">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/good_acc/acceptance/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="57" column="102" selection-start="1774" selection-end="1872" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/good_acc/acceptance/models.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="7" column="0" selection-start="271" selection-end="271" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/good_acc/urls.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="13" column="0" selection-start="455" selection-end="455" vertical-scroll-proportion="0.24605264">
           <folding />
         </state>
       </provider>

@@ -9,6 +9,7 @@ from sms.helper import getTotalShipmentItemCount, generateShipmentString
 from sms.models import Supplier, CatalogSimple, CatalogSupplier, CatalogBrand, ShipmentItem, Shipment, ShipmentType, ShipmentStatus, SimpleStatus,SimpleShipmentTypeID, BrandStatus, SupplierStatus, CancellationReason
 import csv
 import xlwt
+from django.db.models import Q
 
 @login_required
 @check_permission('Sms')
@@ -240,12 +241,19 @@ def view_shipment(request):
     shipment = Shipment.objects.get(pk=sid)
     siList = ShipmentItem.objects.filter(shipment=shipment)
 
+    date = shipment.proposed_shipment_date
+    shipments = Shipment.objects.filter(Q(proposed_shipment_date = date) & Q(status = 1) )
+    total_item = 0
+    for s in shipments:
+        total_item = total_item + s.totalShipmentItemCount
+
     return render_response(request, 'sms/view_shipment.html',
             {
             'shipment':shipment,
             'siList':siList,
             'totalShipmentItemCount':getTotalShipmentItemCount(request),
             'cancelTypeList' :CancellationReason.objects.all().order_by("order"),
+            'total' : total_item,
             })
 
 @login_required

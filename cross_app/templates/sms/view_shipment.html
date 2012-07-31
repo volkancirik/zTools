@@ -200,7 +200,7 @@
             </td>
             {% if user|checkPermission:"SmsOps"  and shipment.status == 0 %}
                 <td  class="left" style="text-align:left;">
-                    <a class="submitButton" onclick="return viewConfirmDateShipmentBox('{{ shipment.number }}','{{ shipment.supplier.name }}','{{ shipment.proposed_shipment_date|date:"d/M/Y"}}','{{ shipment.create_user.email }}','{{ shipment.comment }}','{{ shipment.pk }}');">
+                    <a class="submitButton" onclick="return viewConfirmDateShipmentBox('{{ shipment.number }}','{{ shipment.supplier.name }}','{{ shipment.proposed_shipment_date|date:"d/M/Y"}}','{{ shipment.create_user.email }}','{{ shipment.comment }}','{{ shipment.pk }}','{{ total }}');">
                         <span> Confirm Shipment </span>
                     </a>
                 </td>

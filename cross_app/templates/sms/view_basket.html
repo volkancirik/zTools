@@ -5,167 +5,172 @@
 {% endblock %}
 
 {% block content %}
-<div class="tabbed">
-	<div class="tab-content" style="display:block;">
-		<div class="items">
-        {% if siList|length > 0 %}
-            <div class="dateRangeInfo">
-                {% trans "shipment_item_list" %}
-            </div>
-            <table id="catalogConfigList">
-                <thead>
-                    <tr>
-                        <th>
-                            {% trans "action_button_" %}
-                        </th>
-                        <th>
-                            {% trans "item_count" %}
-                        </th>
-                        <th>
-                            {% trans "sku" %}
-                        </th>
-                        <th>
-                            {% trans "sku_config" %}
-                        </th>
-                        <th>
-                            {% trans "cost" %}
-                        </th>
-                        <th>
-                            {% trans "tax_percent" %}
-                        </th>
-                        <th>
-                            {% trans "barcode_EAN" %}
-                        </th>
-                        <th>
-                            {% trans "barcode_to_export" %}
-                        </th>
-                        <th>
-                            {% trans "brand" %}
-                        </th>
-                        <th>
-                            {% trans "sku_supplier_config" %}
-                        </th>
-                        <th>
-                            {% trans "sku_supplier_simple" %}
-                        </th>
-                        <th>
-                            {% trans "zidaya_name" %}
-                        </th>
-                        <th>
-                            {% trans "supplier_color" %}
-                        </th>
-                        <th>
-                            {% trans "size" %}
-                        </th>
-                        <th>
-                            {% trans "supplier_material" %}
-                        </th>
-                        <th>
-                            {% trans "supplier_product_name" %}
-                        </th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {% for si in siList %}
+    <div class="tabbed">
+        <div class="tab-content" style="display:block;">
+            <div class="items">
+                {% if siList|length > 0 %}
+                    <div class="dateRangeInfo">
+                        My Shipment Item List
+                    </div>
+                    <table id="catalogConfigList">
+                        <thead>
                         <tr>
-                        <td>
-                            <a href="/sms/delete_shipment_item/?id_catalog_simple={{ si.catalog_simple.pk }}">
+                            <th>
+                                {% trans "action_button_" %}
+                            </th>
+                            <th>
+                                {% trans "item_count" %}
+                            </th>
+                            <th>
+                                {% trans "sku" %}
+                            </th>
+                            <th>
+                                {% trans "sku_config" %}
+                            </th>
+                            <th>
+                                {% trans "cost" %}
+                            </th>
+                            <th>
+                                {% trans "tax_percent" %}
+                            </th>
+                            <th>
+                                {% trans "barcode_EAN" %}
+                            </th>
+                            <th>
+                                {% trans "barcode_to_export" %}
+                            </th>
+                            <th>
+                                {% trans "brand" %}
+                            </th>
+                            <th>
+                                {% trans "sku_supplier_config" %}
+                            </th>
+                            <th>
+                                {% trans "sku_supplier_simple" %}
+                            </th>
+                            <th>
+                                {% trans "zidaya_name" %}
+                            </th>
+                            <th>
+                                {% trans "supplier_color" %}
+                            </th>
+                            <th>
+                                {% trans "size" %}
+                            </th>
+                            <th>
+                                {% trans "supplier_material" %}
+                            </th>
+                            <th>
+                                {% trans "supplier_product_name" %}
+                            </th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for si in siList %}
+                            <tr>
+                                <td>
+                                    <a href="/sms/delete_shipment_item/?id_catalog_simple={{ si.catalog_simple.pk }}">
                                 <span class="actionLabel">
-                                   {% trans "remove" %}
+                                   Remove
                                 </span>
-                            </a>
-                        </td>
-                        <td>
-                            {{ si.quantity_ordered }}
-                        </td>
+                                    </a>
+                                </td>
+                                <td>
+                                    {{ si.quantity_ordered }}
+                                </td>
+                                <td>
+                                    {{ si.catalog_simple.sku }}
+                                </td>
+                                <td>
+                                    {{ si.catalog_simple.sku_config }}
+                                </td>
+                                <td>
+                                    {{ si.catalog_simple.cost }}
+                                </td>
+                                <td>
+                                    {{ si.catalog_simple.tax_percent }}
+                                </td>
+                                <td>
+                                    {{ si.catalog_simple.barcode_ean }}
+                                </td>
+                                <td>
+                                    {{ si.catalog_simple.barcode_to_export }}
+                                </td>
+                                <td>
+                                    {{ si.catalog_simple.brand.name }}
+                                </td>
+                                <td>
+                                    {{ si.catalog_simple.sku_supplier_config }}
+                                </td>
+                                <td>
+                                    {{ si.catalog_simple.sku_supplier_simple }}
+                                </td>
+                                <td>
+                                    {{ si.catalog_simple.zidaya_name }}
+                                </td>
+                                <td>
+                                    {{ si.catalog_simple.supplier_color }}
+                                </td>
+                                <td>
+                                    {{ si.catalog_simple.simplessizes.size }}
+                                </td>
+                                <td>
+                                    {{ si.catalog_simple.supplier_material }}
+                                </td>
+                                <td>
+                                    {{ si.catalog_simple.supplier_product_name }}
+                                </td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+
+                    <table class="actionPanel" cellpadding="0" cellspacing="0" width="100%">
+                        <tr>
                             <td>
-                                {{ si.catalog_simple.sku }}
+                                <a class="submitButton" onclick="return viewShipmentBox();">
+                                    <span> Create New Shipment </span>
+                                </a>
                             </td>
-                            <td>
-                                {{ si.catalog_simple.sku_config }}
-                            </td>
-                        <td>
-                                {{ si.catalog_simple.cost }}
-                            </td>
-                        <td>
-                                {{ si.catalog_simple.tax_percent }}
-                            </td>
-                        <td>
-                                {{ si.catalog_simple.barcode_ean }}
-                        </td>
-                        <td>
-                                 {{ si.catalog_simple.barcode_to_export }}
-                        </td>
-                        <td>
-                                {{ si.catalog_simple.brand.name }}
-                            </td>
-                        <td>
-                                {{ si.catalog_simple.sku_supplier_config }}
-                            </td>
-                        <td>
-                                {{ si.catalog_simple.sku_supplier_simple }}
-                            </td>
-                        <td>
-                                {{ si.catalog_simple.zidaya_name }}
-                            </td>
-                        <td>
-                                {{ si.catalog_simple.supplier_color }}
-                            </td>
-                        <td>
-                                 {{ si.catalog_simple.simplessizes.size }}
-                        </td>
-                        <td>
-                                {{ si.catalog_simple.supplier_material }}
-                            </td>
-                        <td>
-                                {{ si.catalog_simple.supplier_product_name }}
+                            <td  class="left" style="text-align:left;">
+                                <a class="submitButton" href="/sms/export_basket_excel/">
+                                    <span> Export to Excel </span>
+                                </a>
                             </td>
                         </tr>
-                    {% endfor %}
-                </tbody>
-            </table>
+                    </table>
 
-        <table class="actionPanel" cellpadding="0" cellspacing="0" width="100%">
-                <tr>
-                    <td>
-                        <a class="submitButton" onclick="return viewShipmentBox();">
-                            <span> {% trans "create_new_shipment" %} </span>
-                        </a>
-                    </td>
-                </tr>
-            </table>
+                {% else %}
+                    <div class="dateRangeInfo">
+                        Your shipment item list is empty
+                    </div>
+                {% endif %}
 
-        {% else %}
-            <div class="dateRangeInfo">
-                {% trans "your_shipment_item_list_is_empty" %}
             </div>
-        {% endif %}
-
         </div>
-	</div>
 
-{% include "cross_order/boxes/new_shipment_box.html" %}
-</div>
-<script type="text/javascript">
-    function viewShipmentBox(){
-        $('.newShipmentBox').show();
-    }
+        {% include "cross_order/boxes/new_shipment_box.html" %}
+    </div>
+    <script type="text/javascript">
+        function viewShipmentBox(){
+            $('.newShipmentBox').show();
+        }
 
-    $(document).ready(function(){
-        displayModuleMenus("sms","smsViewBasket");
-        setMenuName("View Basket");
+        $(document).ready(function(){
+            displayModuleMenus("sms","smsViewBasket");
+            setMenuName("View Basket");
 
-        $( "#id_proposedShipmentDate" ).datepicker({ altFormat: 'yy-mm-dd' });
+            $( "#id_proposedShipmentDate" ).datepicker({ altFormat: 'yy-mm-dd' });
 
-        $('#catalogConfigList').dataTable(
-                {
-                    "bJQueryUI": true,
-                    "sPaginationType": "full_numbers",
-                    "sScrollY": "350px",
-                    "sScrollX": "100%"
-                }
-        );
+            $('#catalogConfigList').dataTable(
+                    {
+                        "bJQueryUI": true,
+                        "sPaginationType": "full_numbers",
+                        "sScrollY": "350px",
+                        "sScrollX": "100%"
+                    }
+            );
 
-    });
-</script>
+        });
+    </script>
 {% endblock %}

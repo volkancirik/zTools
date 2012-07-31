@@ -5,14 +5,14 @@
 {% endblock %}
 
 {% block content %}
-<div class="tabbed">
-	<div class="tab-content" style="display:block;">
-		<div class="items">
-            <div class="dateRangeInfo">
-                {% trans "shipment_list" %}
-            </div>
-            <table id="catalogConfigList">
-                <thead>
+    <div class="tabbed">
+        <div class="tab-content" style="display:block;">
+            <div class="items">
+                <div class="dateRangeInfo">
+                    Shipment List
+                </div>
+                <table id="catalogConfigList">
+                    <thead>
                     <tr>
 
                         <th>
@@ -64,24 +64,24 @@
                             {% trans "invoice_url" %}
                         </th>
                     </tr>
-                </thead>
-                <tbody>
+                    </thead>
+                    <tbody>
                     {% for s in shipmentList %}
                         <tr>
 
-                        <td>
-                            {{ s.get_status_display }}
-                        </td>
-                        <td>
+                            <td>
+                                {{ s.get_status_display }}
+                            </td>
+                            <td>
                             <span class="actionLabel" onclick="viewInvoiceBoxForSms('{{ s.number }}')">
-                               {% trans "add_invoice" %}
+                               Add Invoice  {# translation needed #}
                             </span>
-                        </td>
-                        <td>
-                          <a href="/sms/view_shipment/?sid={{ s.pk }}">{{ s.number }}</a>
-                        </td>
-                        <td>
-                            {{ s.supplier.name }}
+                            </td>
+                            <td>
+                                <a href="/sms/view_shipment/?sid={{ s.pk }}">{{ s.number }}</a>
+                            </td>
+                            <td>
+                                {{ s.supplier.name }}
                             </td>
                             <td>
                                 {{ s.shipmentType.name }}
@@ -89,86 +89,93 @@
                             <td>
                                 {{ s.is_consignment }}
                             </td>
-                        <td>
+                            <td>
                                 {{ s.totalShipmentItemCount }}
                             </td>
-                        <td>
+                            <td>
                                 {{ s.create_date|date:"d/M/Y H:i:s" }}
                             </td>
-                        <td>
+                            <td>
                                 {{ s.proposed_shipment_date|date:"d/M/Y" }}
                             </td>
-                        <td>
+                            <td>
                                 {{ s.confirmed_shipment_date|date:"d/M/Y" }}
                             </td>
-                        <td>
-                                 {{ s.date_received|date:"d/M/Y H:i:s" }}
+                            <td>
+                                {{ s.date_received|date:"d/M/Y H:i:s" }}
                             </td>
-                        <td>
-                            <a href="#" onclick="return showShipmentCommentBox('{{ s.comment }}','{{ s.pk }}');">
-                                {% if not s.comment %}
-                                    {% trans "click_to_add_comment" %}
-                                {% else %}
+                            <td>
+                                <a href="#" onclick="return showShipmentCommentBox('{{ s.comment }}','{{ s.pk }}');">
                                     {{ s.comment }}
-                                {% endif %}
-                            </a>
-                        </td>
-                        <td>
-                            {{ s.damaged_return_rate }}
-                        </td>
-                        <td>
-                            {{ s.cancel_reason.name }}
-                        </td>
-                        <td>
+                                </a>
+                            </td>
+                            <td>
+                                {{ s.damaged_return_rate }}
+                            </td>
+                            <td>
+                                {{ s.cancel_reason.name }}
+                            </td>
+                            <td>
                                 {{ s.create_user.email }}
-                        </td>
-                        <td>
-                            <a href={{ s.invoice_url }}>Invoice of {{ s.number }}</a>
+                            </td>
+                            <td>
+                                <a href={{ s.invoice_url }}>Invoice of {{ s.number }}</a>
 
-                        </td>
+                            </td>
                         </tr>
                     {% endfor %}
-                </tbody>
-            </table>
-		</div>
-	</div>
-    {% include "cross_order/boxes/shipment_comment_box.html" %}
-    {% include "cross_order/boxes/shipment_invoice_box.html" %}
-</div>
+                    </tbody>
+                </table>
 
-<script type="text/javascript">
-    $(document).ready(function(){
-        displayModuleMenus("sms","list_shipment");
-        setMenuName("Shipment List");
-        
-        oTable = $('#catalogConfigList').dataTable(
-                {
-                    "bJQueryUI": true,
-                    "sPaginationType": "full_numbers",
-                    "sScrollY": "350px",
-                    "sScrollX": "100%",
-                    "aoColumnDefs": [
-                      { 'bSortable': false, 'aTargets': [ 0,9 ] }
-                   ]
-                }
-        );
 
-        oTable.columnFilter({sPlaceHolder: "head:before",
-                    aoColumns:[
-                            { type:"select"},
-                            null,
-                            null,
-                            null,
-                            null,
-                            null,
-                            null,
-                            null,
-                            null,
-                            null,
-                            null
-                    ]
+                <table class="actionPanel" cellpadding="0" cellspacing="0" width="100%">
+                    <tr>
+                        <td  class="left" style="text-align:left;">
+                            <a class="submitButton" href="/sms/export_shipments_excel/?slist={{ shipmentList }}">
+                                <span> Export to Excel </span>
+                            </a>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        {% include "cross_order/boxes/shipment_comment_box.html" %}
+        {% include "cross_order/boxes/shipment_invoice_box.html" %}
+    </div>
+
+    <script type="text/javascript">
+        $(document).ready(function(){
+            displayModuleMenus("sms","list_shipment");
+            setMenuName("Shipment List");
+
+            oTable = $('#catalogConfigList').dataTable(
+                    {
+                        "bJQueryUI": true,
+                        "sPaginationType": "full_numbers",
+                        "sScrollY": "350px",
+                        "sScrollX": "100%",
+                        "aoColumnDefs": [
+                            { 'bSortable': false, 'aTargets': [ 0,9 ] }
+                        ]
+                    }
+            );
+
+            oTable.columnFilter({sPlaceHolder: "head:before",
+                aoColumns:[
+                    { type:"select"},
+                    null,
+                    null,
+                    null,
+                    null,
+                    null,
+                    null,
+                    null,
+                    null,
+                    null,
+                    null
+                ]
+            });
+
         });
-
-    });
-</script>
+    </script>
 {% endblock %}

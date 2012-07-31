@@ -1,0 +1,210 @@
+{% load i18n %}
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Zidaya {% block title %}{% endblock %}  </title>
+    <script type="text/javascript" src="{{ STATIC_URL }}js/jquery-1.5.2.js"></script>
+    <script type="text/javascript" src="{{ STATIC_URL }}js/jquery-ui-1.8.18.custom.min.js"></script>
+
+    <link rel="stylesheet" href="{{ STATIC_URL }}css/jquery-ui-1.8.4.custom.css" type="text/css">
+    <link rel="stylesheet" href="{{ STATIC_URL }}css/zidaya.css" type="text/css">
+    <link rel="stylesheet" href="{{ STATIC_URL }}css/good_acc.css" type="text/css">
+    {% block extra_head %}{% endblock %}
+</head>
+<body>
+<div id="header">
+    <div class="newShipmentButtonContainer">
+        <a href="/acceptance/upload_csv/"> YENİ MAL KABUL BAŞLAT </a>
+    </div>
+</div>
+<div id="content">
+    <div class="largeHeader">
+        MAL KABUL İŞLEMİ BAŞLADI
+    </div>
+    <br/>
+    <br/>
+    <form id="barcodeForm" action="/acceptance/item_view/" method="POST">
+        {% csrf_token %}
+        <input type="hidden" value="{{ sid }}" id="id_sid" name="sid" />
+        <div class="barcodeContainer">
+            BARKOD: <input type="text" id="id_barcode" name="barcode" value="{{ si.barcode }}" />
+        </div>
+    </form>
+    
+    <div class="itemContainer">
+        <div class="left">
+            <div class="imageContainer">
+                 <img src="{{ si.photo_url }}" width="100" height="100" />
+            </div>
+        </div>
+        <div class="right">
+            <div class="infoContainer">
+                <ul>
+                    <li>
+                        <div class="label">
+                            Barcode:
+                        </div>
+                        <div class="value">
+                            {{ si.barcode }}
+                        </div>
+                    </li>
+                    <li>
+                        <div class="label">
+                            SKU:
+                        </div>
+                        <div class="value">
+                            {{ si.sku }}
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <div class="clear"></div>
+            <div class="actionButtonContainer">
+                <div class="left">
+                    <div class="actionButtons">
+                    <div class="buttonContainer">
+                        <a id="id_btn_stock" href="javascript:$.noop();" class="actionButton stock">
+                            <span>
+                                Stoğa Al
+                            </span>
+                        </a>
+                    </div>
+                        <div class="buttonContainer">
+                    <a  id="id_btn_damaged" href="javascript:$.noop();" class="actionButton damaged">
+                        <span>
+                            Hasarlı
+                        </span>
+                    </a>
+                            </div>
+                    <div class="buttonContainer">
+                    <a  id="id_btn_photomismatch" href="javascript:$.noop();" class="actionButton photomismatch" >
+                        <span>
+                            Foto Hatalı
+                        </span>
+                    </a>
+                        </div>
+
+                </div>
+                </div>
+                <div class="right">
+                    <div class="actionButtons">
+                    <div class="buttonContainer vertical">
+                    <a id="id_btn_discard_stock" href="javascript:$.noop();"  class="actionButton discard">
+                        <span>
+                            STOKTAN GERI AL
+                        </span>
+                    </a>
+                                </div>
+                    <div class="buttonContainer vertical">
+                    <a id="id_btn_discard_damaged" href="javascript:$.noop();"  class="actionButton discard">
+                        <span>
+                            HASARLIDAN GERI AL
+                        </span>
+                    </a>
+                                </div>
+                    <div class="buttonContainer vertical">
+                    <a id="id_btn_discard_photo" href="javascript:$.noop();"  class="actionButton discard">
+                        <span>
+                            FOTODAN GERI AL
+                        </span>
+                    </a>
+                                </div>
+                        </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+   
+</div>
+<div id="footer">
+    <div class="pagewrap">
+        <div class="mark">
+            Sorularınız için:
+            <a href="mailto:ops-dev@zidaya.com" style="color:white;">ops-dev@zidaya.com</a>
+        </div>
+    </div>
+</div>
+
+<div class="popupPanel" style="display:none;">
+    <div class="black_overlay" id="fade"></div>
+    <div class="white_content">
+        <div class="messageContainer">
+            <span id="id_popup_message"></span>
+        </div>
+        <div class="buttonContainer">
+            <a href="javascript:$.noop();" >
+                <span id="id_btn_close" class="closeButton">KAPAT</span>
+            </a>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    var Action = {};
+    Action.Stock = 1;
+    Action.PhotoMismatch = 2;
+    Action.Damaged = 3;
+    Action.DiscardStock = 4;
+    Action.DiscardPhoto = 5;
+    Action.DiscardDamage = 6;
+
+    $(document).keydown(function(event){
+        if(event.keyCode == 13){
+            if($('.popupPanel').is(':visible')){
+                closePopup();
+                event.preventDefault();
+            }
+        }
+    });
+
+    function doAjaxCall(type){
+        jQuery.ajax(
+                {
+                    'type': 'GET',
+                    'url': '/acceptance/action/?siid={{ si.pk }}&type='+type,
+                    'data': '',
+                    'fail': function(){
+                        },
+                    'success': function(data){
+                        if(data == "1")
+                            $("#id_popup_message").html("TAMAM !");
+                        if(data == "2")
+                            $("#id_popup_message").html("ÜRÜN ÇOK GELDİ !");
+
+                        $(".popupPanel").show();
+                    }
+                }
+            );
+    }
+
+    $().ready(function(){
+        $("#id_barcode").focus();
+        $("#id_btn_close").click(function(){
+            closePopup();
+        });
+
+        $("#id_btn_stock").click(function(){
+            doAjaxCall(Action.Stock);
+        });
+        $("#id_btn_photomismatch").click(function(){
+            doAjaxCall(Action.PhotoMismatch);
+        });
+        $("#id_btn_damaged").click(function(){
+            doAjaxCall(Action.Damaged);
+        });
+    });
+
+
+    function closePopup(){
+        $(".popupPanel").hide();
+        $("#id_barcode").val("");
+        $("#id_barcode").focus();
+        $('.itemContainer').hide();
+    }
+
+</script>
+
+</body>
+</html>

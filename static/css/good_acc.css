@@ -1,0 +1,207 @@
+.itemContainer{
+    margin-top: 50px;
+}
+.itemContainer .left{
+    float: left;
+    width: 300px;
+    height: 300px;
+    margin-right: 20px;
+}
+
+.itemContainer .right{
+    float: left;
+}
+
+.itemContainer .actionButtons a{
+    padding: 20px;
+    font-size: 14px;
+    color:#FFFFFF;
+    background-color: #333333;
+    text-decoration: none;
+}
+
+.itemContainer .actionButtons a:hover{
+    border: 2px solid #333333;
+}
+
+.itemContainer .actionButtons .stock {
+    background-color: green;
+}
+.itemContainer .actionButtons .photomismatch {
+    background-color: blue;
+}
+.itemContainer .actionButtons .damaged {
+    background-color: red;
+}
+
+.itemContainer .actionButtons a span{
+    font-size: 20px;
+}
+
+#header .large{
+    padding: 20px;
+    font-size: 20px;
+}
+
+.largeHeader{
+    margin-top: 10px;
+    margin-bottom: 10px;
+    font-size: 20px;
+    border-bottom: 1px solid #CCCCCC;
+}
+
+.barcodeContainer{
+    text-align: center;
+    font-size: 16px;
+}
+
+.barcodeContainer input[type="text"]{
+    width: 300px;
+    height: 50px;
+    font-size: 28px;
+}
+
+.actionButtons{
+    width: 100%;
+}
+
+.imageContainer{
+    width: 300px;
+    height: 300px;
+    background: #FFFFFF;    ;
+}
+
+.actionButtons .buttonContainer{
+    margin: 10px;
+    float: left;
+}
+.infoContainer{
+    margin: 10px;
+}
+
+.itemContainer .right .row{
+    margin-bottom: 20px;
+}
+
+.infoContainer ul{
+    list-style-type: none;
+}
+
+.infoContainer ul li {
+    width: 100%;
+    float: left;
+    margin-bottom: 5px;
+}
+
+.infoContainer ul li .label{
+    font-size: 16px;
+    font-weight: bold;
+    float:left;
+    min-width: 100px;
+}
+
+.infoContainer ul li .value{
+    font-size: 16px;
+    float: left;
+}
+
+.actionButtonContainer{
+    margin-top: 20px;
+}
+
+.popupPanel{
+    background-color: white;
+    border: 2px solid #E5E5E5;
+    display: none;
+    left: 32%;
+    overflow: auto;
+    position: fixed;
+    text-align: center;
+    top: 25%;
+    width: 510px;
+    z-index: 1002;
+}
+
+.white_content {
+    background-color: white;
+    border: 6px solid #E5E5E5;
+    left: 32%;
+    overflow: auto;
+    position: fixed;
+    text-align: center;
+    top: 25%;
+    width: 510px;
+    z-index: 1002;
+    padding: 20px;
+}
+
+.white_content .closeButton {
+}
+
+.black_overlay {
+    background-color: black;
+    height: 100%;
+    left: 0;
+    opacity: 0.7;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1001;
+}
+
+.messageContainer {
+    margin-bottom: 10px;
+}
+
+.messageContainer span{
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.buttonContainer a{
+    padding: 5px;
+    background-color: #CCCCCC;
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.newShipmentButtonContainer{
+    float: right;
+    padding: 10px;
+    background-color: #333333;
+}
+
+.newShipmentButtonContainer a{
+    font-size: 16px;
+    color:#FFFFFF;
+    text-decoration: none;
+}
+
+.headerError{
+    margin: 10px;
+    color:red;
+    font-weight: bold;
+    font-size:16px;
+}
+
+.actionButtonContainer .left{
+    float:left;
+    width:480px;
+}
+
+.actionButtonContainer .right{
+    float:left;
+}
+.actionButtons .vertical{
+    float:none;
+    margin-bottom: 40px;
+}
+
+.actionButtons .vertical a{
+    padding: 10px;
+    
+}
+
+.actionButtons .vertical a span{
+    font-size: 16px;
+}

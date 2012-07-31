@@ -496,3 +496,13 @@ def export_basket_excel(request):
 
     book.save(response)
     return response
+
+@login_required
+@check_permission('Sms')
+def empty_basket(request):
+
+    request.session.__delitem__("supplier")
+    request.session.__delitem__("siList")
+    request.session.__delitem__("shipment")
+
+    return redirect('/sms/list_catalog_simple/')

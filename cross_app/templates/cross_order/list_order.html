@@ -71,6 +71,7 @@
                     <tr>
                         <th><input type=checkbox name='allSelect' class="allSelect"></th>
                         <th>{% trans "cross_status" %} </th>
+                        <th>{% trans "ekol_stock" %} </th>
                         <th>{% trans "order_item_id" %}</th>
                         <th>{% trans "zidaya_order_number" %}  </th>
                         <th>{% trans "size" %}</th>
@@ -99,6 +100,7 @@
                                     <input type=checkbox class="checkboxClass" name='orderChecked' value="{{ o.pk }}">
                                 {% endif %}
                             </td>
+                            <td>{{ o.ordercrossdetails.cross_status.name }}</td>
                             <td>{{ o.ordercrossdetails.cross_status.name }}</td>
                             <td>{{ o.id_sales_order_item }}</td>
                             <td>

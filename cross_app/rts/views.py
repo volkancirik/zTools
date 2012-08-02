@@ -115,6 +115,7 @@ def update_returned_order(request):
         rid.is_with_invoice = isWithInvoice
         rid.return_reason = returnReason
         rid.action_type = actionType
+        rid.inbound_tracking_number = request.POST.get('inboundTrackingNumber',"")
         rid.comment = comment
         rid.status = rts_status.RETURNED
         rid.update_user = request.user

@@ -5,263 +5,251 @@
 {% endblock %}
 
 {% block content %}
-<div class="tabbed">
-	<div class="tab-content" style="display:block;">
-		<div class="items">
-            <table class="filterPanel">
-                <tr>
-                    <td class="left">
-                        {% trans "shipment_number" %}
-                    </td>
-                    <td  class="right">
-                        {{ shipment.number }}
-                    </td>
+    <div class="tabbed">
+    <div class="tab-content" style="display:block;">
+    <div class="items">
+    <table class="filterPanel">
+        <tr>
+            <td class="left">
+                Shipment Number
+            </td>
+            <td  class="right">
+                {{ shipment.number }}
+            </td>
 
-                    <td class="left">
-                        {% trans "create_date" %}
-                    </td>
-                    <td  class="right">
-                        {{ shipment.create_date|date:"d/M/Y H:i:s" }}
-                    </td>
-                    <td class="left">
-                        {% trans "create_user" %}
-                    </td>
-                    <td  class="right">
-                        {{ shipment.create_user.email }}
-                    </td>
-                    <td class="left">
-                        {% trans "cancellation_reason" %}
-                    </td>
-                    <td  class="right">
-                        {{ shipment.cancel_reason.name }}
-                    </td>
-                </tr>
-                <tr>
-                    <td class="left">
-                        {% trans "supplier" %}
-                    </td>
-                    <td  class="right">
-                        {{ shipment.supplier.name }}
-                    </td>
-                    <td class="left">
-                        {% trans "proposed_shipment_date" %}
-                    </td>
-                    <td  class="right">
-                        {{ shipment.proposed_shipment_date|date:"d/M/Y" }}
-                    </td>
-                    <td class="left">
-                        {% trans "total_shipment_item_count" %}
-                    </td>
-                    <td  class="right">
-                        {{ shipment.totalShipmentItemCount }}
-                    </td>
-                    <td class="left">
-                        {% trans "damaged_goods_return_rate" %}
-                    </td>
-                    <td  class="right">
-                        {{ shipment.damaged_return_rate }}
-                    </td>
-                </tr>
-                <tr>
-                    <td class="left">
-                        {% trans "status" %}
-                    </td>
-                    <td  class="right">
-                        {{ shipment.get_status_display }}
-                    </td>
-                    <td class="left">
-                        {% trans "confirmed_shipment_date" %}
-                    </td>
-                    <td  class="right">
-                        {{ shipment.confirmed_shipment_date|date:"d/M/Y" }}
-                    </td>
-                    <td class="left">
-                        {% trans "date_received" %}
-                    </td>
-                    <td  class="right">
-                        {{ shipment.date_received|date:"d/M/Y H:i:s" }}
-                    </td>
-                </tr>
-            </table>
-            <table id="catalogConfigList">
-                <thead>
-                    <tr>
-                        <th>
-                            {% trans "item_count" %}
-                        </th>
-                        <th>
-                            {% trans "sku" %}
-                        </th>
-                        <th>
-                            {% trans "sku_config" %}
-                        </th>
-                        <th>
-                            {% trans "cost" %}
-                        </th>
-                        <th>
-                            {% trans "tax_percent" %}
-                        </th>
-                        <th>
-                            {% trans "barcode_EAN" %}
-                        </th>
-                        <th>
-                            {% trans "barcode_to_export" %}
-                        </th>
-                        <th>
-                            {% trans "brand" %}
-                        </th>
-                        <th>
-                            {% trans "sku_supplier_config" %}
-                        </th>
-                        <th>
-                            {% trans "sku_supplier_simple" %}
-                        </th>
-                        <th>
-                            {% trans "zidaya_name" %}
-                        </th>
-                        <th>
-                            {% trans "supplier_color" %}
-                        </th>
-                        <th>
-                            {% trans "size" %}
-                        </th>
-                        <th>
-                            {% trans "supplier_material" %}
-                        </th>
-                        <th>
-                            {% trans "supplier_product_name" %}
-                        </th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {% for si in siList %}
-                        <tr>
-                        <td>
-                            {{ si.quantity_ordered }}
-                        </td>
-                            <td>
-                                {{ si.catalog_simple.sku }}
-                            </td>
-                            <td>
-                                {{ si.catalog_simple.sku_config }}
-                            </td>
-                        <td>
-                                {{ si.catalog_simple.cost }}
-                            </td>
-                        <td>
-                                {{ si.catalog_simple.tax_percent }}
-                            </td>
-                        <td>
-                                {{ si.catalog_simple.barcode_ean }}
-                        </td>
-                        <td>
-                                {{ si.catalog_simple.barcode_to_export }}
-                        </td>
-                        <td>
-                                {{ si.catalog_simple.brand.name }}
-                            </td>
-                        <td>
-                                {{ si.catalog_simple.sku_supplier_config }}
-                            </td>
-                        <td>
-                                {{ si.catalog_simple.sku_supplier_simple }}
-                            </td>
-                        <td>
-                                {{ si.catalog_simple.zidaya_name }}
-                            </td>
-                        <td>
-                                {{ si.catalog_simple.supplier_color }}
-                            </td>
-                            <td>
-                                {{ si.catalog_simple.simplessizes.size }}
-                            </td>
-                        <td>
-                                {{ si.catalog_simple.supplier_material }}
-                            </td>
-                        <td>
-                                {{ si.catalog_simple.supplier_product_name }}
-                            </td>
-                        </tr>
-                    {% endfor %}
-                </tbody>
-            </table>
+            <td class="left">
+                Create Date
+            </td>
+            <td  class="right">
+                {{ shipment.create_date|date:"d/M/Y H:i:s" }}
+            </td>
+            <td class="left">
+                Create User
+            </td>
+            <td  class="right">
+                {{ shipment.create_user.email }}
+            </td>
+            <td class="left">
+                Cancellation Reason
+            </td>
+            <td  class="right">
+                {{ shipment.cancel_reason.name }}
+            </td>
+        </tr>
+        <tr>
+            <td class="left">
+                Supplier
+            </td>
+            <td  class="right">
+                {{ shipment.supplier.name }}
+            </td>
+            <td class="left">
+                {% trans "proposed_shipment_date" %}
+            </td>
+            <td  class="right">
+                {{ shipment.proposed_shipment_date|date:"d/M/Y" }}
+            </td>
+            <td class="left">
+                totalShipmentItemCount
+            </td>
+            <td  class="right">
+                {{ shipment.totalShipmentItemCount }}
+            </td>
+            <td class="left">
+                Damaged Goods Return Rate
+            </td>
+            <td  class="right">
+                {{ shipment.damaged_return_rate }}
+            </td>
+        </tr>
+        <tr>
+            <td class="left">
+                {% trans "status" %}
+            </td>
+            <td  class="right">
+                {{ shipment.get_status_display }}
+            </td>
+            <td class="left">
+                confirmed_shipment_date
+            </td>
+            <td  class="right">
+                {{ shipment.confirmed_shipment_date|date:"d/M/Y" }}
+            </td>
+            <td class="left">
+                date_received
+            </td>
+            <td  class="right">
+                {{ shipment.date_received|date:"d/M/Y H:i:s" }}
+            </td>
+        </tr>
+    </table>
+    <table id="catalogConfigList">
+        <thead>
+        <tr>
+            <th>
+                {% trans "item_count" %}
+            </th>
+            <th>
+                {% trans "sku" %}
+            </th>
+            <th>
+                {% trans "cost" %}
+            </th>
+            <th>
+                {% trans "tax_percent" %}
+            </th>
+            <th>
+                {% trans "barcode_EAN" %}
+            </th>
+            <th>
+                {% trans "barcode_to_export" %}
+            </th>
+            <th>
+                {% trans "brand" %}
+            </th>
+            <th>
+                {% trans "sku_supplier_config" %}
+            </th>
+            <th>
+                {% trans "sku_supplier_simple" %}
+            </th>
+            <th>
+                {% trans "zidaya_name" %}
+            </th>
+            <th>
+                {% trans "supplier_color" %}
+            </th>
+            <th>
+                {% trans "size" %}
+            </th>
+            <th>
+                {% trans "supplier_material" %}
+            </th>
+            <th>
+                {% trans "supplier_product_name" %}
+            </th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for si in siList %}
+            <tr>
+                <td>
+                    {{ si.quantity_ordered }}
+                </td>
+                <td>
+                    {{ si.catalog_simple.sku }}
+                </td>
+                <td>
+                    {{ si.catalog_simple.cost }}
+                </td>
+                <td>
+                    {{ si.catalog_simple.tax_percent }}
+                </td>
+                <td>
+                    {{ si.catalog_simple.barcode_ean }}
+                </td>
+                <td>
+                    {{ si.catalog_simple.barcode_to_export }}
+                </td>
+                <td>
+                    {{ si.catalog_simple.brand.name }}
+                </td>
+                <td>
+                    {{ si.catalog_simple.sku_supplier_config }}
+                </td>
+                <td>
+                    {{ si.catalog_simple.sku_supplier_simple }}
+                </td>
+                <td>
+                    {{ si.catalog_simple.zidaya_name }}
+                </td>
+                <td>
+                    {{ si.catalog_simple.supplier_color }}
+                </td>
+                <td>
+                    {{ si.catalog_simple.simplessizes.size }}
+                </td>
+                <td>
+                    {{ si.catalog_simple.supplier_material }}
+                </td>
+                <td>
+                    {{ si.catalog_simple.supplier_product_name }}
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
 
-        <table class="actionPanel" cellpadding="0" cellspacing="0" width="100%">
-                <tr>
-                    <td  class="left" style="text-align:left;">
-                        <a class="submitButton" onclick="return cloneShipmentDialog('{{ shipment.pk }}');">
-                            <span> {% trans "clone_shipment" %}</span>
+    <table class="actionPanel" cellpadding="0" cellspacing="0" width="100%">
+        <tr>
+            <td  class="left" style="text-align:left;">
+                <a class="submitButton" onclick="return cloneShipmentDialog('{{ shipment.pk }}');">
+                    <span> Clone Shipment </span>
+                </a>
+            </td>
+            <td  class="left" style="text-align:left;">
+                <a class="submitButton" href="/sms/export_a_shipment_excel/?sid={{ shipment.pk }}">
+                    <span> Export to Excel </span>
+                </a>
+            </td>
+            {% if user|checkPermission:"SmsOps"  and shipment.status == 0 %}
+                <td  class="left" style="text-align:left;">
+                    <a class="submitButton" onclick="return viewConfirmDateShipmentBox('{{ shipment.number }}','{{ shipment.supplier.name }}','{{ shipment.proposed_shipment_date|date:"d/M/Y"}}','{{ shipment.create_user.email }}','{{ shipment.comment }}','{{ shipment.pk }}','{{ total }}');">
+                        <span> Confirm Shipment </span>
+                    </a>
+                </td>
+            {% endif  %}
+            {% if user|checkPermission:"SmsWarehouse" or  user|checkPermission:"SmsOps"%}
+                {% if shipment.status == 1 %}
+                    <td>
+                        <a class="submitButton" href="/sms/receive_shipment/?sid={{ shipment.pk }}">
+                            <span> Shipment Received </span>
                         </a>
                     </td>
-                    {% if user|checkPermission:"SmsOps"  and shipment.status == 0 %}
-                        <td  class="left" style="text-align:left;">
-                            <a class="submitButton" onclick="return viewConfirmDateShipmentBox('{{ shipment.number }}','{{ shipment.supplier.name }}','{{ shipment.proposed_shipment_date|date:"d/M/Y"}}','{{ shipment.create_user.email }}','{{ shipment.comment }}','{{ shipment.pk }}');">
-                                <span> {% trans "confirm_shipment" %} </span>
-                            </a>
-                        </td>
-                    {% endif  %}
-                    {% if user|checkPermission:"SmsWarehouse" or  user|checkPermission:"SmsOps"%}
-                        {% if shipment.status == 1 %}
-                            <td>
-                                <a class="submitButton" href="/sms/receive_shipment/?sid={{ shipment.pk }}">
-                                    <span> {% trans "shipment_received" %}  </span>
-                                </a>
-                            </td>
-                        {% endif  %}
-                    {% endif  %}
-                    {% if user|checkPermission:"SmsWarehouse" or  user|checkPermission:"SmsOps" %}
-                        {% if shipment.status == 4 %}
-                        <td>
-                            <a class="submitButton" href="/sms/export_shipment_csv/?sid={{ shipment.pk }}">
-                                <span> {% trans "export_to_CSV" %} </span>
-                            </a>
-                        </td>
-                        {% endif %}
-                    {% endif  %}
-                    {% if user|checkPermission:"SmsOps" %}
-                        {% if shipment.status == 0 or shipment.status == 1 %}
-                            <td  class="right" style="text-align:right;">
-                                <a class="submitButton" onclick="return viewShipmentCancelBox('{{ shipment.comment }}','{{ shipment.pk }}');">
-                                    <span> {% trans "cancel_shipment" %}</span>
-                                </a>
-                            </td>
-                        {% endif %}
-
-                    {% else %}
-                        {% if user|checkPermission:"SmsWarehouse" and shipment.status == 1%}
-                            <td  class="right" style="text-align:right;">
-                                <a class="submitButton" onclick="return viewShipmentCancelBox('{{ shipment.comment }}','{{ shipment.pk }}');">
-                                    <span> {% trans "cancel_shipment" %} </span>
-                                </a>
-                            </td>
-                        {% endif %}
-
-                    {% endif  %}
-
-                </tr>
-            </table>
-        </div>
-	</div>
+                {% endif  %}
+            {% endif  %}
+            {% if user|checkPermission:"SmsWarehouse" or  user|checkPermission:"SmsOps" %}
+                {% if shipment.status == 4 %}
+                    <td>
+                        <a class="submitButton" href="/sms/export_shipment_csv/?sid={{ shipment.pk }}">
+                            <span> Export to CSV </span>
+                        </a>
+                    </td>
+                {% endif %}
+            {% endif  %}
+            {% if user|checkPermission:"SmsWarehouse" or  user|checkPermission:"SmsOps" %}
+                {% if shipment.status == 4 or shipment.status == 1 or shipment.status == 0 %}
+                    <td  class="right" style="text-align:right;">
+                        <a class="submitButton" onclick="return viewShipmentCancelBox('{{ shipment.comment }}','{{ shipment.pk }}');">
+                            <span> Cancel Shipment </span>
+                        </a>
+                    </td>
+                {% endif %}
+            {% endif  %}
+        </tr>
+    </table>
+    </div>
+    </div>
     {% include "cross_order/boxes/shipment_cancel_box.html" %}
     {% include "cross_order/boxes/shipment_confirm_date.html" %}
     {% include "cross_order/boxes/shipment_confirm_clone.html" %}
-</div>
-<script type="text/javascript">
+    </div>
+    <script type="text/javascript">
 
-    $(document).ready(function(){
-        $("#id_confirmedShipmentDate" ).datepicker({ altFormat: 'yy-mm-dd' });
-        displayModuleMenus("sms","smsViewShipment");
-        setMenuName("View Shipment");
+        $(document).ready(function(){
+            $("#id_confirmedShipmentDate" ).datepicker({ altFormat: 'yy-mm-dd' });
+            displayModuleMenus("sms","smsViewShipment");
+            setMenuName("View Shipment");
 
-        $('#catalogConfigList').dataTable(
-                {
-                    "bJQueryUI": true,
-                    "sPaginationType": "full_numbers",
-                    "sScrollY": "350px",
-                    "sScrollX": "100%"
-                }
-        );
+            $('#catalogConfigList').dataTable(
+                    {
+                        "bJQueryUI": true,
+                        "sPaginationType": "full_numbers",
+                        "sScrollY": "350px",
+                        "sScrollX": "100%"
+                    }
+            );
 
-    });
-</script>
+        });
+    </script>
 {% endblock %}

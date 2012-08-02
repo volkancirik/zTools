@@ -78,6 +78,7 @@ class ReturnedItemDetails(models.Model):
     return_reason = models.ForeignKey(ReturnReason,unique=False,null=True)
     action_type = models.ForeignKey(ActionType,unique=False,null=True)
     comment = models.TextField(null=True)
+    inbound_tracking_number = models.CharField(max_length=250,null=True)
 
     is_with_invoice = models.BooleanField(null=False,default=True)
 

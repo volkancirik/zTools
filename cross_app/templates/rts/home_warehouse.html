@@ -50,6 +50,7 @@
                         <th>{% trans "bob_status" %}</th>
                         <th>{% trans "return_reason" %}</th>
                         <th>{% trans "action_type" %}</th>
+                        <th>{% trans "inbound_tracking_number" %}</th>
                         <th>{% trans "comment" %}</th>
                         <th>{% trans "is_with_invoice" %}</th>
                         <th>{% trans "return_date" %}</th>
@@ -93,6 +94,7 @@
                             <td>{{ o.bob_status }}</td>
                             <td>{{ o.returneditemdetails.return_reason|None2Empty }}</td>
                             <td>{{ o.returneditemdetails.action_type.name|None2Empty }}</td>
+                            <td>{{ o.returneditemdetails.inbound_tracking_number }}</td>
                             <td>{{ o.returneditemdetails.comment|None2Empty }}</td>
                             <td>{{ o.returneditemdetails.is_with_invoice }}</td>
                             <td>{{ o.returneditemdetails.create_date|date:"d/M/Y H:i:s" }}</td>

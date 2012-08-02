@@ -128,6 +128,14 @@ class CrossStatus(models.Model):
     def __unicode__(self):
         return str(self.name)
 
+class EkolStock(models.Model):
+    sku = models.CharField(max_length=250,null=False)
+    available_quantity = models.IntegerField(default=0)
+    class Meta:
+        db_table = 'cross_ekol_stock'
+    def __unicode__(self):
+        return self.sku
+
 class TransactionStatus(models.Model):
     name = models.CharField(max_length=250,null=False)
     order = models.IntegerField(default=9999)

@@ -1,6 +1,6 @@
 import datetime
 from django import template
-from cross_order.models import Supplier, CrossStatus, OrderTransaction, Transactions
+from cross_order.models import Supplier, CrossStatus, OrderTransaction, Transactions, EkolStock
 from django.db.models import Sum
 register = template.Library()
 
@@ -125,3 +125,8 @@ def getSmsQuickAddErrorMessage(type):
     elif type == 7:
         return "Brand is no active"
 
+@register.filter
+def getEkolStock(sku):
+    if EkolStock.objects.filter(sku=sku).count():
+        return EkolStock.objects.get(sku=sku).available_quantity
+    return "None"

@@ -129,7 +129,7 @@ class CrossStatus(models.Model):
         return str(self.name)
 
 class EkolStock(models.Model):
-    sku = models.CharField(max_length=250,null=False)
+    sku = models.CharField(max_length=250,null=False,primary_key=True)
     available_quantity = models.IntegerField(default=0)
     class Meta:
         db_table = 'cross_ekol_stock'

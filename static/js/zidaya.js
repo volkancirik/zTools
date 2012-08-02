@@ -73,7 +73,7 @@ function viewCommentBox(){
     $('.commentBox').show();
     return false;
 }
-function viewReturnBox(suborderNumber,orderNumber,sku,returnedOrderID,action,reason,comment,isWithInvoice){
+function viewReturnBox(suborderNumber,orderNumber,sku,returnedOrderID,action,reason,comment,isWithInvoice,inboundTrackingNumber){
     $('#id_returnedSuborder').text(suborderNumber);
     $('#id_returnedOrder').text(orderNumber);
     $('#id_returnedSku').text(sku);
@@ -81,6 +81,7 @@ function viewReturnBox(suborderNumber,orderNumber,sku,returnedOrderID,action,rea
     $('#id_actionList').val(action);
     $('#id_reasonList').val(reason);
     $('#id_returnedComment').val(comment);
+    $('#id_inboundTrackingNumber').val(inboundTrackingNumber);
     if(isWithInvoice == "True")
         $('#id_isWithInvoice').attr('checked','checked');
     $('.returnBox').show();

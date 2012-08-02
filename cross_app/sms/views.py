@@ -195,6 +195,7 @@ def create_shipment(request):
         shipment.shipmentType = shipmentType
         shipment.is_consignment = request.POST.get("isConsignment",False)
         shipment.create_user = request.user
+        shipment.create_date = datetime.datetime.now()
         shipment.update_user = request.user
         shipment.proposed_shipment_date = date
         shipment.number = generateShipmentString()

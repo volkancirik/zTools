@@ -65,6 +65,7 @@
                     <tr>
                         <th><input type=checkbox name='allSelect' class="allSelect"></th>
                         <th>{% trans "cross_status" %}</th>
+                        <th>{% trans "ekol_stock" %} </th>
                         <th>{% trans "order_item_id" %}  </th>
                         <th>{% trans "zidaya_order_number" %}  </th>
                         <th>{% trans "size" %}</th>
@@ -94,6 +95,7 @@
                                 {% endif  %}
                             </td>
                             <td>{{ o.order.ordercrossdetails.cross_status.name }}</td>
+                            <td>{{ o.sku|getEkolStock }}</td>
                             <td>{{ o.order.id_sales_order_item }}</td>
                             <td>
                                 <a href="https://bob.zidaya.com/orderprocessing/order/index/id/{{ o.order.id_sales_order }})" target="_blank">{{ o.order.order_nr }}</a>

@@ -16,6 +16,8 @@ from cross_order.models import Supplier, CrossStatus, Order, LastUpdate, Transac
 from django.core.serializers.json import Serializer, DjangoJSONEncoder
 from django.db import transaction, connection
 from cross_order.utils import get_datatables_records, check_permission
+import csv
+from sms.models import CatalogSimple
 
 @login_required
 def order_search_ajax(request):
@@ -645,6 +647,69 @@ def exportExcelForSupplier(request):
     response['Content-Disposition'] = file_string
 
     book.save(response)
+    return response
+
+@login_required
+@check_permission('Cross')
+def export_csv_transaction(request):
+    code= ""
+    cs = None
+
+    if "code" in request.GET:
+        code = request.GET["code"]
+    try:
+        cs = CrossStatus.objects.get(pk = int(request.GET['cstatus']))
+    except:
+        pass
+
+    given_transaction = Transactions.objects.get(code = code)
+    orderTransactionPairs = OrderTransaction.objects.filter(trans = given_transaction)
+    if cs is not None:
+        orderTransactionPairs = orderTransactionPairs.filter(order__ordercrossdetails__cross_status=cs)
+
+    orders = list()
+    skus = dict()
+    total_costs = dict()
+    total_cost = 0
+    for aPair in orderTransactionPairs:
+        anOrder = Order.objects.get(pk = aPair.order.id)
+        sku = aPair.order.sku
+        cost = float(aPair.order.cost)
+        total_cost = total_cost + cost
+        orders.append(anOrder)
+        num_of_same_sku = orderTransactionPairs.filter(order__sku=sku).count()
+        skus[sku] = num_of_same_sku
+        total_costs[sku]  = cost * float(num_of_same_sku)
+
+    response = HttpResponse(mimetype='text/csv')
+    response['Content-Disposition'] = 'attachment; filename='+code+'.csv'
+
+    writer = csv.writer(response)
+    writer.writerow(['null\tcross_order_transactions.id\tbarcode_ean\tsku\tquantity\timage_url\tbrand\tzidaya_name\tsize\tsupplier_color\tsku_supplier_simple\tsku_supplier_config'])
+
+    for index_i,an_order in enumerate(orders):
+        if an_order.sku in skus and an_order.ordercrossdetails.cross_status.pk != 2:
+            cotid = given_transaction.pk #cross order transaction id
+            barcode = an_order.barcode_ean
+            sku = an_order.sku
+            quantity = skus[sku]
+            size = an_order.size
+            sku_ss = an_order.sku_supplier_simple # sku supplier simple
+            sku_sc = an_order.sku_supplier_config # sku supplier config
+
+            cs = CatalogSimple.objects.get(sku=an_order.sku)
+            icc = cs.id_catalog_config
+            reverse_icc = str(icc)[::-1]
+            image_url = 'http://static.zidaya.com/p/-'+reverse_icc+'-1-product.jpg'
+
+            zname = cs.zidaya_name
+            scolor = cs.supplier_color
+            brand = cs.brand
+
+            writer.writerow(['\t'+str(cotid)+'\t'+str(barcode)+'\t'+str(sku)+'\t'+str(quantity)+'\t'+str(image_url)+'\t'+str(brand)+'\t'+str(zname)+'\t'+str(size)+'\t'+str(scolor)+'\t'+str(sku_ss)+'\t'+str(sku_sc)])
+            skus.pop(an_order.sku)
+
+
     return response
 
 @login_required

@@ -152,7 +152,7 @@
                     </td>
                     <td class="right">
                         <a class="submitButton" onclick="return updateInbound();">
-                            <span>{% trans "update_inbound_order_number" %} </span>
+                            <span>{% trans "inbound_order_number" %} </span>
                         </a>
                     </td>
 {#                    <td class="left">#}
@@ -166,6 +166,11 @@
                     <td class="right" style="text-align: right;">
                         <a class="submitButton" href="/cross_order/exportExcelForSupplier/?code={{ code }}&cstatus={{ cstatus.pk }}">
                             <span>{% trans "supplier_excel" %} </span>
+                        </a>
+                    </td>
+                    <td class="right" style="text-align: right;">
+                        <a class="submitButton" href="/cross_order/exportCsvTransaction/?code={{ code }}&cstatus={{ cstatus.pk }}">
+                            <span>{% trans "export_csv" %} </span>
                         </a>
                     </td>
                     <td class="right" style="text-align: right;">

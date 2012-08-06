@@ -11,6 +11,7 @@ urlpatterns = patterns('',
     (r'^exportOrders/$', 'cross_app.cross_order.views.exportExcelOrders'),
     (r'^exportTransactions/$', 'cross_app.cross_order.views.exportExcelTransactions'),
     (r'^exportExcelForSupplier/$', 'cross_app.cross_order.views.exportExcelForSupplier'),
+    (r'^exportCsvTransaction/$', 'cross_app.cross_order.views.export_csv_transaction'),
     (r'^update_transaction_status/$', 'cross_app.cross_order.views.update_transaction_status'),
     (r'^report_list/$', 'cross_app.cross_order.views.report_list'),
     (r'^get_excel_report/$', 'cross_app.cross_order.views.get_excel_report'),
@@ -21,3 +22,4 @@ urlpatterns = patterns('',
     (r'^update_invoice_status/$', 'cross_app.cross_order.views.update_invoice_status'),
 
 )
+

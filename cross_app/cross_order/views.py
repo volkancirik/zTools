@@ -685,7 +685,7 @@ def export_csv_transaction(request):
     response['Content-Disposition'] = 'attachment; filename='+code+'.csv'
 
     writer = csv.writer(response)
-    writer.writerow(['null\tcross_order_transactions.id\tbarcode_ean\tsku\tquantity\timage_url\tbrand\tzidaya_name\tsize\tsupplier_color\tsku_supplier_simple\tsku_supplier_config'])
+    writer.writerow(['\tcross_order_transactions.id\tbarcode_ean\tsku\tquantity\timage_url\tbrand\tzidaya_name\tsize\tsupplier_color\tsku_supplier_simple\tsku_supplier_config'])
 
     for index_i,an_order in enumerate(orders):
         if an_order.sku in skus and an_order.ordercrossdetails.cross_status.pk != 2:

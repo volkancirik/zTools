@@ -130,3 +130,9 @@ def getEkolStock(sku):
     if EkolStock.objects.filter(sku=sku).count():
         return EkolStock.objects.get(sku=sku).available_quantity
     return "None"
+
+@register.filter
+def getEkolStockOutPlanned(sku):
+    if EkolStock.objects.filter(sku=sku).count():
+        return EkolStock.objects.get(sku=sku).stock_out_planned
+    return "None"

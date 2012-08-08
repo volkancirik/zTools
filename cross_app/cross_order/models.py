@@ -131,6 +131,7 @@ class CrossStatus(models.Model):
 class EkolStock(models.Model):
     sku = models.CharField(max_length=250,null=False,primary_key=True)
     available_quantity = models.IntegerField(default=0,db_column='qtystock')
+    stock_out_planned = models.IntegerField(default=0,db_column = 'qtystockoutplanned')
     class Meta:
         db_table = 'cross_ekol_stock'
     def __unicode__(self):

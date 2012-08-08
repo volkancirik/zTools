@@ -127,7 +127,7 @@ def get_excel_report(request):
 @check_permission('Cross')
 def list_supplier(request):
 
-    start_date = datetime.datetime.now()
+    start_date = datetime.datetime.now() - datetime.timedelta(days = 15)
     start_date = datetime.datetime.combine(start_date, datetime.time.min)
 
     end_date = datetime.datetime.now()

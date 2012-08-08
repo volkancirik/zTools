@@ -689,7 +689,7 @@ def export_csv_transaction(request):
 
     for index_i,an_order in enumerate(orders):
         if an_order.sku in skus and an_order.ordercrossdetails.cross_status.pk != 2:
-            cotid = given_transaction.pk #cross order transaction id
+            cotid = given_transaction.code  #cross order transaction code
             barcode = an_order.barcode_ean
             sku = an_order.sku
             quantity = skus[sku]
@@ -706,9 +706,8 @@ def export_csv_transaction(request):
             scolor = cs.supplier_color
             brand = cs.brand
 
-            writer.writerow(['\t'+str(cotid)+'\t'+str(barcode)+'\t'+str(sku)+'\t'+str(quantity)+'\t'+str(image_url)+'\t'+str(brand)+'\t'+str(zname)+'\t'+str(size)+'\t'+str(scolor)+'\t'+str(sku_ss)+'\t'+str(sku_sc)])
+            writer.writerow(['\t'+str(cotid)+'\t'+str(barcode)+'\t'+str(sku)+'\t'+str(quantity)+'\t'+str(image_url)+'\t'+unicode(brand).encode('utf-8')+'\t'+unicode(zname).encode('utf-8')+'\t'+unicode(size).encode('utf-8')+'\t'+unicode(scolor).encode('utf-8')+'\t'+str(sku_ss)+'\t'+str(sku_sc)])
             skus.pop(an_order.sku)
-
 
     return response
 

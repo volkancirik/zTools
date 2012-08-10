@@ -102,8 +102,8 @@
                                 {% endif %}
                             </td>
                             <td>{{ o.ordercrossdetails.cross_status.name }}</td>
-                            <td>{{ o.sku|getEkolStock }}</td>
-                            <td>{{ o.sku|getEkolStockOutPlanned }}</td>
+                            <td>{{ o.order.sku|getEkolStock }}</td>
+                            <td>{{ o.order.sku|getEkolStockOutPlanned }}</td>
                             <td>{{ o.id_sales_order_item }}</td>
                             <td>
                                 <a href="https://bob.zidaya.com/orderprocessing/order/index/id/{{ o.id_sales_order }}" target="_blank">{{ o.order_nr }}</a>

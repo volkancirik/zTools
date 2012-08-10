@@ -73,6 +73,7 @@
                         <th>{% trans "cross_status" %} </th>
                         <th>{% trans "ekol_stock" %} </th>
                         <th>{% trans "ekol_stock_out_planned" %} </th>
+                        <th>{% trans "ekol_available_stock" %} </th>
                         <th>{% trans "order_item_id" %}</th>
                         <th>{% trans "zidaya_order_number" %}  </th>
                         <th>{% trans "size" %}</th>
@@ -102,8 +103,9 @@
                                 {% endif %}
                             </td>
                             <td>{{ o.ordercrossdetails.cross_status.name }}</td>
-                            <td>{{ o.order.sku|getEkolStock }}</td>
-                            <td>{{ o.order.sku|getEkolStockOutPlanned }}</td>
+                            <td>{{ o.sku|getEkolStock }}</td>
+                            <td>{{ o.sku|getEkolStockOutPlanned }}</td>
+                            <td>{{ o.sku|getEkolStockDiff }}</td>
                             <td>{{ o.id_sales_order_item }}</td>
                             <td>
                                 <a href="https://bob.zidaya.com/orderprocessing/order/index/id/{{ o.id_sales_order }}" target="_blank">{{ o.order_nr }}</a>

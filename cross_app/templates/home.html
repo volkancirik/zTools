@@ -75,6 +75,16 @@
                     </a>
                 </div>
             </div>
+            <div class="item">
+                <div class="underlay">
+                    Cancelled Item Tracking System
+                </div>
+                <img class="overlay" alt="" src="{{ STATIC_URL }}images/rts_logo.jpg" style="margin-top: 0px;">
+
+                <div class="mouse" onclick="mainToSubForCancellation();">
+                    <img alt="" src="{{ STATIC_URL }}images/nothing.gif"> &nbsp;
+                </div>
+            </div>
 
             <script type="text/javascript">
                 GarageDoor.scrollY = -55;
@@ -100,6 +110,24 @@
             </div>
         </div>
 
+        <div class="subBigMenuForCancellation" style="display: none;">
+            <div class="bigButton">
+                <div onclick="redirectTo('/cts/cancel_item/');">
+                    For Warehouse
+                </div>
+            </div>
+            <div  class="bigButton">
+                <div onclick="redirectTo('/cts/cancel_item/');">
+                    For Order Management
+                </div>
+            </div>
+            <div class="clear"></div>
+
+            <div class="back" onclick="subToMain();">
+                Back
+            </div>
+        </div>
+
     </div>
     {% if err_message|length > 0 %}
     <div class="homeErrorMessage">
@@ -114,8 +142,21 @@
             $('.homeErrorMessage').hide();
         });
     }
+
     function subToMain(){
         $('.subBigMenu').fadeOut("fast",function(){
+            $('.garagedoor').fadeIn("slow");
+            $('.homeErrorMessage').hide();
+        });
+    }
+    function mainToSubForCancellation(){
+        $('.garagedoor').fadeOut("fast",function(){
+            $('.subBigMenuForCancellation').fadeIn("slow");
+            $('.homeErrorMessage').hide();
+        });
+    }
+    function subToMain(){
+        $('.subBigMenuForCancellation').fadeOut("fast",function(){
             $('.garagedoor').fadeIn("slow");
             $('.homeErrorMessage').hide();
         });

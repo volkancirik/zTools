@@ -55,6 +55,15 @@
             </span>
             </a>
         {% endif %}
+
+        {% if user|checkPermission:"RtsWarehouse" %}
+            <a href="/cts/cancel_mass/">
+            <span class="item dynamicMenuItem rts" id="ctsMassCancel">
+                                Mass Cancellation
+            </span>
+            </a>
+        {% endif %}
+
         {% if user|checkPermission:"Cross" %}
             <a href="/cross_order/transaction_list/">
             <span class="item dynamicMenuItem cross" id="crossTransactions">
@@ -111,6 +120,7 @@
             </span>
             </a>
         {% endif %}
+
     </div>
     <div id="navContainer">
         {% if user.is_authenticated %}

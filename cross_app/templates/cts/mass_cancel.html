@@ -1,0 +1,82 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% load helper %}
+{% block extrahead %}
+{% endblock %}
+
+{% block content %}
+    <div class="tabbed">
+        <div class="tab-content" style="display:block;">
+            <div class="items">
+                <div style="float: left; width: 500px;">
+                    <form id="MassCancelForm" method="POST" action="/cts/cancel_mass/">
+                        {% csrf_token %}
+                        <table class="dateFilter" cellspacing="0" cellpadding="0">
+
+                            <tr>
+                                <td class="left" style="width:180px;">
+                                    <br/>
+                                    Items to be Cancelled<br/>
+                                    <textarea rows="20" cols="25" name="order_item" id="id_order_item">{{ sku_simple }}</textarea>
+                                </td>
+                                <td>
+                                    <select name='cancelReason' id='id_cancelReason'>
+                                        <option value='all'>{% trans "Pick a Cancel Reason" %}</option>
+                                        {% for reason in reasonList %}
+                                            <option value='{{ reason.pk }}'>{{ reason.name }}</option>
+                                        {% endfor %}
+                                    </select>
+                                </td>
+
+                            </tr>
+                            <tr>
+                                <td>
+
+                                </td>
+                                <td style="text-align: right;">
+                                    <input id="id_submit" type="submit" name="submit" value="{% trans "cancel_all_items" %}" class="button" style="width: 100px;"/>
+                                </td>
+                            </tr>
+
+                        </table>
+                    </form>
+
+                </div>
+                {% if exceptionList|length > 0 %}
+                    <div class="orderedErrorList">
+                        <div>
+                            <span class="errorMessage"> Some errors occured </span>
+                        </div>
+                        <br/>
+                        <div class="errorPanel">
+                            <ul>
+                                {% for e in exceptionList %}
+                                    <li>
+                                        {{ e.0 }} - {{ e.1|getSmsQuickAddErrorMessage }}
+                                    </li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+
+
+    <script type="text/javascript">
+        $(document).ready(function(){
+            displayModuleMenus("sms","list_shipment");
+            setMenuName("Shipment List");
+
+            {% if exceptionListLength > 0 %}
+                skulist = "Bu ürünleri sepete eklenemiyor\n";
+                {% for e in exceptionList %}
+                    skulist += ("{{ e }}" + "\n");
+                {% endfor %}
+            {% endif %}
+
+            $('#id_sid').val({{ supplier.pk }});
+        });
+    </script>
+{% endblock %}
